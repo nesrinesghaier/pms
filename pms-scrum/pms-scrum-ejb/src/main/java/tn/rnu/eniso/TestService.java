@@ -6,6 +6,9 @@ package tn.rnu.eniso;
 
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import tn.rnu.eniso.entities.Test;
 
 /**
  *
@@ -13,9 +16,15 @@ import javax.ejb.LocalBean;
  */
 @Stateless
 @LocalBean
-public class NewSessionBean {
+public class TestService {
 
-    public void businessMethod() {
+    @PersistenceContext
+    private EntityManager em;
+    
+    public void test() {
+        Test t = new Test();
+        t.setName("test obj");
+        em.persist(t);
     }
 
     // Add business logic below. (Right-click in editor and choose
