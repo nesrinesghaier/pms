@@ -14,3 +14,5 @@
 /pms-cost/pms-cost-web-jar/target/
 /pms-core/pms-core-web-jar/target/
 /pms-gantt/pms-gantt-web-jar/target/
+/pms-global/target/
+/pms-global/pms-global-ejb/target/

@@ -40,7 +40,7 @@
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>pms-core-ejb</artifactId>
+            <artifactId>pms-scrum-ejb</artifactId>
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>

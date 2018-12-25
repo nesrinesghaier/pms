@@ -9,7 +9,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
   <modules>
-    <module>pms-global</module>
     <module>pms-core</module>
     <module>pms-gantt</module>
     <module>pms-scrum</module>
