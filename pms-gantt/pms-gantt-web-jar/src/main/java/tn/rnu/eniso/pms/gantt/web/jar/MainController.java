@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.scrum.web.jar;
+package tn.rnu.eniso.pms.gantt.web.jar;
 
-import tn.rnu.eniso.pms.scrum.ejb.MyService;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import tn.rnu.eniso.pms.gantt.ejb.MyService;
 
 /**
  *
  * @author bacali
  */
-@ManagedBean(name = "scrumController")
+@ManagedBean(name = "ganttController")
 public class MainController {
     
     @EJB

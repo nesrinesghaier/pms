@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.scrum.ejb;
+package tn.rnu.eniso.pms.gantt.ejb;
 
 import javax.ejb.Stateless;
 import javax.ejb.LocalBean;
@@ -16,7 +16,7 @@ import javax.ejb.LocalBean;
 public class MyService {
 
     public void businessMethod() {
-        System.out.println("Scrum Service!");
+        System.out.println("Gantt Service!");
     }
 
 }
