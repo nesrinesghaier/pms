@@ -15,5 +15,6 @@
     <module>pms-scrum-ear</module>
     <module>pms-scrum-web</module>
     <module>pms-scrum-ejb</module>
+    <module>pms-scrum-web-jar</module>
   </modules>
 </project>

@@ -5,7 +5,6 @@
  */
 package tn.rnu.eniso;
 
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
