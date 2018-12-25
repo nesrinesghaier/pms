@@ -6,7 +6,9 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:button onclick="#{testController.testMethod()}" value="Click me"></h:button>
+        <h:form>        
+            <h:commandButton action="#{mainController.run()}" value="OK"/>
+        </h:form>
     </h:body>
 </html>
 

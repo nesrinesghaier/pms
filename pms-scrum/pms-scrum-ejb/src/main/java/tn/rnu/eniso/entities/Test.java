@@ -6,31 +6,30 @@
 package tn.rnu.eniso.entities;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
  *
- * @author nesrine
+ * @author bacali
  */
 @Entity
 public class Test implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue
-    private long Id;
+    private Long id;
     private String name;
 
-    public Test() {
+    public Long getId() {
+        return id;
     }
 
-    public long getId() {
-        return Id;
-    }
-
-    public void setId(long Id) {
-        this.Id = Id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -39,6 +38,40 @@ public class Test implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        hash = 41 * hash + Objects.hashCode(this.name);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Test other = (Test) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Test{" + "id=" + id + ", name=" + name + '}';
     }
 
 }
