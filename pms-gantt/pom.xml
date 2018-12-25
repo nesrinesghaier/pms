@@ -15,5 +15,6 @@
     <module>pms-gantt-ear</module>
     <module>pms-gantt-web</module>
     <module>pms-gantt-ejb</module>
+    <module>pms-gantt-web-jar</module>
   </modules>
 </project>
