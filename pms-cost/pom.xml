@@ -15,5 +15,6 @@
     <module>pms-cost-ear</module>
     <module>pms-cost-web</module>
     <module>pms-cost-ejb</module>
+    <module>pms-cost-web-jar</module>
   </modules>
 </project>
