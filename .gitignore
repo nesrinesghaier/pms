@@ -1,0 +1,12 @@
+/pms-scrum/pms-scrum-ejb/target/
+/pms-scrum/pms-scrum-web/target/
+/pms-scrum/pms-scrum-ear/target/
+/pms-global/pms-global-web/target/
+/pms-global/pms-global-ear/target/
+/pms-core/pms-core-ejb/target/
+/pms-core/pms-core-web/target/
+/pms-gantt/pms-gantt-ear/target/
+/pms-gantt/pms-gantt-web/target/
+/pms-core/pms-core-ear/target/
+/pms-gantt/pms-gantt-ejb/target/
+/pms-cost/pms-cost-ejb/target/
