@@ -11,4 +11,6 @@
 /pms-gantt/pms-gantt-ejb/target/
 /pms-cost/pms-cost-ejb/target/
 /pms-scrum/pms-scrum-web-jar/target/
+/pms-cost/pms-cost-web-jar/target/
+/pms-core/pms-core-web-jar/target/
 /pms-gantt/pms-gantt-web-jar/target/
