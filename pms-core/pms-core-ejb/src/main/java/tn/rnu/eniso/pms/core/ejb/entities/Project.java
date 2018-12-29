@@ -6,10 +6,14 @@
 package tn.rnu.eniso.pms.core.ejb.entities;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,31 +27,93 @@ public class Project implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long project_id;
+    private String name;
+    private String logicName;
+    private Date creationDate;
+    private String description;
+
+    @OneToMany(mappedBy = "TBL_PROJECT",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<ProductBacklogItem> productBacklogItems;
+
+    @OneToMany(mappedBy = "TBL_PROJECT",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<Resource> resources;
 
     public Long getId() {
-        return id;
+        return project_id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.project_id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLogicName() {
+        return logicName;
+    }
+
+    public void setLogicName(String logicName) {
+        this.logicName = logicName;
+    }
+
+    public Date getDate() {
+        return creationDate;
+    }
+
+    public void setDate(Date date) {
+        this.creationDate = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<ProductBacklogItem> getProductBacklogItems() {
+        return productBacklogItems;
+    }
+
+    public void setProductBacklogItems(List<ProductBacklogItem> productBacklogItems) {
+        this.productBacklogItems = productBacklogItems;
+    }
+
+    public List<Resource> getResources() {
+        return resources;
+    }
+
+    public void setResources(List<Resource> resources) {
+        this.resources = resources;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (project_id != null ? project_id.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
+        // TODO: Warning - this method won't work in the case the project_id fields are not set
         if (!(object instanceof Project)) {
             return false;
         }
         Project other = (Project) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.project_id == null && other.project_id != null) || (this.project_id != null && !this.project_id.equals(other.project_id))) {
             return false;
         }
         return true;
@@ -55,7 +121,7 @@ public class Project implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.Project[ id=" + id + " ]";
+        return "tn.rnu.eniso.pms.core.ejb.entities.Project[ id=" + project_id + " ]";
     }
-    
+
 }

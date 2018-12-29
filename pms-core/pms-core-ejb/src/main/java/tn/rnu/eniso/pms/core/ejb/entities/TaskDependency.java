@@ -7,9 +7,12 @@ package tn.rnu.eniso.pms.core.ejb.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -24,13 +27,48 @@ public class TaskDependency implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "task_id")
+    private Task sourceTask;
+    private Task destinationTask;
+    private DependencyType type;
+    
+    public TaskDependency() {
+    }
 
+   
+    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Task getSourceTask() {
+        return sourceTask;
+    }
+
+    public void setSourceTask(Task sourceTask) {
+        this.sourceTask = sourceTask;
+    }
+
+    public Task getDestinationTask() {
+        return destinationTask;
+    }
+
+    public void setDestinationTask(Task destinationTask) {
+        this.destinationTask = destinationTask;
+    }
+
+    public DependencyType getType() {
+        return type;
+    }
+
+    public void setType(DependencyType type) {
+        this.type = type;
     }
 
     @Override
