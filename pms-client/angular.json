@@ -102,34 +102,6 @@
         }
       }
     },
-    "pms-client-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "pms-client:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "pms-client:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
     "pms-gantt": {
       "root": "projects/pms-gantt/",
       "sourceRoot": "projects/pms-gantt/src",
@@ -222,34 +194,6 @@
               "projects/pms-gantt/tsconfig.app.json",
               "projects/pms-gantt/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "pms-gantt-e2e": {
-      "root": "projects/pms-gantt-e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/pms-gantt-e2e/protractor.conf.js",
-            "devServerTarget": "pms-gantt:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "pms-gantt:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "projects/pms-gantt-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
@@ -356,34 +300,6 @@
         }
       }
     },
-    "pms-cost-e2e": {
-      "root": "projects/pms-cost-e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/pms-cost-e2e/protractor.conf.js",
-            "devServerTarget": "pms-cost:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "pms-cost:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "projects/pms-cost-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
     "pms-scrum": {
       "root": "projects/pms-scrum/",
       "sourceRoot": "projects/pms-scrum/src",
@@ -483,34 +399,6 @@
         }
       }
     },
-    "pms-scrum-e2e": {
-      "root": "projects/pms-scrum-e2e/",
-      "projectType": "application",
-      "prefix": "",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/pms-scrum-e2e/protractor.conf.js",
-            "devServerTarget": "pms-scrum:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "pms-scrum:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "projects/pms-scrum-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    }
   },
   "defaultProject": "pms-client"
 }
