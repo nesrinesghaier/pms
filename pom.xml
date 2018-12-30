@@ -13,6 +13,7 @@
     <module>pms-gantt</module>
     <module>pms-scrum</module>
     <module>pms-cost</module>
+    <!--<module>pms-client</module>-->
     <module>pms-global</module>
   </modules>
 </project>

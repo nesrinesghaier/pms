@@ -22,3 +22,5 @@
 /pms-global/pms-global-web/target/
 /pms-global/pms-global-ear/target/
 
+/pms-core/pms-core-web-jar/src/main/resources/META-INF/resources/public/
+/pms-client/src/main/node
