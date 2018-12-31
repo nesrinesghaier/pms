@@ -33,18 +33,17 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>${project.groupId}</groupId>
-            <artifactId>pms-core-ejb</artifactId>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-        
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>pms-core-ejb</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
