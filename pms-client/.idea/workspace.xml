@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b338660e-bb36-44ed-9972-f9df89a5a8d4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/src/app/app.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/src/app/app.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/src/app/app.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/src/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/src/app/public/public.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/src/app/public/public.component.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/src/main/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -26,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/src/app/public/public.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="139" column="37" selection-start-line="139" selection-start-column="37" selection-end-line="139" selection-end-column="37" />
+            <state relative-caret-position="120">
+              <caret line="137" column="57" selection-start-line="137" selection-start-column="57" selection-end-line="137" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -35,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+            <state relative-caret-position="180">
+              <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -187,25 +180,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="pms-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pms-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pms-client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pms-client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -279,12 +253,12 @@
       <option name="presentableId" value="Default" />
       <updated>1546287316229</updated>
       <workItem from="1546287321089" duration="11983000" />
-      <workItem from="1546346766117" duration="15830000" />
+      <workItem from="1546346766117" duration="17498000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27813000" />
+    <option name="totallyTimeSpent" value="29481000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="312" width="1366" height="738" extended-state="6" />
@@ -295,7 +269,7 @@
       <window_info id="Structure" order="2" sideWeight="0.50344825" weight="0.24944155" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36885247" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36885247" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -303,7 +277,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4996277" weight="0.42786884" />
+      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4996277" visible="true" weight="0.42786884" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5003723" side_tool="true" weight="0.5229508" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -529,15 +503,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        <state relative-caret-position="180">
+          <caret line="18" column="47" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/src/app/public/public.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="139" column="37" selection-start-line="139" selection-start-column="37" selection-end-line="139" selection-end-column="37" />
+        <state relative-caret-position="120">
+          <caret line="137" column="57" selection-start-line="137" selection-start-column="57" selection-end-line="137" selection-end-column="57" />
         </state>
       </provider>
     </entry>
