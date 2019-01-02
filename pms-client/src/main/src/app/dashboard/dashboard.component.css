@@ -1,0 +1,10 @@
+
+#logo a {
+  color: #0c2e8a;
+  line-height: 1;
+  display: inline-block;
+}
+
+#logo a span {
+  color: #50d8af;
+}
