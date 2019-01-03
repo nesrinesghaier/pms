@@ -6,16 +6,14 @@
 package tn.rnu.eniso.pms.core.ejb.utils;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import java.io.StringReader;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import javax.json.Json;
 import javax.json.JsonObject;
-import javax.json.JsonObjectBuilder;
 import javax.json.JsonReader;
+import javax.json.JsonStructure;
 
 /**
  *
@@ -23,26 +21,24 @@ import javax.json.JsonReader;
  */
 public class JSONUtils {
 
+    static Map<String, String> msg_404 = Collections.singletonMap("message", "404NOTFOUND");
+
     public static JsonObject jsonify(Object o) {
         Gson gson = new Gson();
         String s = gson.toJson(o);
         JsonReader jr = Json.createReader(new StringReader(s));
         return jr.readObject();
-//        Class c = o.getClass();
-//        Field[] fields = c.getDeclaredFields();
-//        JsonObjectBuilder res = Json.createObjectBuilder();
-//        try {
-//            for (Field f : fields) {
-//                if (Modifier.isStatic(f.getModifiers()) || f.getName().startsWith("_")) {
-//                    continue;
-//                }
-//                f.setAccessible(true);
-//                res.add(f.getName(), f.get(o).toString());
-//                f.setAccessible(false);
-//            }
-//        } catch (IllegalAccessException ex) {
-//            Logger.getLogger(JSONUtils.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        return res.build();
     }
+
+    public static <T> JsonStructure jsonifyList(List<T> list) {
+        Gson gson = new Gson();
+        String s = gson.toJson(list);
+        JsonReader jr = Json.createReader(new StringReader(s));
+        return jr.readArray();
+    }
+
+    public static JsonObject sendResourceNotFoundError() {
+        return jsonify(msg_404);
+    }
+
 }

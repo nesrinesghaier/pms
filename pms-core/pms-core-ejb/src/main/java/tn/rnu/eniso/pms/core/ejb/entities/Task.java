@@ -35,14 +35,12 @@ public class Task implements Serializable {
     private Date startDate;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date endDate;
-    @Temporal(javax.persistence.TemporalType.DATE)
+    private int complexity ;// une tache elementaire prend une complexity =1 
     
-    private int Complexity ;// une tache elementaire prend une complexity =1 
-    
-    @OneToMany(mappedBy = "TBL_TASK",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "task",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<TaskConsumption> taskConsumptions;
     
-    @OneToMany(mappedBy = "TBL_TASK",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "sourceTask",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<TaskDependency> taskDependencies;
 
     public List<TaskDependency> getTaskDependencies() {
@@ -98,11 +96,11 @@ public class Task implements Serializable {
 
    
     public int getComplexity() {
-        return Complexity;
+        return complexity;
     }
 
     public void setComplexity(int Complexity) {
-        this.Complexity = Complexity;
+        this.complexity = Complexity;
     }
 
     public List<TaskConsumption> getTaskConsumptions() {

@@ -32,6 +32,7 @@
             <version>2.5.2</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>pms-core-ejb</artifactId>

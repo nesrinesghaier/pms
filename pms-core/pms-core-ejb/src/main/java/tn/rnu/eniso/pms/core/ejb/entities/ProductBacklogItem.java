@@ -37,12 +37,12 @@ public class ProductBacklogItem implements Serializable {
     private int priority;
     private String description;
    
-    @OneToMany(mappedBy = "TBL_PRODUCT_BACKLOG_ITEM",
+    @OneToMany(mappedBy = "sourceBacklogItem",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<ProductBacklogItemDependency>backlogItemDependencys;
     
-    @OneToMany(mappedBy = "TBL_PRODUCT_BACKLOG_ITEM",
+    @OneToMany(mappedBy = "productBacklogItem",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<Story>stories;
