@@ -17,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+            <state relative-caret-position="90">
+              <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -39,45 +39,38 @@
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="TypeScript File" />
-      </list>
-    </option>
-  </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>scroll</find>
-      <find>img</find>
-      <find>#body</find>
-      <find>body</find>
-      <find>1.j</find>
-      <find>&quot;&gt;&lt;/script&gt;</find>
-      <find>.js</find>
-      <find>Lorem</find>
-      <find>mobile-nav</find>
-      <find>../../</find>
-      <find>nav-menu-container</find>
-      <find>&quot; rel=&quot;stylesheet&quot;&gt;</find>
       <find>&lt;link href=&quot;</find>
       <find>&gt;&lt;/script&gt;</find>
       <find>'body'</find>
       <find>sticky</find>
       <find>&lt;script src=&quot;</find>
       <find>.js&quot;&gt;&lt;/script&gt;</find>
-      <find>assets</find>
       <find>asstes</find>
       <find>1.jpg</find>
-      <find>private</find>
-      <find>_</find>
-      <find>_(p|s)</find>
-      <find>_p</find>
-      <find>_s</find>
-      <find>_t</find>
-      <find>_b</find>
-      <find>_d</find>
-      <find>_r</find>
+      <find>das</find>
+      <find>dashboard</find>
+      <find>bo</find>
+      <find>pms</find>
+      <find>scro</find>
+      <find>fortawesome</find>
+      <find>assets/css/argon.css</find>
+      <find>header</find>
+      <find>cha</find>
+      <find>calend</find>
+      <find>check</find>
+      <find>scrum</find>
+      <find>a</find>
+      <find>img</find>
+      <find>base</find>
+      <find>dashbo</find>
+      <find>../../</find>
+      <find>./examples/profile.html</find>
+      <find>assets</find>
+      <find>asse</find>
+      <find>traff</find>
+      <find>/assets/img</find>
     </findStrings>
     <replaceStrings>
       <replace>../../assets/public/lib</replace>
@@ -100,13 +93,8 @@
       <replace>';</replace>
       <replace>../../asstes</replace>
       <replace>assets</replace>
-      <replace>(p|s|d|t)</replace>
-      <replace>p</replace>
-      <replace>s</replace>
-      <replace>t</replace>
-      <replace>b</replace>
-      <replace>d</replace>
-      <replace>r</replace>
+      <replace>#</replace>
+      <replace>/assets/dashboard/img</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src/main/src/assets/public</dir>
@@ -125,31 +113,21 @@
         <option value="$PROJECT_DIR$/src/main/src/app/navbar/navbar.component.html" />
         <option value="$PROJECT_DIR$/src/main/src/app/material/material/material.module.ts" />
         <option value="$PROJECT_DIR$/src/main/src/styles.css" />
-        <option value="$PROJECT_DIR$/src/main/src/app/app-routing.module.ts" />
         <option value="$PROJECT_DIR$/src/main/src/app/app.component.html" />
-        <option value="$PROJECT_DIR$/src/main/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/src/main/src/assets/public/lib/font-awesome/css/font-awesome.css" />
         <option value="$PROJECT_DIR$/src/main/src/assets/public/lib/font-awesome/css/font-awesome.min.css" />
         <option value="$PROJECT_DIR$/src/main/src/assets/public/lib/ionicons/css/ionicons.css" />
         <option value="$PROJECT_DIR$/src/main/src/assets/public/lib/ionicons/css/ionicons.min.css" />
-        <option value="$PROJECT_DIR$/src/main/package.json" />
         <option value="$PROJECT_DIR$/src/main/angular.json" />
         <option value="$PROJECT_DIR$/src/main/src/assets/public/js/main.js" />
         <option value="$PROJECT_DIR$/src/main/src/app/public/public.component.ts" />
         <option value="$PROJECT_DIR$/src/main/src/assets/public/css/style.css" />
-        <option value="$PROJECT_DIR$/src/main/src/app/public/public.component.html" />
-        <option value="$PROJECT_DIR$/src/main/models/dependency-type.enum.ts" />
-        <option value="$PROJECT_DIR$/src/main/src/app/app.component.ts" />
-        <option value="$PROJECT_DIR$/src/main/models/project.ts" />
-        <option value="$PROJECT_DIR$/src/main/models/product-backlog-item-dependency.ts" />
-        <option value="$PROJECT_DIR$/src/main/models/product-backlog-item.ts" />
-        <option value="$PROJECT_DIR$/src/main/models/resource-role.enum.ts" />
-        <option value="$PROJECT_DIR$/src/main/models/story.ts" />
-        <option value="$PROJECT_DIR$/src/main/models/resource.ts" />
-        <option value="$PROJECT_DIR$/src/main/models/task.ts" />
-        <option value="$PROJECT_DIR$/src/main/models/task-consumption.ts" />
-        <option value="$PROJECT_DIR$/src/main/models/task-dependency.ts" />
-        <option value="$PROJECT_DIR$/src/main/models/user.ts" />
+        <option value="$PROJECT_DIR$/src/main/projects/pms-cost/src/app/app.component.ts" />
+        <option value="$PROJECT_DIR$/src/main/projects/pms-cost/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/src/main/src/app/app.module.ts" />
+        <option value="$PROJECT_DIR$/src/main/package.json" />
+        <option value="$PROJECT_DIR$/src/main/projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.component.html" />
+        <option value="$PROJECT_DIR$/src/main/src/app/app-routing.module.ts" />
         <option value="$PROJECT_DIR$/src/main/src/index.html" />
         <option value="$PROJECT_DIR$/src/main/src/app/dashboard/dashboard.component.html" />
       </list>
@@ -159,10 +137,9 @@
     <dismissed value="$PROJECT_DIR$/src/main/package.json" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-4" />
-    <option name="y" value="92" />
-    <option name="width" value="1374" />
-    <option name="height" value="676" />
+    <option name="x" value="8" />
+    <option name="width" value="892" />
+    <option name="height" value="483" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -170,6 +147,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -216,26 +194,27 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/node/node_modules/npm" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Téléchargements/argon-dashboard-v1.0.0" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/src/main/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/src" />
+      <recent name="$PROJECT_DIR$/src/main/src/assets/dashboard" />
       <recent name="$PROJECT_DIR$/src/main/src/app" />
       <recent name="$PROJECT_DIR$/src/main/src/app/navbar" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/src/assets/dashboard/img/icons" />
+      <recent name="$PROJECT_DIR$/src/main/src/assets/dashboard/img/brand" />
       <recent name="$PROJECT_DIR$/src/main/src/app" />
       <recent name="$PROJECT_DIR$/src/main/src/assets" />
     </key>
@@ -273,8 +252,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.start" />
       <item itemvalue="npm.install" />
+      <item itemvalue="npm.start" />
     </list>
   </component>
   <component name="SvnConfiguration">
@@ -320,11 +299,11 @@
     <option name="totallyTimeSpent" value="38624000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="0" width="1374" height="742" extended-state="6" />
+    <frame x="0" y="0" width="1366" height="732" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49655172" visible="true" weight="0.25093076" />
+      <window_info content_ui="combo" id="Project" order="1" sideWeight="0.49655172" visible="true" weight="0.23306032" />
       <window_info id="Structure" order="2" sideWeight="0.50344825" weight="0.24944155" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
@@ -332,36 +311,16 @@
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3290441" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3294702" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3294702" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4996277" weight="0.32131147" />
+      <window_info anchor="bottom" id="TypeScript" order="9" weight="0.3294702" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.4996277" visible="true" weight="0.4437086" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5003723" side_tool="true" weight="0.5229508" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Favorites" order="0" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" sideWeight="0.49655172" visible="true" weight="0.24720775" />
-      <window_info id="Structure" order="2" sideWeight="0.50344825" weight="0.24944155" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3295082" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32786885" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.3290441" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="TypeScript" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.4996277" weight="0.3216912" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5003723" side_tool="true" weight="0.5229508" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -379,178 +338,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/assets/1.jpg" />
-    <entry file="file://$PROJECT_DIR$/src/main/src/assets/main.js" />
-    <entry file="file://$PROJECT_DIR$/src/main/src/assets/animate.min.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/src/assets/ionicons.min.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/src/app/app.component.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/app/navbar/navbar.component.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/node_modules/@angular/material/toolbar/typings/toolbar.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="87">
-          <caret line="16" column="21" selection-start-line="16" selection-start-column="21" selection-end-line="16" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/app/navbar/navbar.module.ts" />
-    <entry file="file://$PROJECT_DIR$/src/main/src/app/navbar/navbar.component.ts" />
-    <entry file="file://$PROJECT_DIR$/src/main/src/app/material/material.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="60" column="1" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="79" selection-start-column="79" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/app/app-routing.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="26" selection-start-line="24" selection-start-column="26" selection-end-line="24" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/assets/public/lib/bootstrap/js/bootstrap.bundle.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/assets/public/lib/jquery/jquery.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/assets/public/img/intro-carousel/1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/node_modules/@angular/router/src/directives/router_outlet.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5">
-          <caret line="34" column="21" selection-start-line="34" selection-start-column="21" selection-end-line="34" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/assets/public/lib/font-awesome/css/font-awesome.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/assets/public/lib/font-awesome/css/font-awesome.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="57" selection-start-line="3" selection-start-column="49" selection-end-line="3" selection-end-column="57" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/assets/public/lib/ionicons/css/ionicons.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="12" column="51" selection-start-line="12" selection-start-column="48" selection-end-line="12" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/assets/public/lib/ionicons/css/ionicons.min.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="53" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/node_modules/easing/browser-easing.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/node_modules/easing/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="216">
-            <caret line="143" lean-forward="true" selection-start-line="143" selection-end-line="143" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/app/dashboard/dashboard.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/node_modules/owlcarousel/README.md" />
-    <entry file="file://$PROJECT_DIR$/src/main/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="33" column="31" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/app/public/public.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/angular.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="74">
-          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/assets/public/img/about-img.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/src/assets/public/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-345">
@@ -565,119 +352,281 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/app/public/public.component.html">
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/material/material.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="151" column="15" selection-start-line="151" selection-start-column="15" selection-end-line="151" selection-end-column="15" />
+        <state relative-caret-position="346">
+          <caret line="60" column="1" selection-start-line="60" selection-start-column="1" selection-end-line="60" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/public/public.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-29">
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/dashboard/dashboard.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/projects/pms-cost/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="3" selection-start-line="12" selection-start-column="3" selection-end-line="12" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/projects/pms-cost/src/pms-cost/pms-cost.component.spec.ts" />
+    <entry file="file://$PROJECT_DIR$/src/main/projects/pms-cost/src/pms-cost/pms-cost.component.ts" />
+    <entry file="file://$PROJECT_DIR$/src/main/projects/pms-cost/src/pms-cost/pms-cost.module.ts" />
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/dashboard/dashboard.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="14" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.component.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="34" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/projects/pms-cost/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/public/public.component.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/public/public.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/app.component.spec.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/app.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="6" selection-start-column="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.component.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="44" column="34" lean-forward="true" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/src/app/app.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        <state relative-caret-position="60">
+          <caret line="4" column="32" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
           <folding>
-            <element signature="e#0#42#0" expanded="true" />
+            <element signature="e#0#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/models/dependency-type.enum.ts">
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/app-routing.module.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        <state relative-caret-position="45">
+          <caret line="7" column="52" selection-start-line="7" selection-start-column="52" selection-end-line="7" selection-end-column="52" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/models/task-dependency.ts">
+    <entry file="file://$PROJECT_DIR$/src/main/src/assets/dashboard/css/argon.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="36" column="31" selection-start-line="36" selection-start-column="31" selection-end-line="36" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="130">
+          <caret line="286" selection-start-line="286" selection-end-line="287" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/models/task-consumption.ts">
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/dashboard/dashboard.component.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="105">
+          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/models/task.ts">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/phrase.rnc">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="-630">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/models/story.ts">
+    <entry file="file://$PROJECT_DIR$/src/main/src/assets/dashboard/scss/bootstrap/_nav.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="58" column="1" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
+        <state relative-caret-position="186">
+          <caret line="98" column="3" selection-start-line="98" selection-start-column="3" selection-end-line="98" selection-end-column="3" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/models/product-backlog-item.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1020">
-          <caret line="70" selection-start-line="70" selection-end-line="70" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/models/product-backlog-item-dependency.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/models/project.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" column="9" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/models/resource.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="62" column="1" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/models/resource-role.enum.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="80" selection-start-line="1" selection-start-column="80" selection-end-line="1" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/models/user.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="41">
-          <caret line="49" column="21" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/src/favicon.ico">
+    <entry file="file://$PROJECT_DIR$/src/main/src/assets/dashboard/img/brand/analysis .png" />
+    <entry file="file://$PROJECT_DIR$/src/main/src/assets/dashboard/img/brand/analysis.png">
       <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/dist/assets/dashboard/scss/core/navbars/_navbar.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="780">
+          <caret line="52" column="31" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/dist/assets/public/lib/bootstrap/css/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60705">
+          <caret line="4047" column="7" selection-start-line="4047" selection-start-column="5" selection-end-line="4047" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/dist/assets/dashboard/vendor/nucleo/css/nucleo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4710">
+          <caret line="314" column="9" selection-start-line="314" selection-start-column="4" selection-end-line="314" selection-end-column="9" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="25" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        <state relative-caret-position="75">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/public/public.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="53" column="13" selection-start-line="53" selection-start-column="13" selection-end-line="53" selection-end-column="15" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#section#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#1;n#section#1;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/angular.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="15" selection-start-line="6" selection-start-column="15" selection-end-line="6" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/assets/dashboard/img/theme/team-4-800x800.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/assets/dashboard/img/theme/team-3-800x800.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/assets/dashboard/img/theme/sketch.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/assets/dashboard/img/theme/react.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/assets/dashboard/img/theme/profile-cover.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/assets/dashboard/img/theme/bootstrap.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/assets/dashboard/img/theme/angular.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/assets/dashboard/img/theme/vue.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/src/app/dashboard/dashboard.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="111" column="11" lean-forward="true" selection-start-line="111" selection-start-column="11" selection-end-line="111" selection-end-column="11" />
+          <folding>
+            <element signature="n#head#0;n#html#0;n#!!top" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#ul#0;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#td#3;n#tr#0;n#tbody#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#td#3;n#tr#1;n#tbody#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#td#4;n#tr#1;n#tbody#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#td#3;n#tr#2;n#tbody#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#td#3;n#tr#3;n#tbody#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#td#3;n#tr#4;n#tbody#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#22370#22376#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="5" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
         </state>
       </provider>
     </entry>
