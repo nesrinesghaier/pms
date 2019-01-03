@@ -33,12 +33,12 @@ public class Project implements Serializable {
     private Date creationDate;
     private String description;
 
-    @OneToMany(mappedBy = "TBL_PROJECT",
+    @OneToMany(mappedBy = "project",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<ProductBacklogItem> productBacklogItems;
 
-    @OneToMany(mappedBy = "TBL_PROJECT",
+    @OneToMany(mappedBy = "project",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<Resource> resources;

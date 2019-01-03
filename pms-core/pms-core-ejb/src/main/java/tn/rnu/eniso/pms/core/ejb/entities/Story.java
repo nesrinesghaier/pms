@@ -35,7 +35,7 @@ public class Story implements Serializable  {
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pbi_id")
-    private ProductBacklogItem backlogItem; 
+    private ProductBacklogItem productBacklogItem; 
     
     public Story() {
     }
@@ -80,12 +80,12 @@ public class Story implements Serializable  {
         this.complexity = complexity;
     }
 
-    public ProductBacklogItem getBacklogItem() {
-        return backlogItem;
+    public ProductBacklogItem getProductBacklogItem() {
+        return productBacklogItem;
     }
 
-    public void setBacklogItem(ProductBacklogItem backlogItem) {
-        this.backlogItem = backlogItem;
+    public void setProductBacklogItem(ProductBacklogItem backlogItem) {
+        this.productBacklogItem = backlogItem;
     }
 
     @Override

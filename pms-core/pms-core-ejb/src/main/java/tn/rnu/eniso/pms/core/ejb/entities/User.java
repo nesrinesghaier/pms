@@ -29,9 +29,10 @@ public class User implements Serializable {
     private Long user_id;
     private String firstName;
     private String lastName;
-    private String cin;
     private String adress;
-    @OneToMany( mappedBy = "TBL_USER",
+    private String email;
+    
+    @OneToMany( mappedBy = "user",
         cascade = CascadeType.ALL,
         orphanRemoval = true)
     private List<Resource> resources;
@@ -55,20 +56,12 @@ public class User implements Serializable {
         this.user_id = id;
     }
 
-    public String getName() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setName(String name) {
-        this.firstName = name;
-    }
-
-    public String getCin() {
-        return cin;
-    }
-
-    public void setCin(String cin) {
-        this.cin = cin;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getAdress() {
@@ -89,6 +82,14 @@ public class User implements Serializable {
     public void addResource(Resource resource) {
         resources.add(resource);
         resource.setUser(this);
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
  
     public void removeResource(Resource resource) {
