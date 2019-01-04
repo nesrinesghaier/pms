@@ -31,10 +31,8 @@ public class Task implements Serializable {
     private Long task_id;
     private String description;
     private Long  estimationDuration;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date startDate;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     private int complexity ;// une tache elementaire prend une complexity =1 
     
     @OneToMany(mappedBy = "task",cascade = CascadeType.ALL,orphanRemoval = true)
@@ -78,20 +76,20 @@ public class Task implements Serializable {
         this.estimationDuration = estimationDuration;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDade() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDade(Date endDade) {
-        this.endDate = endDade;
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
     }
 
    
