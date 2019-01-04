@@ -35,8 +35,7 @@ public class TaskConsumption implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long taskConsumption_id;
     private String amount;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date date;
+    private String taskDate;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "task_id")
@@ -72,12 +71,12 @@ public class TaskConsumption implements Serializable {
         this.amount = amount;
     }
 
-    public Date getDate() {
-        return date;
+    public String getTaskDate() {
+        return taskDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setTaskDate(String taskdate) {
+        this.taskDate = taskdate;
     }
 
     public Task getTask() {

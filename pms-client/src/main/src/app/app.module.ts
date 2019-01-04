@@ -7,6 +7,7 @@ import {MaterialModule} from './material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PublicComponent } from './public/public.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MainComponent } from './dashboard/main/main.component';
 import {PmsCostDashboardComponent} from "../../projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.component";
 
 @NgModule({
@@ -14,6 +15,7 @@ import {PmsCostDashboardComponent} from "../../projects/pms-cost/src/app/pms-cos
     AppComponent,
     PublicComponent,
     DashboardComponent,
+    MainComponent,
     PmsCostDashboardComponent
   ],
   imports: [

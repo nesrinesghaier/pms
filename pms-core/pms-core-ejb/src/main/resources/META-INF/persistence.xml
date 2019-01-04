@@ -4,7 +4,11 @@
     <jta-data-source>postgres/pms</jta-data-source>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
+<<<<<<< HEAD
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
+=======
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+>>>>>>> origin/master
     </properties>
   </persistence-unit>
 </persistence>

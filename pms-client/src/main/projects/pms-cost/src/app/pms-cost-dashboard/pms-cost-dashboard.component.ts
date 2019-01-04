@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'pms-cost-pms-cost-dashboard',
+  selector: 'pms-cost-dashboard',
   templateUrl: './pms-cost-dashboard.component.html',
   styleUrls: ['./pms-cost-dashboard.component.css']
 })
