@@ -29,10 +29,9 @@ public class ProductBacklogItem implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long pbi_id; // product backlog item id 
+    private Long id; // product backlog item id 
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
     private Project project;
     private int priority;
     private String description;
@@ -91,17 +90,17 @@ public class ProductBacklogItem implements Serializable {
     }
 
     public Long getId() {
-        return pbi_id;
+        return id;
     }
 
     public void setId(Long id) {
-        this.pbi_id = id;
+        this.id = id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pbi_id != null ? pbi_id.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -112,7 +111,7 @@ public class ProductBacklogItem implements Serializable {
             return false;
         }
         ProductBacklogItem other = (ProductBacklogItem) object;
-        if ((this.pbi_id == null && other.pbi_id != null) || (this.pbi_id != null && !this.pbi_id.equals(other.pbi_id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -120,7 +119,7 @@ public class ProductBacklogItem implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem[ id=" + pbi_id + " ]";
+        return "tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem[ id=" + id + " ]";
     }
     
 }

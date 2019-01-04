@@ -8,7 +8,6 @@ package tn.rnu.eniso.pms.core.ejb.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -29,7 +28,7 @@ public class Project implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long project_id;
+    private Long id;
     private String name;
     private String logicName;
     private String creationDate;
@@ -46,11 +45,11 @@ public class Project implements Serializable {
     private List<Resource> resources;
 
     public Long getId() {
-        return project_id;
+        return id;
     }
 
     public void setId(Long id) {
-        this.project_id = id;
+        this.id = id;
     }
 
     public String getName() {
@@ -112,7 +111,7 @@ public class Project implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (project_id != null ? project_id.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -123,7 +122,7 @@ public class Project implements Serializable {
             return false;
         }
         Project other = (Project) object;
-        if ((this.project_id == null && other.project_id != null) || (this.project_id != null && !this.project_id.equals(other.project_id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -131,7 +130,7 @@ public class Project implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.Project[ id=" + project_id + " ]";
+        return "tn.rnu.eniso.pms.core.ejb.entities.Project[ id=" + id + " ]";
     }
 
 }

@@ -19,6 +19,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import tn.rnu.eniso.pms.core.ejb.entities.Task;
+import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
 import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
 import tn.rnu.eniso.pms.core.ejb.utils.service.TaskService;
 
@@ -33,7 +34,7 @@ public class TaskWebService {
 
     @EJB(name = "taskService")
     private TaskService taskService;
-    
+
     @GET
     @Path("/{id}")
     public JsonObject getTaskById(@PathParam("id") Long id) {
@@ -45,9 +46,19 @@ public class TaskWebService {
     }
 
     @GET
-    public JsonStructure getAllTasks() {
+    @Path("/consumption/{id}")
+    public JsonStructure getTaskConsumptions(@PathParam("id") Long id) {
+        List<TaskConsumption> consumptions = taskService.getTaskConsumptions(id);
+        if (!consumptions.isEmpty()) {
+            return JSONUtils.jsonifyList(consumptions);
+        }
+        return JSONUtils.sendResourceNotFoundError();
+    }
+
+    @GET
+    public List<Task> getAllTasks() {
         List<Task> tasks = taskService.getAll();
-        return JSONUtils.jsonifyList(tasks);
+        return tasks;
     }
 
     @POST

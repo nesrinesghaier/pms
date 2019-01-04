@@ -26,7 +26,7 @@ import tn.rnu.eniso.pms.core.ejb.utils.service.TaskConsumptionService;
  * @author ameni
  */
 
-@Path("taskConsumption")
+@Path("taskconsumption")
 @Produces("application/json")
 @Consumes(MediaType.APPLICATION_JSON)
 public class TaskConsumptionWebService {
@@ -50,9 +50,10 @@ public class TaskConsumptionWebService {
     }
 
     @POST
-    public JsonObject addTaskConsumption(TaskConsumption taskConsumption) {
+    @Path("/{id}")
+    public JsonObject addTaskConsumption(@PathParam("id") Long taskId,TaskConsumption taskConsumption) {
         if (taskConsumption != null) {
-            TaskConsumption t = taskConsumptionService.add(taskConsumption);
+            TaskConsumption t = taskConsumptionService.add(taskConsumption,taskId);
             return JSONUtils.jsonify(t);
         }
         return JSONUtils.sendResourceNotFoundError();
@@ -73,6 +74,16 @@ public class TaskConsumptionWebService {
         taskConsumptionService.delete(id);
         List<TaskConsumption> taskConsumptions = taskConsumptionService.getAll();
         return JSONUtils.jsonifyList(taskConsumptions);
+    }
+    
+    @GET
+    @Path("/task/{id}")
+    public JsonStructure getConsumptions(@PathParam("id") Long id) {
+        List<TaskConsumption> list = taskConsumptionService.getConsumption(id);
+        if (!list.isEmpty()) {
+            return JSONUtils.jsonifyList(list);
+        }
+        return JSONUtils.sendResourceNotFoundError();
     }
 
 }

@@ -6,8 +6,6 @@
 package tn.rnu.eniso.pms.core.ejb.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -20,7 +18,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
+import org.eclipse.persistence.jpa.config.Cascade;
 
 /**
  *
@@ -33,21 +31,22 @@ public class TaskConsumption implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long taskConsumption_id;
+    private Long id;
     private String amount;
     private String taskDate;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "task_id")
     private Task task;
-    
+
     @ManyToMany(cascade = {
         CascadeType.PERSIST,
         CascadeType.MERGE
     })
+    
     @JoinTable(name = "resource_taskConsumption",
-        joinColumns = @JoinColumn(name = "taskConsumption_id"),
-        inverseJoinColumns = @JoinColumn(name = "resource_id"))
+            joinColumns = @JoinColumn(name = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id"))
     private List<Resource> resources;
 
     public List<Resource> getResources() {
@@ -58,8 +57,6 @@ public class TaskConsumption implements Serializable {
         this.resources = resources;
     }
 
-    
-    
     public TaskConsumption() {
     }
 
@@ -86,19 +83,19 @@ public class TaskConsumption implements Serializable {
     public void setTask(Task task) {
         this.task = task;
     }
-    
+
     public Long getId() {
-        return taskConsumption_id;
+        return id;
     }
 
     public void setId(Long id) {
-        this.taskConsumption_id = id;
+        this.id = id;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (taskConsumption_id != null ? taskConsumption_id.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -109,7 +106,7 @@ public class TaskConsumption implements Serializable {
             return false;
         }
         TaskConsumption other = (TaskConsumption) object;
-        if ((this.taskConsumption_id == null && other.taskConsumption_id != null) || (this.taskConsumption_id != null && !this.taskConsumption_id.equals(other.taskConsumption_id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -117,7 +114,7 @@ public class TaskConsumption implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption[ id=" + taskConsumption_id + " ]";
+        return "tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption[ id=" + id + " ]";
     }
 
 }

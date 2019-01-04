@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -29,16 +30,14 @@ public class Resource implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long resource_id;
-    private ResourceRole role;
+    private Long id;
+    private ResourceRole resourceRole;
     private String description;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
     private User user;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
     private Project project;
     
     @ManyToMany(mappedBy = "resources")
@@ -65,19 +64,19 @@ public class Resource implements Serializable {
     
 
     public Long getId() {
-        return resource_id;
+        return id;
     }
 
     public void setId(Long id) {
-        this.resource_id = id;
+        this.id = id;
     }
 
-    public ResourceRole getRole() {
-        return role;
+    public ResourceRole getResourceRole() {
+        return resourceRole;
     }
 
-    public void setRole(ResourceRole role) {
-        this.role = role;
+    public void setResourceRole(ResourceRole role) {
+        this.resourceRole = role;
     }
 
     public String getDescription() {
@@ -99,7 +98,7 @@ public class Resource implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (resource_id != null ? resource_id.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -110,7 +109,7 @@ public class Resource implements Serializable {
             return false;
         }
         Resource other = (Resource) object;
-        if ((this.resource_id == null && other.resource_id != null) || (this.resource_id != null && !this.resource_id.equals(other.resource_id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -118,7 +117,7 @@ public class Resource implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.Resource[ id=" + resource_id + " ]";
+        return "tn.rnu.eniso.pms.core.ejb.entities.Resource[ id=" + id + " ]";
     }
     
 }

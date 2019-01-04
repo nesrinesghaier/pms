@@ -7,6 +7,8 @@ package tn.rnu.eniso.pms.core.ejb.utils.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,32 +27,44 @@ public class TaskService {
     @PersistenceContext(unitName = "pms-pu")
     private EntityManager em;
 
+    static final Logger logger = Logger.getGlobal();
+
     public Task add(Task task) {
         if (task != null) {
             Task addedTask = new Task();
+            addedTask.setTaskConsumptions(new ArrayList<TaskConsumption>());
             addedTask.setDescription(task.getDescription());
             addedTask.setEstimationDuration(task.getEstimationDuration());
             addedTask.setStartDate(task.getStartDate());
             addedTask.setEndDate(task.getEndDate());
             addedTask.setComplexity(task.getComplexity());
-            addedTask.setTaskConsumptions(new ArrayList<TaskConsumption>());
-            addedTask.setTaskDependencies(new ArrayList<TaskDependency>());
             em.persist(addedTask);
-            return task;
+            em.flush();
+            return addedTask;
         }
         return null;
     }
 
     public Task get(Long id) {
         Task task = em.find(Task.class, id);
+
         if (task != null) {
             return task;
         }
         return null;
     }
 
+    public List<TaskConsumption> getTaskConsumptions(Long taskId) {
+        Task t = (Task) em.createQuery("SELECT t FROM Task t where t.id = :id")
+                .setParameter("id", taskId).getResultList().get(0);
+        List<TaskConsumption> result = new ArrayList<>();
+        result.addAll(t.getTaskConsumptions());
+        return result;
+    }
+
     public List<Task> getAll() {
         return em.createQuery("SELECT t FROM Task t").getResultList();
+
     }
 
     public void delete(Long id) {

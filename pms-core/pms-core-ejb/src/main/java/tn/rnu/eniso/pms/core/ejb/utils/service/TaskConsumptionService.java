@@ -5,29 +5,35 @@
  */
 package tn.rnu.eniso.pms.core.ejb.utils.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import tn.rnu.eniso.pms.core.ejb.entities.Task;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
 
 /**
  *
  * @author ameni
  */
-
 @Stateless(name = "taskConsumptionService")
 public class TaskConsumptionService {
 
     @PersistenceContext(unitName = "pms-pu")
     private EntityManager em;
 
-    public TaskConsumption add(TaskConsumption taskConsumption) {
+    public TaskConsumption add(TaskConsumption taskConsumption, Long taskId) {
         if (taskConsumption != null) {
+            Task t = em.find(Task.class, taskId);
             TaskConsumption addedTaskConsumption = new TaskConsumption();
             addedTaskConsumption.setAmount(taskConsumption.getAmount());
             addedTaskConsumption.setTaskDate(taskConsumption.getTaskDate());
+            taskConsumption.setTask(t);
             em.persist(addedTaskConsumption);
+            em.flush();
+            Long test = addedTaskConsumption.getId();
+            System.out.println("persisted id equals " + test);
             return taskConsumption;
         }
         return null;
@@ -60,5 +66,13 @@ public class TaskConsumptionService {
         return null;
 
     }
-    
+
+    public List<TaskConsumption> getConsumption(Long taskId) {
+        Task t = (Task) em.createQuery("Select t FROM Task t WHERE t.id=:id")
+                .setParameter("id", taskId).getResultList().get(0);
+        List<TaskConsumption> result = new ArrayList<>();
+        result.addAll(t.getTaskConsumptions());
+        return result;
+    }
+
 }

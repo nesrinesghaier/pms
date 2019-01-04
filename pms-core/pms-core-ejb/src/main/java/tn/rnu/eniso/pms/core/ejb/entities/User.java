@@ -26,7 +26,7 @@ public class User implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long user_id;
+    private Long id;
     private String firstName;
     private String lastName;
     private String adress;
@@ -49,11 +49,11 @@ public class User implements Serializable {
     }
     
     public Long getId() {
-        return user_id;
+        return id;
     }
 
     public void setId(Long id) {
-        this.user_id = id;
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -101,7 +101,7 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (user_id != null ? user_id.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -112,7 +112,7 @@ public class User implements Serializable {
             return false;
         }
         User other = (User) object;
-        if ((this.user_id == null && other.user_id != null) || (this.user_id != null && !this.user_id.equals(other.user_id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -120,7 +120,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.User[ id=" + user_id + " ]";
+        return "tn.rnu.eniso.pms.core.ejb.entities.User[ id=" + id + " ]";
     }
     
 }

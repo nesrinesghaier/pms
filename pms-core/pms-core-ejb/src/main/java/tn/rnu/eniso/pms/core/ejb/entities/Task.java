@@ -6,16 +6,17 @@
 package tn.rnu.eniso.pms.core.ejb.entities;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
 
 /**
  *
@@ -28,17 +29,18 @@ public class Task implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long task_id;
+    private Long id;
     private String description;
-    private Long  estimationDuration;
+    private Long estimationDuration;
     private String startDate;
     private String endDate;
-    private int complexity ;// une tache elementaire prend une complexity =1 
+    private int complexity;// une tache elementaire prend une complexity =1 
     
-    @OneToMany(mappedBy = "task",cascade = CascadeType.ALL,orphanRemoval = true)
+    @OneToMany(mappedBy = "task", orphanRemoval = true,cascade =  CascadeType.ALL)
+    @JoinColumn(name = "task_id")
     private List<TaskConsumption> taskConsumptions;
-    
-    @OneToMany(mappedBy = "sourceTask",cascade = CascadeType.ALL,orphanRemoval = true)
+
+    @OneToMany(mappedBy = "sourceTask", orphanRemoval = true)
     private List<TaskDependency> taskDependencies;
 
     public List<TaskDependency> getTaskDependencies() {
@@ -48,16 +50,16 @@ public class Task implements Serializable {
     public void setTaskDependencies(List<TaskDependency> taskDependencies) {
         this.taskDependencies = taskDependencies;
     }
-    
+
     public Task() {
     }
-    
+
     public Long getId() {
-        return task_id;
+        return id;
     }
 
     public void setId(Long id) {
-        this.task_id = id;
+        this.id = id;
     }
 
     public String getDescription() {
@@ -92,7 +94,6 @@ public class Task implements Serializable {
         this.endDate = endDate;
     }
 
-   
     public int getComplexity() {
         return complexity;
     }
@@ -112,7 +113,7 @@ public class Task implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (task_id != null ? task_id.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -123,15 +124,12 @@ public class Task implements Serializable {
             return false;
         }
         Task other = (Task) object;
-        if ((this.task_id == null && other.task_id != null) || (this.task_id != null && !this.task_id.equals(other.task_id))) {
-            return false;
-        }
-        return true;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.Task[ id=" + task_id + " ]";
+        return "tn.rnu.eniso.pms.core.ejb.entities.Task[ id=" + id + " ]";
     }
 
 }

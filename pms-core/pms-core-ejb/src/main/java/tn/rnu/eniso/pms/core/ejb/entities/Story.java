@@ -6,7 +6,6 @@
 package tn.rnu.eniso.pms.core.ejb.entities;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -22,30 +22,29 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TBL_STORY")
-public class Story implements Serializable  {
+public class Story implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long story_id;
+    private Long id;
     private String actorUser;
-    private String action;
+    private String storyAction;
     private String purpose;
     private int complexity;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pbi_id")
-    private ProductBacklogItem productBacklogItem; 
-    
+    private ProductBacklogItem productBacklogItem;
+
     public Story() {
     }
-    
+
     public Long getId() {
-        return story_id;
+        return id;
     }
 
     public void setId(Long id) {
-        this.story_id = id;
+        this.id = id;
     }
 
     public String getActorUser() {
@@ -56,12 +55,12 @@ public class Story implements Serializable  {
         this.actorUser = actorUser;
     }
 
-    public String getAction() {
-        return action;
+    public String getStoryAction() {
+        return storyAction;
     }
 
-    public void setAction(String action) {
-        this.action = action;
+    public void setStoryAction(String action) {
+        this.storyAction = action;
     }
 
     public String getPurpose() {
@@ -91,7 +90,7 @@ public class Story implements Serializable  {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (story_id != null ? story_id.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -102,7 +101,7 @@ public class Story implements Serializable  {
             return false;
         }
         Story other = (Story) object;
-        if ((this.story_id == null && other.story_id != null) || (this.story_id != null && !this.story_id.equals(other.story_id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -110,7 +109,7 @@ public class Story implements Serializable  {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.Story[ id=" + story_id + " ]";
+        return "tn.rnu.eniso.pms.core.ejb.entities.Story[ id=" + id + " ]";
     }
-    
+
 }

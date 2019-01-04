@@ -18,17 +18,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import tn.rnu.eniso.pms.core.ejb.entities.Task;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskDependency;
 import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
 import tn.rnu.eniso.pms.core.ejb.utils.service.TaskDependencyService;
-import tn.rnu.eniso.pms.core.ejb.utils.service.TaskService;
 
 /**
  *
  * @author ameni
  */
-@Path("taskDependency")
+@Path("taskdependency")
 @Produces("application/json")
 @Consumes(MediaType.APPLICATION_JSON)
 public class TaskDependencyWebService {
