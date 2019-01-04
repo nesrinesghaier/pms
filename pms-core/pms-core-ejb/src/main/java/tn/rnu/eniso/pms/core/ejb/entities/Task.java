@@ -36,8 +36,7 @@ public class Task implements Serializable {
     private String endDate;
     private int complexity;// une tache elementaire prend une complexity =1 
     
-    @OneToMany(mappedBy = "task", orphanRemoval = true,cascade =  CascadeType.ALL)
-    @JoinColumn(name = "task_id")
+    @OneToMany(mappedBy = "task",orphanRemoval = true,cascade =  CascadeType.ALL)
     private List<TaskConsumption> taskConsumptions;
 
     @OneToMany(mappedBy = "sourceTask", orphanRemoval = true)

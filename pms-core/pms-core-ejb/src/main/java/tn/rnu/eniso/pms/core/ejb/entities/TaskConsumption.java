@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,7 +17,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import org.eclipse.persistence.jpa.config.Cascade;
 
 /**
  *
@@ -34,16 +32,11 @@ public class TaskConsumption implements Serializable {
     private Long id;
     private String amount;
     private String taskDate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "task_id")
-    private Task task;
-
-    @ManyToMany(cascade = {
-        CascadeType.PERSIST,
-        CascadeType.MERGE
-    })
     
+    @ManyToOne
+    private Task task;
+    
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(name = "resource_taskConsumption",
             joinColumns = @JoinColumn(name = "id"),
             inverseJoinColumns = @JoinColumn(name = "id"))
@@ -53,6 +46,15 @@ public class TaskConsumption implements Serializable {
         return resources;
     }
 
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
+
+    
     public void setResources(List<Resource> resources) {
         this.resources = resources;
     }
@@ -74,14 +76,6 @@ public class TaskConsumption implements Serializable {
 
     public void setTaskDate(String taskdate) {
         this.taskDate = taskdate;
-    }
-
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
     }
 
     public Long getId() {
