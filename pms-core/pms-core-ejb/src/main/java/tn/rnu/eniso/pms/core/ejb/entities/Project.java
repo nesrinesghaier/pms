@@ -6,6 +6,8 @@
 package tn.rnu.eniso.pms.core.ejb.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -30,7 +32,7 @@ public class Project implements Serializable {
     private Long project_id;
     private String name;
     private String logicName;
-    private Date creationDate;
+    private String creationDate;
     private String description;
 
     @OneToMany(mappedBy = "project",
@@ -67,13 +69,14 @@ public class Project implements Serializable {
         this.logicName = logicName;
     }
 
-    public Date getDate() {
+    public String getCreationDate() {
         return creationDate;
     }
 
-    public void setDate(Date date) {
-        this.creationDate = date;
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
     }
+
 
     public String getDescription() {
         return description;
@@ -97,6 +100,13 @@ public class Project implements Serializable {
 
     public void setResources(List<Resource> resources) {
         this.resources = resources;
+    }
+
+    public String getStartDate(String startDate) {
+        DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        return LocalDate.parse(startDate, inputFormat).format(outputFormat);
     }
 
     @Override
