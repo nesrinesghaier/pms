@@ -51,6 +51,7 @@ public class TaskDependencyWebService {
     }
 
     @POST
+    @Path("/task/{taskId}")
     public JsonObject addTaskDependency(@PathParam("taskId") Long taskId,TaskDependency taskDependency) {
         if (taskDependency != null) {
             TaskDependency t = taskDependencyService.add(taskDependency,taskId);

@@ -18,6 +18,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import tn.rnu.eniso.pms.core.ejb.entities.DependencyType;
 import tn.rnu.eniso.pms.core.ejb.entities.Task;
 import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
 import tn.rnu.eniso.pms.core.ejb.services.TaskService;
@@ -58,7 +59,19 @@ public class TaskWebService {
         }
         return JSONUtils.sendResourceNotFoundError();
     }
-    
+
+    @POST
+    @Path("/{parentId}/{childId}")
+    public JsonObject addDependency(@PathParam("parentId") Long parentId,
+            @PathParam("childId") Long childId,
+            String dependencyType) {
+        DependencyType type = DependencyType.getEnum(dependencyType);
+        if (taskService.addDependency(parentId, childId, type)) {
+            return JSONUtils.sendMessage("Added");
+        }
+        return JSONUtils.sendMessage("Dependency cycle found!!");
+
+    }
 
     @PUT
     public JsonObject updateTask(Task task) {

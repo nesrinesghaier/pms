@@ -41,4 +41,9 @@ public class JSONUtils {
         return jsonify(msg_404);
     }
 
+    public static JsonObject sendMessage(String message) {
+        Map<String, String> jsonMessage = Collections.singletonMap("message", message);
+        return jsonify(jsonMessage);
+    }
+
 }

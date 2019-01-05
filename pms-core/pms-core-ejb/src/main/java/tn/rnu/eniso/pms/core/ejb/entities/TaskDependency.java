@@ -7,14 +7,10 @@ package tn.rnu.eniso.pms.core.ejb.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -30,9 +26,18 @@ public class TaskDependency implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //private Task sourceTask;
-    //private Task destinationTask;
+    @OneToOne
+    private Task destinationTask;
+
     private DependencyType type;
+
+    public Task getDestinationTask() {
+        return destinationTask;
+    }
+
+    public void setDestinationTask(Task destinationTask) {
+        this.destinationTask = destinationTask;
+    }
 
     public TaskDependency() {
     }

@@ -7,11 +7,13 @@ package tn.rnu.eniso.pms.core.ejb.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import tn.rnu.eniso.pms.core.ejb.entities.DependencyType;
 import tn.rnu.eniso.pms.core.ejb.entities.Task;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskDependency;
@@ -30,19 +32,10 @@ public class TaskService {
     static final Logger logger = Logger.getGlobal();
 
     public Task add(Task task) {
-        if (task != null) {
-            Task addedTask = new Task();
-            addedTask.setTaskConsumptions(new ArrayList<TaskConsumption>());
-            addedTask.setDescription(task.getDescription());
-            addedTask.setEstimationDuration(task.getEstimationDuration());
-            addedTask.setStartDate(task.getStartDate());
-            addedTask.setEndDate(task.getEndDate());
-            addedTask.setComplexity(task.getComplexity());
-            em.persist(addedTask);
-            em.flush();
-            return addedTask;
-        }
-        return null;
+
+        em.persist(task);
+        em.flush();
+        return task;
     }
 
     public Task get(Long id) {
@@ -84,5 +77,36 @@ public class TaskService {
             }//baddalt starr test
         }
         return null;
+    }
+
+    public boolean addDependency(Long parentId, Long childId, DependencyType type) {
+        Task parent = em.find(Task.class, parentId);
+        Task child = em.find(Task.class, childId);
+        System.out.println(parent);
+        System.out.println(child);
+        System.out.println(type);
+        if (parent != null && child != null && !checkCycleDependency(child, parent.getId())) {
+            TaskDependency dependency = new TaskDependency();
+            dependency.setType(type);
+            dependency.setDestinationTask(child);
+            em.persist(dependency);
+            em.flush();
+            parent.getTaskDependencies().add(dependency);
+            em.merge(parent);
+            return true;
+        }
+        return false;
+    }
+
+    private boolean checkCycleDependency(Task task, Long parentId) {
+        if (Objects.equals(parentId, task.getId())) {
+            return true;
+        }
+        for (TaskDependency dependency : task.getTaskDependencies()) {
+            if (checkCycleDependency(dependency.getDestinationTask(), parentId)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
