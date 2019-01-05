@@ -19,10 +19,10 @@ import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
  */
 @Stateless(name = "taskConsumptionService")
 public class TaskConsumptionService {
-    
+
     @PersistenceContext(unitName = "pms-pu")
     private EntityManager em;
-    
+
     public TaskConsumption add(TaskConsumption taskConsumption, Long taskId) {
         if (taskConsumption != null) {
             Task t = em.find(Task.class, taskId);
@@ -43,7 +43,7 @@ public class TaskConsumptionService {
         }
         return null;
     }
-    
+
     public TaskConsumption get(Long id) {
         TaskConsumption taskConsumption = em.find(TaskConsumption.class, id);
         if (taskConsumption != null) {
@@ -51,27 +51,39 @@ public class TaskConsumptionService {
         }
         return null;
     }
-    
+
     public List<TaskConsumption> getAll() {
         return em.createQuery("SELECT t FROM TaskConsumption t").getResultList();
     }
-    
-    public void delete(Long id) {
+
+    public void delete(Long taskId, Long id) {
         TaskConsumption taskConsumption = em.find(TaskConsumption.class, id);
+        Task task = em.find(Task.class, taskId);
         if (taskConsumption != null) {
-            em.remove(taskConsumption);
+            System.out.println(taskConsumption.toString());
+            System.out.println("sout bac ali" + task);
+            task.getTaskConsumptions().remove(taskConsumption);
+            em.merge(task);
+            em.flush();
         }
     }
-    
-    public TaskConsumption update(TaskConsumption taskConsumption) {
+
+    public TaskConsumption update(Long taskId, Long id, TaskConsumption taskConsumption) {
         if (taskConsumption != null) {
-            em.refresh(taskConsumption);
+            Task t = em.find(Task.class, taskId);
+            TaskConsumption consumptionToUpdate = em.find(TaskConsumption.class, id);
+            if (consumptionToUpdate != null) {
+                t.getTaskConsumptions().remove(consumptionToUpdate);
+                t.getTaskConsumptions().add(taskConsumption);
+                em.merge(t);
+                em.flush();
+            }
             return taskConsumption;
         }
         return null;
-        
+
     }
-    
+
     public List<TaskConsumption> getConsumption(Long taskId) {
         Task t = (Task) em.createQuery("Select t FROM Task t WHERE t.id=:id")
                 .setParameter("id", taskId).getResultList().get(0);
@@ -79,5 +91,5 @@ public class TaskConsumptionService {
         result.addAll(t.getTaskConsumptions());
         return result;
     }
-    
+
 }

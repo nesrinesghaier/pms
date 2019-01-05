@@ -21,18 +21,19 @@ import javax.ws.rs.core.MediaType;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
 import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
 import tn.rnu.eniso.pms.core.ejb.utils.service.TaskConsumptionService;
+
 /**
  *
  * @author ameni
  */
-
 @Path("taskconsumption")
 @Produces("application/json")
 @Consumes(MediaType.APPLICATION_JSON)
 public class TaskConsumptionWebService {
+
     @EJB(name = "taskConsumptionService")
     private TaskConsumptionService taskConsumptionService;
-    
+
     @GET
     @Path("/{id}")
     public JsonObject getTaskConsumptionById(@PathParam("id") Long id) {
@@ -51,31 +52,24 @@ public class TaskConsumptionWebService {
 
     @POST
     @Path("/{id}")
-    public JsonObject addTaskConsumption(@PathParam("id") Long taskId,TaskConsumption taskConsumption) {
+    public JsonObject addTaskConsumption(@PathParam("id") Long taskId, TaskConsumption taskConsumption) {
         if (taskConsumption != null) {
-            TaskConsumption t = taskConsumptionService.add(taskConsumption,taskId);
+            TaskConsumption t = taskConsumptionService.add(taskConsumption, taskId);
             return JSONUtils.jsonify(t);
         }
         return JSONUtils.sendResourceNotFoundError();
     }
 
     @PUT
-    public JsonObject updateTaskConsumption(TaskConsumption taskConsumption) {
+    @Path("/{taskId}/{id}")
+    public JsonObject updateTaskConsumption(@PathParam("taskId") Long taskId, @PathParam("id") Long id, TaskConsumption taskConsumption) {
         if (taskConsumption != null) {
-            TaskConsumption t = taskConsumptionService.update(taskConsumption);
+            TaskConsumption t = taskConsumptionService.update(taskId,id,taskConsumption);
             return JSONUtils.jsonify(t);
         }
         return JSONUtils.sendResourceNotFoundError();
     }
 
-    @DELETE
-    @Path("/{id}")
-    public JsonStructure deleteTaskConsumption(@PathParam("id") Long id) {
-        taskConsumptionService.delete(id);
-        List<TaskConsumption> taskConsumptions = taskConsumptionService.getAll();
-        return JSONUtils.jsonifyList(taskConsumptions);
-    }
-    
     @GET
     @Path("/task/{id}")
     public JsonStructure getConsumptions(@PathParam("id") Long id) {
@@ -84,6 +78,14 @@ public class TaskConsumptionWebService {
             return JSONUtils.jsonifyList(list);
         }
         return JSONUtils.sendResourceNotFoundError();
+    }
+
+    @DELETE
+    @Path("{taskId}/{id}")
+    public JsonStructure deleteTaskConsumptionById(@PathParam("taskId") Long taskId, @PathParam("id") Long id) {
+        System.out.println(taskId + " got " + id);
+        taskConsumptionService.delete(taskId, id);
+        return JSONUtils.jsonifyList(taskConsumptionService.getAll());
     }
 
 }

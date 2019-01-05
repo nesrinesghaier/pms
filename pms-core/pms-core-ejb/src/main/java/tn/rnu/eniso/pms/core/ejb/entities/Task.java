@@ -35,11 +35,12 @@ public class Task implements Serializable {
     private String startDate;
     private String endDate;
     private int complexity;// une tache elementaire prend une complexity =1 
-    
-    @OneToMany(mappedBy = "task",orphanRemoval = true,cascade =  CascadeType.ALL)
+
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     private List<TaskConsumption> taskConsumptions;
 
     @OneToMany(mappedBy = "sourceTask", orphanRemoval = true)
+    @JoinColumn(name = "task_id")
     private List<TaskDependency> taskDependencies;
 
     public List<TaskDependency> getTaskDependencies() {
@@ -128,7 +129,7 @@ public class Task implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.Task[ id=" + id + " ]";
+        return "Task{" + "id=" + id + ", description=" + description + ", estimationDuration=" + estimationDuration + ", startDate=" + startDate + ", endDate=" + endDate + ", complexity=" + complexity + ", taskConsumptions=" + taskConsumptions + ", taskDependencies=" + taskDependencies + '}';
     }
 
 }

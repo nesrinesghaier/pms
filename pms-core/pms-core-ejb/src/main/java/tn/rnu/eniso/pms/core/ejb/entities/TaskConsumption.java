@@ -33,8 +33,6 @@ public class TaskConsumption implements Serializable {
     private String amount;
     private String taskDate;
     
-    @ManyToOne
-    private Task task;
     
     @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(name = "resource_taskConsumption",
@@ -46,13 +44,7 @@ public class TaskConsumption implements Serializable {
         return resources;
     }
 
-    public Task getTask() {
-        return task;
-    }
-
-    public void setTask(Task task) {
-        this.task = task;
-    }
+    
 
     
     public void setResources(List<Resource> resources) {
@@ -108,7 +100,9 @@ public class TaskConsumption implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption[ id=" + id + " ]";
+        return "TaskConsumption{" + "id=" + id + ", amount=" + amount + ", taskDate=" + taskDate + ", resources=" + resources + '}';
     }
+
+   
 
 }
