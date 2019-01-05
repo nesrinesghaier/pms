@@ -29,40 +29,20 @@ public class TaskDependency implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Task sourceTask;
-    @OneToOne
-    private Task destinationTask;
+
+    //private Task sourceTask;
+    //private Task destinationTask;
     private DependencyType type;
-    
+
     public TaskDependency() {
     }
 
-   
-    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Task getSourceTask() {
-        return sourceTask;
-    }
-
-    public void setSourceTask(Task sourceTask) {
-        this.sourceTask = sourceTask;
-    }
-
-    public Task getDestinationTask() {
-        return destinationTask;
-    }
-
-    public void setDestinationTask(Task destinationTask) {
-        this.destinationTask = destinationTask;
     }
 
     public DependencyType getType() {
@@ -95,7 +75,9 @@ public class TaskDependency implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.TaskDependency[ id=" + id + " ]";
+        return "TaskDependency{" + "id=" + id + ", type=" + type + '}';
     }
-    
+
+   
+
 }

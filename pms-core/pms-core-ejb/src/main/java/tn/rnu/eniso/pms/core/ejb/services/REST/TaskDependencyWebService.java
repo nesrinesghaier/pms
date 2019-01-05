@@ -31,7 +31,7 @@ import tn.rnu.eniso.pms.core.ejb.services.TaskDependencyService;
 @Consumes(MediaType.APPLICATION_JSON)
 public class TaskDependencyWebService {
         
-    @EJB(name = "taskDependencyService")
+    @EJB(name = "taskdependencyService")
     private TaskDependencyService taskDependencyService;
     
     @GET
@@ -51,29 +51,39 @@ public class TaskDependencyWebService {
     }
 
     @POST
-    public JsonObject addTaskDependency(TaskDependency taskDependency) {
+    public JsonObject addTaskDependency(@PathParam("taskId") Long taskId,TaskDependency taskDependency) {
         if (taskDependency != null) {
-            TaskDependency t = taskDependencyService.add(taskDependency);
+            TaskDependency t = taskDependencyService.add(taskDependency,taskId);
             return JSONUtils.jsonify(t);
         }
         return JSONUtils.sendResourceNotFoundError();
     }
 
     @PUT
-    public JsonObject updateTaskDependency(TaskDependency taskDependency) {
+    @Path("/task/{id}")
+    public JsonObject updateTaskDependency(@PathParam("taskId") Long taskId,TaskDependency taskDependency) {
         if (taskDependency != null) {
-            TaskDependency t = taskDependencyService.update(taskDependency);
+            TaskDependency t = taskDependencyService.update(taskId,taskDependency);
             return JSONUtils.jsonify(t);
         }
         return JSONUtils.sendResourceNotFoundError();
     }
 
     @DELETE
-    @Path("/{id}")
-    public JsonStructure deleteTaskDependency(@PathParam("id") Long id) {
-        taskDependencyService.delete(id);
-        List<TaskDependency> taskDependencies = taskDependencyService.getAll();
-        return JSONUtils.jsonifyList(taskDependencies);
+    @Path("/task/{taskId}/{id}")
+    public JsonStructure deleteTaskDependencyById(@PathParam("taskId") Long taskId,@PathParam("id") Long id) {
+        taskDependencyService.delete(taskId,id);
+        return JSONUtils.jsonifyList(taskDependencyService.getAll());
+    }
+    
+    @GET
+    @Path("/task/{id}")
+    public JsonStructure getConsumptions(@PathParam("id") Long id) {
+        List<TaskDependency> listDependency = taskDependencyService.getTaskDependency(id);
+        if (!listDependency.isEmpty()) {
+            return JSONUtils.jsonifyList(listDependency);
+        }
+        return JSONUtils.sendResourceNotFoundError();
     }
 
 }

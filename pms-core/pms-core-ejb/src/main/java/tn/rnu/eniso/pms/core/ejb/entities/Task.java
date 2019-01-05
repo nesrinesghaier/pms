@@ -39,8 +39,7 @@ public class Task implements Serializable {
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     private List<TaskConsumption> taskConsumptions;
 
-    @OneToMany(mappedBy = "sourceTask", orphanRemoval = true)
-    @JoinColumn(name = "task_id")
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     private List<TaskDependency> taskDependencies;
 
     public List<TaskDependency> getTaskDependencies() {
