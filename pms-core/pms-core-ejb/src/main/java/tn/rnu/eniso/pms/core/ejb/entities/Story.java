@@ -109,7 +109,7 @@ public class Story implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.Story[ id=" + id + " ]";
+        return "Story{" + "id=" + id + ", actorUser=" + actorUser + ", storyAction=" + storyAction + ", purpose=" + purpose + ", complexity=" + complexity + ", productBacklogItem=" + productBacklogItem + '}';
     }
 
 }

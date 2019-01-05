@@ -24,16 +24,16 @@ import javax.persistence.Table;
 public class ProductBacklogItemDependency implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     private ProductBacklogItem sourceBacklogItem;
-    
+
     private ProductBacklogItem destinationBacklogItem;
-    
+
     private DependencyType type;
 
     public DependencyType getType() {
@@ -43,7 +43,7 @@ public class ProductBacklogItemDependency implements Serializable {
     public void setType(DependencyType type) {
         this.type = type;
     }
-    
+
     public ProductBacklogItem getsourceBacklogItem() {
         return sourceBacklogItem;
     }
@@ -59,10 +59,10 @@ public class ProductBacklogItemDependency implements Serializable {
     public void setDestinationBacklogItem(ProductBacklogItem destinationBacklogItem) {
         this.destinationBacklogItem = destinationBacklogItem;
     }
-    
+
     public ProductBacklogItemDependency() {
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -93,7 +93,7 @@ public class ProductBacklogItemDependency implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItemDependancy[ id=" + id + " ]";
+        return "ProductBacklogItemDependency{" + "id=" + id + ", sourceBacklogItem=" + sourceBacklogItem + ", destinationBacklogItem=" + destinationBacklogItem + ", type=" + type + '}';
     }
-    
+
 }

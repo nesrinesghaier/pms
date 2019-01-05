@@ -13,7 +13,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -29,21 +28,17 @@ public class ProductBacklogItem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; // product backlog item id 
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Project project;
+
     private int priority;
     private String description;
-   
-    @OneToMany(mappedBy = "sourceBacklogItem",
-            cascade = CascadeType.ALL,
+
+    @OneToMany(cascade = CascadeType.ALL,
             orphanRemoval = true)
-    private List<ProductBacklogItemDependency>backlogItemDependencys;
-    
-    @OneToMany(mappedBy = "productBacklogItem",
-            cascade = CascadeType.ALL,
+    private List<ProductBacklogItemDependency> backlogItemDependencys;
+
+    @OneToMany(cascade = CascadeType.ALL,
             orphanRemoval = true)
-    private List<Story>stories;
+    private List<Story> stories;
 
     public List<Story> getStories() {
         return stories;
@@ -52,21 +47,13 @@ public class ProductBacklogItem implements Serializable {
     public void setStories(List<Story> stories) {
         this.stories = stories;
     }
-    
+
     public List<ProductBacklogItemDependency> getBacklogItemDependencys() {
         return backlogItemDependencys;
     }
 
     public void setBacklogItemDependencys(List<ProductBacklogItemDependency> backlogItemDependencys) {
         this.backlogItemDependencys = backlogItemDependencys;
-    }
-    
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
     }
 
     public int getPriority() {
@@ -84,7 +71,7 @@ public class ProductBacklogItem implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
     public ProductBacklogItem() {
     }
 
@@ -118,7 +105,7 @@ public class ProductBacklogItem implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem[ id=" + id + " ]";
+        return "ProductBacklogItem{" + "id=" + id + ", priority=" + priority + ", description=" + description + ", backlogItemDependencys=" + backlogItemDependencys + ", stories=" + stories + '}';
     }
-    
+
 }

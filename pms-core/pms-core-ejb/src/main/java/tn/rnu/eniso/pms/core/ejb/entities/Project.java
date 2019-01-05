@@ -34,13 +34,11 @@ public class Project implements Serializable {
     private String creationDate;
     private String description;
 
-    @OneToMany(mappedBy = "project",
-            cascade = CascadeType.ALL,
+    @OneToMany(cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<ProductBacklogItem> productBacklogItems;
 
-    @OneToMany(mappedBy = "project",
-            cascade = CascadeType.ALL,
+    @OneToMany(cascade = CascadeType.ALL,
             orphanRemoval = true)
     private List<Resource> resources;
 
@@ -130,7 +128,9 @@ public class Project implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.Project[ id=" + id + " ]";
+        return "Project{" + "id=" + id + ", name=" + name + ", logicName=" + logicName + ", creationDate=" + creationDate + ", description=" + description + ", productBacklogItems=" + productBacklogItems + ", resources=" + resources + '}';
     }
+
+    
 
 }

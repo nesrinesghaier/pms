@@ -22,7 +22,6 @@ import javax.persistence.Table;
  *
  * @author bacali
  */
-
 @Entity
 @Table(name = "TBL_RESOURCE")
 public class Resource implements Serializable {
@@ -33,13 +32,10 @@ public class Resource implements Serializable {
     private Long id;
     private ResourceRole resourceRole;
     private String description;
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Project project;
-    
+
     @ManyToMany(mappedBy = "resources")
     private List<TaskConsumption> taskConsumptions;
 
@@ -50,7 +46,7 @@ public class Resource implements Serializable {
     public void setTaskConsumptions(List<TaskConsumption> taskConsumptions) {
         this.taskConsumptions = taskConsumptions;
     }
-    
+
     public Project getProject() {
         return project;
     }
@@ -61,7 +57,6 @@ public class Resource implements Serializable {
 
     public Resource() {
     }
-    
 
     public Long getId() {
         return id;
@@ -87,14 +82,6 @@ public class Resource implements Serializable {
         this.description = description;
     }
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -117,7 +104,7 @@ public class Resource implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.Resource[ id=" + id + " ]";
+        return "Resource{" + "id=" + id + ", resourceRole=" + resourceRole + ", description=" + description + ", project=" + project + ", taskConsumptions=" + taskConsumptions + '}';
     }
-    
+
 }
