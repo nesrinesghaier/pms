@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.core.ejb.utils.service.RESTWebservice;
+package tn.rnu.eniso.pms.core.ejb.services.REST;
 
 import java.util.List;
 import javax.ejb.EJB;
@@ -20,7 +20,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
 import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
-import tn.rnu.eniso.pms.core.ejb.utils.service.TaskConsumptionService;
+import tn.rnu.eniso.pms.core.ejb.services.TaskConsumptionService;
 
 /**
  *
@@ -51,8 +51,8 @@ public class TaskConsumptionWebService {
     }
 
     @POST
-    @Path("/{id}")
-    public JsonObject addTaskConsumption(@PathParam("id") Long taskId, TaskConsumption taskConsumption) {
+    @Path("/task/{taskId}")
+    public JsonObject addTaskConsumption(@PathParam("taskId") Long taskId, TaskConsumption taskConsumption) {
         if (taskConsumption != null) {
             TaskConsumption t = taskConsumptionService.add(taskConsumption, taskId);
             return JSONUtils.jsonify(t);
@@ -61,10 +61,10 @@ public class TaskConsumptionWebService {
     }
 
     @PUT
-    @Path("/{taskId}/{id}")
-    public JsonObject updateTaskConsumption(@PathParam("taskId") Long taskId, @PathParam("id") Long id, TaskConsumption taskConsumption) {
+    @Path("/task/{id}")
+    public JsonObject updateTaskConsumption(@PathParam("taskId") Long taskId,TaskConsumption taskConsumption) {
         if (taskConsumption != null) {
-            TaskConsumption t = taskConsumptionService.update(taskId,id,taskConsumption);
+            TaskConsumption t = taskConsumptionService.update(taskId,taskConsumption);
             return JSONUtils.jsonify(t);
         }
         return JSONUtils.sendResourceNotFoundError();

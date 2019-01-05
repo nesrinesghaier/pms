@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.core.ejb.utils.service.RESTWebservice;
+package tn.rnu.eniso.pms.core.ejb.services.REST;
 
 import java.util.List;
 import javax.ejb.EJB;
@@ -21,7 +21,7 @@ import javax.ws.rs.core.MediaType;
 import tn.rnu.eniso.pms.core.ejb.entities.Task;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
 import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
-import tn.rnu.eniso.pms.core.ejb.utils.service.TaskService;
+import tn.rnu.eniso.pms.core.ejb.services.TaskService;
 
 /**
  *
@@ -46,16 +46,6 @@ public class TaskWebService {
     }
 
     @GET
-    @Path("/consumption/{id}")
-    public JsonStructure getTaskConsumptions(@PathParam("id") Long id) {
-        List<TaskConsumption> consumptions = taskService.getTaskConsumptions(id);
-        if (!consumptions.isEmpty()) {
-            return JSONUtils.jsonifyList(consumptions);
-        }
-        return JSONUtils.sendResourceNotFoundError();
-    }
-
-    @GET
     public List<Task> getAllTasks() {
         List<Task> tasks = taskService.getAll();
         return tasks;
@@ -69,6 +59,7 @@ public class TaskWebService {
         }
         return JSONUtils.sendResourceNotFoundError();
     }
+    
 
     @PUT
     public JsonObject updateTask(Task task) {

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.core.ejb.utils.service.RESTWebservice;
+package tn.rnu.eniso.pms.core.ejb.services.REST;
 
 import java.util.List;
 import javax.ejb.EJB;
@@ -20,7 +20,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskDependency;
 import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
-import tn.rnu.eniso.pms.core.ejb.utils.service.TaskDependencyService;
+import tn.rnu.eniso.pms.core.ejb.services.TaskDependencyService;
 
 /**
  *

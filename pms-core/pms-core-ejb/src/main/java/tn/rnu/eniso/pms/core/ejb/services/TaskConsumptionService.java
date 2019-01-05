@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.core.ejb.utils.service;
+package tn.rnu.eniso.pms.core.ejb.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,10 +68,10 @@ public class TaskConsumptionService {
         }
     }
 
-    public TaskConsumption update(Long taskId, Long id, TaskConsumption taskConsumption) {
+    public TaskConsumption update(Long taskId, TaskConsumption taskConsumption) {
         if (taskConsumption != null) {
             Task t = em.find(Task.class, taskId);
-            TaskConsumption consumptionToUpdate = em.find(TaskConsumption.class, id);
+            TaskConsumption consumptionToUpdate = em.find(TaskConsumption.class, taskConsumption.getId());
             if (consumptionToUpdate != null) {
                 t.getTaskConsumptions().remove(consumptionToUpdate);
                 t.getTaskConsumptions().add(taskConsumption);
