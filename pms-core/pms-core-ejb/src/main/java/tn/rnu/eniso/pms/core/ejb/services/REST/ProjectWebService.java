@@ -61,9 +61,9 @@ public class ProjectWebService {
 
     @PUT
     @Path("/{id}")
-    public JsonObject updateProject(@PathParam("id") Long id, Project project) {
+    public JsonObject updateProject(Project project) {
         if (project != null) {
-            Project p = projectService.update(id, project);
+            Project p = projectService.update(project);
             return JSONUtils.jsonify(p);
         }
         return JSONUtils.sendResourceNotFoundError();

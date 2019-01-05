@@ -72,10 +72,11 @@ public class ProjectService {
         }
     }
 
-    public Project update(Long id, Project project) {
-        Project projectFromDB = em.find(Project.class, id);
-        project.setId(projectFromDB.getId());
-        em.merge(project);
+    public Project update(Project project) {
+        Project projectFromDB = em.find(Project.class, project.getId());
+        if (projectFromDB != null) {
+            em.merge(project);
+        }
         return project;
     }
 }

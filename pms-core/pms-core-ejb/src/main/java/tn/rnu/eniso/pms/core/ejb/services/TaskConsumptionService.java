@@ -59,9 +59,7 @@ public class TaskConsumptionService {
     public void delete(Long taskId, Long id) {
         TaskConsumption taskConsumption = em.find(TaskConsumption.class, id);
         Task task = em.find(Task.class, taskId);
-        if (taskConsumption != null) {
-            System.out.println(taskConsumption.toString());
-            System.out.println("sout bac ali" + task);
+        if (taskConsumption != null && task != null) {
             task.getTaskConsumptions().remove(taskConsumption);
             em.merge(task);
             em.flush();
@@ -69,19 +67,15 @@ public class TaskConsumptionService {
     }
 
     public TaskConsumption update(Long taskId, TaskConsumption taskConsumption) {
-        if (taskConsumption != null) {
-            Task t = em.find(Task.class, taskId);
-            TaskConsumption consumptionToUpdate = em.find(TaskConsumption.class, taskConsumption.getId());
-            if (consumptionToUpdate != null) {
-                t.getTaskConsumptions().remove(consumptionToUpdate);
-                t.getTaskConsumptions().add(taskConsumption);
-                em.merge(t);
-                em.flush();
-            }
-            return taskConsumption;
+        Task t = em.find(Task.class, taskId);
+        TaskConsumption consumptionToUpdate = em.find(TaskConsumption.class, taskConsumption.getId());
+        if (consumptionToUpdate != null) {
+            t.getTaskConsumptions().remove(consumptionToUpdate);
+            t.getTaskConsumptions().add(taskConsumption);
+            em.merge(t);
+            em.flush();
         }
-        return null;
-
+        return taskConsumption;
     }
 
     public List<TaskConsumption> getConsumption(Long taskId) {

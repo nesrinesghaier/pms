@@ -81,9 +81,8 @@ public class TaskConsumptionWebService {
     }
 
     @DELETE
-    @Path("{taskId}/{id}")
+    @Path("/task/{taskId}/{id}")
     public JsonStructure deleteTaskConsumptionById(@PathParam("taskId") Long taskId, @PathParam("id") Long id) {
-        System.out.println(taskId + " got " + id);
         taskConsumptionService.delete(taskId, id);
         return JSONUtils.jsonifyList(taskConsumptionService.getAll());
     }

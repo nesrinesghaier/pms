@@ -62,10 +62,10 @@ public class UserService {
     }
 
     public User update(User user) {
-        Query query = em.createQuery("Select u FROM User u WHERE u.email = :email");
-        User userFromDB = (User) query.setParameter("email", user.getEmail()).getResultList().get(0);
-        user.setId(userFromDB.getId());
-        em.merge(user);
+        User userFromDb = em.find(User.class, user.getId());
+        if (userFromDb != null) {
+            em.merge(user);
+        }
         return user;
     }
 
