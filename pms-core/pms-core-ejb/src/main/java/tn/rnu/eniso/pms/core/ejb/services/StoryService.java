@@ -13,52 +13,53 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
-import tn.rnu.eniso.pms.core.ejb.entities.User;
+import tn.rnu.eniso.pms.core.ejb.entities.Story;
 
 /**
  *
  * @author nesrine
  */
-@Stateless(name = "userService")
-public class UserService {
+@Stateless(name = "storyService")
+public class StoryService {
 
     static Logger logger = Logger.getGlobal();
 
     @PersistenceContext(unitName = "pms-pu")
     private EntityManager em;
 
-    public User add(User user) {
-        if (user != null) {
-            em.persist(user);
-            return user;
+    public Story add(Story story) {
+        if (story != null) {
+            em.persist(story);
+            return story;
         }
         return null;
     }
 
-    public User get(Long id) {
-        User user = em.find(User.class, id);
-        if (user != null) {
-            return user;
+    public Story get(Long id) {
+        Story story = em.find(Story.class, id);
+        if (story != null) {
+            return story;
         }
         return null;
     }
 
-    public List<User> getAll() {
-        return em.createQuery("SELECT u FROM User u").getResultList();
+    public List<Story> getAll() {
+        return em.createQuery("SELECT s FROM Story s").getResultList();
     }
 
     public void delete(Long id) {
-        User user = em.find(User.class, id);
-        if (user != null) {
-            em.remove(user);
+        Story story = em.find(Story.class, id);
+        if (story != null) {
+            em.remove(story);
         }
     }
 
-    public User update(User user) {
-        User userFromDb = em.find(User.class, user.getId());
-        if (userFromDb != null) {
-            em.merge(user);
+    public Story update(Story story) {
+        Story storyFromDb = em.find(Story.class, story.getId());
+        if (storyFromDb != null) {
+            em.merge(story);
         }
-        return user;
+        return story;
     }
+
 }

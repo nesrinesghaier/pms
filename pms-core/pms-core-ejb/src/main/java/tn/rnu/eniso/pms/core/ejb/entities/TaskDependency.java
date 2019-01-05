@@ -80,9 +80,7 @@ public class TaskDependency implements Serializable {
 
     @Override
     public String toString() {
-        return "TaskDependency{" + "id=" + id + ", type=" + type + '}';
+        return "TaskDependency{" + "id=" + id + ", destinationTask=" + destinationTask + ", type=" + type + '}';
     }
-
-   
 
 }
