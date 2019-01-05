@@ -102,7 +102,4 @@ public class TaskConsumption implements Serializable {
     public String toString() {
         return "TaskConsumption{" + "id=" + id + ", amount=" + amount + ", taskDate=" + taskDate + ", resources=" + resources + '}';
     }
-
-   
-
 }

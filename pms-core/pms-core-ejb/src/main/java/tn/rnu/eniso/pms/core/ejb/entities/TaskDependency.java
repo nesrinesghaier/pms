@@ -11,10 +11,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -29,18 +27,16 @@ public class TaskDependency implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Task sourceTask;
     @OneToOne
     private Task destinationTask;
     private DependencyType type;
-    
+
     public TaskDependency() {
     }
 
-   
-    
     public Long getId() {
         return id;
     }
@@ -95,7 +91,6 @@ public class TaskDependency implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.TaskDependency[ id=" + id + " ]";
+        return "TaskDependency{" + "id=" + id + ", sourceTask=" + sourceTask + ", destinationTask=" + destinationTask + ", type=" + type + '}';
     }
-    
 }

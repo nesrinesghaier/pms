@@ -29,14 +29,7 @@ public class UserService {
 
     public User add(User user) {
         if (user != null) {
-            User addedUser = new User();
-            System.out.println(user);
-            addedUser.setFirstName(user.getFirstName());
-            addedUser.setLastName(user.getLastName());
-            addedUser.setEmail(user.getEmail());
-            addedUser.setAdress(user.getAdress());
-            addedUser.setResources(new ArrayList<Resource>());
-            em.persist(addedUser);
+            em.persist(user);
             return user;
         }
         return null;
@@ -68,5 +61,4 @@ public class UserService {
         }
         return user;
     }
-
 }

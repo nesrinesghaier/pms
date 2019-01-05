@@ -40,7 +40,6 @@ public class Task implements Serializable {
     private List<TaskConsumption> taskConsumptions;
 
     @OneToMany(mappedBy = "sourceTask", orphanRemoval = true)
-    @JoinColumn(name = "task_id")
     private List<TaskDependency> taskDependencies;
 
     public List<TaskDependency> getTaskDependencies() {

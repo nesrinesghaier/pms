@@ -14,13 +14,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  *
  * @author bacali
  */
 @Entity
-@Table(name = "TBL_USER")
+@Table(name = "TBL_USER",uniqueConstraints = @UniqueConstraint(columnNames = {"email"}))
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -31,10 +32,10 @@ public class User implements Serializable {
     private String lastName;
     private String adress;
     private String email;
-    
-    @OneToMany( mappedBy = "user",
-        cascade = CascadeType.ALL,
-        orphanRemoval = true)
+
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<Resource> resources;
 
     public User() {
@@ -47,7 +48,7 @@ public class User implements Serializable {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    
+
     public Long getId() {
         return id;
     }
@@ -79,10 +80,6 @@ public class User implements Serializable {
     public void setResources(List<Resource> resources) {
         this.resources = resources;
     }
-    public void addResource(Resource resource) {
-        resources.add(resource);
-        resource.setUser(this);
-    }
 
     public String getEmail() {
         return email;
@@ -91,12 +88,6 @@ public class User implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
- 
-    public void removeResource(Resource resource) {
-        resources.remove(resource);
-        resource.setUser(null);
-    }
-    
 
     @Override
     public int hashCode() {
@@ -120,7 +111,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "tn.rnu.eniso.pms.core.ejb.entities.User[ id=" + id + " ]";
+        return "User{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", adress=" + adress + ", email=" + email + ", resources=" + resources + '}';
     }
-    
+
 }
