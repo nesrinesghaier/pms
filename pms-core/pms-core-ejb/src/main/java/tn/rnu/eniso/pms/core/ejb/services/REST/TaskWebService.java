@@ -53,8 +53,6 @@ public class TaskWebService {
     @POST
     public JsonObject addTask(Task task) {
         
-        
-        
         if (task != null) {
             Task t = taskService.add(task);
             return JSONUtils.jsonify(t);
