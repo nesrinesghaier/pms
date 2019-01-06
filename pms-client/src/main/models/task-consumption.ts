@@ -1,27 +1,20 @@
-import {Task} from "./task";
-import {Resource} from "./resource";
-
 export class TaskConsumption {
-  private taskConsumption_id: number;
+  private id: number;
   private amount: string;
-  private date: Date;
-  private task: Task;
-  private resources: Array<Resource>;
+  private taskDate: Date;
 
-  constructor(taskConsumption_id: number, amount: string, date: Date, task: Task, resources: Array<Resource>) {
-    this.taskConsumption_id = taskConsumption_id;
+  constructor(id: number, amount: string, taskDate: Date) {
+    this.id = id;
     this.amount = amount;
-    this.date = date;
-    this.task = task;
-    this.resources = resources;
+    this.taskDate = taskDate;
   }
 
-  getTaskConsumption_id(): number {
-    return this.taskConsumption_id;
+  getId(): number {
+    return this.id;
   }
 
-  setTaskConsumption_id(value: number) {
-    this.taskConsumption_id = value;
+  setId(value: number) {
+    this.id = value;
   }
 
   getAmount(): string {
@@ -32,27 +25,12 @@ export class TaskConsumption {
     this.amount = value;
   }
 
-  getDate(): Date {
-    return this.date;
+  gettaskDate(): Date {
+    return this.taskDate;
   }
 
-  setDate(value: Date) {
-    this.date = value;
+  settaskDate(value: Date) {
+    this.taskDate = value;
   }
 
-  getTask(): Task {
-    return this.task;
-  }
-
-  setTask(value: Task) {
-    this.task = value;
-  }
-
-  getResources(): Array<Resource> {
-    return this.resources;
-  }
-
-  setResources(value: Array<Resource>) {
-    this.resources = value;
-  }
 }
