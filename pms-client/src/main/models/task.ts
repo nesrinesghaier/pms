@@ -1,22 +1,22 @@
-import {TaskConsumption} from "./task-consumption";
-import {TaskDependency} from "./task-dependency";
+import {TaskConsumption} from './task-consumption';
+import {TaskDependency} from './task-dependency';
 
 export class Task {
-  private task_id: number;
+  private id: number;
   private description: string;
   private estimationDuration: number;
-  private startDate: Date;
-  private endDate: Date;
+  private startDate: string;
+  private endDate: string;
   private complexity: number;
   private taskConsumptions: Array<TaskConsumption>;
   private taskDependencies: Array<TaskDependency>;
 
-  getTask_id(): number {
-    return this.task_id;
+  getId(): number {
+    return this.id;
   }
 
-  setTask_id(value: number) {
-    this.task_id = value;
+  setId(value: number) {
+    this.id = value;
   }
 
   getDescription(): string {
@@ -35,19 +35,19 @@ export class Task {
     this.estimationDuration = value;
   }
 
-  getStartDate(): Date {
+  getStartDate(): string {
     return this.startDate;
   }
 
-  setStartDate(value: Date) {
+  setStartDate(value: string) {
     this.startDate = value;
   }
 
-  getEndDate(): Date {
+  getEndDate(): string {
     return this.endDate;
   }
 
-  setEndDate(value: Date) {
+  setEndDate(value: string) {
     this.endDate = value;
   }
 
@@ -75,8 +75,8 @@ export class Task {
     this.taskDependencies = value;
   }
 
-  constructor(task_id: number, description: string, estimationDuration: number, startDate: Date, endDate: Date, complexity: number, taskConsumptions: Array<TaskConsumption>, taskDependencies: Array<TaskDependency>) {
-    this.task_id = task_id;
+  constructor(id: number, description: string, estimationDuration: number, startDate: string, endDate: string, complexity: number, taskConsumptions: Array<TaskConsumption>, taskDependencies: Array<TaskDependency>) {
+    this.id = id;
     this.description = description;
     this.estimationDuration = estimationDuration;
     this.startDate = startDate;

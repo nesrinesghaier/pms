@@ -1,19 +1,20 @@
-import {ProductBacklogItem} from "./product-backlog-item";
+import {ProductBacklogItem} from './product-backlog-item';
+import {Task} from './task';
 
 export class Story {
-  private story_id: number;
+  private id: number;
   private actorUser: string;
   private action: string;
   private purpose: string;
   private complexity: number;
-  private backlogItem: ProductBacklogItem;
+  private _taskDependencies: Array<Task>;
 
-  getStory_id(): number {
-    return this.story_id;
+  getId(): number {
+    return this.id;
   }
 
-  setStory_id(value: number) {
-    this.story_id = value;
+  setId(value: number) {
+    this.id = value;
   }
 
   getActorUser(): string {
@@ -48,20 +49,20 @@ export class Story {
     this.complexity = value;
   }
 
-  getBacklogItem(): ProductBacklogItem {
-    return this.backlogItem;
+  get taskDependencies(): Array<Task> {
+    return this._taskDependencies;
   }
 
-  setBacklogItem(value: ProductBacklogItem) {
-    this.backlogItem = value;
+  set taskDependencies(value: Array<Task>) {
+    this._taskDependencies = value;
   }
 
-  constructor(story_id: number, actorUser: string, action: string, purpose: string, complexity: number, backlogItem: ProductBacklogItem) {
-    this.story_id = story_id;
+  constructor(id: number, actorUser: string, action: string, purpose: string, complexity: number, taskDependencies: Array<Task>) {
+    this.id = id;
     this.actorUser = actorUser;
     this.action = action;
     this.purpose = purpose;
     this.complexity = complexity;
-    this.backlogItem = backlogItem;
+    this._taskDependencies = taskDependencies;
   }
 }

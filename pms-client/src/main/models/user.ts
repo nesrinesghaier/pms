@@ -1,29 +1,29 @@
-import {Resource} from "./resource";
+import {Resource} from './resource';
 
 export class User {
-  private user_id: number;
+  private id: number;
   private firstName: string;
   private lastName: string;
-  private cin: string;
+  private email: string;
   private adress: string;
   private resources: Array<Resource>;
 
 
-  constructor(user_id: number, firstName: string, lastName: string, cin: string, adress: string, resources: Array<Resource>) {
-    this.user_id = user_id;
+  constructor(id: number, firstName: string, lastName: string, email: string, adress: string, resources: Array<Resource>) {
+    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
-    this.cin = cin;
+    this.email = email;
     this.adress = adress;
     this.resources = resources;
   }
 
-  getUser_id(): number {
-    return this.user_id;
+  getId(): number {
+    return this.id;
   }
 
-  setUser_id(value: number) {
-    this.user_id = value;
+  setId(value: number) {
+    this.id = value;
   }
 
   getFirstName(): string {
@@ -42,12 +42,12 @@ export class User {
     this.lastName = value;
   }
 
-  getCin(): string {
-    return this.cin;
+  getEmail(): string {
+    return this.email;
   }
 
-  setCin(value: string) {
-    this.cin = value;
+  setEmail(value: string) {
+    this.email = value;
   }
 
   getAdress(): string {
