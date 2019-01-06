@@ -32,9 +32,8 @@ public class ProductBacklogItem implements Serializable {
     private int priority;
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
-    private List<ProductBacklogItemDependency> backlogItemDependencys;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    private List<ProductBacklogItemDependency> backlogItemDependencies;
 
     @OneToMany(cascade = CascadeType.ALL,
             orphanRemoval = true)
@@ -48,12 +47,12 @@ public class ProductBacklogItem implements Serializable {
         this.stories = stories;
     }
 
-    public List<ProductBacklogItemDependency> getBacklogItemDependencys() {
-        return backlogItemDependencys;
+    public List<ProductBacklogItemDependency> getBacklogItemDependencies() {
+        return backlogItemDependencies;
     }
 
-    public void setBacklogItemDependencys(List<ProductBacklogItemDependency> backlogItemDependencys) {
-        this.backlogItemDependencys = backlogItemDependencys;
+    public void setBacklogItemDependencies(List<ProductBacklogItemDependency> backlogItemDependencies) {
+        this.backlogItemDependencies = backlogItemDependencies;
     }
 
     public int getPriority() {
@@ -105,7 +104,7 @@ public class ProductBacklogItem implements Serializable {
 
     @Override
     public String toString() {
-        return "ProductBacklogItem{" + "id=" + id + ", priority=" + priority + ", description=" + description + ", backlogItemDependencys=" + backlogItemDependencys + ", stories=" + stories + '}';
+        return "ProductBacklogItem{" + "id=" + id + ", priority=" + priority + ", description=" + description + ", backlogItemDependencies=" + backlogItemDependencies + ", stories=" + stories + '}';
     }
 
 }

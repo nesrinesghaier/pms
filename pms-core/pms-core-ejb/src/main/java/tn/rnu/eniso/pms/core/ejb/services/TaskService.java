@@ -8,7 +8,6 @@ package tn.rnu.eniso.pms.core.ejb.services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -23,7 +22,6 @@ import tn.rnu.eniso.pms.core.ejb.entities.TaskDependency;
  * @author ameni
  */
 @Stateless(name = "taskService")
-
 public class TaskService {
 
     @PersistenceContext(unitName = "pms-pu")
@@ -32,7 +30,6 @@ public class TaskService {
     static final Logger logger = Logger.getGlobal();
 
     public Task add(Task task) {
-
         em.persist(task);
         em.flush();
         return task;
