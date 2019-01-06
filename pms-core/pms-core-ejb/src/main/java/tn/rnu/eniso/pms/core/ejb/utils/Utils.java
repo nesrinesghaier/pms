@@ -20,9 +20,7 @@ import javax.json.JsonStructure;
  *
  * @author bacali
  */
-public class JSONUtils {
-
-    static Map<String, String> msg_404 = Collections.singletonMap("message", "404NOTFOUND");
+public class Utils {
 
     public static JsonObject jsonify(Object o) {
         Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
@@ -38,13 +36,9 @@ public class JSONUtils {
         return jr.readArray();
     }
 
-    public static JsonObject sendResourceNotFoundError() {
-        return jsonify(msg_404);
-    }
-
-    public static JsonObject sendMessage(String message) {
+    public static Map<String, String> sendMessage(String message) {
         Map<String, String> jsonMessage = Collections.singletonMap("message", message);
-        return jsonify(jsonMessage);
+        return jsonMessage;
     }
 
 }

@@ -52,8 +52,11 @@ public class StoryService {
     }
 
     public List<Task> getAllTasks(Long id) {
-        Story s = em.find(Story.class, id);
-        return s.getTasks();
+        Story story = em.find(Story.class, id);
+        if (story != null) {
+            return story.getTasks();
+        }
+        return null;
     }
 
     public void delete(Long id) {
@@ -63,9 +66,9 @@ public class StoryService {
             for (Task task : tasks) {
                 taskService.delete(task.getId());
             }
-            ProductBacklogItem backlogItem = 
-                    (ProductBacklogItem) em.createQuery("SELECT p from ProductBacklogItem p WHERE :s MEMBER OF p.stories")
-                    .setParameter("s", story).getSingleResult();
+            ProductBacklogItem backlogItem
+                    = (ProductBacklogItem) em.createQuery("SELECT p from ProductBacklogItem p WHERE :s MEMBER OF p.stories")
+                            .setParameter("s", story).getSingleResult();
             if (backlogItem != null) {
                 backlogItem.getStories().remove(story);
                 em.merge(backlogItem);
@@ -78,8 +81,9 @@ public class StoryService {
         Story storyFromDb = em.find(Story.class, story.getId());
         if (storyFromDb != null) {
             em.merge(story);
+            return story;
         }
-        return story;
+        return null;
     }
 
 }

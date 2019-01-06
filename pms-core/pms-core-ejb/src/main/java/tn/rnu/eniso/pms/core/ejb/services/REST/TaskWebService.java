@@ -8,8 +8,6 @@ package tn.rnu.eniso.pms.core.ejb.services.REST;
 import java.util.List;
 import java.util.Map;
 import javax.ejb.EJB;
-import javax.json.JsonObject;
-import javax.json.JsonStructure;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,11 +17,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import tn.rnu.eniso.pms.core.ejb.entities.DependencyType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import tn.rnu.eniso.pms.core.ejb.entities.Task;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskDependency;
-import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
+import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 import tn.rnu.eniso.pms.core.ejb.services.TaskService;
 
 /**
@@ -40,78 +39,105 @@ public class TaskWebService {
 
     @GET
     @Path("/{id}")
-    public JsonObject getTaskById(@PathParam("id") Long id) {
+    public Response getTaskById(@PathParam("id") Long id) {
         Task task = taskService.get(id);
         if (task != null) {
-            return JSONUtils.jsonify(task);
+            return Response.ok(Utils.jsonify(task)).build();
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return Response.status(Status.NOT_FOUND)
+                .entity(Utils.sendMessage("Task not found!!"))
+                .build();
     }
 
     @GET
-    public JsonStructure getAllTasks() {
+    public Response getAllTasks() {
         List<Task> tasks = taskService.getAll();
-        return JSONUtils.jsonifyList(tasks);
+        return Response.ok(Utils.jsonifyList(tasks)).build();
     }
 
     @GET
     @Path("/{id}/consumptions")
-    public JsonStructure getAllConsumptions(@PathParam("id") Long id) {
+    public Response getAllConsumptions(@PathParam("id") Long id) {
         List<TaskConsumption> consumptions = taskService.getAllConsumptions(id);
-        return JSONUtils.jsonifyList(consumptions);
+        if (consumptions != null) {
+            return Response.ok(Utils.jsonifyList(consumptions)).build();
+        }
+        return Response.status(Status.NOT_FOUND)
+                .entity(Utils.sendMessage("Task not found!!"))
+                .build();
     }
 
     @GET
     @Path("/{id}/dependencies")
-    public JsonStructure getAllDependencies(@PathParam("id") Long id) {
+    public Response getAllDependencies(@PathParam("id") Long id) {
         List<TaskDependency> dependencies = taskService.getAllDependencies(id);
-        return JSONUtils.jsonifyList(dependencies);
+        if (dependencies != null) {
+            return Response.ok(Utils.jsonifyList(dependencies)).build();
+        }
+        return Response.status(Status.NOT_FOUND)
+                .entity(Utils.sendMessage("Task not found!!"))
+                .build();
     }
 
     @POST
     @Path("/{storyId}")
-    public JsonObject addTask(@PathParam("storyId") Long storyId, Task task) {
+    public Response addTask(@PathParam("storyId") Long storyId, Task task) {
         if (task != null) {
             task = taskService.add(storyId, task);
             if (task != null) {
-                return JSONUtils.jsonify(task);
+                return Response.ok(Utils.jsonify(task)).build();
             }
-            return JSONUtils.sendMessage("Story not found!!");
+            return Response.status(Status.NOT_FOUND)
+                    .entity(Utils.sendMessage("Story not found!!"))
+                    .build();
         }
-        return JSONUtils.sendMessage("Bad formed data!!");
+        return Response.status(Status.BAD_REQUEST)
+                .entity(Utils.sendMessage("Bad formed data!!"))
+                .build();
     }
 
     @POST
     @Path("/addDependency")
-    public JsonObject addDependency(Map<String, Object> data) {
+    public Response addDependency(Map<String, Object> data) {
         if (data.containsKey("parentId") && data.containsKey("childId") && data.containsKey("type")) {
             Long parentId = Long.parseLong(data.get("parentId").toString());
             Long childId = Long.parseLong(data.get("childId").toString());
-            String typeName = data.get("type").toString();
-            DependencyType type = DependencyType.valueOf(typeName);
-            if (type != null && taskService.addDependency(parentId, childId, type)) {
-                return JSONUtils.sendMessage("Added");
+            String type = data.get("type").toString();
+            TaskDependency dependency = taskService.addDependency(parentId, childId, type);
+            if (dependency != null) {
+                return Response.ok(Utils.jsonify(dependency)).build();
             }
-            return JSONUtils.sendMessage("Dependency cycle found!!");
+            return Response.status(Status.CONFLICT)
+                    .entity(Utils.sendMessage("Dependency cycle found or Not Same Project!!"))
+                    .build();
         }
-        return JSONUtils.sendMessage("Bad formed data!!");
+        return Response.status(Status.BAD_REQUEST)
+                .entity(Utils.sendMessage("Bad formed data!!"))
+                .build();
     }
 
     @PUT
-    public JsonObject updateTask(Task task) {
+    public Response updateTask(Task task) {
         if (task != null) {
-            Task t = taskService.update(task);
-            return JSONUtils.jsonify(t);
+            task = taskService.update(task);
+            if (task != null) {
+                return Response.ok(Utils.jsonify(task)).build();
+            }
+            return Response.status(Status.NOT_FOUND)
+                    .entity(Utils.sendMessage("Task not found!!"))
+                    .build();
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return Response.status(Status.BAD_REQUEST)
+                .entity(Utils.sendMessage("Bad formed data!!"))
+                .build();
     }
 
     @DELETE
     @Path("/{id}")
-    public JsonStructure deleteTask(@PathParam("id") Long id) {
+    public Response deleteTask(@PathParam("id") Long id) {
         taskService.delete(id);
         List<Task> tasks = taskService.getAll();
-        return JSONUtils.jsonifyList(tasks);
+        return Response.ok(Utils.jsonifyList(tasks)).build();
     }
 
 }

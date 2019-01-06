@@ -57,21 +57,28 @@ public class TaskService {
     }
 
     public List<TaskConsumption> getAllConsumptions(Long id) {
-        Task t = em.find(Task.class, id);
-        return t.getTaskConsumptions();
+        Task task = em.find(Task.class, id);
+        if (task != null) {
+            return task.getTaskConsumptions();
+        }
+        return null;
     }
 
     public List<TaskDependency> getAllDependencies(Long id) {
-        Task t = em.find(Task.class, id);
-        return t.getTaskDependencies();
+        Task task = em.find(Task.class, id);
+        if (task != null) {
+            return task.getTaskDependencies();
+        }
+        return null;
     }
 
     public Task update(Task task) {
         Task t = em.find(Task.class, task.getId());
         if (t != null) {
             em.merge(task);
+            return task;
         }
-        return task;
+        return null;
     }
 
     public void delete(Long id) {
@@ -91,23 +98,20 @@ public class TaskService {
         }
     }
 
-    public boolean addDependency(Long parentId, Long childId, DependencyType type) {
+    public TaskDependency addDependency(Long parentId, Long childId, String type) {
         Task parent = em.find(Task.class, parentId);
         Task child = em.find(Task.class, childId);
-        System.out.println(parent);
-        System.out.println(child);
-        System.out.println(type);
         if (parent != null && child != null && !checkCycleDependency(child, parent.getId())) {
             TaskDependency dependency = new TaskDependency();
-            dependency.setType(type);
+            dependency.setType(DependencyType.valueOf(type));
             dependency.setDestinationTask(child);
             em.persist(dependency);
             em.flush();
             parent.getTaskDependencies().add(dependency);
             em.merge(parent);
-            return true;
+            return dependency;
         }
-        return false;
+        return null;
     }
 
     private boolean checkCycleDependency(Task task, Long parentId) {

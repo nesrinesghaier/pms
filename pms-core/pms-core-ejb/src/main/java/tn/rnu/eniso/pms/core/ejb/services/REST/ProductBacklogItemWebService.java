@@ -8,8 +8,6 @@ package tn.rnu.eniso.pms.core.ejb.services.REST;
 import java.util.List;
 import java.util.Map;
 import javax.ejb.EJB;
-import javax.json.JsonObject;
-import javax.json.JsonStructure;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,19 +17,20 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import tn.rnu.eniso.pms.core.ejb.entities.DependencyType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItemDependency;
 import tn.rnu.eniso.pms.core.ejb.entities.Story;
 import tn.rnu.eniso.pms.core.ejb.services.ProductBacklogItemService;
-import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
+import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 
 /**
  *
  * @author nesrine
  */
 @Path("backlogitem")
-@Produces("application/json")
+@Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class ProductBacklogItemWebService {
 
@@ -40,78 +39,105 @@ public class ProductBacklogItemWebService {
 
     @GET
     @Path("/{id}")
-    public JsonObject getProductBacklogItemById(@PathParam("id") Long id) {
+    public Response getProductBacklogItemById(@PathParam("id") Long id) {
         ProductBacklogItem backlogItem = backlogItemService.get(id);
         if (backlogItem != null) {
-            return JSONUtils.jsonify(backlogItem);
+            return Response.ok(Utils.jsonify(backlogItem)).build();
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return Response.status(Status.NOT_FOUND)
+                .entity(Utils.sendMessage("Product Backlog Item not found!!"))
+                .build();
     }
 
     @GET
-    public JsonStructure getAllProductBacklogItems() {
+    public Response getAllProductBacklogItems() {
         List<ProductBacklogItem> backlogItems = backlogItemService.getAll();
-        return JSONUtils.jsonifyList(backlogItems);
+        return Response.ok(Utils.jsonifyList(backlogItems)).build();
     }
 
     @GET
     @Path("/{id}/stories")
-    public JsonStructure getAllStories(@PathParam("id") Long id) {
+    public Response getAllStories(@PathParam("id") Long id) {
         List<Story> stories = backlogItemService.getAllStories(id);
-        return JSONUtils.jsonifyList(stories);
+        if (stories != null) {
+            return Response.ok(Utils.jsonifyList(stories)).build();
+        }
+        return Response.status(Status.NOT_FOUND)
+                .entity(Utils.sendMessage("Product Backlog Item not found!!"))
+                .build();
     }
 
     @GET
     @Path("/{id}/dependencies")
-    public JsonStructure getAllDependencies(@PathParam("id") Long id) {
+    public Response getAllDependencies(@PathParam("id") Long id) {
         List<ProductBacklogItemDependency> dependencies = backlogItemService.getAllDependencies(id);
-        return JSONUtils.jsonifyList(dependencies);
+        if (dependencies != null) {
+            return Response.ok(Utils.jsonifyList(dependencies)).build();
+        }
+        return Response.status(Status.NOT_FOUND)
+                .entity(Utils.sendMessage("Product Backlog Item not found!!"))
+                .build();
     }
 
     @POST
     @Path("/{projectId}")
-    public JsonObject addProductBacklogItem(@PathParam("projectId") Long projectId, ProductBacklogItem backlogItem) {
+    public Response addProductBacklogItem(@PathParam("projectId") Long projectId, ProductBacklogItem backlogItem) {
         if (backlogItem != null) {
             backlogItem = backlogItemService.add(projectId, backlogItem);
             if (backlogItem != null) {
-                return JSONUtils.jsonify(backlogItem);
+                return Response.ok(Utils.jsonify(backlogItem)).build();
             }
-            return JSONUtils.sendMessage("Project not found!!");
+            return Response.status(Status.NOT_FOUND)
+                    .entity(Utils.sendMessage("Project not found!!"))
+                    .build();
         }
-        return JSONUtils.sendMessage("Bad formed data!!");
+        return Response.status(Status.BAD_REQUEST)
+                .entity(Utils.sendMessage("Bad formed data!!"))
+                .build();
     }
 
     @POST
     @Path("/addDependency")
-    public JsonObject addDependency(Map<String, Object> data) {
+    public Response addDependency(Map<String, Object> data) {
         if (data.containsKey("parentId") && data.containsKey("childId") && data.containsKey("type")) {
             Long parentId = Long.parseLong(data.get("parentId").toString());
             Long childId = Long.parseLong(data.get("childId").toString());
-            String typeName = data.get("type").toString();
-            DependencyType type = DependencyType.valueOf(typeName);
-            if (type != null && backlogItemService.addDependency(parentId, childId, type)) {
-                return JSONUtils.sendMessage("Added");
+            String type = data.get("type").toString();
+            ProductBacklogItemDependency dependency = backlogItemService.addDependency(parentId, childId, type);
+            if (dependency != null) {
+                return Response.ok(Utils.jsonify(dependency)).build();
             }
-            return JSONUtils.sendMessage("Dependency cycle found or Not Same Project!!");
+            return Response.status(Status.CONFLICT)
+                    .entity(Utils.sendMessage("Dependency cycle found or Not Same Project!!"))
+                    .build();
         }
-        return JSONUtils.sendMessage("Bad formed data!!");
+        return Response.status(Status.BAD_REQUEST)
+                .entity(Utils.sendMessage("Bad formed data!!"))
+                .build();
     }
 
     @PUT
-    public JsonObject updateProductBacklogItem(ProductBacklogItem backlogItem) {
+    public Response updateProductBacklogItem(ProductBacklogItem backlogItem) {
         if (backlogItem != null) {
-            ProductBacklogItem t = backlogItemService.update(backlogItem);
-            return JSONUtils.jsonify(t);
+            backlogItem = backlogItemService.update(backlogItem);
+            if (backlogItem != null) {
+                return Response.ok(Utils.jsonify(backlogItem)).build();
+            }
+            return Response.status(Status.NOT_FOUND)
+                    .entity(Utils.sendMessage("Product Backlog Item not found!!"))
+                    .build();
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return Response.status(Status.BAD_REQUEST)
+                .entity(Utils.sendMessage("Bad formed data!!"))
+                .build();
     }
 
     @DELETE
     @Path("/{id}")
-    public JsonStructure deleteProductBacklogItem(@PathParam("id") Long id) {
+    public Response deleteProductBacklogItem(@PathParam("id") Long id) {
         backlogItemService.delete(id);
         List<ProductBacklogItem> backlogItems = backlogItemService.getAll();
-        return JSONUtils.jsonifyList(backlogItems);
+        return Response.ok(Utils.jsonifyList(backlogItems)).build();
     }
 
 }

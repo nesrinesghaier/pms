@@ -6,10 +6,7 @@
 package tn.rnu.eniso.pms.core.ejb.services.REST;
 
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
-import javax.json.JsonObject;
-import javax.json.JsonStructure;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,9 +16,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import tn.rnu.eniso.pms.core.ejb.entities.Story;
 import tn.rnu.eniso.pms.core.ejb.entities.Task;
-import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
+import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 import tn.rnu.eniso.pms.core.ejb.services.StoryService;
 
 /**
@@ -29,64 +28,81 @@ import tn.rnu.eniso.pms.core.ejb.services.StoryService;
  * @author nesrine
  */
 @Path("story")
-@Produces("application/json")
+@Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class StoryWebService {
 
     @EJB(name = "storyService")
     private StoryService storyService;
-    static final Logger logger = Logger.getGlobal();
 
     @GET
     @Path("/{id}")
-    public JsonObject getStoryById(@PathParam("id") Long id) {
+    public Response getStoryById(@PathParam("id") Long id) {
         Story story = storyService.get(id);
         if (story != null) {
-            return JSONUtils.jsonify(story);
+            return Response.ok(Utils.jsonify(story)).build();
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return Response.status(Status.NOT_FOUND)
+                .entity(Utils.sendMessage("Story not found!!"))
+                .build();
     }
 
     @GET
-    public JsonStructure getAllStories() {
+    public Response getAllStories() {
         List<Story> stories = storyService.getAll();
-        return JSONUtils.jsonifyList(stories);
+        return Response.ok(Utils.jsonifyList(stories)).build();
     }
 
     @GET
     @Path("/{id}/tasks")
-    public JsonStructure getAllTasks(@PathParam("id") Long id) {
+    public Response getAllTasks(@PathParam("id") Long id) {
         List<Task> tasks = storyService.getAllTasks(id);
-        return JSONUtils.jsonifyList(tasks);
+        if (tasks != null) {
+            return Response.ok(Utils.jsonifyList(tasks)).build();
+        }
+        return Response.status(Status.NOT_FOUND)
+                .entity(Utils.sendMessage("Story not found!!"))
+                .build();
     }
 
     @POST
     @Path("/{backlogItemId}")
-    public JsonObject addStory(@PathParam("backlogItemId") Long backlogItemId, Story story) {
+    public Response addStory(@PathParam("backlogItemId") Long backlogItemId, Story story) {
         if (story != null) {
             story = storyService.add(backlogItemId, story);
             if (story != null) {
-                return JSONUtils.jsonify(story);
+                return Response.ok(Utils.jsonify(story)).build();
             }
-            return JSONUtils.sendMessage("Product Backlog Item not found!!");
+            return Response.status(Status.NOT_FOUND)
+                    .entity(Utils.sendMessage("Story not found!!"))
+                    .build();
         }
-        return JSONUtils.sendMessage("Bad formed data!!");
+        return Response.status(Status.BAD_REQUEST)
+                .entity(Utils.sendMessage("Bad formed data!!"))
+                .build();
     }
 
     @PUT
-    public JsonObject updateStory(Story story) {
+    public Response updateStory(Story story) {
         if (story != null) {
-            Story u = storyService.update(story);
-            return JSONUtils.jsonify(u);
+            story = storyService.update(story);
+            if (story != null) {
+                return Response.ok(Utils.jsonify(story)).build();
+            }
+            return Response.status(Status.NOT_FOUND)
+                    .entity(Utils.sendMessage("Resource not found!!"))
+                    .build();
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return Response.status(Status.BAD_REQUEST)
+                .entity(Utils.sendMessage("Bad formed data!!"))
+                .build();
     }
 
     @DELETE
     @Path("/{id}")
-    public JsonStructure deleteStory(@PathParam("id") Long id) {
+    public Response deleteStory(@PathParam("id") Long id) {
         storyService.delete(id);
-        List<Story> storys = storyService.getAll();
-        return JSONUtils.jsonifyList(storys);
+        List<Story> stories = storyService.getAll();
+        return Response.ok(Utils.jsonifyList(stories)).build();
     }
 }

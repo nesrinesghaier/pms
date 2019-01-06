@@ -11,6 +11,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceException;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
 import tn.rnu.eniso.pms.core.ejb.entities.User;
 
@@ -56,8 +57,9 @@ public class UserService {
         User userFromDb = em.find(User.class, user.getId());
         if (userFromDb != null) {
             em.merge(user);
+            return user;
         }
-        return user;
+        return null;
     }
 
     public void delete(Long id) {

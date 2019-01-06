@@ -59,8 +59,9 @@ public class TaskConsumptionService {
         TaskConsumption consumptionToUpdate = em.find(TaskConsumption.class, consumption.getId());
         if (consumptionToUpdate != null) {
             em.merge(consumption);
+            return consumption;
         }
-        return consumption;
+        return null;
     }
 
     public List<TaskConsumption> getConsumption(Long taskId) {
@@ -74,9 +75,9 @@ public class TaskConsumptionService {
     public void delete(Long id) {
         TaskConsumption consumption = em.find(TaskConsumption.class, id);
         if (consumption != null) {
-            Resource resource = 
-                    (Resource) em.createQuery("SELECT r from Resource r WHERE :c MEMBER OF r.taskConsumptions")
-                    .setParameter("c", consumption).getSingleResult();
+            Resource resource
+                    = (Resource) em.createQuery("SELECT r from Resource r WHERE :c MEMBER OF r.taskConsumptions")
+                            .setParameter("c", consumption).getSingleResult();
             if (resource != null) {
                 resource.getTaskConsumptions().remove(consumption);
                 em.merge(resource);

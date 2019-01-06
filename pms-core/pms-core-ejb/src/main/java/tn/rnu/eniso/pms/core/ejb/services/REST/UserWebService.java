@@ -6,10 +6,7 @@
 package tn.rnu.eniso.pms.core.ejb.services.REST;
 
 import java.util.List;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
-import javax.json.JsonObject;
-import javax.json.JsonStructure;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,9 +16,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
 import tn.rnu.eniso.pms.core.ejb.entities.User;
-import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
+import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 import tn.rnu.eniso.pms.core.ejb.services.UserService;
 
 /**
@@ -35,58 +34,74 @@ public class UserWebService {
 
     @EJB(name = "userService")
     private UserService userService;
-    static final Logger logger = Logger.getGlobal();
 
     @GET
     @Path("/{id}")
-    public JsonObject getUserById(@PathParam("id") Long id) {
+    public Response getUserById(@PathParam("id") Long id) {
         User user = userService.get(id);
         if (user != null) {
-            return JSONUtils.jsonify(user);
+            return Response.ok(Utils.jsonify(user)).build();
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return Response.status(Status.NOT_FOUND)
+                .entity(Utils.sendMessage("User not found!!"))
+                .build();
     }
 
     @GET
-    public JsonStructure getAllUsers() {
+    public Response getAllUsers() {
         List<User> users = userService.getAll();
-        return JSONUtils.jsonifyList(users);
+        return Response.ok(Utils.jsonifyList(users)).build();
     }
 
     @GET
     @Path("/{id}/resources")
-    public JsonStructure getAllResources(@PathParam("id") Long id) {
+    public Response getAllResources(@PathParam("id") Long id) {
         List<Resource> resources = userService.getAllResources(id);
         if (resources != null) {
-            return JSONUtils.jsonifyList(resources);
+            return Response.ok(Utils.jsonifyList(resources)).build();
         }
-        return JSONUtils.sendMessage("User not found");
-
+        return Response.status(Status.NOT_FOUND)
+                .entity(Utils.sendMessage("User not found!!"))
+                .build();
     }
 
     @POST
-    public JsonObject addUser(User user) {
+    public Response addUser(User user) {
         if (user != null) {
             user = userService.add(user);
-            return JSONUtils.jsonify(user);
+            if (user != null) {
+                return Response.ok(Utils.jsonify(user)).build();
+            }
+            return Response.status(Status.INTERNAL_SERVER_ERROR)
+                    .entity(Utils.sendMessage("Internal Error!!"))
+                    .build();
         }
-        return JSONUtils.sendMessage("Bad formed data!!");
+        return Response.status(Status.BAD_REQUEST)
+                .entity(Utils.sendMessage("Bad formed data!!"))
+                .build();
     }
 
     @PUT
-    public JsonObject updateUser(User user) {
+    public Response updateUser(User user) {
         if (user != null) {
-            User u = userService.update(user);
-            return JSONUtils.jsonify(u);
+            user = userService.update(user);
+            if (user != null) {
+                return Response.ok(Utils.jsonify(user)).build();
+            }
+            return Response.status(Status.NOT_FOUND)
+                    .entity(Utils.sendMessage("User not found!!"))
+                    .build();
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return Response.status(Status.BAD_REQUEST)
+                .entity(Utils.sendMessage("Bad formed data!!"))
+                .build();
     }
 
     @DELETE
     @Path("/{id}")
-    public JsonStructure deleteUser(@PathParam("id") Long id) {
+    public Response deleteUser(@PathParam("id") Long id) {
         userService.delete(id);
         List<User> users = userService.getAll();
-        return JSONUtils.jsonifyList(users);
+        return Response.ok(Utils.jsonifyList(users)).build();
     }
 }

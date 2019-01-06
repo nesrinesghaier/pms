@@ -58,16 +58,20 @@ public class ResourceService {
     }
 
     public List<TaskConsumption> getAllConsumptions(Long id) {
-        Resource r = em.find(Resource.class, id);
-        return r.getTaskConsumptions();
+        Resource resource = em.find(Resource.class, id);
+        if (resource != null) {
+            return resource.getTaskConsumptions();
+        }
+        return null;
     }
 
     public Resource update(Resource resource) {
         Resource resourceFromDb = em.find(Resource.class, resource.getId());
         if (resourceFromDb != null) {
             em.merge(resource);
+            return resource;
         }
-        return resource;
+        return null;
     }
 
     public void delete(Long id) {

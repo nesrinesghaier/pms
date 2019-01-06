@@ -56,23 +56,26 @@ public class ProductBacklogItemService {
     }
 
     public List<ProductBacklogItemDependency> getAllDependencies(Long id) {
-        ProductBacklogItem p = em.find(ProductBacklogItem.class, id);
-        return p.getBacklogItemDependencies();
+        ProductBacklogItem backlogItem = em.find(ProductBacklogItem.class, id);
+        if (backlogItem != null) {
+            return backlogItem.getBacklogItemDependencies();
+        }
+        return null;
     }
 
     public List<Story> getAllStories(Long id) {
-        ProductBacklogItem p = em.find(ProductBacklogItem.class, id);
-        return p.getStories();
+        ProductBacklogItem backlogItem = em.find(ProductBacklogItem.class, id);
+        if (backlogItem != null) {
+            return backlogItem.getStories();
+        }
+        return null;
     }
 
     public ProductBacklogItem update(ProductBacklogItem item) {
-        if (item != null) {
-            ProductBacklogItem t = em.find(ProductBacklogItem.class, item.getId());
-            if (t != null) {
-                em.merge(item);
-                em.flush();
-                return item;
-            }
+        ProductBacklogItem t = em.find(ProductBacklogItem.class, item.getId());
+        if (t != null) {
+            em.merge(item);
+            return item;
         }
         return null;
     }
@@ -94,20 +97,20 @@ public class ProductBacklogItemService {
         }
     }
 
-    public boolean addDependency(Long parentId, Long childId, DependencyType type) {
+    public ProductBacklogItemDependency addDependency(Long parentId, Long childId, String type) {
         ProductBacklogItem parent = em.find(ProductBacklogItem.class, parentId);
         ProductBacklogItem child = em.find(ProductBacklogItem.class, childId);
         if (parent != null && child != null && sameProject(parent, child) && !checkCycleDependency(child, parent.getId())) {
             ProductBacklogItemDependency dependency = new ProductBacklogItemDependency();
-            dependency.setType(type);
+            dependency.setType(DependencyType.valueOf(type));
             dependency.setDestinationBacklogItem(child);
             em.persist(dependency);
             em.flush();
             parent.getBacklogItemDependencies().add(dependency);
             em.merge(parent);
-            return true;
+            return dependency;
         }
-        return false;
+        return null;
     }
 
     private boolean checkCycleDependency(ProductBacklogItem backlogItem, Long parentId) {

@@ -7,8 +7,6 @@ package tn.rnu.eniso.pms.core.ejb.services.REST;
 
 import java.util.List;
 import javax.ejb.EJB;
-import javax.json.JsonObject;
-import javax.json.JsonStructure;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,8 +16,10 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
-import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
+import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 import tn.rnu.eniso.pms.core.ejb.services.TaskConsumptionService;
 
 /**
@@ -27,7 +27,7 @@ import tn.rnu.eniso.pms.core.ejb.services.TaskConsumptionService;
  * @author ameni
  */
 @Path("taskconsumption")
-@Produces("application/json")
+@Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class TaskConsumptionWebService {
 
@@ -36,60 +36,63 @@ public class TaskConsumptionWebService {
 
     @GET
     @Path("/{id}")
-    public JsonObject getTaskConsumptionById(@PathParam("id") Long id) {
-        TaskConsumption taskConsumption = taskConsumptionService.get(id);
-        if (taskConsumption != null) {
-            return JSONUtils.jsonify(taskConsumption);
+    public Response getTaskConsumptionById(@PathParam("id") Long id) {
+        TaskConsumption consumption = taskConsumptionService.get(id);
+        if (consumption != null) {
+            return Response.ok(Utils.jsonify(consumption)).build();
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return Response.status(Status.NOT_FOUND)
+                .entity(Utils.sendMessage("Task Consumption not found!!"))
+                .build();
     }
 
     @GET
-    public JsonStructure getAllTaskConsumptions() {
-        List<TaskConsumption> taskConsumptions = taskConsumptionService.getAll();
-        return JSONUtils.jsonifyList(taskConsumptions);
+    public Response getAllTaskConsumptions() {
+        List<TaskConsumption> consumptions = taskConsumptionService.getAll();
+        return Response.ok(Utils.jsonifyList(consumptions)).build();
     }
 
     @POST
     @Path("/{taskId}/{resourceId}")
-    public JsonObject addTaskConsumption(@PathParam("taskId") Long taskId,
+    public Response addTaskConsumption(@PathParam("taskId") Long taskId,
             @PathParam("resourceId") Long resourceId, TaskConsumption consumption) {
         if (consumption != null) {
             consumption = taskConsumptionService.add(taskId, resourceId, consumption);
             if (consumption != null) {
-                return JSONUtils.jsonify(consumption);
+                return Response.ok(Utils.jsonify(consumption)).build();
             }
-            return JSONUtils.sendMessage("Task or Resource not found or they are not in the same Prject!!");
+            return Response.status(Status.NOT_FOUND)
+                    .entity(Utils.sendMessage("Task or Resource not found!!"))
+                    .build();
         }
-        return JSONUtils.sendMessage("Bad formed data!!");
+        return Response.status(Status.BAD_REQUEST)
+                .entity(Utils.sendMessage("Bad formed data!!"))
+                .build();
+
     }
 
     @PUT
-    @Path("/task/{id}")
-    public JsonObject updateTaskConsumption(@PathParam("taskId") Long taskId, TaskConsumption consumption) {
+    public Response updateTaskConsumption(TaskConsumption consumption) {
         if (consumption != null) {
             consumption = taskConsumptionService.update(consumption);
-            return JSONUtils.jsonify(consumption);
+            if (consumption != null) {
+                return Response.ok(Utils.jsonify(consumption)).build();
+            }
+            return Response.status(Status.NOT_FOUND)
+                    .entity(Utils.sendMessage("Task Consumption not found!!"))
+                    .build();
         }
-        return JSONUtils.sendMessage("Bad formed data!!");
-    }
-
-    @GET
-    @Path("/task/{id}")
-    public JsonStructure getConsumptions(@PathParam("id") Long id) {
-        List<TaskConsumption> list = taskConsumptionService.getConsumption(id);
-        if (!list.isEmpty()) {
-            return JSONUtils.jsonifyList(list);
-        }
-        return JSONUtils.sendResourceNotFoundError();
+        return Response.status(Status.BAD_REQUEST)
+                .entity(Utils.sendMessage("Bad formed data!!"))
+                .build();
     }
 
     @DELETE
     @Path("/{id}")
-    public JsonStructure deleteTaskConsumptionById(@PathParam("id") Long id) {
+    public Response deleteTaskConsumptionById(@PathParam("id") Long id) {
         taskConsumptionService.delete(id);
         List<TaskConsumption> consumptions = taskConsumptionService.getAll();
-        return JSONUtils.jsonifyList(consumptions);
+        return Response.ok(Utils.jsonifyList(consumptions)).build();
     }
 
 }
