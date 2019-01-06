@@ -13,130 +13,10 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 </head>
 <body>
-<!-- Main content -->
-<div class="main-content">
-  <!-- Top navbar -->
-  <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
-    <div class="container-fluid">
-      <!-- Brand -->
-      <a class="h-25 mb-0 text-white text-uppercase d-none d-lg-inline-block">
-        <ul class="navbar-nav navbar-brand pt-lg-0">
-          <li class="nav-item dropdown">
-            <a href="#sidenav-main" data-toggle="collapse"><i class="fa fa-navicon fa-lg"></i></a>
-            <!-- red button for add items -->
-            <a aria-expanded="false" aria-haspopup="true" class="nav-link nav-link-icon" data-toggle="dropdown"
-               href="#" id="navbar-default_dropdown_1" role="button">
-              <ul class="nav nav-pills  nav-pills-circle " id="tabs_2" role="tablist">
-                <li class="nav-item">
-                  <a aria-controls="home" aria-selected="true" class="nav-link rounded-circle  bg-red" data-toggle="tab" href="#tabs_2_1"
-                     id="home-tab" role="tab">
-                    <span class="nav-link-icon d-block"><i class="ni ni-bold-right"></i></span>
-                  </a>
-                </li>
-              </ul>
-            </a>
-            <div aria-labelledby="navbar-default_dropdown_1" class="dropdown-menu dropdown-menu-xl-left">
-              <a class="dropdown-item" href="#">Project</a>
-              <a class="dropdown-item" href="#">User</a>
-            </div>
-          </li>
-        </ul>
-      </a>
-      <!-- Form -->
-      <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-        <div class="form-group mb-0">
-          <div class="input-group input-group-alternative">
-            <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-search"></i></span>
-            </div>
-            <input class="form-control" placeholder="Search" type="text">
-          </div>
-        </div>
-      </form>
-      <!-- User -->
-      <ul class="navbar-nav align-items-center d-none d-md-flex">
-        <li class="nav-item dropdown">
-          <a aria-expanded="false" aria-haspopup="true" class="nav-link pr-0" data-toggle="dropdown" href="#"
-             role="button">
-            <div class="media align-items-center">
-                <span class="avatar avatar-sm rounded-circle">
-                  <img alt="Image placeholder" src="../../assets/dashboard/img/theme/team-4-800x800.jpg">
-                </span>
-              <div class="media-body ml-2 d-none d-lg-block">
-                <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
-              </div>
-            </div>
-          </a>
-          <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-            <div class=" dropdown-header noti-title">
-              <h6 class="text-overflow m-0">Welcome!</h6>
-            </div>
-            <a class="dropdown-item" href="#">
-              <i class="ni ni-single-02"></i>
-              <span>My profile</span>
-            </a>
-            <a class="dropdown-item" href="#">
-              <i class="ni ni-settings-gear-65"></i>
-              <span>Settings</span>
-            </a>
-            <a class="dropdown-item" href="#">
-              <i class="ni ni-calendar-grid-58"></i>
-              <span>Activity</span>
-            </a>
-            <a class="dropdown-item" href="#">
-              <i class="ni ni-support-16"></i>
-              <span>Support</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#!">
-              <i class="ni ni-user-run"></i>
-              <span>Logout</span>
-            </a>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  <!-- Header -->
-  <div class="header  bg-default pb-100 pt-100 pt-md-100">
-    <div class="container-fluid">
-      <div class="header-body">
-      </div>
-    </div>
-  </div>
 
-  <!-- table -->
-  <router-outlet></router-outlet>
-  <!-- Page content -->
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="row align-items-center justify-content-xl-between">
-      <div class="col-xl-6">
-        <div class="copyright text-center text-xl-left text-muted">
-          &copy; 2019 <a class="font-weight-bold ml-1" href="" target="_blank">PMS Team</a>
-        </div>
-      </div>
-      <div class="col-xl-6">
-        <ul class="nav nav-footer justify-content-center justify-content-xl-end">
-          <li class="nav-item">
-            <a class="nav-link" href="" target="_blank">NAN Team</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="" target="_blank">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="" target="_blank">Blog</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="" target="_blank">MIT License</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </footer>
-
-<!-- Sidenav -->
-<nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white"  id="sidenav-main">
+  <div class=”row”>
+    <!-- Sidenav -->
+    <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
   <div class="container-fluid">
     <!-- Brand -->
     <a class="navbar-brand pt-md-4" href="/">
@@ -196,9 +76,131 @@
     <!-- Heading -->
   </div>
 </nav>
+<!-- Main content -->
+  <div class="main-content ">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <a class="h-25 mb-0 text-white text-uppercase d-none d-lg-inline-block">
+          <ul class="navbar-nav navbar-brand pt-lg-0">
+            <li class="nav-item dropdown">
+              <!-- red button for add items -->
+              <a aria-expanded="false" aria-haspopup="true" class="nav-link nav-link-icon" data-toggle="dropdown"
+                 href="#" id="navbar-default_dropdown_1" role="button">
+                <ul class="nav nav-pills  nav-pills-circle " id="tabs_2" role="tablist">
+                  <li class="nav-item">
+                    <a aria-controls="home" aria-selected="true" class="nav-link rounded-circle  bg-red"
+                       data-toggle="tab" href="#tabs_2_1"
+                       id="home-tab" role="tab">
+                      <span class="nav-link-icon d-block"><i class="ni ni-bold-right"></i></span>
+                    </a>
+                  </li>
+                </ul>
+              </a>
+              <div aria-labelledby="navbar-default_dropdown_1" class="dropdown-menu dropdown-menu-xl-left">
+                <a class="dropdown-item" href="#">Project</a>
+                <a class="dropdown-item" href="#">User</a>
+              </div>
+            </li>
+          </ul>
+        </a>
+        <!-- Form -->
+        <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+          <div class="form-group mb-0">
+            <div class="input-group input-group-alternative">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+              </div>
+              <input class="form-control" placeholder="Search" type="text">
+            </div>
+          </div>
+        </form>
+        <!-- User -->
+        <ul class="navbar-nav align-items-center d-none d-md-flex">
+          <li class="nav-item dropdown">
+            <a aria-expanded="false" aria-haspopup="true" class="nav-link pr-0" data-toggle="dropdown" href="#"
+               role="button">
+              <div class="media align-items-center">
+                <span class="avatar avatar-sm rounded-circle">
+                  <img alt="Image placeholder" src="../../assets/dashboard/img/theme/team-4-800x800.jpg">
+                </span>
+                <div class="media-body ml-2 d-none d-lg-block">
+                  <span class="mb-0 text-sm  font-weight-bold">Jessica Jones</span>
+                </div>
+              </div>
+            </a>
+            <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+              <div class=" dropdown-header noti-title">
+                <h6 class="text-overflow m-0">Welcome!</h6>
+              </div>
+              <a class="dropdown-item" href="#">
+                <i class="ni ni-single-02"></i>
+                <span>My profile</span>
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="ni ni-settings-gear-65"></i>
+                <span>Settings</span>
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="ni ni-calendar-grid-58"></i>
+                <span>Activity</span>
+              </a>
+              <a class="dropdown-item" href="#">
+                <i class="ni ni-support-16"></i>
+                <span>Support</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#!">
+                <i class="ni ni-user-run"></i>
+                <span>Logout</span>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- Header -->
+    <div class="header  bg-default pb-100 pt-100 pt-md-100">
+      <div class="container-fluid">
+        <div class="header-body">
+        </div>
+      </div>
+    </div>
+    <!-- table -->
+    <div class="col-auto">
+      <router-outlet></router-outlet>
+    </div>
+    <!-- Page content -->
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="row align-items-center justify-content-xl-between">
+        <div class="col-xl-6">
+          <div class="copyright text-center text-xl-left text-muted">
+            &copy; 2019 <a class="font-weight-bold ml-1" href="" target="_blank">PMS Team</a>
+          </div>
+        </div>
+        <div class="col-xl-6">
+          <ul class="nav nav-footer justify-content-center justify-content-xl-end">
+            <li class="nav-item">
+              <a class="nav-link" href="" target="_blank">NAN Team</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="" target="_blank">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="" target="_blank">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="" target="_blank">MIT License</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
 
-</div>
-
+  </div>
 
 </body>
 </html>

@@ -1,38 +1,28 @@
-import {Project} from "./project";
-import {ProductBacklogItemDependency} from "./product-backlog-item-dependency";
-import {Story} from "./story";
+import {Project} from './project';
+import {ProductBacklogItemDependency} from './product-backlog-item-dependency';
+import {Story} from './story';
 
 export class ProductBacklogItem {
-  private pbi_id:number;
-  private project:Project;
-  private priority:number;
-  private description:string;
-  private backlogItemDependencys:Array<ProductBacklogItemDependency>;
-  private stories:Array<Story>;
+  private id: number;
+  private priority: number;
+  private description: string;
+  private backlogItemDependencies: Array<ProductBacklogItemDependency>;
+  private stories: Array<Story>;
 
 
-  constructor(project: Project, priority: number, description: string, backlogItemDependencys: Array<ProductBacklogItemDependency>, stories: Array<Story>) {
-    this.project = project;
+  constructor(priority: number, description: string, backlogItemDependencies: Array<ProductBacklogItemDependency>, stories: Array<Story>) {
     this.priority = priority;
     this.description = description;
-    this.backlogItemDependencys = backlogItemDependencys;
+    this.backlogItemDependencies = backlogItemDependencies;
     this.stories = stories;
   }
 
-  getPbi_id(): number {
-    return this.pbi_id;
+  getId(): number {
+    return this.id;
   }
 
-  setPbi_id(value: number) {
-    this.pbi_id = value;
-  }
-
-  getProject(): Project {
-    return this.project;
-  }
-
-  setProject(value: Project) {
-    this.project = value;
+  setId(value: number) {
+    this.id = value;
   }
 
   getPriority(): number {
@@ -51,12 +41,12 @@ export class ProductBacklogItem {
     this.description = value;
   }
 
-  getBacklogItemDependencys(): Array<ProductBacklogItemDependency> {
-    return this.backlogItemDependencys;
+  getBacklogItemDependencies(): Array<ProductBacklogItemDependency> {
+    return this.backlogItemDependencies;
   }
 
-  setBacklogItemDependencys(value: Array<ProductBacklogItemDependency>) {
-    this.backlogItemDependencys = value;
+  setBacklogItemDependencies(value: Array<ProductBacklogItemDependency>) {
+    this.backlogItemDependencies = value;
   }
 
   getStories(): Array<Story> {
