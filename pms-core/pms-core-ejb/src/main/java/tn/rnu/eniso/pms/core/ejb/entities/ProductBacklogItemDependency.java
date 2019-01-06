@@ -7,12 +7,10 @@ package tn.rnu.eniso.pms.core.ejb.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -29,9 +27,7 @@ public class ProductBacklogItemDependency implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private ProductBacklogItem sourceBacklogItem;
-
+    @OneToOne
     private ProductBacklogItem destinationBacklogItem;
 
     private DependencyType type;
@@ -42,14 +38,6 @@ public class ProductBacklogItemDependency implements Serializable {
 
     public void setType(DependencyType type) {
         this.type = type;
-    }
-
-    public ProductBacklogItem getsourceBacklogItem() {
-        return sourceBacklogItem;
-    }
-
-    public void setsourceBacklogItem(ProductBacklogItem backlogItem) {
-        this.sourceBacklogItem = backlogItem;
     }
 
     public ProductBacklogItem getDestinationBacklogItem() {
@@ -93,7 +81,6 @@ public class ProductBacklogItemDependency implements Serializable {
 
     @Override
     public String toString() {
-        return "ProductBacklogItemDependency{" + "id=" + id + ", sourceBacklogItem=" + sourceBacklogItem + ", destinationBacklogItem=" + destinationBacklogItem + ", type=" + type + '}';
+        return "ProductBacklogItemDependency{" + "id=" + id + ", destinationBacklogItem=" + destinationBacklogItem + ", type=" + type + '}';
     }
-
 }
