@@ -66,8 +66,7 @@ export class Project {
     this.resources = value;
   }
 
-  constructor(id: number, name: string, logicName: string, creationDate: string, description: string, productBacklogItems: Array<ProductBacklogItem>, resources: Array<Resource>) {
-    this.id = id;
+  constructor(name: string, logicName: string, creationDate: string, description: string, productBacklogItems: Array<ProductBacklogItem>, resources: Array<Resource>) {
     this.name = name;
     this.logicName = logicName;
     this.creationDate = creationDate;

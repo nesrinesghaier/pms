@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ProjectService} from '../../../../../services/project.service';
+import {Project} from "../../../../../models/project";
 
 @Component({
   selector: 'pms-gantt-pms-gantt-dashboard',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PmsGanttDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: ProjectService) { }
 
   ngOnInit() {
+  }
+
+  get() {
+    const p = new Project('posted from front', 'test', 'tesy', 'wjhxgs', Array<any>(), Array<any>());
+    this.service.postProject(p).subscribe((data) => {
+      console.log(data);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }
