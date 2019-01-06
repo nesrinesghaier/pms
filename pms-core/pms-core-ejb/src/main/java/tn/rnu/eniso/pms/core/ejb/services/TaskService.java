@@ -9,10 +9,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import tn.rnu.eniso.pms.core.ejb.entities.DependencyType;
+import tn.rnu.eniso.pms.core.ejb.entities.Story;
 import tn.rnu.eniso.pms.core.ejb.entities.Task;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskDependency;
@@ -27,12 +29,18 @@ public class TaskService {
     @PersistenceContext(unitName = "pms-pu")
     private EntityManager em;
 
-    static final Logger logger = Logger.getGlobal();
+    @EJB
+    private TaskConsumptionService consumptionService;
 
-    public Task add(Task task) {
-        em.persist(task);
-        em.flush();
-        return task;
+    public Task add(Long storyId, Task task) {
+        Story story = em.find(Story.class, storyId);
+        if (story != null) {
+            em.persist(task);
+            story.getTasks().add(task);
+            em.merge(story);
+            return task;
+        }
+        return null;
     }
 
     public Task get(Long id) {
@@ -44,36 +52,43 @@ public class TaskService {
         return null;
     }
 
-    public List<TaskConsumption> getTaskConsumptions(Long taskId) {
-        Task t = (Task) em.createQuery("SELECT t FROM Task t where t.id = :id")
-                .setParameter("id", taskId).getResultList().get(0);
-        List<TaskConsumption> result = new ArrayList<>();
-        result.addAll(t.getTaskConsumptions());
-        return result;
-    }
-
     public List<Task> getAll() {
         return em.createQuery("SELECT t FROM Task t").getResultList();
+    }
 
+    public List<TaskConsumption> getAllConsumptions(Long id) {
+        Task t = em.find(Task.class, id);
+        return t.getTaskConsumptions();
+    }
+
+    public List<TaskDependency> getAllDependencies(Long id) {
+        Task t = em.find(Task.class, id);
+        return t.getTaskDependencies();
+    }
+
+    public Task update(Task task) {
+        Task t = em.find(Task.class, task.getId());
+        if (t != null) {
+            em.merge(task);
+        }
+        return task;
     }
 
     public void delete(Long id) {
         Task task = em.find(Task.class, id);
         if (task != null) {
+            List<TaskConsumption> consumptions = new ArrayList<>(task.getTaskConsumptions());
+            for (TaskConsumption consumption : consumptions) {
+                consumptionService.delete(consumption.getId());
+            }
+            Story story = (Story) em.createQuery("SELECT s from Story s WHERE :t MEMBER OF s.tasks")
+                    .setParameter("t", task).getSingleResult();
+            if (story != null) {
+                story.getTasks().remove(task);
+                em.merge(story);
+            }
             em.remove(task);
         }
-    }
-
-    public Task update(Task task) {
-        if (task != null) {
-            Task t = em.find(Task.class, task.getId());
-            if (t != null) {
-                em.merge(task);
-                em.flush();
-                return task;
-            }//baddalt starr test
-        }
-        return null;
     }
 
     public boolean addDependency(Long parentId, Long childId, DependencyType type) {

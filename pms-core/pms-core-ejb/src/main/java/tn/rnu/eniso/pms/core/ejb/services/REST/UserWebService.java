@@ -19,6 +19,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import tn.rnu.eniso.pms.core.ejb.entities.Resource;
 import tn.rnu.eniso.pms.core.ejb.entities.User;
 import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
 import tn.rnu.eniso.pms.core.ejb.services.UserService;
@@ -52,13 +53,24 @@ public class UserWebService {
         return JSONUtils.jsonifyList(users);
     }
 
+    @GET
+    @Path("/{id}/resources")
+    public JsonStructure getAllResources(@PathParam("id") Long id) {
+        List<Resource> resources = userService.getAllResources(id);
+        if (resources != null) {
+            return JSONUtils.jsonifyList(resources);
+        }
+        return JSONUtils.sendMessage("User not found");
+
+    }
+
     @POST
     public JsonObject addUser(User user) {
         if (user != null) {
-            User u = userService.add(user);
-            return JSONUtils.jsonify(u);
+            user = userService.add(user);
+            return JSONUtils.jsonify(user);
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return JSONUtils.sendMessage("Bad formed data!!");
     }
 
     @PUT

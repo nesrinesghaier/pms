@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -25,31 +26,23 @@ import tn.rnu.eniso.pms.core.ejb.entities.Resource;
 @Stateless(name = "projectService")
 public class ProjectService {
 
-    static final Logger logger = Logger.getGlobal();
-
     @PersistenceContext(unitName = "pms-pu")
     private EntityManager em;
 
+    @EJB
+    private ResourceService resourceService;
+
+    @EJB
+    private ProductBacklogItemService backlogItemService;
+
     public Project add(Project project) {
-        if (project != null) {
-            Project addedProject = new Project();
-            System.out.println(project);
-            addedProject.setName(project.getName());
-            addedProject.setLogicName(project.getLogicName());
-            addedProject.setDescription(project.getDescription());
-            addedProject.setCreationDate(getStartDate(project.getCreationDate()));
-            addedProject.setProductBacklogItems(new ArrayList<ProductBacklogItem>());
-            addedProject.setResources(new ArrayList<Resource>());
-            em.persist(project);
-            return project;
-        }
-        return null;
+        em.persist(project);
+        return project;
     }
 
     public String getStartDate(String startDate) {
         DateTimeFormatter inputFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter outputFormat = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        logger.log(Level.SEVERE, LocalDate.parse(startDate, inputFormat).format(outputFormat));
         return LocalDate.parse(startDate, inputFormat).format(outputFormat);
     }
 
@@ -65,11 +58,20 @@ public class ProjectService {
         return em.createQuery("SELECT p FROM Project p").getResultList();
     }
 
-    public void delete(Long id) {
+    public List<Resource> getAllResources(Long id) {
         Project project = em.find(Project.class, id);
         if (project != null) {
-            em.remove(project);
+            return project.getResources();
         }
+        return null;
+    }
+
+    public List<ProductBacklogItem> getAllBacklogItems(Long id) {
+        Project project = em.find(Project.class, id);
+        if (project != null) {
+            return project.getProductBacklogItems();
+        }
+        return null;
     }
 
     public Project update(Project project) {
@@ -79,4 +81,20 @@ public class ProjectService {
         }
         return project;
     }
+
+    public void delete(Long id) {
+        Project project = em.find(Project.class, id);
+        if (project != null) {
+            List<Resource> resources = new ArrayList<>(project.getResources());
+            for (Resource resource : resources) {
+                resourceService.delete(resource.getId());
+            }
+            List<ProductBacklogItem> backlogItems = new ArrayList<>(project.getProductBacklogItems());
+            for (ProductBacklogItem item : backlogItems) {
+                backlogItemService.delete(item.getId());
+            }
+            em.remove(project);
+        }
+    }
+
 }

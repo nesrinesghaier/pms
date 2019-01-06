@@ -5,15 +5,19 @@
  */
 package tn.rnu.eniso.pms.core.ejb.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import tn.rnu.eniso.pms.core.ejb.entities.DependencyType;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItemDependency;
+import tn.rnu.eniso.pms.core.ejb.entities.Project;
+import tn.rnu.eniso.pms.core.ejb.entities.Story;
 
 /**
  *
@@ -22,15 +26,18 @@ import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItemDependency;
 @Stateless(name = "BacklogItemService")
 public class ProductBacklogItemService {
 
-    static final Logger logger = Logger.getGlobal();
-
     @PersistenceContext(unitName = "pms-pu")
     private EntityManager em;
 
-    public ProductBacklogItem add(ProductBacklogItem backlogItem) {
-        if (backlogItem != null) {
+    @EJB
+    private StoryService storyService;
+
+    public ProductBacklogItem add(Long projectId, ProductBacklogItem backlogItem) {
+        Project project = em.find(Project.class, projectId);
+        if (project != null) {
             em.persist(backlogItem);
-            em.flush();
+            project.getProductBacklogItems().add(backlogItem);
+            em.merge(project);
             return backlogItem;
         }
         return null;
@@ -48,12 +55,14 @@ public class ProductBacklogItemService {
         return em.createQuery("SELECT p FROM ProductBacklogItem p").getResultList();
     }
 
-    public void delete(Long id) {
-        ProductBacklogItem backlogItem = em.find(ProductBacklogItem.class, id);
-        if (backlogItem != null) {
-            em.remove(backlogItem);
-            em.flush();
-        }
+    public List<ProductBacklogItemDependency> getAllDependencies(Long id) {
+        ProductBacklogItem p = em.find(ProductBacklogItem.class, id);
+        return p.getBacklogItemDependencies();
+    }
+
+    public List<Story> getAllStories(Long id) {
+        ProductBacklogItem p = em.find(ProductBacklogItem.class, id);
+        return p.getStories();
     }
 
     public ProductBacklogItem update(ProductBacklogItem item) {
@@ -68,10 +77,27 @@ public class ProductBacklogItemService {
         return null;
     }
 
+    public void delete(Long id) {
+        ProductBacklogItem backlogItem = em.find(ProductBacklogItem.class, id);
+        if (backlogItem != null) {
+            List<Story> stories = new ArrayList<>(backlogItem.getStories());
+            for (Story story : stories) {
+                storyService.delete(story.getId());
+            }
+            Project project = (Project) em.createQuery("SELECT p from Project p WHERE :b MEMBER OF p.productBacklogItems")
+                    .setParameter("b", backlogItem).getSingleResult();
+            if (project != null) {
+                project.getProductBacklogItems().remove(backlogItem);
+                em.merge(project);
+            }
+            em.remove(backlogItem);
+        }
+    }
+
     public boolean addDependency(Long parentId, Long childId, DependencyType type) {
         ProductBacklogItem parent = em.find(ProductBacklogItem.class, parentId);
         ProductBacklogItem child = em.find(ProductBacklogItem.class, childId);
-        if (parent != null && child != null && !checkCycleDependency(child, parent.getId())) {
+        if (parent != null && child != null && sameProject(parent, child) && !checkCycleDependency(child, parent.getId())) {
             ProductBacklogItemDependency dependency = new ProductBacklogItemDependency();
             dependency.setType(type);
             dependency.setDestinationBacklogItem(child);
@@ -94,5 +120,13 @@ public class ProductBacklogItemService {
             }
         }
         return false;
+    }
+
+    private boolean sameProject(ProductBacklogItem parent, ProductBacklogItem child) {
+        Long projectId1 = (Long) em.createQuery("SELECT p.id FROM Project p WHERE :parent MEMBER OF p.productBacklogItems")
+                .setParameter("parent", parent).getSingleResult();
+        Long projectId2 = (Long) em.createQuery("SELECT p.id FROM Project p WHERE :child MEMBER OF p.productBacklogItems")
+                .setParameter("child", child).getSingleResult();
+        return Objects.equals(projectId1, projectId2);
     }
 }

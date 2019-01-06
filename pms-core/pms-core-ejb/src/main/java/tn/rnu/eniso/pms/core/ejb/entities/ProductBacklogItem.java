@@ -5,6 +5,7 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -14,6 +15,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,18 +28,27 @@ public class ProductBacklogItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @Expose
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; // product backlog item id 
-
+    @Expose
     private int priority;
+    @Expose
     private String description;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ProductBacklogItemDependency> backlogItemDependencies;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Story> stories;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public List<Story> getStories() {
         return stories;
@@ -72,14 +83,6 @@ public class ProductBacklogItem implements Serializable {
     }
 
     public ProductBacklogItem() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     @Override

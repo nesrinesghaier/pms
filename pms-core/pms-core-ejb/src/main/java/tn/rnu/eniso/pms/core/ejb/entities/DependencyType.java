@@ -22,17 +22,4 @@ public enum DependencyType {
         return value;
     }
 
-    @Override
-    public String toString() {
-        return this.getValue();
-    }
-
-    public static DependencyType getEnum(String value) {
-        for (DependencyType v : values()) {
-            if (v.getValue().equalsIgnoreCase(value)) {
-                return v;
-            }
-        }
-        throw new IllegalArgumentException();
-    }
 }

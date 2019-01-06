@@ -5,12 +5,14 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,18 +30,21 @@ public class Project implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Expose
     private Long id;
+    @Expose
     private String name;
+    @Expose
     private String logicName;
+    @Expose
     private String creationDate;
+    @Expose
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ProductBacklogItem> productBacklogItems;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Resource> resources;
 
     public Long getId() {
@@ -73,7 +78,6 @@ public class Project implements Serializable {
     public void setCreationDate(String creationDate) {
         this.creationDate = creationDate;
     }
-
 
     public String getDescription() {
         return description;
@@ -130,7 +134,5 @@ public class Project implements Serializable {
     public String toString() {
         return "Project{" + "id=" + id + ", name=" + name + ", logicName=" + logicName + ", creationDate=" + creationDate + ", description=" + description + ", productBacklogItems=" + productBacklogItems + ", resources=" + resources + '}';
     }
-
-    
 
 }

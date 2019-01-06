@@ -5,7 +5,10 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,6 +16,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -26,15 +31,20 @@ public class Story implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @Expose
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Expose
     private String actorUser;
+    @Expose
     private String storyAction;
+    @Expose
     private String purpose;
+    @Expose
     private int complexity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private ProductBacklogItem productBacklogItem;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Task> tasks;
 
     public Story() {
     }
@@ -79,12 +89,12 @@ public class Story implements Serializable {
         this.complexity = complexity;
     }
 
-    public ProductBacklogItem getProductBacklogItem() {
-        return productBacklogItem;
+    public List<Task> getTasks() {
+        return tasks;
     }
 
-    public void setProductBacklogItem(ProductBacklogItem backlogItem) {
-        this.productBacklogItem = backlogItem;
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 
     @Override
@@ -109,7 +119,7 @@ public class Story implements Serializable {
 
     @Override
     public String toString() {
-        return "Story{" + "id=" + id + ", actorUser=" + actorUser + ", storyAction=" + storyAction + ", purpose=" + purpose + ", complexity=" + complexity + ", productBacklogItem=" + productBacklogItem + '}';
+        return "Story{" + "id=" + id + ", actorUser=" + actorUser + ", storyAction=" + storyAction + ", purpose=" + purpose + ", complexity=" + complexity + ", tasks=" + tasks + '}';
     }
 
 }

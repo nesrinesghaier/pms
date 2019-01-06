@@ -5,17 +5,16 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,15 +27,15 @@ public class Resource implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @Expose
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Expose
     private ResourceRole resourceRole;
+    @Expose
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Project project;
-
-    @ManyToMany(mappedBy = "resources")
+    @OneToMany(cascade = CascadeType.ALL)
     private List<TaskConsumption> taskConsumptions;
 
     public List<TaskConsumption> getTaskConsumptions() {
@@ -45,14 +44,6 @@ public class Resource implements Serializable {
 
     public void setTaskConsumptions(List<TaskConsumption> taskConsumptions) {
         this.taskConsumptions = taskConsumptions;
-    }
-
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
     }
 
     public Resource() {
@@ -104,7 +95,7 @@ public class Resource implements Serializable {
 
     @Override
     public String toString() {
-        return "Resource{" + "id=" + id + ", resourceRole=" + resourceRole + ", description=" + description + ", project=" + project + ", taskConsumptions=" + taskConsumptions + '}';
+        return "Resource{" + "id=" + id + ", resourceRole=" + resourceRole + ", description=" + description + ", taskConsumptions=" + taskConsumptions + '}';
     }
 
 }

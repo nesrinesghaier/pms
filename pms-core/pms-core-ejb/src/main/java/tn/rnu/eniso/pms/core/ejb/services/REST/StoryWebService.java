@@ -20,6 +20,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import tn.rnu.eniso.pms.core.ejb.entities.Story;
+import tn.rnu.eniso.pms.core.ejb.entities.Task;
 import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
 import tn.rnu.eniso.pms.core.ejb.services.StoryService;
 
@@ -52,13 +53,24 @@ public class StoryWebService {
         return JSONUtils.jsonifyList(stories);
     }
 
+    @GET
+    @Path("/{id}/tasks")
+    public JsonStructure getAllTasks(@PathParam("id") Long id) {
+        List<Task> tasks = storyService.getAllTasks(id);
+        return JSONUtils.jsonifyList(tasks);
+    }
+
     @POST
-    public JsonObject addStory(Story story) {
+    @Path("/{backlogItemId}")
+    public JsonObject addStory(@PathParam("backlogItemId") Long backlogItemId, Story story) {
         if (story != null) {
-            Story u = storyService.add(story);
-            return JSONUtils.jsonify(u);
+            story = storyService.add(backlogItemId, story);
+            if (story != null) {
+                return JSONUtils.jsonify(story);
+            }
+            return JSONUtils.sendMessage("Product Backlog Item not found!!");
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return JSONUtils.sendMessage("Bad formed data!!");
     }
 
     @PUT

@@ -5,10 +5,12 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,21 +23,24 @@ import javax.persistence.UniqueConstraint;
  * @author bacali
  */
 @Entity
-@Table(name = "TBL_USER",uniqueConstraints = @UniqueConstraint(columnNames = {"email"}))
+@Table(name = "TBL_USER", uniqueConstraints = @UniqueConstraint(columnNames = {"email"}))
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @Expose
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Expose
     private String firstName;
+    @Expose
     private String lastName;
+    @Expose
     private String adress;
+    @Expose
     private String email;
 
-    @OneToMany(mappedBy = "user",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Resource> resources;
 
     public User() {

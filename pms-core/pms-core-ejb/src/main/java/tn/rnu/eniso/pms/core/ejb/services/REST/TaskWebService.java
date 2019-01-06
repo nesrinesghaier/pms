@@ -6,6 +6,7 @@
 package tn.rnu.eniso.pms.core.ejb.services.REST;
 
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.json.JsonObject;
 import javax.json.JsonStructure;
@@ -20,6 +21,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import tn.rnu.eniso.pms.core.ejb.entities.DependencyType;
 import tn.rnu.eniso.pms.core.ejb.entities.Task;
+import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
+import tn.rnu.eniso.pms.core.ejb.entities.TaskDependency;
 import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
 import tn.rnu.eniso.pms.core.ejb.services.TaskService;
 
@@ -46,31 +49,52 @@ public class TaskWebService {
     }
 
     @GET
-    public List<Task> getAllTasks() {
+    public JsonStructure getAllTasks() {
         List<Task> tasks = taskService.getAll();
-        return tasks;
+        return JSONUtils.jsonifyList(tasks);
+    }
+
+    @GET
+    @Path("/{id}/consumptions")
+    public JsonStructure getAllConsumptions(@PathParam("id") Long id) {
+        List<TaskConsumption> consumptions = taskService.getAllConsumptions(id);
+        return JSONUtils.jsonifyList(consumptions);
+    }
+
+    @GET
+    @Path("/{id}/dependencies")
+    public JsonStructure getAllDependencies(@PathParam("id") Long id) {
+        List<TaskDependency> dependencies = taskService.getAllDependencies(id);
+        return JSONUtils.jsonifyList(dependencies);
     }
 
     @POST
-    public JsonObject addTask(Task task) {
+    @Path("/{storyId}")
+    public JsonObject addTask(@PathParam("storyId") Long storyId, Task task) {
         if (task != null) {
-            Task t = taskService.add(task);
-            return JSONUtils.jsonify(t);
+            task = taskService.add(storyId, task);
+            if (task != null) {
+                return JSONUtils.jsonify(task);
+            }
+            return JSONUtils.sendMessage("Story not found!!");
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return JSONUtils.sendMessage("Bad formed data!!");
     }
 
     @POST
-    @Path("/{parentId}/{childId}")
-    public JsonObject addDependency(@PathParam("parentId") Long parentId,
-            @PathParam("childId") Long childId,
-            String dependencyType) {
-        DependencyType type = DependencyType.getEnum(dependencyType);
-        if (taskService.addDependency(parentId, childId, type)) {
-            return JSONUtils.sendMessage("Added");
+    @Path("/addDependency")
+    public JsonObject addDependency(Map<String, Object> data) {
+        if (data.containsKey("parentId") && data.containsKey("childId") && data.containsKey("type")) {
+            Long parentId = Long.parseLong(data.get("parentId").toString());
+            Long childId = Long.parseLong(data.get("childId").toString());
+            String typeName = data.get("type").toString();
+            DependencyType type = DependencyType.valueOf(typeName);
+            if (type != null && taskService.addDependency(parentId, childId, type)) {
+                return JSONUtils.sendMessage("Added");
+            }
+            return JSONUtils.sendMessage("Dependency cycle found!!");
         }
-        return JSONUtils.sendMessage("Dependency cycle found!!");
-
+        return JSONUtils.sendMessage("Bad formed data!!");
     }
 
     @PUT

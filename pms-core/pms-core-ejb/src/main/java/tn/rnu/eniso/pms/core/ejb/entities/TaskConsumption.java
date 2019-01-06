@@ -5,17 +5,14 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,28 +25,13 @@ public class TaskConsumption implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @Expose
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Expose
     private String amount;
+    @Expose
     private String taskDate;
-    
-    
-    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
-    @JoinTable(name = "resource_taskConsumption",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id"))
-    private List<Resource> resources;
-
-    public List<Resource> getResources() {
-        return resources;
-    }
-
-    
-
-    
-    public void setResources(List<Resource> resources) {
-        this.resources = resources;
-    }
 
     public TaskConsumption() {
     }
@@ -100,6 +82,7 @@ public class TaskConsumption implements Serializable {
 
     @Override
     public String toString() {
-        return "TaskConsumption{" + "id=" + id + ", amount=" + amount + ", taskDate=" + taskDate + ", resources=" + resources + '}';
+        return "TaskConsumption{" + "id=" + id + ", amount=" + amount + ", taskDate=" + taskDate + '}';
     }
+
 }

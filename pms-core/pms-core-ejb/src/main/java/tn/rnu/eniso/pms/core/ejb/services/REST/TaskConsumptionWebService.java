@@ -51,23 +51,27 @@ public class TaskConsumptionWebService {
     }
 
     @POST
-    @Path("/task/{taskId}")
-    public JsonObject addTaskConsumption(@PathParam("taskId") Long taskId, TaskConsumption taskConsumption) {
-        if (taskConsumption != null) {
-            TaskConsumption t = taskConsumptionService.add(taskConsumption, taskId);
-            return JSONUtils.jsonify(t);
+    @Path("/{taskId}/{resourceId}")
+    public JsonObject addTaskConsumption(@PathParam("taskId") Long taskId,
+            @PathParam("resourceId") Long resourceId, TaskConsumption consumption) {
+        if (consumption != null) {
+            consumption = taskConsumptionService.add(taskId, resourceId, consumption);
+            if (consumption != null) {
+                return JSONUtils.jsonify(consumption);
+            }
+            return JSONUtils.sendMessage("Task or Resource not found or they are not in the same Prject!!");
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return JSONUtils.sendMessage("Bad formed data!!");
     }
 
     @PUT
     @Path("/task/{id}")
-    public JsonObject updateTaskConsumption(@PathParam("taskId") Long taskId,TaskConsumption taskConsumption) {
-        if (taskConsumption != null) {
-            TaskConsumption t = taskConsumptionService.update(taskId,taskConsumption);
-            return JSONUtils.jsonify(t);
+    public JsonObject updateTaskConsumption(@PathParam("taskId") Long taskId, TaskConsumption consumption) {
+        if (consumption != null) {
+            consumption = taskConsumptionService.update(consumption);
+            return JSONUtils.jsonify(consumption);
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return JSONUtils.sendMessage("Bad formed data!!");
     }
 
     @GET
@@ -81,10 +85,11 @@ public class TaskConsumptionWebService {
     }
 
     @DELETE
-    @Path("/task/{taskId}/{id}")
-    public JsonStructure deleteTaskConsumptionById(@PathParam("taskId") Long taskId, @PathParam("id") Long id) {
-        taskConsumptionService.delete(taskId, id);
-        return JSONUtils.jsonifyList(taskConsumptionService.getAll());
+    @Path("/{id}")
+    public JsonStructure deleteTaskConsumptionById(@PathParam("id") Long id) {
+        taskConsumptionService.delete(id);
+        List<TaskConsumption> consumptions = taskConsumptionService.getAll();
+        return JSONUtils.jsonifyList(consumptions);
     }
 
 }

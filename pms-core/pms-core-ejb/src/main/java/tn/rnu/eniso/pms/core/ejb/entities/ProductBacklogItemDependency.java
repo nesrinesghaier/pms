@@ -5,6 +5,7 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,13 +25,14 @@ public class ProductBacklogItemDependency implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @Expose
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    @Expose
+    private DependencyType type;
+    @Expose
     @OneToOne
     private ProductBacklogItem destinationBacklogItem;
-
-    private DependencyType type;
 
     public DependencyType getType() {
         return type;

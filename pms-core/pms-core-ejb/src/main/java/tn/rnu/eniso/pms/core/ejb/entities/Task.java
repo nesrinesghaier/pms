@@ -5,6 +5,7 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +17,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,27 +30,25 @@ public class Task implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @Expose
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Expose
     private String description;
+    @Expose
     private Long estimationDuration;
+    @Expose
     private String startDate;
+    @Expose
     private String endDate;
+    @Expose
     private int complexity;// une tache elementaire prend une complexity =1 
 
-    @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TaskConsumption> taskConsumptions;
 
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TaskDependency> taskDependencies;
-    
-    public List<TaskDependency> getTaskDependencies() {
-        return taskDependencies;
-    }
-
-    public void setTaskDependencies(List<TaskDependency> taskDependencies) {
-        this.taskDependencies = taskDependencies;
-    }
 
     public Task() {
     }
@@ -87,6 +87,14 @@ public class Task implements Serializable {
 
     public String getEndDate() {
         return endDate;
+    }
+
+    public List<TaskDependency> getTaskDependencies() {
+        return taskDependencies;
+    }
+
+    public void setTaskDependencies(List<TaskDependency> taskDependencies) {
+        this.taskDependencies = taskDependencies;
     }
 
     public void setEndDate(String endDate) {

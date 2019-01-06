@@ -7,13 +7,13 @@ package tn.rnu.eniso.pms.core.ejb.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import tn.rnu.eniso.pms.core.ejb.entities.Resource;
+import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.Story;
+import tn.rnu.eniso.pms.core.ejb.entities.Task;
 
 /**
  *
@@ -22,14 +22,18 @@ import tn.rnu.eniso.pms.core.ejb.entities.Story;
 @Stateless(name = "storyService")
 public class StoryService {
 
-    static Logger logger = Logger.getGlobal();
-
     @PersistenceContext(unitName = "pms-pu")
     private EntityManager em;
 
-    public Story add(Story story) {
-        if (story != null) {
+    @EJB
+    private TaskService taskService;
+
+    public Story add(Long backlogItemId, Story story) {
+        ProductBacklogItem backlogItem = em.find(ProductBacklogItem.class, backlogItemId);
+        if (backlogItem != null) {
             em.persist(story);
+            backlogItem.getStories().add(story);
+            em.merge(backlogItem);
             return story;
         }
         return null;
@@ -47,9 +51,25 @@ public class StoryService {
         return em.createQuery("SELECT s FROM Story s").getResultList();
     }
 
+    public List<Task> getAllTasks(Long id) {
+        Story s = em.find(Story.class, id);
+        return s.getTasks();
+    }
+
     public void delete(Long id) {
         Story story = em.find(Story.class, id);
         if (story != null) {
+            List<Task> tasks = new ArrayList<>(story.getTasks());
+            for (Task task : tasks) {
+                taskService.delete(task.getId());
+            }
+            ProductBacklogItem backlogItem = 
+                    (ProductBacklogItem) em.createQuery("SELECT p from ProductBacklogItem p WHERE :s MEMBER OF p.stories")
+                    .setParameter("s", story).getSingleResult();
+            if (backlogItem != null) {
+                backlogItem.getStories().remove(story);
+                em.merge(backlogItem);
+            }
             em.remove(story);
         }
     }

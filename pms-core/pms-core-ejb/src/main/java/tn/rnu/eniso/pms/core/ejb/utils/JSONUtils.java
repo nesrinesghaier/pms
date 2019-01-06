@@ -6,6 +6,7 @@
 package tn.rnu.eniso.pms.core.ejb.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.StringReader;
 import java.util.Collections;
 import java.util.List;
@@ -24,14 +25,14 @@ public class JSONUtils {
     static Map<String, String> msg_404 = Collections.singletonMap("message", "404NOTFOUND");
 
     public static JsonObject jsonify(Object o) {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         String s = gson.toJson(o);
         JsonReader jr = Json.createReader(new StringReader(s));
         return jr.readObject();
     }
 
     public static <T> JsonStructure jsonifyList(List<T> list) {
-        Gson gson = new Gson();
+        Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
         String s = gson.toJson(list);
         JsonReader jr = Json.createReader(new StringReader(s));
         return jr.readArray();

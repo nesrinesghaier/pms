@@ -18,7 +18,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.Project;
+import tn.rnu.eniso.pms.core.ejb.entities.Resource;
 import tn.rnu.eniso.pms.core.ejb.utils.JSONUtils;
 import tn.rnu.eniso.pms.core.ejb.services.ProjectService;
 
@@ -50,13 +52,33 @@ public class ProjectWebService {
         return JSONUtils.jsonifyList(projects);
     }
 
+    @GET
+    @Path("/{id}/resources")
+    public JsonStructure getAllResources(@PathParam("id") Long id) {
+        List<Resource> resources = projectService.getAllResources(id);
+        if (resources != null) {
+            return JSONUtils.jsonifyList(resources);
+        }
+        return JSONUtils.sendMessage("Project Not found");
+    }
+
+    @GET
+    @Path("/{id}/backlogItems")
+    public JsonStructure getAllBacklogItems(@PathParam("id") Long id) {
+        List<ProductBacklogItem> backlogItems = projectService.getAllBacklogItems(id);
+        if (backlogItems != null) {
+            return JSONUtils.jsonifyList(backlogItems);
+        }
+        return JSONUtils.sendMessage("Project Not found");
+    }
+
     @POST
     public JsonObject addProject(Project project) {
         if (project != null) {
-            Project p = projectService.add(project);
-            return JSONUtils.jsonify(p);
+            project = projectService.add(project);
+            return JSONUtils.jsonify(project);
         }
-        return JSONUtils.sendResourceNotFoundError();
+        return JSONUtils.sendMessage("Bad formed data!!");
     }
 
     @PUT

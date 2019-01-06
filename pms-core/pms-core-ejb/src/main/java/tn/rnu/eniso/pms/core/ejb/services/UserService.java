@@ -7,11 +7,10 @@ package tn.rnu.eniso.pms.core.ejb.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
 import tn.rnu.eniso.pms.core.ejb.entities.User;
 
@@ -22,17 +21,15 @@ import tn.rnu.eniso.pms.core.ejb.entities.User;
 @Stateless(name = "userService")
 public class UserService {
 
-    static Logger logger = Logger.getGlobal();
-
     @PersistenceContext(unitName = "pms-pu")
     private EntityManager em;
 
+    @EJB
+    private ResourceService resourceService;
+
     public User add(User user) {
-        if (user != null) {
-            em.persist(user);
-            return user;
-        }
-        return null;
+        em.persist(user);
+        return user;
     }
 
     public User get(Long id) {
@@ -47,11 +44,12 @@ public class UserService {
         return em.createQuery("SELECT u FROM User u").getResultList();
     }
 
-    public void delete(Long id) {
+    public List<Resource> getAllResources(Long id) {
         User user = em.find(User.class, id);
         if (user != null) {
-            em.remove(user);
+            return user.getResources();
         }
+        return null;
     }
 
     public User update(User user) {
@@ -61,4 +59,16 @@ public class UserService {
         }
         return user;
     }
+
+    public void delete(Long id) {
+        User user = em.find(User.class, id);
+        if (user != null) {
+            List<Resource> resources = new ArrayList<>(user.getResources());
+            for (Resource resource : resources) {
+                resourceService.delete(resource.getId());
+            }
+            em.remove(user);
+        }
+    }
+
 }
