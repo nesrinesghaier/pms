@@ -10,7 +10,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class ProjectService {
 
-  apiUrl = 'http://localhost:8080/pms-global-web/core-resources/project/';
+  apiUrl = '/api/core-resources/project/';
   reqHeader = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain, */*'

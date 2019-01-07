@@ -5,12 +5,13 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {PmsCostDashboardComponent} from '../../projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.component';
 import {PmsGanttDashboardComponent} from '../../projects/pms-gantt/src/app/pms-gantt-dashboard/pms-gantt-dashboard.component';
 import {MainComponent} from './dashboard/main/main.component';
+import {ProjectListComponent} from './dashboard/projects/project-list/project-list.component';
 
 const routes: Routes = [{path: '', component: PublicComponent},
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
-      {path: '', component: MainComponent},
+      {path: '', component: ProjectListComponent},
       {path: 'cost', component: PmsCostDashboardComponent},
       {path: 'gantt', component: PmsGanttDashboardComponent},
       {path: 'scrum', component: PmsCostDashboardComponent}

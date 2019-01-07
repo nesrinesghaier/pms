@@ -25,7 +25,7 @@ import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
     ProjectFormComponent,
     MainComponent,
     PmsCostDashboardComponent,
-    PmsGanttDashboardComponent
+    PmsGanttDashboardComponent,
   ],
   imports: [
     BrowserModule,
