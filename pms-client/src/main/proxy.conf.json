@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "http://localhost:8080/pms-global-web",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

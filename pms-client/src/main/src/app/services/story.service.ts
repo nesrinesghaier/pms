@@ -6,7 +6,7 @@ import {Story} from '../models/story';
   providedIn: 'root'
 })
 export class StoryService {
-  apiUrl = 'http://localhost:8080/pms-global-web/core-resources/story/';
+  apiUrl = '/api/core-resources/story/';
   reqHeader = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain, */*'

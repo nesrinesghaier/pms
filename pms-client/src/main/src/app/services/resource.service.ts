@@ -7,7 +7,7 @@ import {TaskConsumption} from '../models/task-consumption';
   providedIn: 'root'
 })
 export class ResourceService {
-  apiUrl = 'http://localhost:8080/pms-global-web/core-resources/resource/';
+  apiUrl = '/api/core-resources/resource/';
   reqHeader = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain, */*'

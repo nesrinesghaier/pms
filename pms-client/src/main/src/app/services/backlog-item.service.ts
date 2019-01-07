@@ -9,7 +9,7 @@ import {ProductBacklogItemDependency} from '../models/product-backlog-item-depen
   providedIn: 'root'
 })
 export class BacklogItemService {
-  apiUrl = 'http://localhost:8080/pms-global-web/core-resources/backlogitem/';
+  apiUrl = '/api/core-resources/backlogitem/';
   reqHeader = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain, */*'
