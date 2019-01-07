@@ -1,20 +1,42 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Project} from '../src/app/models/project';
-import {Resource} from "../src/app/models/resource";
-import {ProductBacklogItem} from "../src/app/models/product-backlog-item";
+import {Project} from '../models/project';
+import {Resource} from '../models/resource';
+import {ProductBacklogItem} from '../models/product-backlog-item';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
+
   apiUrl = 'http://localhost:8080/pms-global-web/core-resources/project/';
   reqHeader = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain, */*'
   });
 
+  form: FormGroup = new FormGroup({
+    id: new FormControl(null),
+    name: new FormControl('', [Validators.required]),
+    logicName: new FormControl('', [Validators.required]),
+    description: new FormControl('')
+  });
+
   constructor(private http: HttpClient) {
+  }
+
+  initializeFormGroup() {
+    this.form.setValue({
+      id: null,
+      name: '',
+      logicName: '',
+      description: ''
+    });
+  }
+
+  populateForm(project) {
+    this.form.setValue(project);
   }
 
   getAllProjects() {

@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import {Project} from "../../models/project";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'pms-root',
@@ -7,8 +6,8 @@ import {Project} from "../../models/project";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  p:Project;
-constructor(){
-}
+  constructor() {
+  }
+
   title = 'pms-client';
 }

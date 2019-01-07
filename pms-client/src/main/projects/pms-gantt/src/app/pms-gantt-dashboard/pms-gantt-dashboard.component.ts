@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ProjectService} from '../../../../../services/project.service';
-import {Project} from "../../../../../models/project";
+import {ProjectService} from '../../../../../src/app/services/project.service';
+import {Project} from '../../../../../src/app/models/project';
 
 @Component({
   selector: 'pms-gantt-pms-gantt-dashboard',
