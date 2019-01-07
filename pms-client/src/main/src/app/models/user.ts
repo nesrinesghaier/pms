@@ -8,7 +8,6 @@ export class User {
   private adress: string;
   private resources: Array<Resource>;
 
-
   constructor(id: number, firstName: string, lastName: string, email: string, adress: string, resources: Array<Resource>) {
     this.id = id;
     this.firstName = firstName;
