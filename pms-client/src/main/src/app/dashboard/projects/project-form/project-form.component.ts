@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from '../../../services/project.service';
 import {MatDialogRef} from '@angular/material';
-import {Project} from '../../../models/project';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'pms-project-form',
@@ -12,7 +10,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 export class ProjectFormComponent implements OnInit {
 
   constructor(private service: ProjectService,
-              public activeModal: NgbActiveModal) {
+              public dialogRef: MatDialogRef<ProjectFormComponent>) {
   }
 
   ngOnInit() {
@@ -25,16 +23,14 @@ export class ProjectFormComponent implements OnInit {
 
   onSubmit() {
     if (this.service.form.valid) {
+      console.log(this.service.form.value);
       if (!this.service.form.get('id').value) {
         const project = this.service.form.value;
         project.creationDate = new Date(Date.now()).toLocaleString();
-        console.log(project);
-    //     //this.service.postProject(project);
+        // this.service.postProject(project);
       } else {
-    //     //this.service.updateProject(this.service.form.value);
+        // this.service.updateProject(this.service.form.value);
       }
-      this.service.form.reset();
-      this.service.initializeFormGroup();
       this.onClose();
     }
   }
@@ -42,6 +38,6 @@ export class ProjectFormComponent implements OnInit {
   onClose() {
     this.service.form.reset();
     this.service.initializeFormGroup();
-    this.activeModal.close('Close click');
+    this.dialogRef.close();
   }
 }

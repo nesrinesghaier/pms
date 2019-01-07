@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ProjectService} from '../../../../../src/app/services/project.service';
 import {Project} from '../../../../../src/app/models/project';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'pms-gantt-pms-gantt-dashboard',
@@ -9,7 +10,16 @@ import {Project} from '../../../../../src/app/models/project';
 })
 export class PmsGanttDashboardComponent implements OnInit {
 
-  constructor(private service: ProjectService) { }
+
+  currentProjectId: any;
+
+  constructor(private service: ProjectService,
+              private route: ActivatedRoute) {
+    route.parent.params.subscribe(params => {
+      this.currentProjectId = params['id'];
+      console.log(this.currentProjectId);
+    });
+  }
 
   ngOnInit() {
   }

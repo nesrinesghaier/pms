@@ -8,7 +8,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {PublicComponent} from './public/public.component';
 import {HttpClientModule} from '@angular/common/http';
 import {DashboardComponent} from './dashboard/dashboard.component';
-import {MainComponent} from './dashboard/main/main.component';
 import {PmsCostDashboardComponent} from '../../projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.component';
 import {PmsGanttDashboardComponent} from '../../projects/pms-gantt/src/app/pms-gantt-dashboard/pms-gantt-dashboard.component';
 import {ProjectListComponent} from './dashboard/projects/project-list/project-list.component';
@@ -19,19 +18,22 @@ import {ChartComponent} from '../../projects/pms-gantt/src/app/chart/chart.compo
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ResizableModule} from 'angular-resizable-element';
 import 'hammerjs';
+import {ProjectViewComponent} from './dashboard/projects/project-view/project-view.component';
+import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent,
     ChartComponent,
     PublicComponent,
     DashboardComponent,
+    ProjectViewComponent,
     ProjectListComponent,
     ProjectFormComponent,
+    PmsScrumDashboardComponent,
     PmsCostDashboardComponent,
-    PmsGanttDashboardComponent,
+    PmsGanttDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import 'hammerjs';
     NgbModalModule,
     FlexLayoutModule,
     HttpClientModule,
-    ResizableModule,
+    ResizableModule
   ],
   providers: [],
   bootstrap: [AppComponent],

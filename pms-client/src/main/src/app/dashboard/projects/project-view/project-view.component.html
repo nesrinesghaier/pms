@@ -5,11 +5,12 @@
     <button mat-button [routerLink]="['/']"><h1>PMS</h1></button>
     <span class="fill-remaining-space"></span>
     <button mat-button [routerLink]="['/dashboard']">Dashboard</button>
+    <button mat-button [routerLink]="['/dashboard/project/'+currentId+'/scrum']">Scrum</button>
+    <button mat-button [routerLink]="['/dashboard/project/'+currentId+'/gantt']">Gantt</button>
+    <button mat-button [routerLink]="['/dashboard/project/'+currentId+'/cost']">Cost</button>
   </mat-toolbar-row>
 </mat-toolbar>
-
-<pms-project-list></pms-project-list>
-
+<router-outlet></router-outlet>
 <footer class="page-footer font-small ">
 
   <div class="footer-copyright text-center py-3">© 2018 Copyright:

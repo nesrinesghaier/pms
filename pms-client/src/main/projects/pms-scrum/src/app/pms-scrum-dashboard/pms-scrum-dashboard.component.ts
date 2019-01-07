@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'pms-cost-dashboard',
-  templateUrl: './pms-cost-dashboard.component.html',
-  styleUrls: ['./pms-cost-dashboard.component.css']
+  selector: 'pms-scrum-pms-scrum-dashboard',
+  templateUrl: './pms-scrum-dashboard.component.html',
+  styleUrls: ['./pms-scrum-dashboard.component.css']
 })
-export class PmsCostDashboardComponent implements OnInit {
+export class PmsScrumDashboardComponent implements OnInit {
 
   currentProjectId: any;
 

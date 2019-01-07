@@ -1,26 +1,27 @@
-<div class="modal-header">
-  <h4 class="modal-title">
-    {{service.form.controls['id'].value ? "Modify Project" : "New Project"}}
-  </h4>
-  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
-    <span aria-hidden="true">&times;</span>
+<mat-toolbar>
+  <span>{{service.form.controls['id'].value !== null ? "Modify Project" : "New Project"}}</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
+    <mat-icon>clear</mat-icon>
   </button>
-</div>
-<div class="modal-body">
-  <form [formGroup]="service.form" class="md-form" (submit)="onSubmit()">
+</mat-toolbar>
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+  <div class="controles-container">
     <input type="hidden" formControlName="id">
-    <div class="form-group">
-      <input formControlName="name" placeholder="Name*">
-      <p *ngIf="service.form.controls['name'].invalid">This field is mandatory.</p>
+    <mat-form-field>
+      <input formControlName="name" matInput placeholder="Name*">
+      <mat-error>This field is mandatory.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="logicName" matInput placeholder="Logic Name*">
+      <mat-error>This field is mandatory.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea formControlName="description" matInput placeholder="Description"></textarea>
+    </mat-form-field>
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+      <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
     </div>
-    <div class="form-group">
-      <input formControlName="logicName" placeholder="Logic Name*">
-      <p *ngIf="service.form.controls['logicName'].invalid">This field is mandatory.</p>
-    </div>
-    <div class="form-group">
-      <input formControlName="description" matInput placeholder="Description">
-    </div>
-    <button class="btn btn-success" type="submit" [disabled]="service.form.invalid">Submit</button>
-    <button class="btn btn-default" (click)="onClear()">Clear</button>
-  </form>
-</div>
+  </div>
+</form>
