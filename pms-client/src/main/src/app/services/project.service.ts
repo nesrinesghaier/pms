@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Project} from '../models/project';
-import {Resource} from "../models/resource";
-import {ProductBacklogItem} from "../models/product-backlog-item";
+import {Resource} from '../models/resource';
+import {ProductBacklogItem} from '../models/product-backlog-item';
 
 @Injectable({
   providedIn: 'root'
