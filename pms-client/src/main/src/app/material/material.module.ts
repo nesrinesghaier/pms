@@ -30,6 +30,8 @@ import {
   MatTooltipModule,
   MatNativeDateModule,
 } from '@angular/material';
+import {MatTreeModule} from '@angular/material/tree';
+
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
@@ -40,14 +42,14 @@ import {MatDividerModule} from '@angular/material/divider';
 @NgModule({
   imports: [MatTabsModule, MatDividerModule, MatSliderModule, MatListModule, MatAutocompleteModule, MatSelectModule,
     MatRadioModule, MatRippleModule, MatSidenavModule, MatSlideToggleModule, MatStepperModule, MatTooltipModule,
-    MatProgressBarModule, MatMenuModule,
+    MatProgressBarModule, MatMenuModule, MatTreeModule,
     MatNativeDateModule, MatDatepickerModule, MatSnackBarModule, MatIconModule, MatDialogModule,
     MatExpansionModule, MatGridListModule, MatChipsModule, MatButtonToggleModule,
     MatProgressSpinnerModule, MatButtonModule, MatSortModule, MatTableModule, MatTabsModule,
     MatCheckboxModule, MatToolbarModule, MatCardModule, MatFormFieldModule, MatProgressSpinnerModule,
     MatInputModule, MatPaginatorModule, CommonModule],
   exports: [MatTabsModule, MatDividerModule, MatSliderModule, MatListModule, MatAutocompleteModule, MatSelectModule,
-    MatRadioModule, MatRippleModule,
+    MatRadioModule, MatRippleModule, MatTreeModule,
     MatSidenavModule, MatSlideToggleModule, MatStepperModule, MatTooltipModule, MatProgressBarModule, MatMenuModule,
     MatNativeDateModule, MatDatepickerModule, MatSnackBarModule, MatIconModule, MatDialogModule,
     MatExpansionModule, MatGridListModule, MatChipsModule, MatButtonToggleModule,

@@ -15,15 +15,21 @@ import {ProjectListComponent} from './dashboard/projects/project-list/project-li
 import {ProjectFormComponent} from './dashboard/projects/project-form/project-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
+import {ChartComponent} from '../../projects/pms-gantt/src/app/chart/chart.component';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {ResizableModule} from 'angular-resizable-element';
+import 'hammerjs';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    MainComponent,
+    ChartComponent,
     PublicComponent,
     DashboardComponent,
     ProjectListComponent,
     ProjectFormComponent,
-    MainComponent,
     PmsCostDashboardComponent,
     PmsGanttDashboardComponent,
   ],
@@ -36,7 +42,10 @@ import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgbModalModule
+    NgbModalModule,
+    FlexLayoutModule,
+    HttpClientModule,
+    ResizableModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -6,6 +6,7 @@ import {PmsCostDashboardComponent} from '../../projects/pms-cost/src/app/pms-cos
 import {PmsGanttDashboardComponent} from '../../projects/pms-gantt/src/app/pms-gantt-dashboard/pms-gantt-dashboard.component';
 import {MainComponent} from './dashboard/main/main.component';
 import {ProjectListComponent} from './dashboard/projects/project-list/project-list.component';
+import {ChartComponent} from '../../projects/pms-gantt/src/app/chart/chart.component';
 
 const routes: Routes = [{path: '', component: PublicComponent},
   {
@@ -14,9 +15,11 @@ const routes: Routes = [{path: '', component: PublicComponent},
       {path: '', component: ProjectListComponent},
       {path: 'cost', component: PmsCostDashboardComponent},
       {path: 'gantt', component: PmsGanttDashboardComponent},
+      { path: 'gantt/charts/:id', component: ChartComponent },
       {path: 'scrum', component: PmsCostDashboardComponent}
     ]
   }];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
