@@ -13,9 +13,11 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import tn.rnu.eniso.pms.core.ejb.entities.Budget;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.Project;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
+
 /**
  *
  * @author nesrine
@@ -59,6 +61,14 @@ public class ProjectService {
         Project project = em.find(Project.class, id);
         if (project != null) {
             return project.getResources();
+        }
+        return null;
+    }
+
+    public List<Budget> getAllBudgets(Long id) {
+        Project project = em.find(Project.class, id);
+        if (project != null) {
+            return project.getBudgets();
         }
         return null;
     }

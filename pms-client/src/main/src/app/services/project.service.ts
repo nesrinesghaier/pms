@@ -4,6 +4,7 @@ import {Project} from '../models/project';
 import {Resource} from '../models/resource';
 import {ProductBacklogItem} from '../models/product-backlog-item';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Budget} from "../models/budget";
 
 @Injectable({
   providedIn: 'root'
@@ -49,6 +50,9 @@ export class ProjectService {
 
   getProjectResources(id: number) {
     return this.http.get<Resource>(this.apiUrl + id + '/resources', {headers: this.reqHeader});
+  }
+  getProjectBudget(id: number) {
+    return this.http.get<Budget>(this.apiUrl + id + '/budgets', {headers: this.reqHeader});
   }
 
   getProjectBacklogItems(id: number) {

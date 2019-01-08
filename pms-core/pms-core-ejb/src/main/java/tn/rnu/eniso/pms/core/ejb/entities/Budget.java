@@ -5,6 +5,7 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
+import com.google.gson.annotations.Expose;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,9 +25,14 @@ public class Budget implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Expose
     private String date;
+    @Expose
     private Long amount;
-
+    
+    public Budget() {
+    }
+    
     public Long getId() {
         return id;
     }
