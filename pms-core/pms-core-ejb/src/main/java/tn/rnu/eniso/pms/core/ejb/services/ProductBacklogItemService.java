@@ -12,11 +12,11 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import tn.rnu.eniso.pms.entities.DependencyType;
-import tn.rnu.eniso.pms.entities.ProductBacklogItem;
-import tn.rnu.eniso.pms.entities.ProductBacklogItemDependency;
-import tn.rnu.eniso.pms.entities.Project;
-import tn.rnu.eniso.pms.entities.Story;
+import tn.rnu.eniso.pms.core.ejb.entities.DependencyType;
+import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
+import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItemDependency;
+import tn.rnu.eniso.pms.core.ejb.entities.Project;
+import tn.rnu.eniso.pms.core.ejb.entities.Story;
 
 /**
  *

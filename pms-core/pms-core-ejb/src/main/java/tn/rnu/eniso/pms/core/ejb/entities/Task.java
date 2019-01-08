@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.entities;
+package tn.rnu.eniso.pms.core.ejb.entities;
 
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;
@@ -36,15 +36,11 @@ public class Task implements Serializable {
     @Expose
     private String description;
     @Expose
-    private State state;
+    private Long estimationDuration;
     @Expose
     private String startDate;
     @Expose
     private String endDate;
-    @Expose
-    private String realStartDate;
-    @Expose
-    private String realEndDate;
     @Expose
     private int complexity;// une tache elementaire prend une complexity =1 
 
@@ -71,6 +67,14 @@ public class Task implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Long getEstimationDuration() {
+        return estimationDuration;
+    }
+
+    public void setEstimationDuration(Long estimationDuration) {
+        this.estimationDuration = estimationDuration;
     }
 
     public String getStartDate() {
@@ -113,30 +117,6 @@ public class Task implements Serializable {
         this.taskConsumptions = taskConsumptions;
     }
 
-    public State getState() {
-        return state;
-    }
-
-    public void setState(State state) {
-        this.state = state;
-    }
-
-    public String getRealStartDate() {
-        return realStartDate;
-    }
-
-    public void setRealStartDate(String realStartDate) {
-        this.realStartDate = realStartDate;
-    }
-
-    public String getRealEndDate() {
-        return realEndDate;
-    }
-
-    public void setRealEndDate(String realEndDate) {
-        this.realEndDate = realEndDate;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -156,7 +136,7 @@ public class Task implements Serializable {
 
     @Override
     public String toString() {
-        return "Task{" + "id=" + id + ", description=" + description + ", state=" + state + ", startDate=" + startDate + ", endDate=" + endDate + ", realStartDate=" + realStartDate + ", realEndDate=" + realEndDate + ", complexity=" + complexity + ", taskConsumptions=" + taskConsumptions + ", taskDependencies=" + taskDependencies + '}';
+        return "Task{" + "id=" + id + ", description=" + description + ", estimationDuration=" + estimationDuration + ", startDate=" + startDate + ", endDate=" + endDate + ", complexity=" + complexity + ", taskConsumptions=" + taskConsumptions + ", taskDependencies=" + taskDependencies + '}';
     }
 
 }

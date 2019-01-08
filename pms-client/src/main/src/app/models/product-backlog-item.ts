@@ -5,16 +5,10 @@ export class ProductBacklogItem {
   private id: number;
   private priority: number;
   private description: string;
-  private backlogItemDependencies: Array<ProductBacklogItemDependency>;
+  private progress: number;
   private stories: Array<Story>;
-
-
-  constructor(priority: number, description: string, backlogItemDependencies: Array<ProductBacklogItemDependency>, stories: Array<Story>) {
-    this.priority = priority;
-    this.description = description;
-    this.backlogItemDependencies = backlogItemDependencies;
-    this.stories = stories;
-  }
+  private expanded: boolean;
+  private backlogItemDependencies: ProductBacklogItemDependency[];
 
   getId(): number {
     return this.id;
@@ -22,14 +16,6 @@ export class ProductBacklogItem {
 
   setId(value: number) {
     this.id = value;
-  }
-
-  getPriority(): number {
-    return this.priority;
-  }
-
-  setPriority(value: number) {
-    this.priority = value;
   }
 
   getDescription(): string {
@@ -56,4 +42,37 @@ export class ProductBacklogItem {
     this.stories = value;
   }
 
+  getExpanded(): boolean {
+    return this.expanded;
+  }
+
+  setExpanded(value: boolean) {
+    this.expanded = value;
+  }
+
+  getProgress(): number {
+    return this.progress;
+  }
+
+  setProgress(value: number) {
+    this.progress = value;
+  }
+
+  getPriority(): number {
+    return this.priority;
+  }
+
+  setPriority(value: number) {
+    this.priority = value;
+  }
+
+  /*constructor(priority: number, description: string, progress: number, stories: Array<Story>, expanded: boolean,
+              backlogItemDependencies: ProductBacklogItemDependency[]) {
+    this.priority = priority;
+    this.description = description;
+    this.progress = progress;
+    this.stories = stories;
+    this.expanded = expanded;
+    this.backlogItemDependencies = backlogItemDependencies;
+  }*/
 }

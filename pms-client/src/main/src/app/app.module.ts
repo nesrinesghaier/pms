@@ -1,7 +1,13 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
+
+
+
+
+
+
+
 import {AppComponent} from './app.component';
 import {MaterialModule} from './material/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -14,10 +20,13 @@ import {ProjectListComponent} from './dashboard/projects/project-list/project-li
 import {ProjectFormComponent} from './dashboard/projects/project-form/project-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
-import {ChartComponent} from '../../projects/pms-gantt/src/app/chart/chart.component';
+import {ChartComponent} from '../../projects/pms-gantt/src/app/chart/pms-gantt-chart.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ResizableModule} from 'angular-resizable-element';
 import 'hammerjs';
+  import { CommonModule } from '@angular/common';
+
+
 import {ProjectViewComponent} from './dashboard/projects/project-view/project-view.component';
 import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component';
 import {PmsScrumStateComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component';
@@ -37,6 +46,7 @@ import {PmsScrumStateComponent} from '../../projects/pms-scrum/src/app/pms-scrum
     PmsGanttDashboardComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     MaterialModule,
     AppRoutingModule,
@@ -50,7 +60,7 @@ import {PmsScrumStateComponent} from '../../projects/pms-scrum/src/app/pms-scrum
     HttpClientModule,
     ResizableModule
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [AppComponent],
   entryComponents: [
     ProjectFormComponent

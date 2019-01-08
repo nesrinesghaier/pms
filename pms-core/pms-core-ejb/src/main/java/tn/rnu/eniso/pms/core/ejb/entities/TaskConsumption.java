@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.entities;
+package tn.rnu.eniso.pms.core.ejb.entities;
 
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,8 +20,8 @@ import javax.persistence.Table;
  * @author bacali
  */
 @Entity
-@Table(name = "TBL_RESOURCE")
-public class Resource implements Serializable {
+@Table(name = "TBL_TASK_CONSUMPTION")
+public class TaskConsumption implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -31,22 +29,27 @@ public class Resource implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Expose
-    private ResourceRole resourceRole;
+    private String amount;
     @Expose
-    private String description;
+    private String taskDate;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<TaskConsumption> taskConsumptions;
-
-    public List<TaskConsumption> getTaskConsumptions() {
-        return taskConsumptions;
+    public TaskConsumption() {
     }
 
-    public void setTaskConsumptions(List<TaskConsumption> taskConsumptions) {
-        this.taskConsumptions = taskConsumptions;
+    public String getAmount() {
+        return amount;
     }
 
-    public Resource() {
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getTaskDate() {
+        return taskDate;
+    }
+
+    public void setTaskDate(String taskdate) {
+        this.taskDate = taskdate;
     }
 
     public Long getId() {
@@ -55,22 +58,6 @@ public class Resource implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public ResourceRole getResourceRole() {
-        return resourceRole;
-    }
-
-    public void setResourceRole(ResourceRole role) {
-        this.resourceRole = role;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     @Override
@@ -82,11 +69,11 @@ public class Resource implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the resource_id fields are not set
-        if (!(object instanceof Resource)) {
+        // TODO: Warning - this method won't work in the case the taskConsumption_id fields are not set
+        if (!(object instanceof TaskConsumption)) {
             return false;
         }
-        Resource other = (Resource) object;
+        TaskConsumption other = (TaskConsumption) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -95,7 +82,7 @@ public class Resource implements Serializable {
 
     @Override
     public String toString() {
-        return "Resource{" + "id=" + id + ", resourceRole=" + resourceRole + ", description=" + description + ", taskConsumptions=" + taskConsumptions + '}';
+        return "TaskConsumption{" + "id=" + id + ", amount=" + amount + ", taskDate=" + taskDate + '}';
     }
 
 }

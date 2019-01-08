@@ -510,7 +510,7 @@ var Charts = (function() {
 
 	// Variable
 
-	var $toggle = $('[data-toggle="chart"]');
+	var $toggle = $('[data-toggle="chart.js"]');
 	var mode = 'light';//(themeMode) ? themeMode : 'light';
 	var fonts = {
 		base: 'Open Sans'
@@ -598,11 +598,11 @@ var Charts = (function() {
 						custom: function(model) {
 
 							// Get tooltip
-							var $tooltip = $('#chart-tooltip');
+							var $tooltip = $('#chart.js-tooltip');
 
 							// Create tooltip on first render
 							if (!$tooltip.length) {
-								$tooltip = $('<div id="chart-tooltip" class="popover bs-popover-top" role="tooltip"></div>');
+								$tooltip = $('<div id="chart.js-tooltip" class="popover bs-popover-top" role="tooltip"></div>');
 
 								// Append to body
 								$('body').append($tooltip);
@@ -708,8 +708,8 @@ var Charts = (function() {
 						data.labels.forEach(function(label, index) {
 							var bgColor = data.datasets[0].backgroundColor[index];
 
-							content += '<span class="chart-legend-item">';
-							content += '<i class="chart-legend-indicator" style="background-color: ' + bgColor + '"></i>';
+							content += '<span class="chart.js-legend-item">';
+							content += '<i class="chart.js-legend-indicator" style="background-color: ' + bgColor + '"></i>';
 							content += label;
 							content += '</span>';
 						});
@@ -810,14 +810,14 @@ var Charts = (function() {
 			// Add options
 			pushOptions($chart, options);
 
-			// Update chart
+			// Update chart.js
 			$chart.update();
 		} else {
 
 			// Remove options
 			popOptions($chart, options);
 
-			// Update chart
+			// Update chart.js
 			$chart.update();
 		}
 	}
@@ -834,7 +834,7 @@ var Charts = (function() {
 		// Toggle ticks
 		toggleTicks(elem, $chart);
 
-		// Update chart
+		// Update chart.js
 		$chart.update();
 	}
 
@@ -907,7 +907,7 @@ var Charts = (function() {
 })();
 
 //
-// Orders chart
+// Orders chart.js
 //
 
 var OrdersChart = (function() {
@@ -916,7 +916,7 @@ var OrdersChart = (function() {
 	// Variables
 	//
 
-	var $chart = $('#chart-orders');
+	var $chart = $('#chart.js-orders');
 	var $ordersSelect = $('[name="ordersSelect"]');
 
 
@@ -924,10 +924,10 @@ var OrdersChart = (function() {
 	// Methods
 	//
 
-	// Init chart
+	// Init chart.js
 	function initChart($chart) {
 
-		// Create chart
+		// Create chart.js
 		var ordersChart = new Chart($chart, {
 			type: 'bar',
 			options: {
@@ -975,7 +975,7 @@ var OrdersChart = (function() {
 	}
 
 
-	// Init chart
+	// Init chart.js
 	if ($chart.length) {
 		initChart($chart);
 	}
@@ -989,14 +989,14 @@ var OrdersChart = (function() {
 'use strict';
 
 //
-// Sales chart
+// Sales chart.js
 //
 
 var SalesChart = (function() {
 
 	// Variables
 
-	var $chart = $('#chart-sales');
+	var $chart = $('#chart.js-sales');
 
 
 	// Methods
