@@ -7,7 +7,6 @@ package tn.rnu.eniso.pms.core.ejb.entities;
 
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,9 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -36,7 +33,7 @@ public class Task implements Serializable {
     @Expose
     private String description;
     @Expose
-    private State state;
+    private State taskState;
     @Expose
     private String startDate;
     @Expose
@@ -86,12 +83,12 @@ public class Task implements Serializable {
         return endDate;
     }
 
-    public State getState() {
-        return state;
+    public State getTaskState() {
+        return taskState;
     }
 
-    public void setState(State state) {
-        this.state = state;
+    public void setTaskState(State taskState) {
+        this.taskState = taskState;
     }
 
     public String getRealStartDate() {
@@ -157,17 +154,9 @@ public class Task implements Serializable {
         return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
-    public Task(Long id, String description, State state, String startDate, String endDate, String realStartDate, String realEndDate, int complexity, List<TaskConsumption> taskConsumptions, List<TaskDependency> taskDependencies) {
-        this.id = id;
-        this.description = description;
-        this.state = state;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.realStartDate = realStartDate;
-        this.realEndDate = realEndDate;
-        this.complexity = complexity;
-        this.taskConsumptions = taskConsumptions;
-        this.taskDependencies = taskDependencies;
+    @Override
+    public String toString() {
+        return "Task{" + "id=" + id + ", description=" + description + ", taskState=" + taskState + ", startDate=" + startDate + ", endDate=" + endDate + ", realStartDate=" + realStartDate + ", realEndDate=" + realEndDate + ", complexity=" + complexity + ", taskConsumptions=" + taskConsumptions + ", taskDependencies=" + taskDependencies + '}';
     }
 
 }
