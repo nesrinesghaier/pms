@@ -36,11 +36,16 @@ public class Task implements Serializable {
     @Expose
     private String description;
     @Expose
-    private Long estimationDuration;
+    private State state;
     @Expose
     private String startDate;
     @Expose
     private String endDate;
+    @Expose
+    private String realStartDate;
+    @Expose
+    private String realEndDate;
+    
     @Expose
     private int complexity;// une tache elementaire prend une complexity =1 
 
@@ -69,14 +74,6 @@ public class Task implements Serializable {
         this.description = description;
     }
 
-    public Long getEstimationDuration() {
-        return estimationDuration;
-    }
-
-    public void setEstimationDuration(Long estimationDuration) {
-        this.estimationDuration = estimationDuration;
-    }
-
     public String getStartDate() {
         return startDate;
     }
@@ -88,6 +85,31 @@ public class Task implements Serializable {
     public String getEndDate() {
         return endDate;
     }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public String getRealStartDate() {
+        return realStartDate;
+    }
+
+    public void setRealStartDate(String realStartDate) {
+        this.realStartDate = realStartDate;
+    }
+
+    public String getRealEndDate() {
+        return realEndDate;
+    }
+
+    public void setRealEndDate(String realEndDate) {
+        this.realEndDate = realEndDate;
+    }
+    
 
     public List<TaskDependency> getTaskDependencies() {
         return taskDependencies;
@@ -116,6 +138,7 @@ public class Task implements Serializable {
     public void setTaskConsumptions(List<TaskConsumption> taskConsumptions) {
         this.taskConsumptions = taskConsumptions;
     }
+    
 
     @Override
     public int hashCode() {
@@ -134,9 +157,17 @@ public class Task implements Serializable {
         return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
-    @Override
-    public String toString() {
-        return "Task{" + "id=" + id + ", description=" + description + ", estimationDuration=" + estimationDuration + ", startDate=" + startDate + ", endDate=" + endDate + ", complexity=" + complexity + ", taskConsumptions=" + taskConsumptions + ", taskDependencies=" + taskDependencies + '}';
+    public Task(Long id, String description, State state, String startDate, String endDate, String realStartDate, String realEndDate, int complexity, List<TaskConsumption> taskConsumptions, List<TaskDependency> taskDependencies) {
+        this.id = id;
+        this.description = description;
+        this.state = state;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.realStartDate = realStartDate;
+        this.realEndDate = realEndDate;
+        this.complexity = complexity;
+        this.taskConsumptions = taskConsumptions;
+        this.taskDependencies = taskDependencies;
     }
 
 }
