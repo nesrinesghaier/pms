@@ -11,10 +11,8 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceException;
-import tn.rnu.eniso.pms.entities.Resource;
-import tn.rnu.eniso.pms.entities.User;
-
+import tn.rnu.eniso.pms.core.ejb.entities.Resource;
+import tn.rnu.eniso.pms.core.ejb.entities.User;
 /**
  *
  * @author nesrine
