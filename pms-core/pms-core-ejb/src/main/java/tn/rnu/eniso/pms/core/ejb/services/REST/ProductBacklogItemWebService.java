@@ -19,9 +19,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
-import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItemDependency;
-import tn.rnu.eniso.pms.core.ejb.entities.Story;
+import tn.rnu.eniso.pms.entities.ProductBacklogItem;
+import tn.rnu.eniso.pms.entities.ProductBacklogItemDependency;
+import tn.rnu.eniso.pms.entities.Story;
 import tn.rnu.eniso.pms.core.ejb.services.ProductBacklogItemService;
 import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 

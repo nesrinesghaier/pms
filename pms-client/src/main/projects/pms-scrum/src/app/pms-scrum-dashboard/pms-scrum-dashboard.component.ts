@@ -13,7 +13,6 @@ export class PmsScrumDashboardComponent implements OnInit {
   constructor(private route: ActivatedRoute) {
     route.parent.params.subscribe(params => {
       this.currentProjectId = params['id'];
-      console.log(this.currentProjectId);
     });
   }
 

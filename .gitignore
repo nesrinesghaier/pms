@@ -25,3 +25,4 @@
 
 /pms-client/src/main/node
 /pms-client/.idea
+/pms-entities/target/

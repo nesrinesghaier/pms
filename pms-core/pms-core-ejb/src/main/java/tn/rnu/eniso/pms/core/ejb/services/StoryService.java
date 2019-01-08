@@ -11,9 +11,9 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
-import tn.rnu.eniso.pms.core.ejb.entities.Story;
-import tn.rnu.eniso.pms.core.ejb.entities.Task;
+import tn.rnu.eniso.pms.entities.ProductBacklogItem;
+import tn.rnu.eniso.pms.entities.Story;
+import tn.rnu.eniso.pms.entities.Task;
 
 /**
  *
