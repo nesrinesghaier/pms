@@ -1,7 +1,13 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-
 import {AppRoutingModule} from './app-routing.module';
+
+
+
+
+
+
+
 import {AppComponent} from './app.component';
 import {MaterialModule} from './material/material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -20,6 +26,7 @@ import {ResizableModule} from 'angular-resizable-element';
 import 'hammerjs';
 import {ProjectViewComponent} from './dashboard/projects/project-view/project-view.component';
 import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component';
+import {WeatherService} from "./services/weather.service";
 
 
 @NgModule({
@@ -49,7 +56,7 @@ import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-s
     HttpClientModule,
     ResizableModule
   ],
-  providers: [],
+  providers: [WeatherService],
   bootstrap: [AppComponent],
   entryComponents: [
     ProjectFormComponent
