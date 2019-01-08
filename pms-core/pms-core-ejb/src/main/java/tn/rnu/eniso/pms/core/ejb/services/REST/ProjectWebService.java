@@ -18,9 +18,11 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import tn.rnu.eniso.pms.core.ejb.entities.Budget;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.Project;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
+import tn.rnu.eniso.pms.core.ejb.services.BudgetService;
 import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 import tn.rnu.eniso.pms.core.ejb.services.ProjectService;
 
@@ -35,6 +37,7 @@ public class ProjectWebService {
 
     @EJB(name = "projectService")
     private ProjectService projectService;
+    
 
     @GET
     @Path("/{id}")
@@ -61,6 +64,18 @@ public class ProjectWebService {
         }
         return Response.status(Status.NOT_FOUND)
                 .entity(Utils.sendMessage("Project not found!!"))
+                .build();
+    }
+
+    @GET
+    @Path("/{id}/budgets")
+    public Response getAllBudgets(@PathParam("id") Long id) {
+        List<Budget> budgets =  projectService.getAllBudgets(id);
+        if (budgets != null) {
+            return Response.ok(Utils.jsonifyList(budgets)).build();
+        }
+        return Response.status(Status.NOT_FOUND)
+                .entity(Utils.sendMessage("Budget not found!!"))
                 .build();
     }
 

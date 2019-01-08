@@ -1,6 +1,7 @@
 import {ProductBacklogItem} from './product-backlog-item';
 import {Resource} from './resource';
-
+import {Budget} from './budget';
+import {from} from 'rxjs';
 export class Project {
   private id: number;
   private name: string;
@@ -9,6 +10,7 @@ export class Project {
   private description: string;
   private productBacklogItems: Array<ProductBacklogItem>;
   private resources: Array<Resource>;
+  private budgets: Array<Budget>;
 
   getId(): number {
     return this.id;
@@ -66,12 +68,21 @@ export class Project {
     this.resources = value;
   }
 
-  constructor(name: string, logicName: string, creationDate: string, description: string, productBacklogItems: Array<ProductBacklogItem>, resources: Array<Resource>) {
+  getbudgets(): Array<Budget> {
+    return this.budgets;
+  }
+
+  setbudgets(value: Array<Budget>) {
+    this.budgets = value;
+  }
+
+  constructor(name: string, logicName: string, creationDate: string, description: string, productBacklogItems: Array<ProductBacklogItem>, resources: Array<Resource>, budgets: Array<Budget>) {
     this.name = name;
     this.logicName = logicName;
     this.creationDate = creationDate;
     this.description = description;
     this.productBacklogItems = productBacklogItems;
     this.resources = resources;
+    this.budgets = budgets;
   }
 }

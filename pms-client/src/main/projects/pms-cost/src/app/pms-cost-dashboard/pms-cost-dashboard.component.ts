@@ -1,5 +1,8 @@
 import { Component, OnInit , AfterViewInit} from '@angular/core';
 import * as Chart from 'chart.js';
+import {MatDialog, MatTableDataSource} from '@angular/material';
+import {Router} from '@angular/router';
+import {ProjectService} from '../../../../../src/app/services/project.service';
 @Component({
   selector: 'pms-cost-dashboard',
   templateUrl: './pms-cost-dashboard.component.html',
@@ -7,13 +10,17 @@ import * as Chart from 'chart.js';
 })
 export class PmsCostDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router,
+              private dialog: MatDialog,
+              private service: ProjectService) {
+  }
+
   canvas: any;
   ctx: any;
   ngOnInit() {
+
     this.canvas = document.getElementById('myChart');
     this.ctx = this.canvas.getContext('2d');
-    // @ts-ignore
     const  myChart = new Chart(this.ctx, {
       type: 'bar',
       data: {

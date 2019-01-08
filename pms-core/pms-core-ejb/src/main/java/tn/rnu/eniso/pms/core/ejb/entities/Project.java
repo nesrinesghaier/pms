@@ -52,7 +52,7 @@ public class Project implements Serializable {
     
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Budget> budgets;
-
+    
     public Long getId() {
         return id;
     }

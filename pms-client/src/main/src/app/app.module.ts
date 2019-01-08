@@ -60,7 +60,7 @@ import {PmsScrumStateComponent} from '../../projects/pms-scrum/src/app/pms-scrum
     HttpClientModule,
     ResizableModule
   ],
-  providers: [WeatherService],
+  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
     ProjectFormComponent
