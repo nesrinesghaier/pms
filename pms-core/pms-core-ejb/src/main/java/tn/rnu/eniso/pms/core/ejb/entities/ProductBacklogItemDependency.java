@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.entities;
+package tn.rnu.eniso.pms.core.ejb.entities;
 
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;
@@ -19,10 +19,11 @@ import javax.persistence.Table;
  * @author bacali
  */
 @Entity
-@Table(name = "TBL_TASK_DEPENDENCY")
-public class TaskDependency implements Serializable {
+@Table(name = "TBL_PRODUCT_BACKLOG_ITEM_DEPENDENCY")
+public class ProductBacklogItemDependency implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @Expose
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,17 +32,25 @@ public class TaskDependency implements Serializable {
     private DependencyType type;
     @Expose
     @OneToOne
-    private Task destinationTask;
+    private ProductBacklogItem destinationBacklogItem;
 
-    public Task getDestinationTask() {
-        return destinationTask;
+    public DependencyType getType() {
+        return type;
     }
 
-    public void setDestinationTask(Task destinationTask) {
-        this.destinationTask = destinationTask;
+    public void setType(DependencyType type) {
+        this.type = type;
     }
 
-    public TaskDependency() {
+    public ProductBacklogItem getDestinationBacklogItem() {
+        return destinationBacklogItem;
+    }
+
+    public void setDestinationBacklogItem(ProductBacklogItem destinationBacklogItem) {
+        this.destinationBacklogItem = destinationBacklogItem;
+    }
+
+    public ProductBacklogItemDependency() {
     }
 
     public Long getId() {
@@ -50,14 +59,6 @@ public class TaskDependency implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public DependencyType getType() {
-        return type;
-    }
-
-    public void setType(DependencyType type) {
-        this.type = type;
     }
 
     @Override
@@ -69,11 +70,11 @@ public class TaskDependency implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TaskDependency)) {
+        // TODO: Warning - this method won't work in the case the pbid_id fields are not set
+        if (!(object instanceof ProductBacklogItemDependency)) {
             return false;
         }
-        TaskDependency other = (TaskDependency) object;
+        ProductBacklogItemDependency other = (ProductBacklogItemDependency) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -82,7 +83,6 @@ public class TaskDependency implements Serializable {
 
     @Override
     public String toString() {
-        return "TaskDependency{" + "id=" + id + ", destinationTask=" + destinationTask + ", type=" + type + '}';
+        return "ProductBacklogItemDependency{" + "id=" + id + ", destinationBacklogItem=" + destinationBacklogItem + ", type=" + type + '}';
     }
-
 }

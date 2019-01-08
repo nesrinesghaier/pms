@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.entities;
+package tn.rnu.eniso.pms.core.ejb.entities;
 
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;
@@ -16,6 +16,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -25,6 +27,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TBL_PROJECT")
+@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
 public class Project implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,6 +49,9 @@ public class Project implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Resource> resources;
+    
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Budget> budgets;
 
     public Long getId() {
         return id;
@@ -110,6 +116,14 @@ public class Project implements Serializable {
         return LocalDate.parse(startDate, inputFormat).format(outputFormat);
     }
 
+    public List<Budget> getBudgets() {
+        return budgets;
+    }
+
+    public void setBudgets(List<Budget> budgets) {
+        this.budgets = budgets;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -132,7 +146,7 @@ public class Project implements Serializable {
 
     @Override
     public String toString() {
-        return "Project{" + "id=" + id + ", name=" + name + ", logicName=" + logicName + ", creationDate=" + creationDate + ", description=" + description + ", productBacklogItems=" + productBacklogItems + ", resources=" + resources + '}';
+        return "Project{" + "id=" + id + ", name=" + name + ", logicName=" + logicName + ", creationDate=" + creationDate + ", description=" + description + ", productBacklogItems=" + productBacklogItems + ", resources=" + resources + ", budgets=" + budgets + '}';
     }
 
 }

@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.entities;
+package tn.rnu.eniso.pms.core.ejb.entities;
 
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,8 +19,8 @@ import javax.persistence.Table;
  * @author bacali
  */
 @Entity
-@Table(name = "TBL_TASK_CONSUMPTION")
-public class TaskConsumption implements Serializable {
+@Table(name = "TBL_TASK_DEPENDENCY")
+public class TaskDependency implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -29,27 +28,20 @@ public class TaskConsumption implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Expose
-    private String amount;
+    private DependencyType type;
     @Expose
-    private String taskDate;
+    @OneToOne
+    private Task destinationTask;
 
-    public TaskConsumption() {
+    public Task getDestinationTask() {
+        return destinationTask;
     }
 
-    public String getAmount() {
-        return amount;
+    public void setDestinationTask(Task destinationTask) {
+        this.destinationTask = destinationTask;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
-    }
-
-    public String getTaskDate() {
-        return taskDate;
-    }
-
-    public void setTaskDate(String taskdate) {
-        this.taskDate = taskdate;
+    public TaskDependency() {
     }
 
     public Long getId() {
@@ -58,6 +50,14 @@ public class TaskConsumption implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public DependencyType getType() {
+        return type;
+    }
+
+    public void setType(DependencyType type) {
+        this.type = type;
     }
 
     @Override
@@ -69,11 +69,11 @@ public class TaskConsumption implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the taskConsumption_id fields are not set
-        if (!(object instanceof TaskConsumption)) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof TaskDependency)) {
             return false;
         }
-        TaskConsumption other = (TaskConsumption) object;
+        TaskDependency other = (TaskDependency) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -82,7 +82,7 @@ public class TaskConsumption implements Serializable {
 
     @Override
     public String toString() {
-        return "TaskConsumption{" + "id=" + id + ", amount=" + amount + ", taskDate=" + taskDate + '}';
+        return "TaskDependency{" + "id=" + id + ", destinationTask=" + destinationTask + ", type=" + type + '}';
     }
 
 }

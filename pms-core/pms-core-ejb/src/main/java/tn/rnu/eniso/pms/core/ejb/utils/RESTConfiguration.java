@@ -13,7 +13,7 @@ import javax.ws.rs.core.Application;
  * @author nesrine
  */
 
-@ApplicationPath("core-resources")
+@ApplicationPath("api/core-resources")
 public class RESTConfiguration extends Application{
     
 }
