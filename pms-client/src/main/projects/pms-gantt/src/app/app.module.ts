@@ -9,13 +9,13 @@ import {MaterialModule} from '../../../../src/app/material/material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {HttpClientModule} from '@angular/common/http';
 import {ResizableModule} from 'angular-resizable-element';
-import {ChartComponent} from './chart/chart.component';
+import {PmsGanttChartComponent} from './chart/pms-gantt-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PmsGanttDashboardComponent,
-    ChartComponent
+    PmsGanttChartComponent
   ],
   imports: [
     BrowserModule,

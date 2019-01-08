@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ProjectService} from '../../../../../src/app/services/project.service';
-import {Project} from '../../../../../src/app/models/project';
-import {ActivatedRoute} from '@angular/router';
+import * as Moment from 'moment';
+import {extendMoment} from 'moment-range';
+
 
 @Component({
   selector: 'pms-gantt-pms-gantt-dashboard',
@@ -10,27 +11,10 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class PmsGanttDashboardComponent implements OnInit {
 
+  constructor(private service: ProjectService) {
 
-  currentProjectId: any;
-
-  constructor(private service: ProjectService,
-              private route: ActivatedRoute) {
-    route.parent.params.subscribe(params => {
-      this.currentProjectId = params['id'];
-      console.log(this.currentProjectId);
-    });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
   }
-
-  get() {
-    const p = new Project('posted from front', 'test', 'tesy', 'wjhxgs', Array<any>(), Array<any>());
-    this.service.postProject(p).subscribe((data) => {
-      console.log(data);
-    }, error => {
-      console.log(error);
-    });
-  }
-
 }

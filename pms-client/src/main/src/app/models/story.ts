@@ -1,4 +1,3 @@
-import {ProductBacklogItem} from './product-backlog-item';
 import {Task} from './task';
 
 export class Story {
@@ -7,7 +6,7 @@ export class Story {
   private action: string;
   private purpose: string;
   private complexity: number;
-  private _taskDependencies: Array<Task>;
+  private tasks: Array<Task>;
 
   getId(): number {
     return this.id;
@@ -50,11 +49,11 @@ export class Story {
   }
 
   get taskDependencies(): Array<Task> {
-    return this._taskDependencies;
+    return this.tasks;
   }
 
   set taskDependencies(value: Array<Task>) {
-    this._taskDependencies = value;
+    this.tasks = value;
   }
 
   constructor(id: number, actorUser: string, action: string, purpose: string, complexity: number, taskDependencies: Array<Task>) {
@@ -63,6 +62,6 @@ export class Story {
     this.action = action;
     this.purpose = purpose;
     this.complexity = complexity;
-    this._taskDependencies = taskDependencies;
+    this.tasks = taskDependencies;
   }
 }

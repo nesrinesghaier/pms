@@ -8,21 +8,22 @@ import * as Moment from 'moment';
 import { extendMoment } from 'moment-range';
 const moment = extendMoment(Moment);
 
-import { Step } from '../models/step';
-import { StepFlatNode } from '../models/stepFlatNode';
+import { Task } from '../models/Task';
+import { TaskFlatNode } from '../models/TaskFlatNode';
 
 @Injectable()
 export class ChartDatabase {
   id; // chart id
   moment = moment;
-  dataChange = new BehaviorSubject<Step>(null);
+  dataChange = new BehaviorSubject<Task>(null);
   storageKey = 'charts';
 
-  get data(): Step { return this.dataChange.value; }
+  get data(): Task { return this.dataChange.value; }
 
   constructor(private route: ActivatedRoute) {
-    this.route.params.subscribe(params => {
+    this.route.parent.params.subscribe(params => {
       this.id = params['id'];
+      console.log(localStorage.getItem(this.storageKey));
       this.initialize();
     });
     this.dataChange.asObservable().subscribe(val => {
@@ -38,7 +39,7 @@ export class ChartDatabase {
 
   // save local data
   saveStorage(val) {
-    const charts = JSON.parse(localStorage.getItem(this.storageKey)) as Array<Step>;
+    const charts = JSON.parse(localStorage.getItem(this.storageKey)) as Array<Task>;
     charts[this.id] = val;
     localStorage.setItem(this.storageKey, JSON.stringify(charts));
   }
@@ -59,35 +60,35 @@ export class ChartDatabase {
           'start': start,
           'end': end,
         },
-        'steps': []
+        'tasks': []
       };
       const tree = this.buildTree([root], 0); // build tree
       this.dataChange.next(tree[0]); // broadcast data
     }
   }
 
-  buildTree(steps: Array<any>, level: number): Step[] {
-    return steps.map((step: Step) => {
-      const newStep = new Step();
-      newStep.name = step.name;
-      newStep.progress = step.progress;
-      newStep.dates = step.dates;
+  buildTree(tasks: Array<any>, level: number): Task[] {
+    return tasks.map((step: Task) => {
+      const newTask = new Task();
+      newTask.name = step.name;
+      newTask.progress = step.progress;
+      newTask.dates = step.dates;
       // build progress dates
-      newStep.progressDates = this.setProgressDates(step);
+      newTask.progressDates = this.setProgressDates(step);
 
-      newStep.expanded = step.expanded !== undefined ? step.expanded : true;
+      newTask.expanded = step.expanded !== undefined ? step.expanded : true;
 
-      if (step.steps.length) {
-        newStep.steps = this.buildTree(step.steps, level + 1);
+      if (step.tasks.length) {
+        newTask.tasks = this.buildTree(step.tasks, level + 1);
       } else {
-        newStep.steps = [];
+        newTask.tasks = [];
       }
-      return newStep;
+      return newTask;
     });
   }
 
   // update progress dates
-  setProgressDates(step: Step) {
+  setProgressDates(step: Task) {
     const start = this.moment(step.dates.start);
     const end = this.moment(step.dates.end);
     const range = moment.range(start, end);
@@ -99,7 +100,7 @@ export class ChartDatabase {
 
   /** step manipulations */
   // update step name
-  updateStepName(node: Step, name: string) {
+  updateTaskName(node: Task, name: string) {
     node.name = name;
     // do not update tree, otherwise will interupt the typing
     this.saveStorage(this.data);
@@ -107,9 +108,9 @@ export class ChartDatabase {
   }
 
   // add child step
-  addChildStep(parent: Step) {
+  addChildTask(parent: Task) {
     parent.expanded = true; // set parent node expanded to show children
-    const child = new Step();
+    const child = new Task();
     child.name = '';
     child.progress = 0;
     child.progressDates = [];
@@ -117,29 +118,29 @@ export class ChartDatabase {
       start: parent.dates.start,
       end: parent.dates.end
     };
-    child.steps = [];
-    parent.steps.push(child);
+    child.tasks = [];
+    parent.tasks.push(child);
     this.dataChange.next(this.data);
     console.log('data updated');
   }
 
   // delete step
-  deleteStep(parent: Step, child: Step) {
-    const childIndex = parent.steps.indexOf(child);
-    parent.steps.splice(childIndex, 1);
+  deleteTask(parent: Task, child: Task) {
+    const childIndex = parent.tasks.indexOf(child);
+    parent.tasks.splice(childIndex, 1);
     this.dataChange.next(this.data);
     console.log('data updated');
   }
 
   // toggle expanded
-  toggleExpaned(step: Step) {
+  toggleExpaned(step: Task) {
     step.expanded = !step.expanded;
     this.saveStorage(this.data);
     console.log('data updated');
   }
 
   // update progress
-  updateProgress(step: Step, progress: number) {
+  updateProgress(step: Task, progress: number) {
     step.progress = progress;
     step.progressDates = this.setProgressDates(step);
     this.saveStorage(this.data);
@@ -149,7 +150,7 @@ export class ChartDatabase {
   }
 
   // update date range
-  updateDateRange(step: Step) {
+  updateDateRange(step: Task) {
     step.progressDates = this.setProgressDates(step);
     this.saveStorage(this.data);
     console.log('data updated');
@@ -163,37 +164,24 @@ export class ChartDatabase {
  * @title Tree with nested nodes
  */
 @Component({
-  selector: 'app-chart',
-  templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.scss'],
+  selector: 'pms-gantt-app-chart',
+  templateUrl: './pms-gantt-chart.component.html',
+  styleUrls: ['./pms-gantt-chart.component.scss'],
   providers: [ChartDatabase]
 })
-export class ChartComponent implements OnInit {
-  moment = moment;
-  dates: string[] = []; // all days in chart
-  today = moment().format('YYYY-MM-DD');
+export class PmsGanttChartComponent implements OnInit {
 
-  /** Map from flat node to nested node. This helps us finding the nested node to be modified */
-  flatNodeMap: Map<StepFlatNode, Step> = new Map<StepFlatNode, Step>();
-
-  /** Map from nested node to flattened node. This helps us to keep the same object for selection */
-  nestedNodeMap: Map<Step, StepFlatNode> = new Map<Step, StepFlatNode>();
-
-  treeControl: FlatTreeControl<StepFlatNode>;
-  treeFlattener: MatTreeFlattener<Step, StepFlatNode>;
-  dataSource: MatTreeFlatDataSource<Step, StepFlatNode>;
-
-  chartData;
-
-  sidebarStyle = {};
-
-  constructor(private database: ChartDatabase) {
+  public id;
+  constructor(private database: ChartDatabase, private route: ActivatedRoute) {
+    route.parent.params.subscribe((params) => {
+      this.id = params['id'];
+    });
     this.treeFlattener = new MatTreeFlattener(this.transformer, this._getLevel,
       this._isExpandable, this._getChildren);
-    this.treeControl = new FlatTreeControl<StepFlatNode>(this._getLevel, this._isExpandable);
+    this.treeControl = new FlatTreeControl<TaskFlatNode>(this._getLevel, this._isExpandable);
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
-    database.dataChange.subscribe((tree: Step) => {
+    database.dataChange.subscribe((tree: Task) => {
       if (tree) {
         this.chartData = tree;
         this.dataSource.data = [tree];
@@ -207,56 +195,72 @@ export class ChartComponent implements OnInit {
             this.treeControl.collapse(node);
           }
         });
-
         console.log(tree);
       }
     });
   }
+  moment = moment;
+  dates: string[] = []; // all days in chart
+  today = moment().format('YYYY-MM-DD');
+
+  /** Map from flat node to nested node. This helps us finding the nested node to be modified */
+  flatNodeMap: Map<TaskFlatNode, Task> = new Map<TaskFlatNode, Task>();
+
+  /** Map from nested node to flattened node. This helps us to keep the same object for selection */
+  nestedNodeMap: Map<Task, TaskFlatNode> = new Map<Task, TaskFlatNode>();
+
+  treeControl: FlatTreeControl<TaskFlatNode>;
+  treeFlattener: MatTreeFlattener<Task, TaskFlatNode>;
+  dataSource: MatTreeFlatDataSource<Task, TaskFlatNode>;
+
+  chartData;
+  sidebarStyle = {};
 
   /** utils of building tree */
-  transformer = (node: Step, level: number) => {
-    const flatNode = new StepFlatNode(!!node.steps.length, level, node.name, node.progress, node.progressDates, node.dates, node.expanded);
+  transformer = (node: Task, level: number) => {
+    const flatNode = new TaskFlatNode(!!node.tasks.length, level, node.name, node.progress, node.progressDates, node.dates, node.expanded);
     this.flatNodeMap.set(flatNode, node);
     this.nestedNodeMap.set(node, flatNode);
     return flatNode;
   }
 
-  private _getLevel = (node: StepFlatNode) => node.level;
+  private _getLevel = (node: TaskFlatNode) => node.level;
 
-  private _isExpandable = (node: StepFlatNode) => node.expandable;
+  private _isExpandable = (node: TaskFlatNode) => node.expandable;
 
-  private _getChildren = (node: Step): Observable<Step[]> => of(node.steps);
+  private _getChildren = (node: Task): Observable<Task[]> => of(node.tasks);
 
-  hasChild = (_: number, _nodeData: StepFlatNode) => _nodeData.expandable;
+  hasChild = (_: number, _nodeData: TaskFlatNode) => _nodeData.expandable;
   /** end of utils of building tree */
 
   ngOnInit() {
   }
 
   /** tree nodes manipulations */
-  updateStepName(node: StepFlatNode, name: string) {
+  updateTaskName(node: TaskFlatNode, name: string) {
     const nestedNode = this.flatNodeMap.get(node);
-    this.database.updateStepName(nestedNode, name);
+    this.database.updateTaskName(nestedNode, name);
   }
 
-  addChildStep(node: StepFlatNode) {
+  addChildTask(node: TaskFlatNode) {
+    console.log('id from component ' + this.id);
     const nestedNode = this.flatNodeMap.get(node);
-    this.database.addChildStep(nestedNode);
+    this.database.addChildTask(nestedNode);
   }
 
-  deleteStep(node: StepFlatNode) {
+  deleteTask(node: TaskFlatNode) {
     // if root, ignore
     if (this.treeControl.getLevel(node) < 1) {
       return null;
     }
 
-    const parentFlatNode = this.getParentStep(node);
+    const parentFlatNode = this.getParentTask(node);
     const parentNode = this.flatNodeMap.get(parentFlatNode);
     const childNode = this.flatNodeMap.get(node);
-    this.database.deleteStep(parentNode, childNode);
+    this.database.deleteTask(parentNode, childNode);
   }
 
-  getParentStep(node: StepFlatNode) {
+  getParentTask(node: TaskFlatNode) {
     const { treeControl } = this;
     const currentLevel = treeControl.getLevel(node);
     // if root, ignore
@@ -273,18 +277,18 @@ export class ChartComponent implements OnInit {
     }
   }
 
-  toggleExpanded(node: StepFlatNode) {
+  toggleExpanded(node: TaskFlatNode) {
     const nestedNode = this.flatNodeMap.get(node);
     this.database.toggleExpaned(nestedNode);
   }
 
-  updateProgress(node: StepFlatNode, progress: number) {
+  updateProgress(node: TaskFlatNode, progress: number) {
     const nestedNode = this.flatNodeMap.get(node);
     const newProgressDates = this.database.updateProgress(nestedNode, progress);
     node.progressDates = newProgressDates;
   }
 
-  updateDateRange(node: StepFlatNode) {
+  updateDateRange(node: TaskFlatNode) {
     node.dates.start = this.moment(node.dates.start).format('YYYY-MM-DD'); // convert moment to string
     node.dates.end = this.moment(node.dates.end).format('YYYY-MM-DD'); // convert moment to string
     const nestedNode = this.flatNodeMap.get(node);
@@ -315,7 +319,7 @@ export class ChartComponent implements OnInit {
     };
   }
 
-  buildCalendar(step: Step) {
+  buildCalendar(step: Task) {
     const start = this.moment(step.dates.start);
     const end = this.moment(step.dates.end);
     const range = this.moment.range(start, end);
