@@ -20,6 +20,7 @@ import {ResizableModule} from 'angular-resizable-element';
 import 'hammerjs';
 import {ProjectViewComponent} from './dashboard/projects/project-view/project-view.component';
 import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component';
+import {PmsScrumStateComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component';
 
 
 @NgModule({
@@ -31,7 +32,7 @@ import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-s
     ProjectViewComponent,
     ProjectListComponent,
     ProjectFormComponent,
-    PmsScrumDashboardComponent,
+    PmsScrumDashboardComponent, PmsScrumStateComponent,
     PmsCostDashboardComponent,
     PmsGanttDashboardComponent
   ],

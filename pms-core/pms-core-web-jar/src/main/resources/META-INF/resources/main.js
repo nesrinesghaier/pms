@@ -831,7 +831,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  pms-scrum-dashboard works!\n</p>\n"
+module.exports = "<div class=\"container\">\n  <mat-toolbar>\n    <span class=\"fill-remaining-space\"></span>\n    <span>Projects List</span>\n    <span class=\"fill-remaining-space\"></span>\n  </mat-toolbar>\n</div>\n"
 
 /***/ }),
 
@@ -857,7 +857,6 @@ var PmsScrumDashboardComponent = /** @class */ (function () {
         this.route = route;
         route.parent.params.subscribe(function (params) {
             _this.currentProjectId = params['id'];
-            console.log(_this.currentProjectId);
         });
     }
     PmsScrumDashboardComponent.prototype.ngOnInit = function () {
@@ -871,6 +870,62 @@ var PmsScrumDashboardComponent = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
     ], PmsScrumDashboardComponent);
     return PmsScrumDashboardComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.css":
+/*!******************************************************************************************************!*\
+  !*** ./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.css ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwcm9qZWN0cy9wbXMtc2NydW0vc3JjL2FwcC9wbXMtc2NydW0tZGFzaGJvYXJkL3Btcy1zY3J1bS1zdGF0ZS9wbXMtc2NydW0tc3RhdGUuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.html":
+/*!*******************************************************************************************************!*\
+  !*** ./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.html ***!
+  \*******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<p>\n  pms-scrum-state works!\n</p>\n"
+
+/***/ }),
+
+/***/ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.ts":
+/*!*****************************************************************************************************!*\
+  !*** ./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.ts ***!
+  \*****************************************************************************************************/
+/*! exports provided: PmsScrumStateComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PmsScrumStateComponent", function() { return PmsScrumStateComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var PmsScrumStateComponent = /** @class */ (function () {
+    function PmsScrumStateComponent() {
+    }
+    PmsScrumStateComponent.prototype.ngOnInit = function () {
+    };
+    PmsScrumStateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'pms-scrum-state',
+            template: __webpack_require__(/*! ./pms-scrum-state.component.html */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.html"),
+            styles: [__webpack_require__(/*! ./pms-scrum-state.component.css */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], PmsScrumStateComponent);
+    return PmsScrumStateComponent;
 }());
 
 
@@ -1007,7 +1062,6 @@ var AppComponent = /** @class */ (function () {
         this.router = router;
         this.title = 'pms-client';
         var redirectRoute = new URLSearchParams(document.location.search);
-        console.log(redirectRoute.get('url'));
         if (redirectRoute.get('url') && redirectRoute.get('url') !== '') {
             router.navigate([redirectRoute.get('url')]);
         }
@@ -1060,6 +1114,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var hammerjs__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(hammerjs__WEBPACK_IMPORTED_MODULE_19__);
 /* harmony import */ var _dashboard_projects_project_view_project_view_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./dashboard/projects/project-view/project-view.component */ "./src/app/dashboard/projects/project-view/project-view.component.ts");
 /* harmony import */ var _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_dashboard_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component.ts");
+/* harmony import */ var _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_state_pms_scrum_state_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.ts");
+
 
 
 
@@ -1095,7 +1151,7 @@ var AppModule = /** @class */ (function () {
                 _dashboard_projects_project_view_project_view_component__WEBPACK_IMPORTED_MODULE_20__["ProjectViewComponent"],
                 _dashboard_projects_project_list_project_list_component__WEBPACK_IMPORTED_MODULE_12__["ProjectListComponent"],
                 _dashboard_projects_project_form_project_form_component__WEBPACK_IMPORTED_MODULE_13__["ProjectFormComponent"],
-                _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_dashboard_component__WEBPACK_IMPORTED_MODULE_21__["PmsScrumDashboardComponent"],
+                _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_dashboard_component__WEBPACK_IMPORTED_MODULE_21__["PmsScrumDashboardComponent"], _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_state_pms_scrum_state_component__WEBPACK_IMPORTED_MODULE_22__["PmsScrumStateComponent"],
                 _projects_pms_cost_src_app_pms_cost_dashboard_pms_cost_dashboard_component__WEBPACK_IMPORTED_MODULE_10__["PmsCostDashboardComponent"],
                 _projects_pms_gantt_src_app_pms_gantt_dashboard_pms_gantt_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["PmsGanttDashboardComponent"]
             ],

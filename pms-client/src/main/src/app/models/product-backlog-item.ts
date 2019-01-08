@@ -1,4 +1,3 @@
-import {Project} from './project';
 import {ProductBacklogItemDependency} from './product-backlog-item-dependency';
 import {Story} from './story';
 
