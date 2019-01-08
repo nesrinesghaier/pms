@@ -11,10 +11,10 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import tn.rnu.eniso.pms.core.ejb.entities.Project;
-import tn.rnu.eniso.pms.core.ejb.entities.Resource;
-import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
-import tn.rnu.eniso.pms.core.ejb.entities.User;
+import tn.rnu.eniso.pms.entities.Project;
+import tn.rnu.eniso.pms.entities.Resource;
+import tn.rnu.eniso.pms.entities.TaskConsumption;
+import tn.rnu.eniso.pms.entities.User;
 
 /**
  *

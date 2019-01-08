@@ -55,7 +55,7 @@ export class ProjectListComponent implements OnInit {
 
   onDelete(id) {
     if (confirm('Are you sure to delete this record ?')) {
-      // this.service.deleteProject(id);
+      this.service.deleteProject(id);
     }
   }
 

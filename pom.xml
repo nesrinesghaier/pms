@@ -15,5 +15,6 @@
     <module>pms-cost</module>
     <!--<module>pms-client</module>-->
     <module>pms-global</module>
+    <module>pms-entities</module>
   </modules>
 </project>

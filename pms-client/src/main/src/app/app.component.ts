@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'pms-root',
@@ -6,7 +7,11 @@ import {Component} from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor() {
+  constructor(private router: Router) {
+    const redirectRoute = new URLSearchParams(document.location.search);
+    if (redirectRoute.get('url') && redirectRoute.get('url') !== '') {
+      router.navigate([redirectRoute.get('url')]);
+    }
   }
 
   title = 'pms-client';
