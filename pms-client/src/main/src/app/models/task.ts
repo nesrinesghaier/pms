@@ -1,5 +1,6 @@
 import {TaskConsumption} from './task-consumption';
 import {TaskDependency} from './task-dependency';
+import {State} from './State';
 
 export class Task {
   private id: number;
@@ -7,6 +8,9 @@ export class Task {
   private estimationDuration: number;
   private startDate: string;
   private endDate: string;
+  private realStartDate: string;
+  private realEndDate: string;
+  private state: State;
   private complexity: number;
   private taskConsumptions: Array<TaskConsumption>;
   private taskDependencies: Array<TaskDependency>;
@@ -75,12 +79,39 @@ export class Task {
     this.taskDependencies = value;
   }
 
-  constructor(id: number, description: string, estimationDuration: number, startDate: string, endDate: string, complexity: number, taskConsumptions: Array<TaskConsumption>, taskDependencies: Array<TaskDependency>) {
-    this.id = id;
+
+  getRealStartDate(): string {
+    return this.realStartDate;
+  }
+
+  setRealStartDate(value: string) {
+    this.realStartDate = value;
+  }
+
+  getRealEndDate(): string {
+    return this.realEndDate;
+  }
+
+  setRealEndDate(value: string) {
+    this.realEndDate = value;
+  }
+
+  getState(): State {
+    return this.state;
+  }
+
+  setState(value: State) {
+    this.state = value;
+  }
+
+  constructor(description: string, estimationDuration: number, startDate: string, endDate: string, realStartDate: string, realEndDate: string, state: State, complexity: number, taskConsumptions: Array<TaskConsumption>, taskDependencies: Array<TaskDependency>) {
     this.description = description;
     this.estimationDuration = estimationDuration;
     this.startDate = startDate;
     this.endDate = endDate;
+    this.realStartDate = realStartDate;
+    this.realEndDate = realEndDate;
+    this.state = state;
     this.complexity = complexity;
     this.taskConsumptions = taskConsumptions;
     this.taskDependencies = taskDependencies;

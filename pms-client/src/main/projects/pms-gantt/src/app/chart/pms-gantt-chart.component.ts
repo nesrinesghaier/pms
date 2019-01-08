@@ -8,8 +8,8 @@ import * as Moment from 'moment';
 import { extendMoment } from 'moment-range';
 const moment = extendMoment(Moment);
 
-import { Step } from '../models/step';
-import { StepFlatNode } from '../models/stepFlatNode';
+import { Step } from '../models/Task';
+import { StepFlatNode } from '../models/TaskFlatNode';
 
 @Injectable()
 export class ChartDatabase {
@@ -163,9 +163,9 @@ export class ChartDatabase {
  * @title Tree with nested nodes
  */
 @Component({
-  selector: 'app-chart',
-  templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.scss'],
+  selector: 'pms-gantt-chart',
+  templateUrl: './pms-gantt-chart.component.html',
+  styleUrls: ['./pms-gantt-chart.component.scss'],
   providers: [ChartDatabase]
 })
 export class ChartComponent implements OnInit {

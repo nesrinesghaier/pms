@@ -20,7 +20,7 @@ $highlightBorderColor: #FF9800;
 
 // resizable border
 [mwlResizable] {
-  border-right: 3px solid $borderColor;
+  border-right: 2px solid $borderColor;
   box-sizing: border-box;
 }
 
@@ -30,7 +30,7 @@ $highlightBorderColor: #FF9800;
   line-height: $nodeHeight - 2px;
   height: $nodeHeight - 2px;
   min-height: $nodeHeight - 2px;
-  border-width: 1px 3px 1px 0;
+  border-width: 1px 2px 1px 0;
   border-color: $borderColor;
   border-style: solid;
 }
@@ -45,7 +45,7 @@ $highlightBorderColor: #FF9800;
 
 .sidenav.names {
   mat-tree.tree {
-    padding-top: 14px; // align the lines of input and table
+    padding-top: 20px; // align the lines of input and table
   }
 }
 
@@ -55,7 +55,7 @@ $highlightBorderColor: #FF9800;
   flex: 0 0 250px;
   mat-tree.tree {
     padding-top: 14px; // align the lines and table
-    border-width: 0 3px 0 0;
+    border-width: 0 2px 0 0;
     border-color: $borderColor;
     border-style: solid;
     mat-tree-node {
@@ -70,10 +70,10 @@ $highlightBorderColor: #FF9800;
 /** progress */
 
 .sidenav.progress-bars {
-  flex: 0 0 200px;
+  flex: 0 0 100px;
   mat-tree.tree {
     padding-top: 8px; // align the sliders and table
-    border-width: 0 3px 0 0;
+    border-width: 0 2px 0 0;
     border-color: $borderColor;
     border-style: solid;
   }
@@ -113,7 +113,7 @@ $highlightBorderColor: #FF9800;
 
 ::ng-deep .calendar-cell.today {
   border-color: $highlightBorderColor;
-  border-width: 0.5px 5px;
+  border-width: 0.5px 3px;
 }
 
 // completed cell
@@ -124,4 +124,40 @@ $highlightBorderColor: #FF9800;
 // incompleted cell
 ::ng-deep .calendar-cell[date-filled=false][date-inside=true] {
   background-color: $incompleteColor;
+}
+
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-red {
+  color: #F44336 !important;
+}
+
+.text-green {
+  color: #4CAF50 !important;
 }

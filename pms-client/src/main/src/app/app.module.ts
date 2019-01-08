@@ -20,10 +20,13 @@ import {ProjectListComponent} from './dashboard/projects/project-list/project-li
 import {ProjectFormComponent} from './dashboard/projects/project-form/project-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
-import {ChartComponent} from '../../projects/pms-gantt/src/app/chart/chart.component';
+import {ChartComponent} from '../../projects/pms-gantt/src/app/chart/pms-gantt-chart.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ResizableModule} from 'angular-resizable-element';
 import 'hammerjs';
+  import { CommonModule } from '@angular/common';
+
+
 import {ProjectViewComponent} from './dashboard/projects/project-view/project-view.component';
 import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component';
 import {WeatherService} from "./services/weather.service";
@@ -43,6 +46,7 @@ import {WeatherService} from "./services/weather.service";
     PmsGanttDashboardComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     MaterialModule,
     AppRoutingModule,
