@@ -11,7 +11,7 @@
                      (ngModelChange)="updateTaskName(node, $event)"
                      required>
             </mat-form-field>
-            <button mat-icon-button (click)="addChildTask(node)" class="text-green" *ngIf="node.level<3">
+            <button mat-icon-button (click)="addChildTask(node)" class="text-green" *ngIf="node.level<2">
               <mat-icon>add</mat-icon>
             </button>
             <button mat-icon-button (click)="deleteTask(node)" class="text-red" *ngIf="node.level!==0">

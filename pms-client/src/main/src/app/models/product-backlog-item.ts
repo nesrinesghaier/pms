@@ -1,4 +1,3 @@
-import {Project} from './project';
 import {ProductBacklogItemDependency} from './product-backlog-item-dependency';
 import {Story} from './story';
 
@@ -6,16 +5,12 @@ export class ProductBacklogItem {
   private id: number;
   private priority: number;
   private description: string;
-  private backlogItemDependencies: Array<ProductBacklogItemDependency>;
+  private progress: number;
   private stories: Array<Story>;
-
-
-  constructor(priority: number, description: string, backlogItemDependencies: Array<ProductBacklogItemDependency>, stories: Array<Story>) {
-    this.priority = priority;
-    this.description = description;
-    this.backlogItemDependencies = backlogItemDependencies;
-    this.stories = stories;
-  }
+  private startDate: string;
+  private endDate: string;
+  private expanded: boolean;
+  private backlogItemDependencies: ProductBacklogItemDependency[];
 
   getId(): number {
     return this.id;
@@ -57,4 +52,35 @@ export class ProductBacklogItem {
     this.stories = value;
   }
 
+  getStartDate(): string {
+    return this.startDate;
+  }
+
+  setStartDate(value: string) {
+    this.startDate = value;
+  }
+
+  getEndDate(): string {
+    return this.endDate;
+  }
+
+  setEndDate(value: string) {
+    this.endDate = value;
+  }
+
+  getExpanded(): boolean {
+    return this.expanded;
+  }
+
+  setExpanded(value: boolean) {
+    this.expanded = value;
+  }
+
+  getProgress(): number {
+    return this.progress;
+  }
+
+  setProgress(value: number) {
+    this.progress = value;
+  }
 }

@@ -6,6 +6,8 @@ export class Story {
   private action: string;
   private purpose: string;
   private complexity: number;
+  private startDate: string;
+  private endDate: string;
   private tasks: Array<Task>;
 
   getId(): number {
@@ -56,12 +58,30 @@ export class Story {
     this.tasks = value;
   }
 
-  constructor(id: number, actorUser: string, action: string, purpose: string, complexity: number, taskDependencies: Array<Task>) {
-    this.id = id;
+  getEndDate(): string {
+    return this.endDate;
+  }
+
+  setEndDate(value: string) {
+    this.endDate = value;
+  }
+
+
+  getStartDate(): string {
+    return this.startDate;
+  }
+
+  setStartDate(value: string) {
+    this.startDate = value;
+  }
+
+  constructor(actorUser: string, action: string, purpose: string, complexity: number, startDate: string, endDate: string, tasks: Array<Task>) {
     this.actorUser = actorUser;
     this.action = action;
     this.purpose = purpose;
     this.complexity = complexity;
-    this.tasks = taskDependencies;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.tasks = tasks;
   }
 }

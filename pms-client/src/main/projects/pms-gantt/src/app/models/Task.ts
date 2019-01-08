@@ -1,4 +1,4 @@
-export class Task {
+export class Step {
   name: string;
   description: string;
   progress: number;
@@ -7,6 +7,6 @@ export class Task {
     start: string;
     end: string;
   };
-  tasks: Task[];
+  steps: Step[];
   expanded: boolean; // status of expanded
 }
