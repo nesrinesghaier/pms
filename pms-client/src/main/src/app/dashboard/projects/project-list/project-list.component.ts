@@ -25,15 +25,15 @@ export class ProjectListComponent implements OnInit {
     this.dataSource = new MatTableDataSource();
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.paginator;
-    for (let i = 0; i < 10; i++) {
-      this.dataSource.data.push(
-        {id: i, name: 'Hydrogen ' + i, logicName: 'Hyd ' + i, description: 'test ' + i});
-    }
     this.dataSource.filterPredicate = (data, filter) => {
       return this.displayedColumns.some(elem => {
         return elem !== 'actions' && data[elem].toLowerCase().indexOf(filter) !== -1;
       });
     };
+    this.service.getAllProjects().subscribe(projects => {
+      console.log(projects);
+      this.dataSource.data = projects;
+    });
   }
 
   onCreate() {
@@ -60,6 +60,7 @@ export class ProjectListComponent implements OnInit {
   }
 
   onView(id) {
+    localStorage.setItem('id', id);
     this.router.navigate(['/dashboard/project/', id]);
   }
 }

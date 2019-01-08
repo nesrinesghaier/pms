@@ -16,7 +16,7 @@ import {ProjectService} from '../../../../../src/app/services/project.service';
 
 @Injectable()
 export class ChartDatabase {
-  public id; // chart id
+  id: number; // chart id
   moment = moment;
   dataChange = new BehaviorSubject<Step>(null);
   storageKey = 'charts';
@@ -28,6 +28,7 @@ export class ChartDatabase {
   constructor(private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
       this.id = params['id'];
+      console.log('id = ' + this.id);
       this.initialize();
     });
     this.dataChange.asObservable().subscribe(val => {
@@ -188,19 +189,24 @@ export class ChartComponent implements OnInit {
 
 
   // service data
-  currentProjcet: Project;
+  currentProjcet: Project = new Project();
   id: number;
 
   constructor(private database: ChartDatabase, projectService: ProjectService) {
-    this.id = database.id;
-    console.log(this.id);
+    this.id = parseInt(localStorage.getItem('id'), 0);
     this.treeFlattener = new MatTreeFlattener(this.transformer, this._getLevel,
       this._isExpandable, this._getChildren);
-
-    projectService.getProjectBacklogItems(this.id).subscribe(items => {
-      console.log(items);
-      this.currentProjcet.setProductBacklogItems(items);
-    });
+    if (this.id != null) {
+      projectService.getProjectById(this.id).subscribe(project => {
+        this.currentProjcet = project;
+        // this.currentProjcet.setProductBacklogItems([]);
+      })
+      projectService.getProjectBacklogItems(this.id).subscribe(items => {
+        console.log(items);
+        this.currentProjcet.productBacklogItems = items;
+        console.log(JSON.stringify(this.currentProjcet.productBacklogItems.length));
+      });
+    }
     this.treeControl = new FlatTreeControl<StepFlatNode>(this._getLevel, this._isExpandable);
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 

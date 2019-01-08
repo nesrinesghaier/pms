@@ -4,7 +4,7 @@ import {Project} from '../models/project';
 import {Resource} from '../models/resource';
 import {ProductBacklogItem} from '../models/product-backlog-item';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Budget} from "../models/budget";
+import {Budget} from '../models/budget';
 
 @Injectable({
   providedIn: 'root'
