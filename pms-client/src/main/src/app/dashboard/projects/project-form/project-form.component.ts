@@ -27,9 +27,9 @@ export class ProjectFormComponent implements OnInit {
       if (!this.service.form.get('id').value) {
         const project = this.service.form.value;
         project.creationDate = new Date(Date.now()).toLocaleString();
-        // this.service.postProject(project);
+        this.service.postProject(project);
       } else {
-        // this.service.updateProject(this.service.form.value);
+        this.service.updateProject(this.service.form.value);
       }
       this.onClose();
     }

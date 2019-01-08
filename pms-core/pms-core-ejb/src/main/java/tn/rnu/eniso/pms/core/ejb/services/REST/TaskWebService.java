@@ -19,9 +19,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-import tn.rnu.eniso.pms.core.ejb.entities.Task;
-import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
-import tn.rnu.eniso.pms.core.ejb.entities.TaskDependency;
+import tn.rnu.eniso.pms.entities.Task;
+import tn.rnu.eniso.pms.entities.TaskConsumption;
+import tn.rnu.eniso.pms.entities.TaskDependency;
 import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 import tn.rnu.eniso.pms.core.ejb.services.TaskService;
 

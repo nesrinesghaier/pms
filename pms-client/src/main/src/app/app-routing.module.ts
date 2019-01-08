@@ -26,7 +26,7 @@ const routes: Routes = [{path: '', component: PublicComponent},
       },
       {path: 'scrum', component: PmsScrumDashboardComponent}
     ]
-  }];
+  }, {path: '*', redirectTo: '', pathMatch: 'full'}];
 
 
 @NgModule({
