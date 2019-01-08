@@ -1,5 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ProjectService} from '../../../../../src/app/services/project.service';
+import {PmsScrumStateComponent} from './pms-scrum-state/pms-scrum-state.component';
 
 @Component({
   selector: 'pms-scrum-dashboard',
@@ -7,10 +9,14 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./pms-scrum-dashboard.component.css']
 })
 export class PmsScrumDashboardComponent implements OnInit {
+  @ViewChild('TODO') todoState: PmsScrumStateComponent;
+  @ViewChild('INPROGRESS') inProgressState: PmsScrumStateComponent;
+  @ViewChild('DONE') doneState: PmsScrumStateComponent;
 
   currentProjectId: any;
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute,
+              private projectService: ProjectService) {
     route.parent.params.subscribe(params => {
       this.currentProjectId = params['id'];
     });

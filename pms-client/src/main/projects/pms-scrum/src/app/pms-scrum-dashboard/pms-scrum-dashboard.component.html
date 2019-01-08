@@ -6,13 +6,13 @@
   </mat-toolbar>
   <mat-grid-list cols="3">
     <mat-grid-tile>
-      <pms-scrum-state></pms-scrum-state>
+      <pms-scrum-state #TODO [title]="'TODO'"></pms-scrum-state>
     </mat-grid-tile>
     <mat-grid-tile>
-      <pms-scrum-state></pms-scrum-state>
+      <pms-scrum-state #INPROGRESS [title]="'IN PROGRESS'"></pms-scrum-state>
     </mat-grid-tile>
     <mat-grid-tile>
-      <pms-scrum-state></pms-scrum-state>
+      <pms-scrum-state #DONE [title]="'DONE'"></pms-scrum-state>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

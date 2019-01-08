@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'pms-scrum-state',
@@ -7,7 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PmsScrumStateComponent implements OnInit {
 
-  constructor() { }
+  @Input('title') title: string;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
