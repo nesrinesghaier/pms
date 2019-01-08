@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-  selector: 'pms-scrum-pms-scrum-dashboard',
+  selector: 'pms-scrum-dashboard',
   templateUrl: './pms-scrum-dashboard.component.html',
   styleUrls: ['./pms-scrum-dashboard.component.css']
 })

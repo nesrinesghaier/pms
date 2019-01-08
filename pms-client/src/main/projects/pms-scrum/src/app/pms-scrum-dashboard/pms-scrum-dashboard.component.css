@@ -1,0 +1,13 @@
+
+div.container {
+  padding-top: 10px;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+pms-scrum-state {
+  height: 97%;
+  width: 97%;
+}
