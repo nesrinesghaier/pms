@@ -1,24 +1,29 @@
-import { Component, OnInit, Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ResizeEvent } from 'angular-resizable-element';
-import { FlatTreeControl } from '@angular/cdk/tree';
-import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import {Component, OnInit, Injectable} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {ResizeEvent} from 'angular-resizable-element';
+import {FlatTreeControl} from '@angular/cdk/tree';
+import {MatTreeFlatDataSource, MatTreeFlattener} from '@angular/material/tree';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import * as Moment from 'moment';
-import { extendMoment } from 'moment-range';
+import {extendMoment} from 'moment-range';
+
 const moment = extendMoment(Moment);
 
-import { Step } from '../models/Task';
-import { StepFlatNode } from '../models/TaskFlatNode';
+import {Step} from '../models/step';
+import {StepFlatNode} from '../models/stepFlatNode';
+import {Project} from '../../../../../src/app/models/project';
+import {ProjectService} from '../../../../../src/app/services/project.service';
 
 @Injectable()
 export class ChartDatabase {
-  id; // chart id
+  public id; // chart id
   moment = moment;
   dataChange = new BehaviorSubject<Step>(null);
   storageKey = 'charts';
 
-  get data(): Step { return this.dataChange.value; }
+  get data(): Step {
+    return this.dataChange.value;
+  }
 
   constructor(private route: ActivatedRoute) {
     this.route.params.subscribe(params => {
@@ -51,9 +56,9 @@ export class ChartDatabase {
     } else {
       // init a new project
       const start = moment().format('YYYY-MM-DD');
-      const end = moment().add(7, 'days').format('YYYY-MM-DD');
+      const end = moment().add(8, 'days').format('YYYY-MM-DD');
       const root = {
-        'name': 'Project Name',
+        'name': 'Product Backlog Item',
         'progress': 0,
         'dates': {
           'start': start,
@@ -103,7 +108,6 @@ export class ChartDatabase {
     node.name = name;
     // do not update tree, otherwise will interupt the typing
     this.saveStorage(this.data);
-    console.log('data updated');
   }
 
   // add child step
@@ -120,7 +124,6 @@ export class ChartDatabase {
     child.steps = [];
     parent.steps.push(child);
     this.dataChange.next(this.data);
-    console.log('data updated');
   }
 
   // delete step
@@ -128,14 +131,12 @@ export class ChartDatabase {
     const childIndex = parent.steps.indexOf(child);
     parent.steps.splice(childIndex, 1);
     this.dataChange.next(this.data);
-    console.log('data updated');
   }
 
   // toggle expanded
   toggleExpaned(step: Step) {
     step.expanded = !step.expanded;
     this.saveStorage(this.data);
-    console.log('data updated');
   }
 
   // update progress
@@ -143,7 +144,6 @@ export class ChartDatabase {
     step.progress = progress;
     step.progressDates = this.setProgressDates(step);
     this.saveStorage(this.data);
-    console.log('data updated');
     // instead of refreshing whole tree, return progress dates and update the step only
     return step.progressDates;
   }
@@ -152,7 +152,6 @@ export class ChartDatabase {
   updateDateRange(step: Step) {
     step.progressDates = this.setProgressDates(step);
     this.saveStorage(this.data);
-    console.log('data updated');
     // instead of refreshing whole tree, return progress dates and update the step only
     return step.progressDates;
   }
@@ -187,9 +186,21 @@ export class ChartComponent implements OnInit {
 
   sidebarStyle = {};
 
-  constructor(private database: ChartDatabase) {
+
+  // service data
+  currentProjcet: Project;
+  id: number;
+
+  constructor(private database: ChartDatabase, projectService: ProjectService) {
+    this.id = database.id;
+    console.log(this.id);
     this.treeFlattener = new MatTreeFlattener(this.transformer, this._getLevel,
       this._isExpandable, this._getChildren);
+
+    projectService.getProjectBacklogItems(this.id).subscribe(items => {
+      console.log(items);
+      this.currentProjcet.setProductBacklogItems(items);
+    });
     this.treeControl = new FlatTreeControl<StepFlatNode>(this._getLevel, this._isExpandable);
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
@@ -228,6 +239,7 @@ export class ChartComponent implements OnInit {
   private _getChildren = (node: Step): Observable<Step[]> => of(node.steps);
 
   hasChild = (_: number, _nodeData: StepFlatNode) => _nodeData.expandable;
+
   /** end of utils of building tree */
 
   ngOnInit() {
@@ -257,7 +269,7 @@ export class ChartComponent implements OnInit {
   }
 
   getParentStep(node: StepFlatNode) {
-    const { treeControl } = this;
+    const {treeControl} = this;
     const currentLevel = treeControl.getLevel(node);
     // if root, ignore
     if (currentLevel < 1) {
@@ -319,7 +331,6 @@ export class ChartComponent implements OnInit {
     const start = this.moment(step.dates.start);
     const end = this.moment(step.dates.end);
     const range = this.moment.range(start, end);
-
     const days = Array.from(range.by('days'));
     this.dates = days.map(d => d.format('YYYY-MM-DD'));
   }

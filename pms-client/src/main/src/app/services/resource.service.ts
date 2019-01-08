@@ -25,7 +25,7 @@ export class ResourceService {
   }
 
   getResourceConsumptions(id: number) {
-    return this.http.get<TaskConsumption>(this.apiUrl + id + '/consumptions', {headers: this.reqHeader});
+    return this.http.get<TaskConsumption[]>(this.apiUrl + id + '/consumptions', {headers: this.reqHeader});
   }
 
   addResource(userId: number, projectId: number, resource: Resource) {

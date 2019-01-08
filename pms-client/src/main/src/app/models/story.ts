@@ -8,6 +8,7 @@ export class Story {
   private complexity: number;
   private startDate: string;
   private endDate: string;
+  private progress: number;
   private tasks: Array<Task>;
 
   getId(): number {
@@ -24,6 +25,14 @@ export class Story {
 
   setActorUser(value: string) {
     this.actorUser = value;
+  }
+
+  getProgress(): number {
+    return this.progress;
+  }
+
+  setProgress(value: number) {
+    this.progress = value;
   }
 
   getAction(): string {
@@ -50,11 +59,11 @@ export class Story {
     this.complexity = value;
   }
 
-  get taskDependencies(): Array<Task> {
+  getTasks(): Array<Task> {
     return this.tasks;
   }
 
-  set taskDependencies(value: Array<Task>) {
+  setTasks(value: Array<Task>) {
     this.tasks = value;
   }
 
@@ -75,7 +84,7 @@ export class Story {
     this.startDate = value;
   }
 
-  constructor(actorUser: string, action: string, purpose: string, complexity: number, startDate: string, endDate: string, tasks: Array<Task>) {
+  /*constructor(actorUser: string, action: string, purpose: string, complexity: number, startDate: string, endDate: string, tasks: Array<Task>) {
     this.actorUser = actorUser;
     this.action = action;
     this.purpose = purpose;
@@ -83,5 +92,6 @@ export class Story {
     this.startDate = startDate;
     this.endDate = endDate;
     this.tasks = tasks;
-  }
+  }*/
+
 }

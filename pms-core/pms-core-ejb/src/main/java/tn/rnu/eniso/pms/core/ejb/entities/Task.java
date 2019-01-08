@@ -7,7 +7,6 @@ package tn.rnu.eniso.pms.core.ejb.entities;
 
 import com.google.gson.annotations.Expose;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -15,9 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -36,11 +33,16 @@ public class Task implements Serializable {
     @Expose
     private String description;
     @Expose
-    private Long estimationDuration;
+    private State taskState;
     @Expose
     private String startDate;
     @Expose
     private String endDate;
+    @Expose
+    private String realStartDate;
+    @Expose
+    private String realEndDate;
+    
     @Expose
     private int complexity;// une tache elementaire prend une complexity =1 
 
@@ -69,14 +71,6 @@ public class Task implements Serializable {
         this.description = description;
     }
 
-    public Long getEstimationDuration() {
-        return estimationDuration;
-    }
-
-    public void setEstimationDuration(Long estimationDuration) {
-        this.estimationDuration = estimationDuration;
-    }
-
     public String getStartDate() {
         return startDate;
     }
@@ -88,6 +82,31 @@ public class Task implements Serializable {
     public String getEndDate() {
         return endDate;
     }
+
+    public State getTaskState() {
+        return taskState;
+    }
+
+    public void setTaskState(State taskState) {
+        this.taskState = taskState;
+    }
+
+    public String getRealStartDate() {
+        return realStartDate;
+    }
+
+    public void setRealStartDate(String realStartDate) {
+        this.realStartDate = realStartDate;
+    }
+
+    public String getRealEndDate() {
+        return realEndDate;
+    }
+
+    public void setRealEndDate(String realEndDate) {
+        this.realEndDate = realEndDate;
+    }
+    
 
     public List<TaskDependency> getTaskDependencies() {
         return taskDependencies;
@@ -116,6 +135,7 @@ public class Task implements Serializable {
     public void setTaskConsumptions(List<TaskConsumption> taskConsumptions) {
         this.taskConsumptions = taskConsumptions;
     }
+    
 
     @Override
     public int hashCode() {
@@ -136,7 +156,7 @@ public class Task implements Serializable {
 
     @Override
     public String toString() {
-        return "Task{" + "id=" + id + ", description=" + description + ", estimationDuration=" + estimationDuration + ", startDate=" + startDate + ", endDate=" + endDate + ", complexity=" + complexity + ", taskConsumptions=" + taskConsumptions + ", taskDependencies=" + taskDependencies + '}';
+        return "Task{" + "id=" + id + ", description=" + description + ", taskState=" + taskState + ", startDate=" + startDate + ", endDate=" + endDate + ", realStartDate=" + realStartDate + ", realEndDate=" + realEndDate + ", complexity=" + complexity + ", taskConsumptions=" + taskConsumptions + ", taskDependencies=" + taskDependencies + '}';
     }
 
 }

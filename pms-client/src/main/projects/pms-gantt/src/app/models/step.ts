@@ -1,6 +1,5 @@
 export class Step {
   name: string;
-  description: string;
   progress: number;
   progressDates: string[];
   dates: {
