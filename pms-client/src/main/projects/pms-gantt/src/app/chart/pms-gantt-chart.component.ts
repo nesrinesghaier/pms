@@ -163,9 +163,9 @@ export class ChartDatabase {
  * @title Tree with nested nodes
  */
 @Component({
-  selector: 'pms-gantt-app-chart',
-  templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.scss'],
+  selector: 'pms-gantt-chart',
+  templateUrl: './pms-gantt-chart.component.html',
+  styleUrls: ['./pms-gantt-chart.component.scss'],
   providers: [ChartDatabase]
 })
 export class ChartComponent implements OnInit {

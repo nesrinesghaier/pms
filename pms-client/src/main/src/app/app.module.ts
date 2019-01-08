@@ -14,7 +14,7 @@ import {ProjectListComponent} from './dashboard/projects/project-list/project-li
 import {ProjectFormComponent} from './dashboard/projects/project-form/project-form.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgbModalModule} from '@ng-bootstrap/ng-bootstrap';
-import {PmsGanttChartComponent} from '../../projects/pms-gantt/src/app/chart/pms-gantt-chart.component';
+import {ChartComponent} from '../../projects/pms-gantt/src/app/chart/pms-gantt-chart.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {ResizableModule} from 'angular-resizable-element';
 import 'hammerjs';
@@ -28,7 +28,7 @@ import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-s
 @NgModule({
   declarations: [
     AppComponent,
-    PmsGanttChartComponent,
+    ChartComponent,
     PublicComponent,
     DashboardComponent,
     ProjectViewComponent,

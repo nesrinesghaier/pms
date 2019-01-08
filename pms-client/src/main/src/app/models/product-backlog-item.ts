@@ -7,8 +7,6 @@ export class ProductBacklogItem {
   private description: string;
   private progress: number;
   private stories: Array<Story>;
-  private startDate: string;
-  private endDate: string;
   private expanded: boolean;
   private backlogItemDependencies: ProductBacklogItemDependency[];
 
@@ -18,14 +16,6 @@ export class ProductBacklogItem {
 
   setId(value: number) {
     this.id = value;
-  }
-
-  getPriority(): number {
-    return this.priority;
-  }
-
-  setPriority(value: number) {
-    this.priority = value;
   }
 
   getDescription(): string {
@@ -52,22 +42,6 @@ export class ProductBacklogItem {
     this.stories = value;
   }
 
-  getStartDate(): string {
-    return this.startDate;
-  }
-
-  setStartDate(value: string) {
-    this.startDate = value;
-  }
-
-  getEndDate(): string {
-    return this.endDate;
-  }
-
-  setEndDate(value: string) {
-    this.endDate = value;
-  }
-
   getExpanded(): boolean {
     return this.expanded;
   }
@@ -83,4 +57,22 @@ export class ProductBacklogItem {
   setProgress(value: number) {
     this.progress = value;
   }
+
+  getPriority(): number {
+    return this.priority;
+  }
+
+  setPriority(value: number) {
+    this.priority = value;
+  }
+
+  /*constructor(priority: number, description: string, progress: number, stories: Array<Story>, expanded: boolean,
+              backlogItemDependencies: ProductBacklogItemDependency[]) {
+    this.priority = priority;
+    this.description = description;
+    this.progress = progress;
+    this.stories = stories;
+    this.expanded = expanded;
+    this.backlogItemDependencies = backlogItemDependencies;
+  }*/
 }
