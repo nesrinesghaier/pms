@@ -5,16 +5,15 @@ import {State} from './State';
 export class Task {
   private id: number;
   private description: string;
-  private estimationDuration: number;
   private startDate: string;
   private endDate: string;
   private realStartDate: string;
   private realEndDate: string;
   private state: State;
   private complexity: number;
+  private progress: number;
   private taskConsumptions: Array<TaskConsumption>;
   private taskDependencies: Array<TaskDependency>;
-
   getId(): number {
     return this.id;
   }
@@ -29,14 +28,6 @@ export class Task {
 
   setDescription(value: string) {
     this.description = value;
-  }
-
-  getEstimationDuration(): number {
-    return this.estimationDuration;
-  }
-
-  setEstimationDuration(value: number) {
-    this.estimationDuration = value;
   }
 
   getStartDate(): string {
@@ -103,17 +94,12 @@ export class Task {
   setState(value: State) {
     this.state = value;
   }
-
-  constructor(description: string, estimationDuration: number, startDate: string, endDate: string, realStartDate: string, realEndDate: string, state: State, complexity: number, taskConsumptions: Array<TaskConsumption>, taskDependencies: Array<TaskDependency>) {
-    this.description = description;
-    this.estimationDuration = estimationDuration;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.realStartDate = realStartDate;
-    this.realEndDate = realEndDate;
-    this.state = state;
-    this.complexity = complexity;
-    this.taskConsumptions = taskConsumptions;
-    this.taskDependencies = taskDependencies;
+  getProgress(): number {
+    return this.progress;
   }
+
+  setProgress(value: number) {
+    this.progress = value;
+  }
+
 }

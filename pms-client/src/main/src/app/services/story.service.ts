@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Story} from '../models/story';
+import {Task} from '../models/task';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class StoryService {
   }
 
   getStoryTasks(id: number) {
-    return this.http.get<Story[]>(this.apiUrl + id + '/tasks', {headers: this.reqHeader});
+    return this.http.get<Task[]>(this.apiUrl + id + '/tasks', {headers: this.reqHeader});
   }
 
   addStory(backlogItemId: number, story: Story) {

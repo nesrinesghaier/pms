@@ -52,7 +52,7 @@ export class ProjectService {
   }
 
   getProjectBacklogItems(id: number) {
-    return this.http.get<ProductBacklogItem>(this.apiUrl + id + '/backlogItems', {headers: this.reqHeader});
+    return this.http.get<ProductBacklogItem[]>(this.apiUrl + id + '/backlogItems', {headers: this.reqHeader});
   }
 
   postProject(project: Project) {
