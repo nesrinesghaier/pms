@@ -41,6 +41,10 @@ public class Story implements Serializable {
     @Expose
     private String purpose;
     @Expose
+    private String startDate;
+    @Expose
+    private String endDate;
+    @Expose
     private int complexity;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -97,6 +101,22 @@ public class Story implements Serializable {
         this.tasks = tasks;
     }
 
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -119,7 +139,8 @@ public class Story implements Serializable {
 
     @Override
     public String toString() {
-        return "Story{" + "id=" + id + ", actorUser=" + actorUser + ", storyAction=" + storyAction + ", purpose=" + purpose + ", complexity=" + complexity + ", tasks=" + tasks + '}';
+        return "Story{" + "id=" + id + ", actorUser=" + actorUser + ", storyAction=" + storyAction + ", purpose=" + purpose + ", startDate=" + startDate + ", endDate=" + endDate + ", complexity=" + complexity + ", tasks=" + tasks + '}';
     }
+
 
 }
