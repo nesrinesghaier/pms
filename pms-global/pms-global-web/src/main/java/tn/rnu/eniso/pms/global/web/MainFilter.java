@@ -34,7 +34,7 @@ public class MainFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest) req;
         HttpServletResponse response = (HttpServletResponse) res;
-        String requestUrl = request.getRequestURI().replace(request.getContextPath(), "").replace("/", "");
+        String requestUrl = request.getRequestURI().replace(request.getContextPath(), "").replaceFirst("/", "");
         if (requestUrl.startsWith("api") || requestUrl.isEmpty() || requestUrl.matches(".*(\\..*){1,}")) {
             chain.doFilter(request, response);
         } else {
