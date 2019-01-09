@@ -9,7 +9,7 @@ export class Task {
   endDate: string;
   realStartDate: string;
   realEndDate: string;
-  state: State;
+  taskState: State;
   complexity: number;
   progress: number;
   taskConsumptions: TaskConsumption[];

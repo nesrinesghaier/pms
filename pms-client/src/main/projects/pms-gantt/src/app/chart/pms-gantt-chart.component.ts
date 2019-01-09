@@ -90,7 +90,7 @@ export class ChartDatabase {
       });
     }
     if (node instanceof Story) {
-      s.name = node.action;
+      s.name = node.storyAction;
       s.dates = {
         start: node.startDate,
         end: node.endDate

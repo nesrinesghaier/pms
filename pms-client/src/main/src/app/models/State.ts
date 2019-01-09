@@ -1,4 +1,4 @@
 export enum State {
-  TODO, INPROGRESS, DONE
+  TODO = 'TODO', INPROGRESS = 'INPROGRESS', DONE = 'DONE'
 }
 

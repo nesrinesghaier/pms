@@ -24,12 +24,14 @@ export class PmsScrumDashboardComponent implements OnInit {
   states: State[] = [State.TODO, State.INPROGRESS, State.DONE];
 
   currentProjectId: any;
+  data: any;
 
   constructor(private route: ActivatedRoute,
               private projectService: ProjectService,
               private backlogItemService: BacklogItemService,
               private storyService: StoryService,
               private taskService: TaskService) {
+    this.data = {};
     route.parent.params.subscribe(params => {
       this.currentProjectId = params['id'];
       this.refreshData();
@@ -37,7 +39,6 @@ export class PmsScrumDashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
 
   refreshData() {
@@ -48,106 +49,136 @@ export class PmsScrumDashboardComponent implements OnInit {
 
     this.projectService.getProjectBacklogItems(this.currentProjectId).subscribe(items => {
       items.forEach(item => {
-        this.backlogItemService.getProductBacklogItemStories(item.getId()).subscribe(stories => {
+        this.backlogItemService.getProductBacklogItemStories(item.id).subscribe(stories => {
           stories.forEach(story => {
-            this.storyService.getStoryTasks(story.getId()).subscribe(tasks => {
+            this.storyService.getStoryTasks(story.id).subscribe(tasks => {
               tasks.forEach(task => {
                 this.states.forEach(state => {
-                  if (task.getState() === state) {
-                    if (!this.stories.get(state).has(story.getId())) {
-                      this.stories.get(state).set(story.getId(), story);
+                  if (task.taskState === state) {
+                    if (!this.stories.get(state).has(story.id)) {
+                      const copiedStory: Story = JSON.parse(JSON.stringify(story));
+                      copiedStory.tasks = [];
+                      this.stories.get(state).set(story.id, copiedStory);
                     }
-                    this.stories.get(state).get(story.getId()).getTasks().push(task);
+                    this.stories.get(state).get(story.id).tasks.push(task);
+                    this.transform();
                   }
                 });
               });
             });
           });
         });
+      });
+    });
+  }
 
+  transform() {
+    this.data = {};
+    this.states.forEach(state => {
+      this.data[state] = [];
+      this.stories.get(state).forEach(story => {
+        this.data[state].push(story);
       });
     });
   }
 
   toRight(task: Task, story: Story) {
-    if (task.getState() === State.TODO) {
-      task.setRealStartDate(moment().format('YYYY-MM-DD'));
-      task.setState(State.INPROGRESS);
-      if (!this.stories.get(State.INPROGRESS).has(story.getId())) {
-        this.stories.get(State.INPROGRESS).set(story.getId(), story);
-      }
-      this.stories.get(State.INPROGRESS).get(story.getId()).getTasks().push(task);
-
-      const todoStory = this.stories.get(State.TODO).get(story.getId());
-      const taskIndex = todoStory.getTasks().findIndex(t => {
-        return t.getId() === task.getId();
-      });
-      if (taskIndex !== -1) {
-        todoStory.getTasks().splice(taskIndex, 1);
-        if (todoStory.getTasks().length === 0) {
-          this.stories.get(State.TODO).delete(todoStory.getId());
+    if (task.taskState === State.TODO) {
+      task.realStartDate = moment().format('YYYY-MM-DD');
+      task.taskState = State.INPROGRESS;
+      this.taskService.updateTask(task).subscribe(res => {
+        if (!this.stories.get(State.INPROGRESS).has(story.id)) {
+          const copiedStory: Story = JSON.parse(JSON.stringify(story));
+          copiedStory.tasks = [];
+          this.stories.get(State.INPROGRESS).set(story.id, copiedStory);
         }
-      }
-    } else if (task.getState() === State.INPROGRESS) {
-      task.setState(State.DONE);
-      task.setRealEndDate(moment().format('YYYY-MM-DD'));
-      this.taskService.updateTask(task);
-      if (!this.stories.get(State.DONE).has(story.getId())) {
-        this.stories.get(State.DONE).set(story.getId(), story);
-      }
-      this.stories.get(State.DONE).get(story.getId()).getTasks().push(task);
+        this.stories.get(State.INPROGRESS).get(story.id).tasks.push(task);
 
-      const todoStory = this.stories.get(State.INPROGRESS).get(story.getId());
-      const taskIndex = todoStory.getTasks().findIndex(t => {
-        return t.getId() === task.getId();
-      });
-      if (taskIndex !== -1) {
-        todoStory.getTasks().splice(taskIndex, 1);
-        if (todoStory.getTasks().length === 0) {
-          this.stories.get(State.INPROGRESS).delete(todoStory.getId());
+        const todoStory = this.stories.get(State.TODO).get(story.id);
+        const taskIndex = todoStory.tasks.findIndex(t => {
+          return t.id === task.id;
+        });
+        if (taskIndex !== -1) {
+          todoStory.tasks.splice(taskIndex, 1);
+          if (todoStory.tasks.length === 0) {
+            this.stories.get(State.TODO).delete(todoStory.id);
+          }
         }
-      }
+        this.transform();
+      });
+    } else if (task.taskState === State.INPROGRESS) {
+      task.realEndDate = moment().format('YYYY-MM-DD');
+      task.taskState = State.DONE;
+      this.taskService.updateTask(task).subscribe(res => {
+        if (!this.stories.get(State.DONE).has(story.id)) {
+          const copiedStory: Story = JSON.parse(JSON.stringify(story));
+          copiedStory.tasks = [];
+          this.stories.get(State.DONE).set(story.id, copiedStory);
+        }
+        this.stories.get(State.DONE).get(story.id).tasks.push(task);
+
+        const todoStory = this.stories.get(State.INPROGRESS).get(story.id);
+        const taskIndex = todoStory.tasks.findIndex(t => {
+          return t.id === task.id;
+        });
+        if (taskIndex !== -1) {
+          todoStory.tasks.splice(taskIndex, 1);
+          if (todoStory.tasks.length === 0) {
+            this.stories.get(State.INPROGRESS).delete(todoStory.id);
+          }
+        }
+        this.transform();
+      });
     }
   }
 
   toLeft(task: Task, story: Story) {
-    if (task.getState() === State.DONE) {
-      task.setRealEndDate('1970-01-01');
-      task.setState(State.INPROGRESS);
-      if (!this.stories.get(State.INPROGRESS).has(story.getId())) {
-        this.stories.get(State.INPROGRESS).set(story.getId(), story);
-      }
-      this.stories.get(State.INPROGRESS).get(story.getId()).getTasks().push(task);
-
-      const todoStory = this.stories.get(State.DONE).get(story.getId());
-      const taskIndex = todoStory.getTasks().findIndex(t => {
-        return t.getId() === task.getId();
-      });
-      if (taskIndex !== -1) {
-        todoStory.getTasks().splice(taskIndex, 1);
-        if (todoStory.getTasks().length === 0) {
-          this.stories.get(State.DONE).delete(todoStory.getId());
+    if (task.taskState === State.INPROGRESS) {
+      task.realStartDate = null;
+      task.taskState = State.TODO;
+      this.taskService.updateTask(task).subscribe(res => {
+        if (!this.stories.get(State.TODO).has(story.id)) {
+          const copiedStory: Story = JSON.parse(JSON.stringify(story));
+          copiedStory.tasks = [];
+          this.stories.get(State.TODO).set(story.id, copiedStory);
         }
-      }
-    } else if (task.getState() === State.INPROGRESS) {
-      task.setRealStartDate('1970-01-01');
-      task.setState(State.TODO);
-      this.taskService.updateTask(task);
-      if (!this.stories.get(State.TODO).has(story.getId())) {
-        this.stories.get(State.TODO).set(story.getId(), story);
-      }
-      this.stories.get(State.TODO).get(story.getId()).getTasks().push(task);
+        this.stories.get(State.TODO).get(story.id).tasks.push(task);
 
-      const todoStory = this.stories.get(State.INPROGRESS).get(story.getId());
-      const taskIndex = todoStory.getTasks().findIndex(t => {
-        return t.getId() === task.getId();
-      });
-      if (taskIndex !== -1) {
-        todoStory.getTasks().splice(taskIndex, 1);
-        if (todoStory.getTasks().length === 0) {
-          this.stories.get(State.INPROGRESS).delete(todoStory.getId());
+        const todoStory = this.stories.get(State.INPROGRESS).get(story.id);
+        const taskIndex = todoStory.tasks.findIndex(t => {
+          return t.id === task.id;
+        });
+        if (taskIndex !== -1) {
+          todoStory.tasks.splice(taskIndex, 1);
+          if (todoStory.tasks.length === 0) {
+            this.stories.get(State.INPROGRESS).delete(todoStory.id);
+          }
         }
-      }
+        this.transform();
+      });
+    } else if (task.taskState === State.DONE) {
+      task.realEndDate = null;
+      task.taskState = State.INPROGRESS;
+      this.taskService.updateTask(task).subscribe(res => {
+        if (!this.stories.get(State.INPROGRESS).has(story.id)) {
+          const copiedStory: Story = JSON.parse(JSON.stringify(story));
+          copiedStory.tasks = [];
+          this.stories.get(State.INPROGRESS).set(story.id, copiedStory);
+        }
+        this.stories.get(State.INPROGRESS).get(story.id).tasks.push(task);
+
+        const todoStory = this.stories.get(State.DONE).get(story.id);
+        const taskIndex = todoStory.tasks.findIndex(t => {
+          return t.id === task.id;
+        });
+        if (taskIndex !== -1) {
+          todoStory.tasks.splice(taskIndex, 1);
+          if (todoStory.tasks.length === 0) {
+            this.stories.get(State.DONE).delete(todoStory.id);
+          }
+        }
+        this.transform();
+      });
     }
   }
 }
