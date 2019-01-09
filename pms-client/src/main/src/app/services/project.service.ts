@@ -52,7 +52,7 @@ export class ProjectService {
     return this.http.get<Resource>(this.apiUrl + id + '/resources', {headers: this.reqHeader});
   }
   getProjectBudget(id: number) {
-    return this.http.get<Budget>(this.apiUrl + id + '/budgets', {headers: this.reqHeader});
+    return this.http.get<Budget[]>(this.apiUrl + id + '/budgets', {headers: this.reqHeader});
   }
 
   getProjectBacklogItems(id: number) {

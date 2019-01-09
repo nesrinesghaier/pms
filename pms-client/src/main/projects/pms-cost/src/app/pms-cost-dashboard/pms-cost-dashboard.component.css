@@ -1,11 +1,17 @@
-.center{
-  width: 75%;
-  margin: 10px auto;
-}
 
 .main-div{
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.chart-canvas{
+  height: 500px;
+}
+
+mat-card{
+  width: 100%;
+  height: 100%;
 }

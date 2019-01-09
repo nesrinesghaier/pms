@@ -2,15 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {PmsCostDashboardModule} from "./pms-cost-dashboard/pms-cost-dashboard.module";
-import { DashComponent } from './test/dash/dash.component';
+import {PmsCostDashboardModule} from './pms-cost-dashboard/pms-cost-dashboard.module';
 import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
+import {ProjectService} from '../../../../src/app/services/project.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +21,7 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatButtonModule,
     LayoutModule
   ],
-  providers: [],
+  providers: [ProjectService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
