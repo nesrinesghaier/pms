@@ -40,7 +40,7 @@ export class UserService {
   }
 
   deleteUser(u: User | number): Observable<User> {
-    const id = typeof u === 'number' ? u : u.getId();
+    const id = typeof u === 'number' ? u : u.id;
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<User>(url, {headers: this.header});
    }

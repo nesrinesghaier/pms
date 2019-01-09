@@ -13,6 +13,11 @@ import {Step} from '../models/step';
 import {StepFlatNode} from '../models/stepFlatNode';
 import {Project} from '../../../../../src/app/models/project';
 import {ProjectService} from '../../../../../src/app/services/project.service';
+import {BacklogItemService} from '../../../../../src/app/services/backlog-item.service';
+import {StoryService} from '../../../../../src/app/services/story.service';
+import {TaskService} from '../../../../../src/app/services/task.service';
+import {Story} from "../../../../../src/app/models/story";
+import {Task} from "../../../../../src/app/models/task";
 
 @Injectable()
 export class ChartDatabase {
@@ -25,12 +30,33 @@ export class ChartDatabase {
     return this.dataChange.value;
   }
 
-  constructor(private route: ActivatedRoute) {
-    this.route.params.subscribe(params => {
-      this.id = params['id'];
-      console.log('id = ' + this.id);
-      this.initialize();
-    });
+  currentProject: Project = new Project();
+
+  constructor(private route: ActivatedRoute,
+              private projectService: ProjectService,
+              private backlogItemService: BacklogItemService,
+              private storyService: StoryService) {
+    this.id = parseInt(localStorage.getItem('id'), 0);
+    if (this.id != null) {
+      projectService.getProjectById(this.id).subscribe(project => {
+        projectService.getProjectBacklogItems(this.id).subscribe(items => {
+          items.forEach(item => {
+            backlogItemService.getProductBacklogItemStories(item.id).subscribe(stories => {
+              stories.forEach(story => {
+                storyService.getStoryTasks(story.id).subscribe(tasks => {
+                  story.tasks = tasks;
+                });
+              });
+              item.stories = stories;
+            });
+          });
+          project.productBacklogItems = items;
+        });
+        this.currentProject = project;
+      });
+    }
+
+    this.initialize();
     this.dataChange.asObservable().subscribe(val => {
       this.saveStorage(val);
     });
@@ -39,27 +65,66 @@ export class ChartDatabase {
   // load local data
   loadStorage() {
     const charts = localStorage.getItem(this.storageKey);
-    return JSON.parse(charts);
+    const projectData = localStorage.getItem('project');
+    return JSON.parse(projectData);
   }
 
   // save local data
   saveStorage(val) {
-    const charts = JSON.parse(localStorage.getItem(this.storageKey)) as Array<Step>;
+    const charts = JSON.parse(localStorage.getItem('project')) as Array<Step>;
     charts[this.id] = val;
     localStorage.setItem(this.storageKey, JSON.stringify(charts));
   }
 
+  buildData(node: any): Step {
+    console.log(node);
+    const s: Step = new Step();
+    if (node instanceof Project) {
+      s.name = node.logicName;
+      s.dates = {
+        start: node.creationDate,
+        end: node.creationDate
+      };
+      node.productBacklogItems.forEach(item => {
+        s.steps.push(this.buildData(item));
+      });
+    }
+    if (node instanceof Story) {
+      s.name = node.action;
+      s.dates = {
+        start: node.startDate,
+        end: node.endDate
+      };
+      node.tasks.forEach(task => {
+        s.steps.push(this.buildData(task));
+      });
+    }
+    if (node instanceof Task) {
+      s.name = node.description;
+      s.dates = {
+        start: node.startDate,
+        end: node.endDate
+      };
+    }
+    return s;
+  }
+
   initialize() {
-    const charts = this.loadStorage(); // load storage of charts
-    if (charts && charts.length && charts[this.id]) {
+    const charts = this.buildData(this.currentProject); // load storage of charts
+    console.log(charts);
+    console.log('id ' + JSON.stringify(charts['id']));
+    /*if (charts && charts['id']) {
+      console.log('in');
       const tree = this.buildTree([charts[this.id]], 0); // build tree
       this.dataChange.next(tree[0]); // broadcast data
+      console.log('tree  ' + JSON.stringify(charts['id']));
     } else {
+      console.log('new');
       // init a new project
       const start = moment().format('YYYY-MM-DD');
       const end = moment().add(8, 'days').format('YYYY-MM-DD');
       const root = {
-        'name': 'Product Backlog Item',
+        'name': charts['name'],
         'progress': 0,
         'dates': {
           'start': start,
@@ -68,11 +133,13 @@ export class ChartDatabase {
         'steps': []
       };
       const tree = this.buildTree([root], 0); // build tree
+      console.log(JSON.stringify(tree));
       this.dataChange.next(tree[0]); // broadcast data
-    }
+    }*/
   }
 
   buildTree(steps: Array<any>, level: number): Step[] {
+    console.log('level  = ' + level);
     return steps.map((step: Step) => {
       const newStep = new Step();
       newStep.name = step.name;
@@ -113,6 +180,7 @@ export class ChartDatabase {
 
   // add child step
   addChildStep(parent: Step) {
+    console.log('added = ');
     parent.expanded = true; // set parent node expanded to show children
     const child = new Step();
     child.name = '';
@@ -188,25 +256,13 @@ export class ChartComponent implements OnInit {
   sidebarStyle = {};
 
 
-  // service data
-  currentProjcet: Project = new Project();
   id: number;
 
-  constructor(private database: ChartDatabase, projectService: ProjectService) {
+  constructor(private database: ChartDatabase) {
     this.id = parseInt(localStorage.getItem('id'), 0);
     this.treeFlattener = new MatTreeFlattener(this.transformer, this._getLevel,
       this._isExpandable, this._getChildren);
-    if (this.id != null) {
-      projectService.getProjectById(this.id).subscribe(project => {
-        this.currentProjcet = project;
-        // this.currentProjcet.setProductBacklogItems([]);
-      })
-      projectService.getProjectBacklogItems(this.id).subscribe(items => {
-        console.log(items);
-        this.currentProjcet.productBacklogItems = items;
-        console.log(JSON.stringify(this.currentProjcet.productBacklogItems.length));
-      });
-    }
+
     this.treeControl = new FlatTreeControl<StepFlatNode>(this._getLevel, this._isExpandable);
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
@@ -225,7 +281,7 @@ export class ChartComponent implements OnInit {
           }
         });
 
-        console.log(tree);
+        // console.log(tree);
       }
     });
   }
