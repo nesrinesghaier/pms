@@ -20,8 +20,6 @@ import 'hammerjs';
 import {CommonModule} from '@angular/common';
 import {ProjectViewComponent} from './dashboard/projects/project-view/project-view.component';
 import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component';
-import {PmsScrumStateComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component';
-import {ProjectService} from '../app/services/project.service';
 
 @NgModule({
   declarations: [
@@ -49,8 +47,7 @@ import {ProjectService} from '../app/services/project.service';
     NgbModalModule,
     FlexLayoutModule,
     HttpClientModule,
-    ResizableModule,
-    DragDropModule
+    ResizableModule
   ],
   providers: [],
   bootstrap: [AppComponent],
