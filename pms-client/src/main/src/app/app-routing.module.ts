@@ -6,6 +6,7 @@ import {PmsCostDashboardComponent} from '../../projects/pms-cost/src/app/pms-cos
 import {ChartComponent} from '../../projects/pms-gantt/src/app/chart/pms-gantt-chart.component';
 import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component';
 import {ProjectViewComponent} from './dashboard/projects/project-view/project-view.component';
+import {ProductBacklogItemListComponent} from "./dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component";
 
 const routes: Routes = [{path: '', component: PublicComponent},
   {
@@ -14,7 +15,8 @@ const routes: Routes = [{path: '', component: PublicComponent},
   {
     path: 'dashboard/project/:id', component: ProjectViewComponent,
     children: [
-      {path: '', redirectTo: 'scrum', pathMatch: 'full'},
+      {path: '', redirectTo: 'backlogs', pathMatch: 'full'},
+      {path: 'backlogs', component: ProductBacklogItemListComponent},
       {path: 'cost', component: PmsCostDashboardComponent},
       {
         path: 'gantt', component: ChartComponent,

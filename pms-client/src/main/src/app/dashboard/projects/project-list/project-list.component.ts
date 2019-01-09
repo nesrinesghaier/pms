@@ -40,7 +40,11 @@ export class ProjectListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    this.dialog.open(ProjectFormComponent, dialogConfig);
+    this.dialog.open(ProjectFormComponent, dialogConfig).afterClosed().subscribe(() => {
+      this.service.getAllProjects().subscribe(projects => {
+        this.dataSource.data = projects;
+      });
+    });
   }
 
 
@@ -49,17 +53,24 @@ export class ProjectListComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    this.dialog.open(ProjectFormComponent, dialogConfig);
+    this.dialog.open(ProjectFormComponent, dialogConfig).afterClosed().subscribe(() => {
+      this.service.getAllProjects().subscribe(projects => {
+        this.dataSource.data = projects;
+      });
+    });
   }
 
   onDelete(id) {
     if (confirm('Are you sure to delete this record ?')) {
-      this.service.deleteProject(id);
+      this.service.deleteProject(id).subscribe(projects => {
+        this.dataSource.data = projects;
+      });
     }
   }
 
-  onView(id) {
-    localStorage.setItem('id', id);
-    this.router.navigate(['/dashboard/project/', id]);
+  onView(row) {
+    localStorage.setItem('id', row.id);
+    localStorage.setItem('project', JSON.stringify(row));
+    this.router.navigate(['/dashboard/project/', row.id]);
   }
 }

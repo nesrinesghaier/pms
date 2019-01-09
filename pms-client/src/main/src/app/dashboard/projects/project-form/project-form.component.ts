@@ -23,13 +23,12 @@ export class ProjectFormComponent implements OnInit {
 
   onSubmit() {
     if (this.service.form.valid) {
-      console.log(this.service.form.value);
       if (!this.service.form.get('id').value) {
         const project = this.service.form.value;
         project.creationDate = new Date(Date.now()).toLocaleString();
-        this.service.postProject(project);
+        this.service.postProject(project).subscribe();
       } else {
-        this.service.updateProject(this.service.form.value);
+        this.service.updateProject(this.service.form.value).subscribe();
       }
       this.onClose();
     }

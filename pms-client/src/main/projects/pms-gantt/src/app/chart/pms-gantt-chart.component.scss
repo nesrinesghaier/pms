@@ -1,8 +1,8 @@
 // variables
 $toolbarHeight: 64px;
-$nodeWidth: 60px;
-$nodeHeight: 50px;
-$completeColor: #2196F3;
+$nodeWidth: 70px;
+$nodeHeight: 75px;
+$completeColor: #006ff3;
 $incompleteColor: #9E9E9E;
 $borderColor: #BDBDBD;
 $highlightBorderColor: #FF9800;
@@ -72,17 +72,24 @@ $highlightBorderColor: #FF9800;
 .sidenav.progress-bars {
   flex: 0 0 100px;
   mat-tree.tree {
-    padding-top: 8px; // align the sliders and table
+    padding-top: 20px; // align the sliders and table 8
     border-width: 0 2px 0 0;
     border-color: $borderColor;
     border-style: solid;
   }
 }
 
-::ng-deep mat-slider.progress {
-  margin: 0 10px;
-  width: 100%;
-  height: unset;
+.mat-slider-thumb-label {
+  transform: rotate(45deg) !important;
+  border-radius: 50% 50% 0 !important;
+}
+
+.mat-slider-thumb {
+  transform: scale(0) !important;
+}
+
+.mat-slider-thumb-label-text {
+  opacity: 1 !important;
 }
 
 /** calendar */
@@ -107,7 +114,7 @@ $highlightBorderColor: #FF9800;
   min-width: $nodeWidth - 2px;
   min-height: $nodeHeight - 1px;
   border-width: 0.5px 1px;
-  border-color: $borderColor;
+  border-color: $incompleteColor;
   border-style: solid;
 }
 
@@ -123,7 +130,7 @@ $highlightBorderColor: #FF9800;
 
 // incompleted cell
 ::ng-deep .calendar-cell[date-filled=false][date-inside=true] {
-  background-color: $incompleteColor;
+  background-color: $borderColor;
 }
 
 

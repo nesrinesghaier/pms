@@ -680,10 +680,10 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /mnt/documents/Work/pms/pms-client/src/main/src/styles.css */"./src/styles.css");
-__webpack_require__(/*! /mnt/documents/Work/pms/pms-client/src/main/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
-__webpack_require__(/*! /mnt/documents/Work/pms/pms-client/src/main/node_modules/bootstrap/dist/css/bootstrap-reboot.min.css */"./node_modules/bootstrap/dist/css/bootstrap-reboot.min.css");
-module.exports = __webpack_require__(/*! /mnt/documents/Work/pms/pms-client/src/main/node_modules/bootstrap/dist/css/bootstrap-grid.min.css */"./node_modules/bootstrap/dist/css/bootstrap-grid.min.css");
+__webpack_require__(/*! /mnt/doc/pms/pms-client/src/main/src/styles.css */"./src/styles.css");
+__webpack_require__(/*! /mnt/doc/pms/pms-client/src/main/node_modules/bootstrap/dist/css/bootstrap.min.css */"./node_modules/bootstrap/dist/css/bootstrap.min.css");
+__webpack_require__(/*! /mnt/doc/pms/pms-client/src/main/node_modules/bootstrap/dist/css/bootstrap-reboot.min.css */"./node_modules/bootstrap/dist/css/bootstrap-reboot.min.css");
+module.exports = __webpack_require__(/*! /mnt/doc/pms/pms-client/src/main/node_modules/bootstrap/dist/css/bootstrap-grid.min.css */"./node_modules/bootstrap/dist/css/bootstrap-grid.min.css");
 
 
 /***/ })

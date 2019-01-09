@@ -1,0 +1,24 @@
+<mat-toolbar>
+  <span>{{service.form.controls['id'].value !== null ? "Modify Product Backlog Item" : "New Product Backlog Item"}}</span>
+  <span class="fill-remaining-space"></span>
+  <button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1">
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-toolbar>
+<form [formGroup]="service.form" class="normal-form" (submit)="onSubmit()">
+  <div class="controles-container">
+    <input type="hidden" formControlName="id">
+    <mat-form-field>
+      <input formControlName="priority" matInput placeholder="Priority*">
+      <mat-error>This field is mandatory.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <textarea formControlName="description" matInput placeholder="Description"></textarea>
+      <mat-error>This field is mandatory.</mat-error>
+    </mat-form-field>
+    <div class="button-row">
+      <button mat-raised-button color="primary" type="submit" [disabled]="service.form.invalid">Submit</button>
+      <button mat-raised-button color="warn" (click)="onClear()">Clear</button>
+    </div>
+  </div>
+</form>

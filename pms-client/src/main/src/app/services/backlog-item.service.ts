@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
 import {ProductBacklogItem} from '../models/product-backlog-item';
-import {Resource} from '../models/resource';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Story} from '../models/story';
 import {ProductBacklogItemDependency} from '../models/product-backlog-item-dependency';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +15,26 @@ export class BacklogItemService {
     'Accept': 'application/json, text/plain, */*'
   });
 
+  form: FormGroup = new FormGroup({
+    id: new FormControl(null),
+    priority: new FormControl(1, [Validators.required, Validators.pattern('[0-9]*')]),
+    description: new FormControl('', [Validators.required])
+  });
+
   constructor(private http: HttpClient) {
   }
 
+  initializeFormGroup() {
+    this.form.setValue({
+      id: null,
+      priority: 1,
+      description: ''
+    });
+  }
+
+  populateForm(project) {
+    this.form.setValue(project);
+  }
 
   getAllProductBacklogItems() {
     return this.http.get<ProductBacklogItem[]>(this.apiUrl, {headers: this.reqHeader});
@@ -48,7 +65,7 @@ export class BacklogItemService {
   }
 
   deleteProductBacklogItem(id: number) {
-    return this.http.delete(this.apiUrl + id, {headers: this.reqHeader});
+    return this.http.delete<ProductBacklogItem[]>(this.apiUrl + id, {headers: this.reqHeader});
   }
 
 }

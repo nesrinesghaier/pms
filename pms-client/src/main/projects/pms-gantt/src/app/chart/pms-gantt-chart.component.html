@@ -1,89 +1,91 @@
-<div class="sidenav-container" fxFlex fxLayout="row">
-  <div class="sidenav names" [ngStyle]="sidebarStyle" fxLayout="column">
-    <div class="sidenav-header text-center">Product Backlog Items</div>
-    <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl" [ngStyle]="sidebarStyle"
-              mwlResizable [resizeEdges]="{right: true}" [enableGhostResize]="true" [resizeSnapGrid]="{right: 1}"
-              (resizeEnd)="onResizeEnd($event)">
-      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
-        <button mat-icon-button disabled></button>
-        <mat-form-field floatLabel="never">
-          <input matInput placeholder="Story Name" name="node" [(ngModel)]="node.name"
-                 (ngModelChange)="updateStepName(node, $event)"
-                 required>
-        </mat-form-field>
-        <button mat-icon-button (click)="addChildStep(node)" class="text-green" *ngIf="node.level<2">
-          <mat-icon>add</mat-icon>
-        </button>
-        <button mat-icon-button (click)="deleteStep(node)" class="text-red" *ngIf="node.level!==0">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </mat-tree-node>
-      <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
-        <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
-          <mat-icon class="mat-icon-rtl-mirror" (click)="toggleExpanded(node)">
-            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-          </mat-icon>
-        </button>
-        <mat-form-field floatLabel="never">
-          <input matInput placeholder="Task Name" name="node" [(ngModel)]="node.name"
-                 (ngModelChange)="updateStepName(node, $event)"
-                 required>
-        </mat-form-field>
-        <button mat-icon-button (click)="addChildStep(node)" class="text-green" *ngIf="node.level<3">
-          <mat-icon>add</mat-icon>
-        </button>
-        <button mat-icon-button (click)="deleteStep(node)" class="text-red" *ngIf="node.level!==0">
-          <mat-icon>delete</mat-icon>
-        </button>
-      </mat-tree-node>
-    </mat-tree>
-  </div>
-  <!-- date pickers -->
-  <div class="sidenav date-pickers" fxLayout="column">
-    <div class="sidenav-header text-center">Dates</div>
-    <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl">
-      <mat-tree-node *matTreeNodeDef="let node">
-        <mat-form-field class="date-picker" floatLabel="never">
-          <input matInput [matDatepicker]="startDate"
-                 [min]="node.level > 0 ? getParentStep(node).dates.start : null"
-                 [max]="node.level > 0 ? getParentStep(node).dates.end : null" [(ngModel)]="node.dates.start"
-                 (ngModelChange)="updateDateRange(node)">
-          <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
-          <mat-datepicker #startDate></mat-datepicker>
-        </mat-form-field>
-        &nbsp;&nbsp;-&nbsp;&nbsp;
-        <mat-form-field class="date-picker" floatLabel="never">
-          <input matInput [matDatepicker]="endDate" [min]="node.level > 0 ? getParentStep(node).dates.start : null"
-                 [max]="node.level > 0 ? getParentStep(node).dates.end : null" [(ngModel)]="node.dates.end"
-                 (ngModelChange)="updateDateRange(node)">
-          <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-          <mat-datepicker #endDate></mat-datepicker>
-        </mat-form-field>
-      </mat-tree-node>
-    </mat-tree>
-  </div>
-  <!-- progress -->
-  <div class="sidenav progress-bars" fxLayout="column">
-    <div class="sidenav-header text-center">Progress</div>
-    <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl">
-      <mat-tree-node *matTreeNodeDef="let node" class="progress-row">
-        <mat-slider class="progress" [max]="100" [min]="0" [step]="5" [thumbLabel]="true" [tickInterval]="5"
-                    [(ngModel)]="node.progress" (ngModelChange)="updateProgress(node, $event)"></mat-slider>
-      </mat-tree-node>
-    </mat-tree>
-  </div>
-  <!-- calendar -->
-  <div class="sidenav-content calendar" fxLayout="column">
-    <div fxLayout="row">
-      <div *ngFor="let date of dates" class="calendar-cell" [ngClass]="{today:date===today}">{{date.slice(5)}}</div>
+<mat-card style="height: 100%">
+  <div fxFlex fxLayout="row">
+    <div class="sidenav names" [ngStyle]="sidebarStyle" fxLayout="column">
+      <div class="sidenav-header text-center">Product Backlog Items</div>
+      <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl" [ngStyle]="sidebarStyle"
+                mwlResizable [resizeEdges]="{right: true}" [enableGhostResize]="true" [resizeSnapGrid]="{right: 1}"
+                (resizeEnd)="onResizeEnd($event)">
+        <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle matTreeNodePadding>
+          <button mat-icon-button disabled></button>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Story Name" name="node" [(ngModel)]="node.name"
+                   (ngModelChange)="updateStepName(node, $event)"
+                   required>
+          </mat-form-field>
+          <button mat-icon-button (click)="addChildStep(node)" class="text-green" *ngIf="node.level<2">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteStep(node)" class="text-red" *ngIf="node.level!==0">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-tree-node>
+        <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+          <button mat-icon-button matTreeNodeToggle [attr.aria-label]="'toggle ' + node.name">
+            <mat-icon class="mat-icon-rtl-mirror" (click)="toggleExpanded(node)">
+              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+            </mat-icon>
+          </button>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Task Name" name="node" [(ngModel)]="node.name"
+                   (ngModelChange)="updateStepName(node, $event)"
+                   required>
+          </mat-form-field>
+          <button mat-icon-button (click)="addChildStep(node)" class="text-green" *ngIf="node.level<3">
+            <mat-icon>add</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteStep(node)" class="text-red" *ngIf="node.level!==0">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-tree-node>
+      </mat-tree>
     </div>
-    <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl">
-      <mat-tree-node *matTreeNodeDef="let node" class="calendar-row">
-        <div *ngFor="let date of dates; let i=index;" class="calendar-cell" [ngClass]="{today:date===today}"
-             [attr.date-filled]="node.progressDates.indexOf(date)>-1"
-             [attr.date-inside]="date>=node.dates.start&&date<=node.dates.end">
-        </div>
-      </mat-tree-node>
-    </mat-tree>
+    <!-- date pickers -->
+    <div class="sidenav date-pickers" fxLayout="column">
+      <div class="sidenav-header text-center">Dates</div>
+      <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node *matTreeNodeDef="let node">
+          <mat-form-field class="date-picker" floatLabel="never">
+            <input matInput [matDatepicker]="startDate"
+                   [min]="node.level > 0 ? getParentStep(node).dates.start : null"
+                   [max]="node.level > 0 ? getParentStep(node).dates.end : null" [(ngModel)]="node.dates.start"
+                   (ngModelChange)="updateDateRange(node)">
+            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+          </mat-form-field>
+          &nbsp;&nbsp;-&nbsp;&nbsp;
+          <mat-form-field class="date-picker" floatLabel="never">
+            <input matInput [matDatepicker]="endDate" [min]="node.level > 0 ? getParentStep(node).dates.start : null"
+                   [max]="node.level > 0 ? getParentStep(node).dates.end : null" [(ngModel)]="node.dates.end"
+                   (ngModelChange)="updateDateRange(node)">
+            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+          </mat-form-field>
+        </mat-tree-node>
+      </mat-tree>
+    </div>
+    <!-- progress -->
+    <div class="sidenav progress-bars" fxLayout="column">
+      <div class="sidenav-header text-center">Progress</div>
+      <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node *matTreeNodeDef="let node" class="progress-row">
+          <mat-slider [max]="100" [min]="0" [step]="5" [thumbLabel]="true" [tickInterval]="5"
+                      [(ngModel)]="node.progress" (ngModelChange)="updateProgress(node, $event)"></mat-slider>
+        </mat-tree-node>
+      </mat-tree>
+    </div>
+    <!-- calendar -->
+    <div class="sidenav-content calendar" fxLayout="column">
+      <div fxLayout="row">
+        <div *ngFor="let date of dates" class="calendar-cell" [ngClass]="{today:date===today}">{{date.slice(5)}}</div>
+      </div>
+      <mat-tree class="tree" fxFlex [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node *matTreeNodeDef="let node" class="calendar-row">
+          <div *ngFor="let date of dates; let i=index;" class="calendar-cell" [ngClass]="{today:date===today}"
+               [attr.date-filled]="node.progressDates.indexOf(date)>-1"
+               [attr.date-inside]="date>=node.dates.start&&date<=node.dates.end">
+          </div>
+        </mat-tree-node>
+      </mat-tree>
+    </div>
   </div>
-</div>
+</mat-card>

@@ -288,7 +288,7 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwcm9qZWN0cy9wbXMtY29zdC9zcmMvYXBwL3Btcy1jb3N0LWRhc2hib2FyZC9wbXMtY29zdC1kYXNoYm9hcmQuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\n.main-div{\n  width: 100%;\n  height: 100%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n\n.chart-canvas{\n  height: 500px;\n}\n\nmat-card{\n  width: 100%;\n  height: 100%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2plY3RzL3Btcy1jb3N0L3NyYy9hcHAvcG1zLWNvc3QtZGFzaGJvYXJkL3Btcy1jb3N0LWRhc2hib2FyZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtFQUNFLFlBQVk7RUFDWixhQUFhO0VBQ2IsY0FBYztFQUNkLHdCQUF3QjtFQUN4QixvQkFBb0I7Q0FDckI7O0FBRUQ7RUFDRSxjQUFjO0NBQ2Y7O0FBRUQ7RUFDRSxZQUFZO0VBQ1osYUFBYTtDQUNkIiwiZmlsZSI6InByb2plY3RzL3Btcy1jb3N0L3NyYy9hcHAvcG1zLWNvc3QtZGFzaGJvYXJkL3Btcy1jb3N0LWRhc2hib2FyZC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4ubWFpbi1kaXZ7XG4gIHdpZHRoOiAxMDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xufVxuXG4uY2hhcnQtY2FudmFze1xuICBoZWlnaHQ6IDUwMHB4O1xufVxuXG5tYXQtY2FyZHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -299,7 +299,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n  <h1>\n   gggg\n   gggg\n  </h1>\n  <img width=\"300\" alt=\"Angular Logo\" src=\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==\">\n</div>\n<h2>Here are some links to help you start: </h2>\n<ul>\n  <li>\n    <h2><a target=\"_blank\" rel=\"noopener\" href=\"https://angular.io/tutorial\">Tour of Heroes</a></h2>\n  </li>\n  <li>\n    <h2><a target=\"_blank\" rel=\"noopener\" href=\"https://angular.io/cli\">CLI Documentation</a></h2>\n  </li>\n  <li>\n    <h2><a target=\"_blank\" rel=\"noopener\" href=\"https://blog.angular.io/\">Angular blog</a></h2>\n  </li>\n</ul>\n\n"
+module.exports = "\n<mat-card >\n    <div class=\"main-div z-depth\" >\n        <!-- Chart wrapper -->\n        <canvas  id=\"myChart\" class=\"chart-canvas\"></canvas>\n\n    </div>\n\n</mat-card>\n\n<script src=\"../../assets/Chart.min.js\"></script>\n<script src=\"../../assets/Chart.extension.js\"></script>\n"
 
 /***/ }),
 
@@ -315,20 +315,54 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PmsCostDashboardComponent", function() { return PmsCostDashboardComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _src_app_services_project_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../src/app/services/project.service */ "./src/app/services/project.service.ts");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/src/chart.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
 var PmsCostDashboardComponent = /** @class */ (function () {
-    function PmsCostDashboardComponent(route) {
-        var _this = this;
-        this.route = route;
-        route.parent.params.subscribe(function (params) {
-            _this.currentProjectId = params['id'];
-            console.log(_this.currentProjectId);
-        });
+    function PmsCostDashboardComponent(projectService) {
+        this.projectService = projectService;
+        this.result = [];
+        this.id = parseInt(localStorage.getItem('id'), 0);
     }
     PmsCostDashboardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.projectService.getProjectBudget(this.id).subscribe(function (budgets) {
+            console.log(budgets);
+            budgets.forEach(function (budget) {
+                _this.result.push(budget.amount);
+            });
+            console.log(_this.result);
+            _this.canvas = document.getElementById('myChart');
+            _this.ctx = _this.canvas.getContext('2d');
+            var myChart = new chart_js__WEBPACK_IMPORTED_MODULE_3__(_this.ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday ', ' Sunday'],
+                    datasets: [{
+                            label: '# of Costs',
+                            data: _this.result,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(54, 162, 235, 1)',
+                                'rgba(255, 206, 86, 1)'
+                            ],
+                            borderWidth: 1,
+                            lineTension: 0.1,
+                        }]
+                },
+                options: {
+                    responsive: false,
+                }
+            });
+        });
+        //   this.projectService.getProjectBudget(this.id).pipe(map(result => result)).subscribe(projects => {
+        //   console.log(projects);
+        //
+        // });
     };
     PmsCostDashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -336,7 +370,7 @@ var PmsCostDashboardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./pms-cost-dashboard.component.html */ "./projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.component.html"),
             styles: [__webpack_require__(/*! ./pms-cost-dashboard.component.css */ "./projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_src_app_services_project_service__WEBPACK_IMPORTED_MODULE_2__["ProjectService"]])
     ], PmsCostDashboardComponent);
     return PmsCostDashboardComponent;
 }());
@@ -345,32 +379,32 @@ var PmsCostDashboardComponent = /** @class */ (function () {
 
 /***/ }),
 
-/***/ "./projects/pms-gantt/src/app/chart/chart.component.html":
-/*!***************************************************************!*\
-  !*** ./projects/pms-gantt/src/app/chart/chart.component.html ***!
-  \***************************************************************/
+/***/ "./projects/pms-gantt/src/app/chart/pms-gantt-chart.component.html":
+/*!*************************************************************************!*\
+  !*** ./projects/pms-gantt/src/app/chart/pms-gantt-chart.component.html ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\" fxLayout=\"column\">\n  <mat-toolbar color=\"primary\">\n    <mat-toolbar-row>\n      <a mat-button [routerLink]=\"['/home']\">\n        <mat-icon>home</mat-icon>\n      </a>\n      <span>{{chartData == null ? null : chartData.name}}</span>\n      <span fxFlex></span>\n      <span>Angular Gantt Chart</span>\n    </mat-toolbar-row>\n  </mat-toolbar>\n  <div class=\"sidenav-container\" fxFlex fxLayout=\"row\">\n    <!-- names -->\n    <div class=\"sidenav names\" [ngStyle]=\"sidebarStyle\" fxLayout=\"column\">\n      <div class=\"sidenav-header text-center\">Steps</div>\n      <mat-tree class=\"tree\" fxFlex [dataSource]=\"dataSource\" [treeControl]=\"treeControl\" [ngStyle]=\"sidebarStyle\"\n        mwlResizable [resizeEdges]=\"{right: true}\" [enableGhostResize]=\"true\" [resizeSnapGrid]=\"{right: 1}\" (resizeEnd)=\"onResizeEnd($event)\">\n        <mat-tree-node *matTreeNodeDef=\"let node\" matTreeNodeToggle matTreeNodePadding>\n          <button mat-icon-button disabled></button>\n          <mat-form-field floatLabel=\"never\">\n            <input matInput placeholder=\"Step Name\" name=\"node\" [(ngModel)]=\"node.name\" (ngModelChange)=\"updateStepName(node, $event)\"\n              required>\n          </mat-form-field>\n          <button mat-icon-button (click)=\"addChildStep(node)\" class=\"text-green\" *ngIf=\"node.level<3\">\n            <mat-icon>add</mat-icon>\n          </button>\n          <button mat-icon-button (click)=\"deleteStep(node)\" class=\"text-red\" *ngIf=\"node.level!==0\">\n            <mat-icon>delete</mat-icon>\n          </button>\n        </mat-tree-node>\n        <mat-tree-node *matTreeNodeDef=\"let node;when: hasChild\" matTreeNodePadding>\n          <button mat-icon-button matTreeNodeToggle [attr.aria-label]=\"'toggle ' + node.name\">\n            <mat-icon class=\"mat-icon-rtl-mirror\" (click)=\"toggleExpanded(node)\">\n              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}\n            </mat-icon>\n          </button>\n          <mat-form-field floatLabel=\"never\">\n            <input matInput placeholder=\"Step Name\" name=\"node\" [(ngModel)]=\"node.name\" (ngModelChange)=\"updateStepName(node, $event)\"\n              required>\n          </mat-form-field>\n          <button mat-icon-button (click)=\"addChildStep(node)\" class=\"text-green\" *ngIf=\"node.level<3\">\n            <mat-icon>add</mat-icon>\n          </button>\n          <button mat-icon-button (click)=\"deleteStep(node)\" class=\"text-red\" *ngIf=\"node.level!==0\">\n            <mat-icon>delete</mat-icon>\n          </button>\n        </mat-tree-node>\n      </mat-tree>\n    </div>\n    <!-- date pickers -->\n    <div class=\"sidenav date-pickers\" fxLayout=\"column\">\n      <div class=\"sidenav-header text-center\">Dates</div>\n      <mat-tree class=\"tree\" fxFlex [dataSource]=\"dataSource\" [treeControl]=\"treeControl\">\n        <mat-tree-node *matTreeNodeDef=\"let node\">\n          <mat-form-field class=\"date-picker\" floatLabel=\"never\">\n            <input matInput [matDatepicker]=\"startDate\" [min]=\"node.level > 0 ? getParentStep(node).dates.start : null\"\n              [max]=\"node.level > 0 ? getParentStep(node).dates.end : null\" [(ngModel)]=\"node.dates.start\"\n              (ngModelChange)=\"updateDateRange(node)\">\n            <mat-datepicker-toggle matSuffix [for]=\"startDate\"></mat-datepicker-toggle>\n            <mat-datepicker #startDate></mat-datepicker>\n          </mat-form-field>\n          &nbsp;&nbsp;-&nbsp;&nbsp;\n          <mat-form-field class=\"date-picker\" floatLabel=\"never\">\n            <input matInput [matDatepicker]=\"endDate\" [min]=\"node.level > 0 ? getParentStep(node).dates.start : null\"\n              [max]=\"node.level > 0 ? getParentStep(node).dates.end : null\" [(ngModel)]=\"node.dates.end\"\n              (ngModelChange)=\"updateDateRange(node)\">\n            <mat-datepicker-toggle matSuffix [for]=\"endDate\"></mat-datepicker-toggle>\n            <mat-datepicker #endDate></mat-datepicker>\n          </mat-form-field>\n        </mat-tree-node>\n      </mat-tree>\n    </div>\n    <!-- progress -->\n    <div class=\"sidenav progress-bars\" fxLayout=\"column\">\n      <div class=\"sidenav-header text-center\">Progress</div>\n      <mat-tree class=\"tree\" fxFlex [dataSource]=\"dataSource\" [treeControl]=\"treeControl\">\n        <mat-tree-node *matTreeNodeDef=\"let node\" class=\"progress-row\">\n          <mat-slider class=\"progress\" [max]=\"100\" [min]=\"0\" [step]=\"5\" [thumbLabel]=\"true\" [tickInterval]=\"2\"\n            [(ngModel)]=\"node.progress\" (ngModelChange)=\"updateProgress(node, $event)\"></mat-slider>\n        </mat-tree-node>\n      </mat-tree>\n    </div>\n    <!-- calendar -->\n    <div class=\"sidenav-content calendar\" fxLayout=\"column\">\n      <div fxLayout=\"row\">\n        <div *ngFor=\"let date of dates\" class=\"calendar-cell\" [ngClass]=\"{today:date===today}\">{{date.slice(5)}}</div>\n      </div>\n      <mat-tree class=\"tree\" fxFlex [dataSource]=\"dataSource\" [treeControl]=\"treeControl\">\n        <mat-tree-node *matTreeNodeDef=\"let node\" class=\"calendar-row\">\n          <div *ngFor=\"let date of dates; let i=index;\" class=\"calendar-cell\" [ngClass]=\"{today:date===today}\"\n            [attr.date-filled]=\"node.progressDates.indexOf(date)>-1\" [attr.date-inside]=\"date>=node.dates.start&&date<=node.dates.end\">\n          </div>\n        </mat-tree-node>\n      </mat-tree>\n    </div>\n  </div>\n</div>\n"
+module.exports = "<mat-card style=\"height: 100%\">\n  <div fxFlex fxLayout=\"row\">\n    <div class=\"sidenav names\" [ngStyle]=\"sidebarStyle\" fxLayout=\"column\">\n      <div class=\"sidenav-header text-center\">Product Backlog Items</div>\n      <mat-tree class=\"tree\" fxFlex [dataSource]=\"dataSource\" [treeControl]=\"treeControl\" [ngStyle]=\"sidebarStyle\"\n                mwlResizable [resizeEdges]=\"{right: true}\" [enableGhostResize]=\"true\" [resizeSnapGrid]=\"{right: 1}\"\n                (resizeEnd)=\"onResizeEnd($event)\">\n        <mat-tree-node *matTreeNodeDef=\"let node\" matTreeNodeToggle matTreeNodePadding>\n          <button mat-icon-button disabled></button>\n          <mat-form-field floatLabel=\"never\">\n            <input matInput placeholder=\"Story Name\" name=\"node\" [(ngModel)]=\"node.name\"\n                   (ngModelChange)=\"updateStepName(node, $event)\"\n                   required>\n          </mat-form-field>\n          <button mat-icon-button (click)=\"addChildStep(node)\" class=\"text-green\" *ngIf=\"node.level<2\">\n            <mat-icon>add</mat-icon>\n          </button>\n          <button mat-icon-button (click)=\"deleteStep(node)\" class=\"text-red\" *ngIf=\"node.level!==0\">\n            <mat-icon>delete</mat-icon>\n          </button>\n        </mat-tree-node>\n        <mat-tree-node *matTreeNodeDef=\"let node;when: hasChild\" matTreeNodePadding>\n          <button mat-icon-button matTreeNodeToggle [attr.aria-label]=\"'toggle ' + node.name\">\n            <mat-icon class=\"mat-icon-rtl-mirror\" (click)=\"toggleExpanded(node)\">\n              {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}\n            </mat-icon>\n          </button>\n          <mat-form-field floatLabel=\"never\">\n            <input matInput placeholder=\"Task Name\" name=\"node\" [(ngModel)]=\"node.name\"\n                   (ngModelChange)=\"updateStepName(node, $event)\"\n                   required>\n          </mat-form-field>\n          <button mat-icon-button (click)=\"addChildStep(node)\" class=\"text-green\" *ngIf=\"node.level<3\">\n            <mat-icon>add</mat-icon>\n          </button>\n          <button mat-icon-button (click)=\"deleteStep(node)\" class=\"text-red\" *ngIf=\"node.level!==0\">\n            <mat-icon>delete</mat-icon>\n          </button>\n        </mat-tree-node>\n      </mat-tree>\n    </div>\n    <!-- date pickers -->\n    <div class=\"sidenav date-pickers\" fxLayout=\"column\">\n      <div class=\"sidenav-header text-center\">Dates</div>\n      <mat-tree class=\"tree\" fxFlex [dataSource]=\"dataSource\" [treeControl]=\"treeControl\">\n        <mat-tree-node *matTreeNodeDef=\"let node\">\n          <mat-form-field class=\"date-picker\" floatLabel=\"never\">\n            <input matInput [matDatepicker]=\"startDate\"\n                   [min]=\"node.level > 0 ? getParentStep(node).dates.start : null\"\n                   [max]=\"node.level > 0 ? getParentStep(node).dates.end : null\" [(ngModel)]=\"node.dates.start\"\n                   (ngModelChange)=\"updateDateRange(node)\">\n            <mat-datepicker-toggle matSuffix [for]=\"startDate\"></mat-datepicker-toggle>\n            <mat-datepicker #startDate></mat-datepicker>\n          </mat-form-field>\n          &nbsp;&nbsp;-&nbsp;&nbsp;\n          <mat-form-field class=\"date-picker\" floatLabel=\"never\">\n            <input matInput [matDatepicker]=\"endDate\" [min]=\"node.level > 0 ? getParentStep(node).dates.start : null\"\n                   [max]=\"node.level > 0 ? getParentStep(node).dates.end : null\" [(ngModel)]=\"node.dates.end\"\n                   (ngModelChange)=\"updateDateRange(node)\">\n            <mat-datepicker-toggle matSuffix [for]=\"endDate\"></mat-datepicker-toggle>\n            <mat-datepicker #endDate></mat-datepicker>\n          </mat-form-field>\n        </mat-tree-node>\n      </mat-tree>\n    </div>\n    <!-- progress -->\n    <div class=\"sidenav progress-bars\" fxLayout=\"column\">\n      <div class=\"sidenav-header text-center\">Progress</div>\n      <mat-tree class=\"tree\" fxFlex [dataSource]=\"dataSource\" [treeControl]=\"treeControl\">\n        <mat-tree-node *matTreeNodeDef=\"let node\" class=\"progress-row\">\n          <mat-slider [max]=\"100\" [min]=\"0\" [step]=\"5\" [thumbLabel]=\"true\" [tickInterval]=\"5\"\n                      [(ngModel)]=\"node.progress\" (ngModelChange)=\"updateProgress(node, $event)\"></mat-slider>\n        </mat-tree-node>\n      </mat-tree>\n    </div>\n    <!-- calendar -->\n    <div class=\"sidenav-content calendar\" fxLayout=\"column\">\n      <div fxLayout=\"row\">\n        <div *ngFor=\"let date of dates\" class=\"calendar-cell\" [ngClass]=\"{today:date===today}\">{{date.slice(5)}}</div>\n      </div>\n      <mat-tree class=\"tree\" fxFlex [dataSource]=\"dataSource\" [treeControl]=\"treeControl\">\n        <mat-tree-node *matTreeNodeDef=\"let node\" class=\"calendar-row\">\n          <div *ngFor=\"let date of dates; let i=index;\" class=\"calendar-cell\" [ngClass]=\"{today:date===today}\"\n               [attr.date-filled]=\"node.progressDates.indexOf(date)>-1\"\n               [attr.date-inside]=\"date>=node.dates.start&&date<=node.dates.end\">\n          </div>\n        </mat-tree-node>\n      </mat-tree>\n    </div>\n  </div>\n</mat-card>\n"
 
 /***/ }),
 
-/***/ "./projects/pms-gantt/src/app/chart/chart.component.scss":
-/*!***************************************************************!*\
-  !*** ./projects/pms-gantt/src/app/chart/chart.component.scss ***!
-  \***************************************************************/
+/***/ "./projects/pms-gantt/src/app/chart/pms-gantt-chart.component.scss":
+/*!*************************************************************************!*\
+  !*** ./projects/pms-gantt/src/app/chart/pms-gantt-chart.component.scss ***!
+  \*************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".sidenav {\n  width: 400px;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content; }\n\n.sidenav-content {\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  overflow-x: auto; }\n\n[mwlResizable] {\n  border-right: 3px solid #BDBDBD;\n  box-sizing: border-box; }\n\n.sidenav-header {\n  text-align: center;\n  line-height: 48px;\n  height: 48px;\n  min-height: 48px;\n  border-width: 1px 3px 1px 0;\n  border-color: #BDBDBD;\n  border-style: solid; }\n\n::ng-deep mat-tree-node {\n  height: 50px;\n  min-height: 50px; }\n\n/** names */\n\n.sidenav.names mat-tree.tree {\n  padding-top: 14px; }\n\n/** date picker */\n\n.sidenav.date-pickers {\n  flex: 0 0 250px; }\n\n.sidenav.date-pickers mat-tree.tree {\n    padding-top: 14px;\n    border-width: 0 3px 0 0;\n    border-color: #BDBDBD;\n    border-style: solid; }\n\n.sidenav.date-pickers mat-tree.tree mat-tree-node {\n      justify-content: center; }\n\n.sidenav.date-pickers mat-tree.tree mat-tree-node mat-form-field {\n        width: 100px; }\n\n/** progress */\n\n.sidenav.progress-bars {\n  flex: 0 0 200px; }\n\n.sidenav.progress-bars mat-tree.tree {\n    padding-top: 8px;\n    border-width: 0 3px 0 0;\n    border-color: #BDBDBD;\n    border-style: solid; }\n\n::ng-deep mat-slider.progress {\n  margin: 0 10px;\n  width: 100%;\n  height: unset; }\n\n/** calendar */\n\n::ng-deep .calendar-header {\n  height: 50px;\n  min-height: 50px; }\n\n::ng-deep mat-tree-node.calendar-row {\n  overflow: unset; }\n\n::ng-deep .calendar-cell {\n  text-align: center;\n  line-height: 49px;\n  width: 58px;\n  height: 49px;\n  min-width: 58px;\n  min-height: 49px;\n  border-width: 0.5px 1px;\n  border-color: #BDBDBD;\n  border-style: solid; }\n\n::ng-deep .calendar-cell.today {\n  border-color: #FF9800;\n  border-width: 0.5px 5px; }\n\n::ng-deep .calendar-cell[date-filled=true][date-inside=true] {\n  background-color: #2196F3; }\n\n::ng-deep .calendar-cell[date-filled=false][date-inside=true] {\n  background-color: #9E9E9E; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZG9jdW1lbnRzL1dvcmsvcG1zL3Btcy1jbGllbnQvc3JjL21haW4vcHJvamVjdHMvcG1zLWdhbnR0L3NyYy9hcHAvY2hhcnQvY2hhcnQuY29tcG9uZW50LnNjc3MiLCJwcm9qZWN0cy9wbXMtZ2FudHQvc3JjL2FwcC9jaGFydC9jaGFydC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFTQTtFQUNFLGFBQVk7RUFDWiw0QkFBbUI7RUFBbkIseUJBQW1CO0VBQW5CLG9CQUFtQixFQUNwQjs7QUFHRDtFQUNFLDRCQUFtQjtFQUFuQix5QkFBbUI7RUFBbkIsb0JBQW1CO0VBQ25CLGlCQUFnQixFQUNqQjs7QUNWRDtFRGNFLGdDQWhCbUI7RUFpQm5CLHVCQUFzQixFQUN2Qjs7QUFHRDtFQUNFLG1CQUFrQjtFQUNsQixrQkFBOEI7RUFDOUIsYUFBeUI7RUFDekIsaUJBQTZCO0VBQzdCLDRCQUEyQjtFQUMzQixzQkEzQm1CO0VBNEJuQixvQkFBbUIsRUFDcEI7O0FBR0Q7RUFDRSxhQXBDZTtFQXFDZixpQkFyQ2UsRUFzQ2hCOztBQUVELFlBQVk7O0FBRVo7RUFFSSxrQkFBaUIsRUFDbEI7O0FBR0gsa0JBQWtCOztBQUVsQjtFQUNFLGdCQUFlLEVBYWhCOztBQWREO0lBR0ksa0JBQWlCO0lBQ2pCLHdCQUF1QjtJQUN2QixzQkFwRGlCO0lBcURqQixvQkFBbUIsRUFPcEI7O0FBYkg7TUFRTSx3QkFBdUIsRUFJeEI7O0FBWkw7UUFVUSxhQUFZLEVBQ2I7O0FBS1AsZUFBZTs7QUFFZjtFQUNFLGdCQUFlLEVBT2hCOztBQVJEO0lBR0ksaUJBQWdCO0lBQ2hCLHdCQUF1QjtJQUN2QixzQkF0RWlCO0lBdUVqQixvQkFBbUIsRUFDcEI7O0FBR0g7RUFDRSxlQUFjO0VBQ2QsWUFBVztFQUNYLGNBQWEsRUFDZDs7QUFFRCxlQUFlOztBQUdmO0VBQ0UsYUF4RmU7RUF5RmYsaUJBekZlLEVBMEZoQjs7QUFHRDtFQUNFLGdCQUFlLEVBQ2hCOztBQUdEO0VBQ0UsbUJBQWtCO0VBQ2xCLGtCQUE4QjtFQUM5QixZQUF1QjtFQUN2QixhQUF5QjtFQUN6QixnQkFBMkI7RUFDM0IsaUJBQTZCO0VBQzdCLHdCQUF1QjtFQUN2QixzQkF2R21CO0VBd0duQixvQkFBbUIsRUFDcEI7O0FBRUQ7RUFDRSxzQkEzRzRCO0VBNEc1Qix3QkFBdUIsRUFDeEI7O0FBR0Q7RUFDRSwwQkFwSHFCLEVBcUh0Qjs7QUFHRDtFQUNFLDBCQXhIdUIsRUF5SHhCIiwiZmlsZSI6InByb2plY3RzL3Btcy1nYW50dC9zcmMvYXBwL2NoYXJ0L2NoYXJ0LmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLy8gdmFyaWFibGVzXG4kdG9vbGJhckhlaWdodDogNjRweDtcbiRub2RlV2lkdGg6IDYwcHg7XG4kbm9kZUhlaWdodDogNTBweDtcbiRjb21wbGV0ZUNvbG9yOiAjMjE5NkYzO1xuJGluY29tcGxldGVDb2xvcjogIzlFOUU5RTtcbiRib3JkZXJDb2xvcjogI0JEQkRCRDtcbiRoaWdobGlnaHRCb3JkZXJDb2xvcjogI0ZGOTgwMDtcbi8vIHNpZGVuYXZcbi5zaWRlbmF2IHtcbiAgd2lkdGg6IDQwMHB4O1xuICBoZWlnaHQ6IGZpdC1jb250ZW50O1xufVxuXG4vLyB0YWJsZSBjb250ZW50XG4uc2lkZW5hdi1jb250ZW50IHtcbiAgaGVpZ2h0OiBmaXQtY29udGVudDtcbiAgb3ZlcmZsb3cteDogYXV0bztcbn1cblxuLy8gcmVzaXphYmxlIGJvcmRlclxuW213bFJlc2l6YWJsZV0ge1xuICBib3JkZXItcmlnaHQ6IDNweCBzb2xpZCAkYm9yZGVyQ29sb3I7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG59XG5cbi8vIHNpZGVuYXYgaGVhZGVyKG5vdCBjYWxlbmRhcilcbi5zaWRlbmF2LWhlYWRlciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbGluZS1oZWlnaHQ6ICRub2RlSGVpZ2h0IC0gMnB4O1xuICBoZWlnaHQ6ICRub2RlSGVpZ2h0IC0gMnB4O1xuICBtaW4taGVpZ2h0OiAkbm9kZUhlaWdodCAtIDJweDtcbiAgYm9yZGVyLXdpZHRoOiAxcHggM3B4IDFweCAwO1xuICBib3JkZXItY29sb3I6ICRib3JkZXJDb2xvcjtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbn1cblxuLy8gdHJlZSBub2RlIGhlaWdodCBmb3Igc2lkZWJhclxuOjpuZy1kZWVwIG1hdC10cmVlLW5vZGUge1xuICBoZWlnaHQ6ICRub2RlSGVpZ2h0O1xuICBtaW4taGVpZ2h0OiAkbm9kZUhlaWdodDtcbn1cblxuLyoqIG5hbWVzICovXG5cbi5zaWRlbmF2Lm5hbWVzIHtcbiAgbWF0LXRyZWUudHJlZSB7XG4gICAgcGFkZGluZy10b3A6IDE0cHg7IC8vIGFsaWduIHRoZSBsaW5lcyBvZiBpbnB1dCBhbmQgdGFibGVcbiAgfVxufVxuXG4vKiogZGF0ZSBwaWNrZXIgKi9cblxuLnNpZGVuYXYuZGF0ZS1waWNrZXJzIHtcbiAgZmxleDogMCAwIDI1MHB4O1xuICBtYXQtdHJlZS50cmVlIHtcbiAgICBwYWRkaW5nLXRvcDogMTRweDsgLy8gYWxpZ24gdGhlIGxpbmVzIGFuZCB0YWJsZVxuICAgIGJvcmRlci13aWR0aDogMCAzcHggMCAwO1xuICAgIGJvcmRlci1jb2xvcjogJGJvcmRlckNvbG9yO1xuICAgIGJvcmRlci1zdHlsZTogc29saWQ7XG4gICAgbWF0LXRyZWUtbm9kZSB7XG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgIG1hdC1mb3JtLWZpZWxkIHtcbiAgICAgICAgd2lkdGg6IDEwMHB4O1xuICAgICAgfVxuICAgIH1cbiAgfVxufVxuXG4vKiogcHJvZ3Jlc3MgKi9cblxuLnNpZGVuYXYucHJvZ3Jlc3MtYmFycyB7XG4gIGZsZXg6IDAgMCAyMDBweDtcbiAgbWF0LXRyZWUudHJlZSB7XG4gICAgcGFkZGluZy10b3A6IDhweDsgLy8gYWxpZ24gdGhlIHNsaWRlcnMgYW5kIHRhYmxlXG4gICAgYm9yZGVyLXdpZHRoOiAwIDNweCAwIDA7XG4gICAgYm9yZGVyLWNvbG9yOiAkYm9yZGVyQ29sb3I7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgfVxufVxuXG46Om5nLWRlZXAgbWF0LXNsaWRlci5wcm9ncmVzcyB7XG4gIG1hcmdpbjogMCAxMHB4O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiB1bnNldDtcbn1cblxuLyoqIGNhbGVuZGFyICovXG5cbi8vIGhlYWRlclxuOjpuZy1kZWVwIC5jYWxlbmRhci1oZWFkZXIge1xuICBoZWlnaHQ6ICRub2RlSGVpZ2h0O1xuICBtaW4taGVpZ2h0OiAkbm9kZUhlaWdodDtcbn1cblxuLy8gcm93XG46Om5nLWRlZXAgbWF0LXRyZWUtbm9kZS5jYWxlbmRhci1yb3cge1xuICBvdmVyZmxvdzogdW5zZXQ7IC8vIGFsbG93IHRoZSByb3cgdG8gb3ZlcmZsb3dcbn1cblxuLy8gY2VsbFxuOjpuZy1kZWVwIC5jYWxlbmRhci1jZWxsIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBsaW5lLWhlaWdodDogJG5vZGVIZWlnaHQgLSAxcHg7XG4gIHdpZHRoOiAkbm9kZVdpZHRoIC0gMnB4O1xuICBoZWlnaHQ6ICRub2RlSGVpZ2h0IC0gMXB4O1xuICBtaW4td2lkdGg6ICRub2RlV2lkdGggLSAycHg7XG4gIG1pbi1oZWlnaHQ6ICRub2RlSGVpZ2h0IC0gMXB4O1xuICBib3JkZXItd2lkdGg6IDAuNXB4IDFweDtcbiAgYm9yZGVyLWNvbG9yOiAkYm9yZGVyQ29sb3I7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG59XG5cbjo6bmctZGVlcCAuY2FsZW5kYXItY2VsbC50b2RheSB7XG4gIGJvcmRlci1jb2xvcjogJGhpZ2hsaWdodEJvcmRlckNvbG9yO1xuICBib3JkZXItd2lkdGg6IDAuNXB4IDVweDtcbn1cblxuLy8gY29tcGxldGVkIGNlbGxcbjo6bmctZGVlcCAuY2FsZW5kYXItY2VsbFtkYXRlLWZpbGxlZD10cnVlXVtkYXRlLWluc2lkZT10cnVlXSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICRjb21wbGV0ZUNvbG9yO1xufVxuXG4vLyBpbmNvbXBsZXRlZCBjZWxsXG46Om5nLWRlZXAgLmNhbGVuZGFyLWNlbGxbZGF0ZS1maWxsZWQ9ZmFsc2VdW2RhdGUtaW5zaWRlPXRydWVdIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogJGluY29tcGxldGVDb2xvcjtcbn1cbiIsIi5zaWRlbmF2IHtcbiAgd2lkdGg6IDQwMHB4O1xuICBoZWlnaHQ6IGZpdC1jb250ZW50OyB9XG5cbi5zaWRlbmF2LWNvbnRlbnQge1xuICBoZWlnaHQ6IGZpdC1jb250ZW50O1xuICBvdmVyZmxvdy14OiBhdXRvOyB9XG5cblttd2xSZXNpemFibGVdIHtcbiAgYm9yZGVyLXJpZ2h0OiAzcHggc29saWQgI0JEQkRCRDtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDsgfVxuXG4uc2lkZW5hdi1oZWFkZXIge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGxpbmUtaGVpZ2h0OiA0OHB4O1xuICBoZWlnaHQ6IDQ4cHg7XG4gIG1pbi1oZWlnaHQ6IDQ4cHg7XG4gIGJvcmRlci13aWR0aDogMXB4IDNweCAxcHggMDtcbiAgYm9yZGVyLWNvbG9yOiAjQkRCREJEO1xuICBib3JkZXItc3R5bGU6IHNvbGlkOyB9XG5cbjo6bmctZGVlcCBtYXQtdHJlZS1ub2RlIHtcbiAgaGVpZ2h0OiA1MHB4O1xuICBtaW4taGVpZ2h0OiA1MHB4OyB9XG5cbi8qKiBuYW1lcyAqL1xuLnNpZGVuYXYubmFtZXMgbWF0LXRyZWUudHJlZSB7XG4gIHBhZGRpbmctdG9wOiAxNHB4OyB9XG5cbi8qKiBkYXRlIHBpY2tlciAqL1xuLnNpZGVuYXYuZGF0ZS1waWNrZXJzIHtcbiAgZmxleDogMCAwIDI1MHB4OyB9XG4gIC5zaWRlbmF2LmRhdGUtcGlja2VycyBtYXQtdHJlZS50cmVlIHtcbiAgICBwYWRkaW5nLXRvcDogMTRweDtcbiAgICBib3JkZXItd2lkdGg6IDAgM3B4IDAgMDtcbiAgICBib3JkZXItY29sb3I6ICNCREJEQkQ7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDsgfVxuICAgIC5zaWRlbmF2LmRhdGUtcGlja2VycyBtYXQtdHJlZS50cmVlIG1hdC10cmVlLW5vZGUge1xuICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7IH1cbiAgICAgIC5zaWRlbmF2LmRhdGUtcGlja2VycyBtYXQtdHJlZS50cmVlIG1hdC10cmVlLW5vZGUgbWF0LWZvcm0tZmllbGQge1xuICAgICAgICB3aWR0aDogMTAwcHg7IH1cblxuLyoqIHByb2dyZXNzICovXG4uc2lkZW5hdi5wcm9ncmVzcy1iYXJzIHtcbiAgZmxleDogMCAwIDIwMHB4OyB9XG4gIC5zaWRlbmF2LnByb2dyZXNzLWJhcnMgbWF0LXRyZWUudHJlZSB7XG4gICAgcGFkZGluZy10b3A6IDhweDtcbiAgICBib3JkZXItd2lkdGg6IDAgM3B4IDAgMDtcbiAgICBib3JkZXItY29sb3I6ICNCREJEQkQ7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDsgfVxuXG46Om5nLWRlZXAgbWF0LXNsaWRlci5wcm9ncmVzcyB7XG4gIG1hcmdpbjogMCAxMHB4O1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiB1bnNldDsgfVxuXG4vKiogY2FsZW5kYXIgKi9cbjo6bmctZGVlcCAuY2FsZW5kYXItaGVhZGVyIHtcbiAgaGVpZ2h0OiA1MHB4O1xuICBtaW4taGVpZ2h0OiA1MHB4OyB9XG5cbjo6bmctZGVlcCBtYXQtdHJlZS1ub2RlLmNhbGVuZGFyLXJvdyB7XG4gIG92ZXJmbG93OiB1bnNldDsgfVxuXG46Om5nLWRlZXAgLmNhbGVuZGFyLWNlbGwge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGxpbmUtaGVpZ2h0OiA0OXB4O1xuICB3aWR0aDogNThweDtcbiAgaGVpZ2h0OiA0OXB4O1xuICBtaW4td2lkdGg6IDU4cHg7XG4gIG1pbi1oZWlnaHQ6IDQ5cHg7XG4gIGJvcmRlci13aWR0aDogMC41cHggMXB4O1xuICBib3JkZXItY29sb3I6ICNCREJEQkQ7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7IH1cblxuOjpuZy1kZWVwIC5jYWxlbmRhci1jZWxsLnRvZGF5IHtcbiAgYm9yZGVyLWNvbG9yOiAjRkY5ODAwO1xuICBib3JkZXItd2lkdGg6IDAuNXB4IDVweDsgfVxuXG46Om5nLWRlZXAgLmNhbGVuZGFyLWNlbGxbZGF0ZS1maWxsZWQ9dHJ1ZV1bZGF0ZS1pbnNpZGU9dHJ1ZV0ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjE5NkYzOyB9XG5cbjo6bmctZGVlcCAuY2FsZW5kYXItY2VsbFtkYXRlLWZpbGxlZD1mYWxzZV1bZGF0ZS1pbnNpZGU9dHJ1ZV0ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjOUU5RTlFOyB9XG4iXX0= */"
+module.exports = ".sidenav {\n  width: 400px;\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content; }\n\n.sidenav-content {\n  height: -webkit-fit-content;\n  height: -moz-fit-content;\n  height: fit-content;\n  overflow-x: auto; }\n\n[mwlResizable] {\n  border-right: 2px solid #BDBDBD;\n  box-sizing: border-box; }\n\n.sidenav-header {\n  text-align: center;\n  line-height: 73px;\n  height: 73px;\n  min-height: 73px;\n  border-width: 1px 2px 1px 0;\n  border-color: #BDBDBD;\n  border-style: solid; }\n\n::ng-deep mat-tree-node {\n  height: 75px;\n  min-height: 75px; }\n\n/** names */\n\n.sidenav.names mat-tree.tree {\n  padding-top: 20px; }\n\n/** date picker */\n\n.sidenav.date-pickers {\n  flex: 0 0 250px; }\n\n.sidenav.date-pickers mat-tree.tree {\n    padding-top: 14px;\n    border-width: 0 2px 0 0;\n    border-color: #BDBDBD;\n    border-style: solid; }\n\n.sidenav.date-pickers mat-tree.tree mat-tree-node {\n      justify-content: center; }\n\n.sidenav.date-pickers mat-tree.tree mat-tree-node mat-form-field {\n        width: 100px; }\n\n/** progress */\n\n.sidenav.progress-bars {\n  flex: 0 0 100px; }\n\n.sidenav.progress-bars mat-tree.tree {\n    padding-top: 20px;\n    border-width: 0 2px 0 0;\n    border-color: #BDBDBD;\n    border-style: solid; }\n\n.mat-slider-thumb-label {\n  -webkit-transform: rotate(45deg) !important;\n          transform: rotate(45deg) !important;\n  border-radius: 50% 50% 0 !important; }\n\n.mat-slider-thumb {\n  -webkit-transform: scale(0) !important;\n          transform: scale(0) !important; }\n\n.mat-slider-thumb-label-text {\n  opacity: 1 !important; }\n\n/** calendar */\n\n::ng-deep .calendar-header {\n  height: 75px;\n  min-height: 75px; }\n\n::ng-deep mat-tree-node.calendar-row {\n  overflow: unset; }\n\n::ng-deep .calendar-cell {\n  text-align: center;\n  line-height: 74px;\n  width: 68px;\n  height: 74px;\n  min-width: 68px;\n  min-height: 74px;\n  border-width: 0.5px 1px;\n  border-color: #9E9E9E;\n  border-style: solid; }\n\n::ng-deep .calendar-cell.today {\n  border-color: #FF9800;\n  border-width: 0.5px 3px; }\n\n::ng-deep .calendar-cell[date-filled=true][date-inside=true] {\n  background-color: #006ff3; }\n\n::ng-deep .calendar-cell[date-filled=false][date-inside=true] {\n  background-color: #BDBDBD; }\n\n.full-width {\n  width: 100%; }\n\n.flex-spacer {\n  flex: 1 1 auto; }\n\n.text-left {\n  text-align: left; }\n\n.text-center {\n  text-align: center; }\n\n.text-right {\n  text-align: right; }\n\n.text-red {\n  color: #F44336 !important; }\n\n.text-green {\n  color: #4CAF50 !important; }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9tbnQvZG9jL3Btcy9wbXMtY2xpZW50L3NyYy9tYWluL3Byb2plY3RzL3Btcy1nYW50dC9zcmMvYXBwL2NoYXJ0L3Btcy1nYW50dC1jaGFydC5jb21wb25lbnQuc2NzcyIsInByb2plY3RzL3Btcy1nYW50dC9zcmMvYXBwL2NoYXJ0L3Btcy1nYW50dC1jaGFydC5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFTQTtFQUNFLGFBQVk7RUFDWiw0QkFBbUI7RUFBbkIseUJBQW1CO0VBQW5CLG9CQUFtQixFQUNwQjs7QUFHRDtFQUNFLDRCQUFtQjtFQUFuQix5QkFBbUI7RUFBbkIsb0JBQW1CO0VBQ25CLGlCQUFnQixFQUNqQjs7QUNWRDtFRGNFLGdDQWhCbUI7RUFpQm5CLHVCQUFzQixFQUN2Qjs7QUFHRDtFQUNFLG1CQUFrQjtFQUNsQixrQkFBOEI7RUFDOUIsYUFBeUI7RUFDekIsaUJBQTZCO0VBQzdCLDRCQUEyQjtFQUMzQixzQkEzQm1CO0VBNEJuQixvQkFBbUIsRUFDcEI7O0FBR0Q7RUFDRSxhQXBDZTtFQXFDZixpQkFyQ2UsRUFzQ2hCOztBQUVELFlBQVk7O0FBRVo7RUFFSSxrQkFBaUIsRUFDbEI7O0FBR0gsa0JBQWtCOztBQUVsQjtFQUNFLGdCQUFlLEVBYWhCOztBQWREO0lBR0ksa0JBQWlCO0lBQ2pCLHdCQUF1QjtJQUN2QixzQkFwRGlCO0lBcURqQixvQkFBbUIsRUFPcEI7O0FBYkg7TUFRTSx3QkFBdUIsRUFJeEI7O0FBWkw7UUFVUSxhQUFZLEVBQ2I7O0FBS1AsZUFBZTs7QUFFZjtFQUNFLGdCQUFlLEVBT2hCOztBQVJEO0lBR0ksa0JBQWlCO0lBQ2pCLHdCQUF1QjtJQUN2QixzQkF0RWlCO0lBdUVqQixvQkFBbUIsRUFDcEI7O0FBR0g7RUFDRSw0Q0FBbUM7VUFBbkMsb0NBQW1DO0VBQ25DLG9DQUFtQyxFQUNwQzs7QUFFRDtFQUNFLHVDQUE4QjtVQUE5QiwrQkFBOEIsRUFDL0I7O0FBRUQ7RUFDRSxzQkFBcUIsRUFDdEI7O0FBRUQsZUFBZTs7QUFHZjtFQUNFLGFBL0ZlO0VBZ0dmLGlCQWhHZSxFQWlHaEI7O0FBR0Q7RUFDRSxnQkFBZSxFQUNoQjs7QUFHRDtFQUNFLG1CQUFrQjtFQUNsQixrQkFBOEI7RUFDOUIsWUFBdUI7RUFDdkIsYUFBeUI7RUFDekIsZ0JBQTJCO0VBQzNCLGlCQUE2QjtFQUM3Qix3QkFBdUI7RUFDdkIsc0JBL0d1QjtFQWdIdkIsb0JBQW1CLEVBQ3BCOztBQUVEO0VBQ0Usc0JBbEg0QjtFQW1INUIsd0JBQXVCLEVBQ3hCOztBQUdEO0VBQ0UsMEJBM0hxQixFQTRIdEI7O0FBR0Q7RUFDRSwwQkE5SG1CLEVBK0hwQjs7QUFHRDtFQUNFLFlBQVcsRUFDWjs7QUFFRDtFQUNFLGVBQWMsRUFDZjs7QUFFRDtFQUNFLGlCQUFnQixFQUNqQjs7QUFFRDtFQUNFLG1CQUFrQixFQUNuQjs7QUFFRDtFQUNFLGtCQUFpQixFQUNsQjs7QUFFRDtFQUNFLDBCQUF5QixFQUMxQjs7QUFFRDtFQUNFLDBCQUF5QixFQUMxQiIsImZpbGUiOiJwcm9qZWN0cy9wbXMtZ2FudHQvc3JjL2FwcC9jaGFydC9wbXMtZ2FudHQtY2hhcnQuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIvLyB2YXJpYWJsZXNcbiR0b29sYmFySGVpZ2h0OiA2NHB4O1xuJG5vZGVXaWR0aDogNzBweDtcbiRub2RlSGVpZ2h0OiA3NXB4O1xuJGNvbXBsZXRlQ29sb3I6ICMwMDZmZjM7XG4kaW5jb21wbGV0ZUNvbG9yOiAjOUU5RTlFO1xuJGJvcmRlckNvbG9yOiAjQkRCREJEO1xuJGhpZ2hsaWdodEJvcmRlckNvbG9yOiAjRkY5ODAwO1xuLy8gc2lkZW5hdlxuLnNpZGVuYXYge1xuICB3aWR0aDogNDAwcHg7XG4gIGhlaWdodDogZml0LWNvbnRlbnQ7XG59XG5cbi8vIHRhYmxlIGNvbnRlbnRcbi5zaWRlbmF2LWNvbnRlbnQge1xuICBoZWlnaHQ6IGZpdC1jb250ZW50O1xuICBvdmVyZmxvdy14OiBhdXRvO1xufVxuXG4vLyByZXNpemFibGUgYm9yZGVyXG5bbXdsUmVzaXphYmxlXSB7XG4gIGJvcmRlci1yaWdodDogMnB4IHNvbGlkICRib3JkZXJDb2xvcjtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbn1cblxuLy8gc2lkZW5hdiBoZWFkZXIobm90IGNhbGVuZGFyKVxuLnNpZGVuYXYtaGVhZGVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBsaW5lLWhlaWdodDogJG5vZGVIZWlnaHQgLSAycHg7XG4gIGhlaWdodDogJG5vZGVIZWlnaHQgLSAycHg7XG4gIG1pbi1oZWlnaHQ6ICRub2RlSGVpZ2h0IC0gMnB4O1xuICBib3JkZXItd2lkdGg6IDFweCAycHggMXB4IDA7XG4gIGJvcmRlci1jb2xvcjogJGJvcmRlckNvbG9yO1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xufVxuXG4vLyB0cmVlIG5vZGUgaGVpZ2h0IGZvciBzaWRlYmFyXG46Om5nLWRlZXAgbWF0LXRyZWUtbm9kZSB7XG4gIGhlaWdodDogJG5vZGVIZWlnaHQ7XG4gIG1pbi1oZWlnaHQ6ICRub2RlSGVpZ2h0O1xufVxuXG4vKiogbmFtZXMgKi9cblxuLnNpZGVuYXYubmFtZXMge1xuICBtYXQtdHJlZS50cmVlIHtcbiAgICBwYWRkaW5nLXRvcDogMjBweDsgLy8gYWxpZ24gdGhlIGxpbmVzIG9mIGlucHV0IGFuZCB0YWJsZVxuICB9XG59XG5cbi8qKiBkYXRlIHBpY2tlciAqL1xuXG4uc2lkZW5hdi5kYXRlLXBpY2tlcnMge1xuICBmbGV4OiAwIDAgMjUwcHg7XG4gIG1hdC10cmVlLnRyZWUge1xuICAgIHBhZGRpbmctdG9wOiAxNHB4OyAvLyBhbGlnbiB0aGUgbGluZXMgYW5kIHRhYmxlXG4gICAgYm9yZGVyLXdpZHRoOiAwIDJweCAwIDA7XG4gICAgYm9yZGVyLWNvbG9yOiAkYm9yZGVyQ29sb3I7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICBtYXQtdHJlZS1ub2RlIHtcbiAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgbWF0LWZvcm0tZmllbGQge1xuICAgICAgICB3aWR0aDogMTAwcHg7XG4gICAgICB9XG4gICAgfVxuICB9XG59XG5cbi8qKiBwcm9ncmVzcyAqL1xuXG4uc2lkZW5hdi5wcm9ncmVzcy1iYXJzIHtcbiAgZmxleDogMCAwIDEwMHB4O1xuICBtYXQtdHJlZS50cmVlIHtcbiAgICBwYWRkaW5nLXRvcDogMjBweDsgLy8gYWxpZ24gdGhlIHNsaWRlcnMgYW5kIHRhYmxlIDhcbiAgICBib3JkZXItd2lkdGg6IDAgMnB4IDAgMDtcbiAgICBib3JkZXItY29sb3I6ICRib3JkZXJDb2xvcjtcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xuICB9XG59XG5cbi5tYXQtc2xpZGVyLXRodW1iLWxhYmVsIHtcbiAgdHJhbnNmb3JtOiByb3RhdGUoNDVkZWcpICFpbXBvcnRhbnQ7XG4gIGJvcmRlci1yYWRpdXM6IDUwJSA1MCUgMCAhaW1wb3J0YW50O1xufVxuXG4ubWF0LXNsaWRlci10aHVtYiB7XG4gIHRyYW5zZm9ybTogc2NhbGUoMCkgIWltcG9ydGFudDtcbn1cblxuLm1hdC1zbGlkZXItdGh1bWItbGFiZWwtdGV4dCB7XG4gIG9wYWNpdHk6IDEgIWltcG9ydGFudDtcbn1cblxuLyoqIGNhbGVuZGFyICovXG5cbi8vIGhlYWRlclxuOjpuZy1kZWVwIC5jYWxlbmRhci1oZWFkZXIge1xuICBoZWlnaHQ6ICRub2RlSGVpZ2h0O1xuICBtaW4taGVpZ2h0OiAkbm9kZUhlaWdodDtcbn1cblxuLy8gcm93XG46Om5nLWRlZXAgbWF0LXRyZWUtbm9kZS5jYWxlbmRhci1yb3cge1xuICBvdmVyZmxvdzogdW5zZXQ7IC8vIGFsbG93IHRoZSByb3cgdG8gb3ZlcmZsb3dcbn1cblxuLy8gY2VsbFxuOjpuZy1kZWVwIC5jYWxlbmRhci1jZWxsIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBsaW5lLWhlaWdodDogJG5vZGVIZWlnaHQgLSAxcHg7XG4gIHdpZHRoOiAkbm9kZVdpZHRoIC0gMnB4O1xuICBoZWlnaHQ6ICRub2RlSGVpZ2h0IC0gMXB4O1xuICBtaW4td2lkdGg6ICRub2RlV2lkdGggLSAycHg7XG4gIG1pbi1oZWlnaHQ6ICRub2RlSGVpZ2h0IC0gMXB4O1xuICBib3JkZXItd2lkdGg6IDAuNXB4IDFweDtcbiAgYm9yZGVyLWNvbG9yOiAkaW5jb21wbGV0ZUNvbG9yO1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xufVxuXG46Om5nLWRlZXAgLmNhbGVuZGFyLWNlbGwudG9kYXkge1xuICBib3JkZXItY29sb3I6ICRoaWdobGlnaHRCb3JkZXJDb2xvcjtcbiAgYm9yZGVyLXdpZHRoOiAwLjVweCAzcHg7XG59XG5cbi8vIGNvbXBsZXRlZCBjZWxsXG46Om5nLWRlZXAgLmNhbGVuZGFyLWNlbGxbZGF0ZS1maWxsZWQ9dHJ1ZV1bZGF0ZS1pbnNpZGU9dHJ1ZV0ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAkY29tcGxldGVDb2xvcjtcbn1cblxuLy8gaW5jb21wbGV0ZWQgY2VsbFxuOjpuZy1kZWVwIC5jYWxlbmRhci1jZWxsW2RhdGUtZmlsbGVkPWZhbHNlXVtkYXRlLWluc2lkZT10cnVlXSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICRib3JkZXJDb2xvcjtcbn1cblxuXG4uZnVsbC13aWR0aCB7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4uZmxleC1zcGFjZXIge1xuICBmbGV4OiAxIDEgYXV0bztcbn1cblxuLnRleHQtbGVmdCB7XG4gIHRleHQtYWxpZ246IGxlZnQ7XG59XG5cbi50ZXh0LWNlbnRlciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLnRleHQtcmlnaHQge1xuICB0ZXh0LWFsaWduOiByaWdodDtcbn1cblxuLnRleHQtcmVkIHtcbiAgY29sb3I6ICNGNDQzMzYgIWltcG9ydGFudDtcbn1cblxuLnRleHQtZ3JlZW4ge1xuICBjb2xvcjogIzRDQUY1MCAhaW1wb3J0YW50O1xufVxuIiwiLnNpZGVuYXYge1xuICB3aWR0aDogNDAwcHg7XG4gIGhlaWdodDogZml0LWNvbnRlbnQ7IH1cblxuLnNpZGVuYXYtY29udGVudCB7XG4gIGhlaWdodDogZml0LWNvbnRlbnQ7XG4gIG92ZXJmbG93LXg6IGF1dG87IH1cblxuW213bFJlc2l6YWJsZV0ge1xuICBib3JkZXItcmlnaHQ6IDJweCBzb2xpZCAjQkRCREJEO1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94OyB9XG5cbi5zaWRlbmF2LWhlYWRlciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbGluZS1oZWlnaHQ6IDczcHg7XG4gIGhlaWdodDogNzNweDtcbiAgbWluLWhlaWdodDogNzNweDtcbiAgYm9yZGVyLXdpZHRoOiAxcHggMnB4IDFweCAwO1xuICBib3JkZXItY29sb3I6ICNCREJEQkQ7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7IH1cblxuOjpuZy1kZWVwIG1hdC10cmVlLW5vZGUge1xuICBoZWlnaHQ6IDc1cHg7XG4gIG1pbi1oZWlnaHQ6IDc1cHg7IH1cblxuLyoqIG5hbWVzICovXG4uc2lkZW5hdi5uYW1lcyBtYXQtdHJlZS50cmVlIHtcbiAgcGFkZGluZy10b3A6IDIwcHg7IH1cblxuLyoqIGRhdGUgcGlja2VyICovXG4uc2lkZW5hdi5kYXRlLXBpY2tlcnMge1xuICBmbGV4OiAwIDAgMjUwcHg7IH1cbiAgLnNpZGVuYXYuZGF0ZS1waWNrZXJzIG1hdC10cmVlLnRyZWUge1xuICAgIHBhZGRpbmctdG9wOiAxNHB4O1xuICAgIGJvcmRlci13aWR0aDogMCAycHggMCAwO1xuICAgIGJvcmRlci1jb2xvcjogI0JEQkRCRDtcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkOyB9XG4gICAgLnNpZGVuYXYuZGF0ZS1waWNrZXJzIG1hdC10cmVlLnRyZWUgbWF0LXRyZWUtbm9kZSB7XG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjsgfVxuICAgICAgLnNpZGVuYXYuZGF0ZS1waWNrZXJzIG1hdC10cmVlLnRyZWUgbWF0LXRyZWUtbm9kZSBtYXQtZm9ybS1maWVsZCB7XG4gICAgICAgIHdpZHRoOiAxMDBweDsgfVxuXG4vKiogcHJvZ3Jlc3MgKi9cbi5zaWRlbmF2LnByb2dyZXNzLWJhcnMge1xuICBmbGV4OiAwIDAgMTAwcHg7IH1cbiAgLnNpZGVuYXYucHJvZ3Jlc3MtYmFycyBtYXQtdHJlZS50cmVlIHtcbiAgICBwYWRkaW5nLXRvcDogMjBweDtcbiAgICBib3JkZXItd2lkdGg6IDAgMnB4IDAgMDtcbiAgICBib3JkZXItY29sb3I6ICNCREJEQkQ7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDsgfVxuXG4ubWF0LXNsaWRlci10aHVtYi1sYWJlbCB7XG4gIHRyYW5zZm9ybTogcm90YXRlKDQ1ZGVnKSAhaW1wb3J0YW50O1xuICBib3JkZXItcmFkaXVzOiA1MCUgNTAlIDAgIWltcG9ydGFudDsgfVxuXG4ubWF0LXNsaWRlci10aHVtYiB7XG4gIHRyYW5zZm9ybTogc2NhbGUoMCkgIWltcG9ydGFudDsgfVxuXG4ubWF0LXNsaWRlci10aHVtYi1sYWJlbC10ZXh0IHtcbiAgb3BhY2l0eTogMSAhaW1wb3J0YW50OyB9XG5cbi8qKiBjYWxlbmRhciAqL1xuOjpuZy1kZWVwIC5jYWxlbmRhci1oZWFkZXIge1xuICBoZWlnaHQ6IDc1cHg7XG4gIG1pbi1oZWlnaHQ6IDc1cHg7IH1cblxuOjpuZy1kZWVwIG1hdC10cmVlLW5vZGUuY2FsZW5kYXItcm93IHtcbiAgb3ZlcmZsb3c6IHVuc2V0OyB9XG5cbjo6bmctZGVlcCAuY2FsZW5kYXItY2VsbCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbGluZS1oZWlnaHQ6IDc0cHg7XG4gIHdpZHRoOiA2OHB4O1xuICBoZWlnaHQ6IDc0cHg7XG4gIG1pbi13aWR0aDogNjhweDtcbiAgbWluLWhlaWdodDogNzRweDtcbiAgYm9yZGVyLXdpZHRoOiAwLjVweCAxcHg7XG4gIGJvcmRlci1jb2xvcjogIzlFOUU5RTtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDsgfVxuXG46Om5nLWRlZXAgLmNhbGVuZGFyLWNlbGwudG9kYXkge1xuICBib3JkZXItY29sb3I6ICNGRjk4MDA7XG4gIGJvcmRlci13aWR0aDogMC41cHggM3B4OyB9XG5cbjo6bmctZGVlcCAuY2FsZW5kYXItY2VsbFtkYXRlLWZpbGxlZD10cnVlXVtkYXRlLWluc2lkZT10cnVlXSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMwMDZmZjM7IH1cblxuOjpuZy1kZWVwIC5jYWxlbmRhci1jZWxsW2RhdGUtZmlsbGVkPWZhbHNlXVtkYXRlLWluc2lkZT10cnVlXSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNCREJEQkQ7IH1cblxuLmZ1bGwtd2lkdGgge1xuICB3aWR0aDogMTAwJTsgfVxuXG4uZmxleC1zcGFjZXIge1xuICBmbGV4OiAxIDEgYXV0bzsgfVxuXG4udGV4dC1sZWZ0IHtcbiAgdGV4dC1hbGlnbjogbGVmdDsgfVxuXG4udGV4dC1jZW50ZXIge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7IH1cblxuLnRleHQtcmlnaHQge1xuICB0ZXh0LWFsaWduOiByaWdodDsgfVxuXG4udGV4dC1yZWQge1xuICBjb2xvcjogI0Y0NDMzNiAhaW1wb3J0YW50OyB9XG5cbi50ZXh0LWdyZWVuIHtcbiAgY29sb3I6ICM0Q0FGNTAgIWltcG9ydGFudDsgfVxuIl19 */"
 
 /***/ }),
 
-/***/ "./projects/pms-gantt/src/app/chart/chart.component.ts":
-/*!*************************************************************!*\
-  !*** ./projects/pms-gantt/src/app/chart/chart.component.ts ***!
-  \*************************************************************/
+/***/ "./projects/pms-gantt/src/app/chart/pms-gantt-chart.component.ts":
+/*!***********************************************************************!*\
+  !*** ./projects/pms-gantt/src/app/chart/pms-gantt-chart.component.ts ***!
+  \***********************************************************************/
 /*! exports provided: ChartDatabase, ChartComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -380,16 +414,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChartComponent", function() { return ChartComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/cdk/tree */ "./node_modules/@angular/cdk/esm5/tree.es5.js");
-/* harmony import */ var _angular_material_tree__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/material/tree */ "./node_modules/@angular/material/esm5/tree.es5.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! moment-range */ "./node_modules/moment-range/dist/moment-range.js");
-/* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(moment_range__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _models_step__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../models/step */ "./projects/pms-gantt/src/app/models/step.ts");
-/* harmony import */ var _models_stepFlatNode__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../models/stepFlatNode */ "./projects/pms-gantt/src/app/models/stepFlatNode.ts");
+/* harmony import */ var _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/cdk/tree */ "./node_modules/@angular/cdk/esm5/tree.es5.js");
+/* harmony import */ var _angular_material_tree__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/tree */ "./node_modules/@angular/material/esm5/tree.es5.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! moment-range */ "./node_modules/moment-range/dist/moment-range.js");
+/* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(moment_range__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _models_step__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../models/step */ "./projects/pms-gantt/src/app/models/step.ts");
+/* harmony import */ var _models_stepFlatNode__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../models/stepFlatNode */ "./projects/pms-gantt/src/app/models/stepFlatNode.ts");
+/* harmony import */ var _src_app_models_project__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../../src/app/models/project */ "./src/app/models/project.ts");
+/* harmony import */ var _src_app_services_project_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../../../src/app/services/project.service */ "./src/app/services/project.service.ts");
 
 
 
@@ -397,33 +432,37 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+var moment = Object(moment_range__WEBPACK_IMPORTED_MODULE_6__["extendMoment"])(moment__WEBPACK_IMPORTED_MODULE_5__);
 
-var moment = Object(moment_range__WEBPACK_IMPORTED_MODULE_7__["extendMoment"])(moment__WEBPACK_IMPORTED_MODULE_6__);
+
 
 
 var ChartDatabase = /** @class */ (function () {
-    function ChartDatabase(route) {
+    function ChartDatabase() {
         var _this = this;
-        this.route = route;
         this.moment = moment;
-        this.dataChange = new rxjs__WEBPACK_IMPORTED_MODULE_5__["BehaviorSubject"](null);
+        this.dataChange = new rxjs__WEBPACK_IMPORTED_MODULE_4__["BehaviorSubject"](null);
         this.storageKey = 'charts';
-        this.route.params.subscribe(function (params) {
-            _this.id = params['id'];
-            _this.initialize();
-        });
-        this.dataChange.asObservable().subscribe(function (val) {
-            _this.saveStorage(val);
-        });
+        this.id = parseInt(localStorage.getItem('id'), 0);
+        console.log(this.id);
+        if (this.id != null) {
+            this.initialize();
+            this.dataChange.asObservable().subscribe(function (val) {
+                _this.saveStorage(val);
+            });
+        }
     }
     Object.defineProperty(ChartDatabase.prototype, "data", {
-        get: function () { return this.dataChange.value; },
+        get: function () {
+            return this.dataChange.value;
+        },
         enumerable: true,
         configurable: true
     });
     // load local data
     ChartDatabase.prototype.loadStorage = function () {
         var charts = localStorage.getItem(this.storageKey);
+        var project = localStorage.getItem('project');
         return JSON.parse(charts);
     };
     // save local data
@@ -441,9 +480,9 @@ var ChartDatabase = /** @class */ (function () {
         else {
             // init a new project
             var start = moment().format('YYYY-MM-DD');
-            var end = moment().add(7, 'days').format('YYYY-MM-DD');
+            var end = moment().add(8, 'days').format('YYYY-MM-DD');
             var root = {
-                'name': 'Project Name',
+                'name': 'Product Backlog Item',
                 'progress': 0,
                 'dates': {
                     'start': start,
@@ -458,7 +497,7 @@ var ChartDatabase = /** @class */ (function () {
     ChartDatabase.prototype.buildTree = function (steps, level) {
         var _this = this;
         return steps.map(function (step) {
-            var newStep = new _models_step__WEBPACK_IMPORTED_MODULE_8__["Step"]();
+            var newStep = new _models_step__WEBPACK_IMPORTED_MODULE_7__["Step"]();
             newStep.name = step.name;
             newStep.progress = step.progress;
             newStep.dates = step.dates;
@@ -489,12 +528,11 @@ var ChartDatabase = /** @class */ (function () {
         node.name = name;
         // do not update tree, otherwise will interupt the typing
         this.saveStorage(this.data);
-        console.log('data updated');
     };
     // add child step
     ChartDatabase.prototype.addChildStep = function (parent) {
         parent.expanded = true; // set parent node expanded to show children
-        var child = new _models_step__WEBPACK_IMPORTED_MODULE_8__["Step"]();
+        var child = new _models_step__WEBPACK_IMPORTED_MODULE_7__["Step"]();
         child.name = '';
         child.progress = 0;
         child.progressDates = [];
@@ -505,27 +543,23 @@ var ChartDatabase = /** @class */ (function () {
         child.steps = [];
         parent.steps.push(child);
         this.dataChange.next(this.data);
-        console.log('data updated');
     };
     // delete step
     ChartDatabase.prototype.deleteStep = function (parent, child) {
         var childIndex = parent.steps.indexOf(child);
         parent.steps.splice(childIndex, 1);
         this.dataChange.next(this.data);
-        console.log('data updated');
     };
     // toggle expanded
     ChartDatabase.prototype.toggleExpaned = function (step) {
         step.expanded = !step.expanded;
         this.saveStorage(this.data);
-        console.log('data updated');
     };
     // update progress
     ChartDatabase.prototype.updateProgress = function (step, progress) {
         step.progress = progress;
         step.progressDates = this.setProgressDates(step);
         this.saveStorage(this.data);
-        console.log('data updated');
         // instead of refreshing whole tree, return progress dates and update the step only
         return step.progressDates;
     };
@@ -533,13 +567,12 @@ var ChartDatabase = /** @class */ (function () {
     ChartDatabase.prototype.updateDateRange = function (step) {
         step.progressDates = this.setProgressDates(step);
         this.saveStorage(this.data);
-        console.log('data updated');
         // instead of refreshing whole tree, return progress dates and update the step only
         return step.progressDates;
     };
     ChartDatabase = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], ChartDatabase);
     return ChartDatabase;
 }());
@@ -548,7 +581,7 @@ var ChartDatabase = /** @class */ (function () {
  * @title Tree with nested nodes
  */
 var ChartComponent = /** @class */ (function () {
-    function ChartComponent(database) {
+    function ChartComponent(database, projectService) {
         var _this = this;
         this.database = database;
         this.moment = moment;
@@ -559,20 +592,34 @@ var ChartComponent = /** @class */ (function () {
         /** Map from nested node to flattened node. This helps us to keep the same object for selection */
         this.nestedNodeMap = new Map();
         this.sidebarStyle = {};
+        // service data
+        this.currentProjcet = new _src_app_models_project__WEBPACK_IMPORTED_MODULE_9__["Project"]();
         /** utils of building tree */
         this.transformer = function (node, level) {
-            var flatNode = new _models_stepFlatNode__WEBPACK_IMPORTED_MODULE_9__["StepFlatNode"](!!node.steps.length, level, node.name, node.progress, node.progressDates, node.dates, node.expanded);
+            var flatNode = new _models_stepFlatNode__WEBPACK_IMPORTED_MODULE_8__["StepFlatNode"](!!node.steps.length, level, node.name, node.progress, node.progressDates, node.dates, node.expanded);
             _this.flatNodeMap.set(flatNode, node);
             _this.nestedNodeMap.set(node, flatNode);
             return flatNode;
         };
         this._getLevel = function (node) { return node.level; };
         this._isExpandable = function (node) { return node.expandable; };
-        this._getChildren = function (node) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_5__["of"])(node.steps); };
+        this._getChildren = function (node) { return Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["of"])(node.steps); };
         this.hasChild = function (_, _nodeData) { return _nodeData.expandable; };
-        this.treeFlattener = new _angular_material_tree__WEBPACK_IMPORTED_MODULE_4__["MatTreeFlattener"](this.transformer, this._getLevel, this._isExpandable, this._getChildren);
-        this.treeControl = new _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_3__["FlatTreeControl"](this._getLevel, this._isExpandable);
-        this.dataSource = new _angular_material_tree__WEBPACK_IMPORTED_MODULE_4__["MatTreeFlatDataSource"](this.treeControl, this.treeFlattener);
+        this.id = parseInt(localStorage.getItem('id'), 0);
+        this.treeFlattener = new _angular_material_tree__WEBPACK_IMPORTED_MODULE_3__["MatTreeFlattener"](this.transformer, this._getLevel, this._isExpandable, this._getChildren);
+        if (this.id != null) {
+            projectService.getProjectById(this.id).subscribe(function (project) {
+                _this.currentProjcet = project;
+            });
+            projectService.getProjectBacklogItems(this.id).subscribe(function (items) {
+                console.log(items);
+                _this.currentProjcet.productBacklogItems = items;
+                localStorage.setItem('project', JSON.stringify(_this.currentProjcet));
+                console.log('from storage' + localStorage.getItem('project'));
+            });
+        }
+        this.treeControl = new _angular_cdk_tree__WEBPACK_IMPORTED_MODULE_2__["FlatTreeControl"](this._getLevel, this._isExpandable);
+        this.dataSource = new _angular_material_tree__WEBPACK_IMPORTED_MODULE_3__["MatTreeFlatDataSource"](this.treeControl, this.treeFlattener);
         database.dataChange.subscribe(function (tree) {
             if (tree) {
                 _this.chartData = tree;
@@ -587,7 +634,7 @@ var ChartComponent = /** @class */ (function () {
                         _this.treeControl.collapse(node);
                     }
                 });
-                console.log(tree);
+                //console.log(tree);
             }
         });
     }
@@ -673,12 +720,12 @@ var ChartComponent = /** @class */ (function () {
     };
     ChartComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'app-chart',
-            template: __webpack_require__(/*! ./chart.component.html */ "./projects/pms-gantt/src/app/chart/chart.component.html"),
+            selector: 'pms-gantt-chart',
+            template: __webpack_require__(/*! ./pms-gantt-chart.component.html */ "./projects/pms-gantt/src/app/chart/pms-gantt-chart.component.html"),
             providers: [ChartDatabase],
-            styles: [__webpack_require__(/*! ./chart.component.scss */ "./projects/pms-gantt/src/app/chart/chart.component.scss")]
+            styles: [__webpack_require__(/*! ./pms-gantt-chart.component.scss */ "./projects/pms-gantt/src/app/chart/pms-gantt-chart.component.scss")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [ChartDatabase])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [ChartDatabase, _src_app_services_project_service__WEBPACK_IMPORTED_MODULE_10__["ProjectService"]])
     ], ChartComponent);
     return ChartComponent;
 }());
@@ -753,7 +800,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-card>\n\n</mat-card>\n"
+module.exports = ""
 
 /***/ }),
 
@@ -770,32 +817,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _src_app_services_project_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../src/app/services/project.service */ "./src/app/services/project.service.ts");
-/* harmony import */ var _src_app_models_project__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../src/app/models/project */ "./src/app/models/project.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-
-
 
 
 
 var PmsGanttDashboardComponent = /** @class */ (function () {
-    function PmsGanttDashboardComponent(service, route) {
-        var _this = this;
+    function PmsGanttDashboardComponent(service) {
         this.service = service;
-        this.route = route;
-        route.parent.params.subscribe(function (params) {
-            _this.currentProjectId = params['id'];
-            console.log(_this.currentProjectId);
-        });
     }
     PmsGanttDashboardComponent.prototype.ngOnInit = function () {
-    };
-    PmsGanttDashboardComponent.prototype.get = function () {
-        var p = new _src_app_models_project__WEBPACK_IMPORTED_MODULE_3__["Project"]('posted from front', 'test', 'tesy', 'wjhxgs', Array(), Array());
-        this.service.postProject(p).subscribe(function (data) {
-            console.log(data);
-        }, function (error) {
-            console.log(error);
-        });
     };
     PmsGanttDashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -803,8 +832,7 @@ var PmsGanttDashboardComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./pms-gantt-dashboard.component.html */ "./projects/pms-gantt/src/app/pms-gantt-dashboard/pms-gantt-dashboard.component.html"),
             styles: [__webpack_require__(/*! ./pms-gantt-dashboard.component.css */ "./projects/pms-gantt/src/app/pms-gantt-dashboard/pms-gantt-dashboard.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_src_app_services_project_service__WEBPACK_IMPORTED_MODULE_2__["ProjectService"],
-            _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_src_app_services_project_service__WEBPACK_IMPORTED_MODULE_2__["ProjectService"]])
     ], PmsGanttDashboardComponent);
     return PmsGanttDashboardComponent;
 }());
@@ -820,7 +848,7 @@ var PmsGanttDashboardComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwcm9qZWN0cy9wbXMtc2NydW0vc3JjL2FwcC9wbXMtc2NydW0tZGFzaGJvYXJkL3Btcy1zY3J1bS1kYXNoYm9hcmQuY29tcG9uZW50LmNzcyJ9 */"
+module.exports = "\ndiv.container {\n  padding: 10px;\n  max-height: 100% !important;\n  max-width: 100% !important;\n}\n\n.fill-remaining-space {\n  flex: 1 1 auto;\n}\n\nmat-card {\n  height: 97%;\n  width: 97%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInByb2plY3RzL3Btcy1zY3J1bS9zcmMvYXBwL3Btcy1zY3J1bS1kYXNoYm9hcmQvcG1zLXNjcnVtLWRhc2hib2FyZC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtFQUNFLGNBQWM7RUFDZCw0QkFBNEI7RUFDNUIsMkJBQTJCO0NBQzVCOztBQUVEO0VBQ0UsZUFBZTtDQUNoQjs7QUFFRDtFQUNFLFlBQVk7RUFDWixXQUFXO0NBQ1oiLCJmaWxlIjoicHJvamVjdHMvcG1zLXNjcnVtL3NyYy9hcHAvcG1zLXNjcnVtLWRhc2hib2FyZC9wbXMtc2NydW0tZGFzaGJvYXJkLmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbmRpdi5jb250YWluZXIge1xuICBwYWRkaW5nOiAxMHB4O1xuICBtYXgtaGVpZ2h0OiAxMDAlICFpbXBvcnRhbnQ7XG4gIG1heC13aWR0aDogMTAwJSAhaW1wb3J0YW50O1xufVxuXG4uZmlsbC1yZW1haW5pbmctc3BhY2Uge1xuICBmbGV4OiAxIDEgYXV0bztcbn1cblxubWF0LWNhcmQge1xuICBoZWlnaHQ6IDk3JTtcbiAgd2lkdGg6IDk3JTtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -831,7 +859,7 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <mat-toolbar>\n    <span class=\"fill-remaining-space\"></span>\n    <span>Projects List</span>\n    <span class=\"fill-remaining-space\"></span>\n  </mat-toolbar>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <mat-toolbar>\n    <span class=\"fill-remaining-space\"></span>\n    <span>Projects List</span>\n    <span class=\"fill-remaining-space\"></span>\n  </mat-toolbar>\n  <mat-grid-list cols=\"3\">\n    <mat-grid-tile *ngFor=\"let state of states\">\n      <mat-card class=\"column\" [style.background]=\"'#E3F2FD'\">\n        <mat-card-header>\n          <mat-card-title>\n            {{state}}\n          </mat-card-title>\n        </mat-card-header>\n        <mat-card-content>\n          <mat-accordion>\n            <mat-expansion-panel *ngFor=\"let story of data[state]\" [style.background]=\"'#BBDEFB'\">\n              <mat-expansion-panel-header [style.background]=\"'#90CAF9'\">\n                <mat-panel-title>\n                  {{story.storyAction}}\n                </mat-panel-title>\n              </mat-expansion-panel-header>\n              <mat-toolbar *ngFor=\"let task of story.tasks\">\n                <span>{{task.description}}</span>\n                <span class=\"fill-remaining-space\"></span>\n\n                <button *ngIf=\"task.taskState!=='TODO'\" (click)=\"toLeft(task,story)\" mat-button>\n                  <mat-icon>keyboard_arrow_left</mat-icon>\n                </button>\n                <button *ngIf=\"task.taskState!=='DONE'\" (click)=\"toRight(task,story)\" mat-button>\n                  <mat-icon>keyboard_arrow_right</mat-icon>\n                </button>\n              </mat-toolbar>\n            </mat-expansion-panel>\n          </mat-accordion>\n        </mat-card-content>\n      </mat-card>\n    </mat-grid-tile>\n  </mat-grid-list>\n</div>\n"
 
 /***/ }),
 
@@ -848,84 +876,194 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _src_app_services_project_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../src/app/services/project.service */ "./src/app/services/project.service.ts");
+/* harmony import */ var _src_app_services_backlog_item_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../../src/app/services/backlog-item.service */ "./src/app/services/backlog-item.service.ts");
+/* harmony import */ var _src_app_services_story_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../../../src/app/services/story.service */ "./src/app/services/story.service.ts");
+/* harmony import */ var _src_app_models_State__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../../../src/app/models/State */ "./src/app/models/State.ts");
+/* harmony import */ var _src_app_services_task_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../../../src/app/services/task.service */ "./src/app/services/task.service.ts");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! moment-range */ "./node_modules/moment-range/dist/moment-range.js");
+/* harmony import */ var moment_range__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(moment_range__WEBPACK_IMPORTED_MODULE_9__);
 
 
 
+
+
+
+
+
+
+
+var moment = Object(moment_range__WEBPACK_IMPORTED_MODULE_9__["extendMoment"])(moment__WEBPACK_IMPORTED_MODULE_8__);
 var PmsScrumDashboardComponent = /** @class */ (function () {
-    function PmsScrumDashboardComponent(route) {
+    function PmsScrumDashboardComponent(route, projectService, backlogItemService, storyService, taskService) {
         var _this = this;
         this.route = route;
+        this.projectService = projectService;
+        this.backlogItemService = backlogItemService;
+        this.storyService = storyService;
+        this.taskService = taskService;
+        this.states = [_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].TODO, _src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS, _src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].DONE];
+        this.data = {};
         route.parent.params.subscribe(function (params) {
             _this.currentProjectId = params['id'];
+            _this.refreshData();
         });
     }
     PmsScrumDashboardComponent.prototype.ngOnInit = function () {
     };
+    PmsScrumDashboardComponent.prototype.refreshData = function () {
+        var _this = this;
+        this.stories = new Map();
+        this.stories.set(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].TODO, new Map());
+        this.stories.set(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS, new Map());
+        this.stories.set(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].DONE, new Map());
+        this.projectService.getProjectBacklogItems(this.currentProjectId).subscribe(function (items) {
+            items.forEach(function (item) {
+                _this.backlogItemService.getProductBacklogItemStories(item.id).subscribe(function (stories) {
+                    stories.forEach(function (story) {
+                        _this.storyService.getStoryTasks(story.id).subscribe(function (tasks) {
+                            tasks.forEach(function (task) {
+                                _this.states.forEach(function (state) {
+                                    if (task.taskState === state) {
+                                        if (!_this.stories.get(state).has(story.id)) {
+                                            var copiedStory = JSON.parse(JSON.stringify(story));
+                                            copiedStory.tasks = [];
+                                            _this.stories.get(state).set(story.id, copiedStory);
+                                        }
+                                        _this.stories.get(state).get(story.id).tasks.push(task);
+                                        _this.transform();
+                                    }
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    };
+    PmsScrumDashboardComponent.prototype.transform = function () {
+        var _this = this;
+        this.data = {};
+        this.states.forEach(function (state) {
+            _this.data[state] = [];
+            _this.stories.get(state).forEach(function (story) {
+                _this.data[state].push(story);
+            });
+        });
+    };
+    PmsScrumDashboardComponent.prototype.toRight = function (task, story) {
+        var _this = this;
+        if (task.taskState === _src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].TODO) {
+            task.realStartDate = moment().format('YYYY-MM-DD');
+            task.taskState = _src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS;
+            this.taskService.updateTask(task).subscribe(function (res) {
+                if (!_this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS).has(story.id)) {
+                    var copiedStory = JSON.parse(JSON.stringify(story));
+                    copiedStory.tasks = [];
+                    _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS).set(story.id, copiedStory);
+                }
+                _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS).get(story.id).tasks.push(task);
+                var todoStory = _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].TODO).get(story.id);
+                var taskIndex = todoStory.tasks.findIndex(function (t) {
+                    return t.id === task.id;
+                });
+                if (taskIndex !== -1) {
+                    todoStory.tasks.splice(taskIndex, 1);
+                    if (todoStory.tasks.length === 0) {
+                        _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].TODO).delete(todoStory.id);
+                    }
+                }
+                _this.transform();
+            });
+        }
+        else if (task.taskState === _src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS) {
+            task.realEndDate = moment().format('YYYY-MM-DD');
+            task.taskState = _src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].DONE;
+            this.taskService.updateTask(task).subscribe(function (res) {
+                if (!_this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].DONE).has(story.id)) {
+                    var copiedStory = JSON.parse(JSON.stringify(story));
+                    copiedStory.tasks = [];
+                    _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].DONE).set(story.id, copiedStory);
+                }
+                _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].DONE).get(story.id).tasks.push(task);
+                var todoStory = _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS).get(story.id);
+                var taskIndex = todoStory.tasks.findIndex(function (t) {
+                    return t.id === task.id;
+                });
+                if (taskIndex !== -1) {
+                    todoStory.tasks.splice(taskIndex, 1);
+                    if (todoStory.tasks.length === 0) {
+                        _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS).delete(todoStory.id);
+                    }
+                }
+                _this.transform();
+            });
+        }
+    };
+    PmsScrumDashboardComponent.prototype.toLeft = function (task, story) {
+        var _this = this;
+        if (task.taskState === _src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS) {
+            task.realStartDate = null;
+            task.taskState = _src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].TODO;
+            this.taskService.updateTask(task).subscribe(function (res) {
+                if (!_this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].TODO).has(story.id)) {
+                    var copiedStory = JSON.parse(JSON.stringify(story));
+                    copiedStory.tasks = [];
+                    _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].TODO).set(story.id, copiedStory);
+                }
+                _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].TODO).get(story.id).tasks.push(task);
+                var todoStory = _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS).get(story.id);
+                var taskIndex = todoStory.tasks.findIndex(function (t) {
+                    return t.id === task.id;
+                });
+                if (taskIndex !== -1) {
+                    todoStory.tasks.splice(taskIndex, 1);
+                    if (todoStory.tasks.length === 0) {
+                        _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS).delete(todoStory.id);
+                    }
+                }
+                _this.transform();
+            });
+        }
+        else if (task.taskState === _src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].DONE) {
+            task.realEndDate = null;
+            task.taskState = _src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS;
+            this.taskService.updateTask(task).subscribe(function (res) {
+                if (!_this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS).has(story.id)) {
+                    var copiedStory = JSON.parse(JSON.stringify(story));
+                    copiedStory.tasks = [];
+                    _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS).set(story.id, copiedStory);
+                }
+                _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].INPROGRESS).get(story.id).tasks.push(task);
+                var todoStory = _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].DONE).get(story.id);
+                var taskIndex = todoStory.tasks.findIndex(function (t) {
+                    return t.id === task.id;
+                });
+                if (taskIndex !== -1) {
+                    todoStory.tasks.splice(taskIndex, 1);
+                    if (todoStory.tasks.length === 0) {
+                        _this.stories.get(_src_app_models_State__WEBPACK_IMPORTED_MODULE_6__["State"].DONE).delete(todoStory.id);
+                    }
+                }
+                _this.transform();
+            });
+        }
+    };
     PmsScrumDashboardComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'pms-scrum-pms-scrum-dashboard',
+            selector: 'pms-scrum-dashboard',
             template: __webpack_require__(/*! ./pms-scrum-dashboard.component.html */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component.html"),
             styles: [__webpack_require__(/*! ./pms-scrum-dashboard.component.css */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component.css")]
         }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+            _src_app_services_project_service__WEBPACK_IMPORTED_MODULE_3__["ProjectService"],
+            _src_app_services_backlog_item_service__WEBPACK_IMPORTED_MODULE_4__["BacklogItemService"],
+            _src_app_services_story_service__WEBPACK_IMPORTED_MODULE_5__["StoryService"],
+            _src_app_services_task_service__WEBPACK_IMPORTED_MODULE_7__["TaskService"]])
     ], PmsScrumDashboardComponent);
     return PmsScrumDashboardComponent;
-}());
-
-
-
-/***/ }),
-
-/***/ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.css":
-/*!******************************************************************************************************!*\
-  !*** ./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.css ***!
-  \******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJwcm9qZWN0cy9wbXMtc2NydW0vc3JjL2FwcC9wbXMtc2NydW0tZGFzaGJvYXJkL3Btcy1zY3J1bS1zdGF0ZS9wbXMtc2NydW0tc3RhdGUuY29tcG9uZW50LmNzcyJ9 */"
-
-/***/ }),
-
-/***/ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.html":
-/*!*******************************************************************************************************!*\
-  !*** ./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.html ***!
-  \*******************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "<p>\n  pms-scrum-state works!\n</p>\n"
-
-/***/ }),
-
-/***/ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.ts":
-/*!*****************************************************************************************************!*\
-  !*** ./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.ts ***!
-  \*****************************************************************************************************/
-/*! exports provided: PmsScrumStateComponent */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PmsScrumStateComponent", function() { return PmsScrumStateComponent; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-
-
-var PmsScrumStateComponent = /** @class */ (function () {
-    function PmsScrumStateComponent() {
-    }
-    PmsScrumStateComponent.prototype.ngOnInit = function () {
-    };
-    PmsScrumStateComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-            selector: 'pms-scrum-state',
-            template: __webpack_require__(/*! ./pms-scrum-state.component.html */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.html"),
-            styles: [__webpack_require__(/*! ./pms-scrum-state.component.css */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.css")]
-        }),
-        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-    ], PmsScrumStateComponent);
-    return PmsScrumStateComponent;
 }());
 
 
@@ -971,10 +1109,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _public_public_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./public/public.component */ "./src/app/public/public.component.ts");
 /* harmony import */ var _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dashboard/dashboard.component */ "./src/app/dashboard/dashboard.component.ts");
 /* harmony import */ var _projects_pms_cost_src_app_pms_cost_dashboard_pms_cost_dashboard_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.component */ "./projects/pms-cost/src/app/pms-cost-dashboard/pms-cost-dashboard.component.ts");
-/* harmony import */ var _projects_pms_gantt_src_app_pms_gantt_dashboard_pms_gantt_dashboard_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../projects/pms-gantt/src/app/pms-gantt-dashboard/pms-gantt-dashboard.component */ "./projects/pms-gantt/src/app/pms-gantt-dashboard/pms-gantt-dashboard.component.ts");
-/* harmony import */ var _projects_pms_gantt_src_app_chart_chart_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../projects/pms-gantt/src/app/chart/chart.component */ "./projects/pms-gantt/src/app/chart/chart.component.ts");
-/* harmony import */ var _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_dashboard_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component.ts");
-/* harmony import */ var _dashboard_projects_project_view_project_view_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dashboard/projects/project-view/project-view.component */ "./src/app/dashboard/projects/project-view/project-view.component.ts");
+/* harmony import */ var _projects_pms_gantt_src_app_chart_pms_gantt_chart_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../projects/pms-gantt/src/app/chart/pms-gantt-chart.component */ "./projects/pms-gantt/src/app/chart/pms-gantt-chart.component.ts");
+/* harmony import */ var _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_dashboard_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component.ts");
+/* harmony import */ var _dashboard_projects_project_view_project_view_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dashboard/projects/project-view/project-view.component */ "./src/app/dashboard/projects/project-view/project-view.component.ts");
+/* harmony import */ var _dashboard_product_backlog_item_product_backlog_item_list_product_backlog_item_list_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component */ "./src/app/dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component.ts");
 
 
 
@@ -990,17 +1128,18 @@ var routes = [{ path: '', component: _public_public_component__WEBPACK_IMPORTED_
         path: 'dashboard', component: _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_4__["DashboardComponent"]
     },
     {
-        path: 'dashboard/project/:id', component: _dashboard_projects_project_view_project_view_component__WEBPACK_IMPORTED_MODULE_9__["ProjectViewComponent"],
+        path: 'dashboard/project/:id', component: _dashboard_projects_project_view_project_view_component__WEBPACK_IMPORTED_MODULE_8__["ProjectViewComponent"],
         children: [
-            { path: '', redirectTo: 'scrum', pathMatch: 'full' },
+            { path: '', redirectTo: 'backlogs', pathMatch: 'full' },
+            { path: 'backlogs', component: _dashboard_product_backlog_item_product_backlog_item_list_product_backlog_item_list_component__WEBPACK_IMPORTED_MODULE_9__["ProductBacklogItemListComponent"] },
             { path: 'cost', component: _projects_pms_cost_src_app_pms_cost_dashboard_pms_cost_dashboard_component__WEBPACK_IMPORTED_MODULE_5__["PmsCostDashboardComponent"] },
             {
-                path: 'gantt', component: _projects_pms_gantt_src_app_pms_gantt_dashboard_pms_gantt_dashboard_component__WEBPACK_IMPORTED_MODULE_6__["PmsGanttDashboardComponent"],
+                path: 'gantt', component: _projects_pms_gantt_src_app_chart_pms_gantt_chart_component__WEBPACK_IMPORTED_MODULE_6__["ChartComponent"],
                 children: [
-                    { path: 'charts', component: _projects_pms_gantt_src_app_chart_chart_component__WEBPACK_IMPORTED_MODULE_7__["ChartComponent"] }
+                    { path: 'charts', component: _projects_pms_gantt_src_app_chart_pms_gantt_chart_component__WEBPACK_IMPORTED_MODULE_6__["ChartComponent"] }
                 ]
             },
-            { path: 'scrum', component: _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_dashboard_component__WEBPACK_IMPORTED_MODULE_8__["PmsScrumDashboardComponent"] }
+            { path: 'scrum', component: _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_dashboard_component__WEBPACK_IMPORTED_MODULE_7__["PmsScrumDashboardComponent"] }
         ]
     }, { path: '*', redirectTo: '', pathMatch: 'full' }];
 var AppRoutingModule = /** @class */ (function () {
@@ -1107,14 +1246,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dashboard_projects_project_form_project_form_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./dashboard/projects/project-form/project-form.component */ "./src/app/dashboard/projects/project-form/project-form.component.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
-/* harmony import */ var _projects_pms_gantt_src_app_chart_chart_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../projects/pms-gantt/src/app/chart/chart.component */ "./projects/pms-gantt/src/app/chart/chart.component.ts");
+/* harmony import */ var _projects_pms_gantt_src_app_chart_pms_gantt_chart_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../../projects/pms-gantt/src/app/chart/pms-gantt-chart.component */ "./projects/pms-gantt/src/app/chart/pms-gantt-chart.component.ts");
 /* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/flex-layout */ "./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js");
 /* harmony import */ var angular_resizable_element__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! angular-resizable-element */ "./node_modules/angular-resizable-element/fesm5/angular-resizable-element.js");
 /* harmony import */ var hammerjs__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! hammerjs */ "./node_modules/hammerjs/hammer.js");
 /* harmony import */ var hammerjs__WEBPACK_IMPORTED_MODULE_19___default = /*#__PURE__*/__webpack_require__.n(hammerjs__WEBPACK_IMPORTED_MODULE_19__);
-/* harmony import */ var _dashboard_projects_project_view_project_view_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./dashboard/projects/project-view/project-view.component */ "./src/app/dashboard/projects/project-view/project-view.component.ts");
-/* harmony import */ var _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_dashboard_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component.ts");
-/* harmony import */ var _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_state_pms_scrum_state_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _dashboard_projects_project_view_project_view_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./dashboard/projects/project-view/project-view.component */ "./src/app/dashboard/projects/project-view/project-view.component.ts");
+/* harmony import */ var _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_dashboard_component__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component */ "./projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component.ts");
+/* harmony import */ var _dashboard_product_backlog_item_product_backlog_item_form_product_backlog_item_form_component__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./dashboard/product-backlog-item/product-backlog-item-form/product-backlog-item-form.component */ "./src/app/dashboard/product-backlog-item/product-backlog-item-form/product-backlog-item-form.component.ts");
+/* harmony import */ var _dashboard_product_backlog_item_product_backlog_item_list_product_backlog_item_list_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component */ "./src/app/dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component.ts");
+
+
 
 
 
@@ -1145,17 +1288,20 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
-                _projects_pms_gantt_src_app_chart_chart_component__WEBPACK_IMPORTED_MODULE_16__["ChartComponent"],
+                _projects_pms_gantt_src_app_chart_pms_gantt_chart_component__WEBPACK_IMPORTED_MODULE_16__["ChartComponent"],
                 _public_public_component__WEBPACK_IMPORTED_MODULE_7__["PublicComponent"],
                 _dashboard_dashboard_component__WEBPACK_IMPORTED_MODULE_9__["DashboardComponent"],
-                _dashboard_projects_project_view_project_view_component__WEBPACK_IMPORTED_MODULE_20__["ProjectViewComponent"],
+                _dashboard_projects_project_view_project_view_component__WEBPACK_IMPORTED_MODULE_21__["ProjectViewComponent"],
                 _dashboard_projects_project_list_project_list_component__WEBPACK_IMPORTED_MODULE_12__["ProjectListComponent"],
                 _dashboard_projects_project_form_project_form_component__WEBPACK_IMPORTED_MODULE_13__["ProjectFormComponent"],
-                _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_dashboard_component__WEBPACK_IMPORTED_MODULE_21__["PmsScrumDashboardComponent"], _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_state_pms_scrum_state_component__WEBPACK_IMPORTED_MODULE_22__["PmsScrumStateComponent"],
+                _projects_pms_scrum_src_app_pms_scrum_dashboard_pms_scrum_dashboard_component__WEBPACK_IMPORTED_MODULE_22__["PmsScrumDashboardComponent"],
                 _projects_pms_cost_src_app_pms_cost_dashboard_pms_cost_dashboard_component__WEBPACK_IMPORTED_MODULE_10__["PmsCostDashboardComponent"],
-                _projects_pms_gantt_src_app_pms_gantt_dashboard_pms_gantt_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["PmsGanttDashboardComponent"]
+                _projects_pms_gantt_src_app_pms_gantt_dashboard_pms_gantt_dashboard_component__WEBPACK_IMPORTED_MODULE_11__["PmsGanttDashboardComponent"],
+                _dashboard_product_backlog_item_product_backlog_item_form_product_backlog_item_form_component__WEBPACK_IMPORTED_MODULE_23__["ProductBacklogItemFormComponent"],
+                _dashboard_product_backlog_item_product_backlog_item_list_product_backlog_item_list_component__WEBPACK_IMPORTED_MODULE_24__["ProductBacklogItemListComponent"]
             ],
             imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_20__["CommonModule"],
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
                 _material_material_module__WEBPACK_IMPORTED_MODULE_5__["MaterialModule"],
                 _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
@@ -1172,7 +1318,8 @@ var AppModule = /** @class */ (function () {
             providers: [],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
             entryComponents: [
-                _dashboard_projects_project_form_project_form_component__WEBPACK_IMPORTED_MODULE_13__["ProjectFormComponent"]
+                _dashboard_projects_project_form_project_form_component__WEBPACK_IMPORTED_MODULE_13__["ProjectFormComponent"],
+                _dashboard_product_backlog_item_product_backlog_item_form_product_backlog_item_form_component__WEBPACK_IMPORTED_MODULE_23__["ProductBacklogItemFormComponent"]
             ]
         })
     ], AppModule);
@@ -1239,6 +1386,231 @@ var DashboardComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/dashboard/product-backlog-item/product-backlog-item-form/product-backlog-item-form.component.css":
+/*!******************************************************************************************************************!*\
+  !*** ./src/app/dashboard/product-backlog-item/product-backlog-item-form/product-backlog-item-form.component.css ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\nform.normal-form {\n  margin: 10px;\n}\n\n.btn-dialog-close {\n  width: 45px;\n  min-width: 0 !important;\n  height: 40px;\n  padding: 0 !important;\n}\n\n.controles-container {\n  width: 100%;\n  padding: 5%;\n}\n\n.controles-container > * {\n  width: 100%;\n}\n\n.fill-remaining-space {\n  flex: 1 1 auto;\n}\n\n.button-row button {\n  margin: 5px;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3Byb2R1Y3QtYmFja2xvZy1pdGVtL3Byb2R1Y3QtYmFja2xvZy1pdGVtLWZvcm0vcHJvZHVjdC1iYWNrbG9nLWl0ZW0tZm9ybS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtFQUNFLGFBQWE7Q0FDZDs7QUFFRDtFQUNFLFlBQVk7RUFDWix3QkFBd0I7RUFDeEIsYUFBYTtFQUNiLHNCQUFzQjtDQUN2Qjs7QUFFRDtFQUNFLFlBQVk7RUFDWixZQUFZO0NBQ2I7O0FBRUQ7RUFDRSxZQUFZO0NBQ2I7O0FBRUQ7RUFDRSxlQUFlO0NBQ2hCOztBQUVEO0VBQ0UsWUFBWTtDQUNiIiwiZmlsZSI6InNyYy9hcHAvZGFzaGJvYXJkL3Byb2R1Y3QtYmFja2xvZy1pdGVtL3Byb2R1Y3QtYmFja2xvZy1pdGVtLWZvcm0vcHJvZHVjdC1iYWNrbG9nLWl0ZW0tZm9ybS5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG5mb3JtLm5vcm1hbC1mb3JtIHtcbiAgbWFyZ2luOiAxMHB4O1xufVxuXG4uYnRuLWRpYWxvZy1jbG9zZSB7XG4gIHdpZHRoOiA0NXB4O1xuICBtaW4td2lkdGg6IDAgIWltcG9ydGFudDtcbiAgaGVpZ2h0OiA0MHB4O1xuICBwYWRkaW5nOiAwICFpbXBvcnRhbnQ7XG59XG5cbi5jb250cm9sZXMtY29udGFpbmVyIHtcbiAgd2lkdGg6IDEwMCU7XG4gIHBhZGRpbmc6IDUlO1xufVxuXG4uY29udHJvbGVzLWNvbnRhaW5lciA+ICoge1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmZpbGwtcmVtYWluaW5nLXNwYWNlIHtcbiAgZmxleDogMSAxIGF1dG87XG59XG5cbi5idXR0b24tcm93IGJ1dHRvbiB7XG4gIG1hcmdpbjogNXB4O1xufVxuIl19 */"
+
+/***/ }),
+
+/***/ "./src/app/dashboard/product-backlog-item/product-backlog-item-form/product-backlog-item-form.component.html":
+/*!*******************************************************************************************************************!*\
+  !*** ./src/app/dashboard/product-backlog-item/product-backlog-item-form/product-backlog-item-form.component.html ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<mat-toolbar>\n  <span>{{service.form.controls['id'].value !== null ? \"Modify Product Backlog Item\" : \"New Product Backlog Item\"}}</span>\n  <span class=\"fill-remaining-space\"></span>\n  <button class=\"btn-dialog-close\" mat-stroked-button (click)=\"onClose()\" tabIndex=\"-1\">\n    <mat-icon>clear</mat-icon>\n  </button>\n</mat-toolbar>\n<form [formGroup]=\"service.form\" class=\"normal-form\" (submit)=\"onSubmit()\">\n  <div class=\"controles-container\">\n    <input type=\"hidden\" formControlName=\"id\">\n    <mat-form-field>\n      <input formControlName=\"priority\" matInput placeholder=\"Priority*\">\n      <mat-error>This field is mandatory.</mat-error>\n    </mat-form-field>\n    <mat-form-field>\n      <textarea formControlName=\"description\" matInput placeholder=\"Description\"></textarea>\n      <mat-error>This field is mandatory.</mat-error>\n    </mat-form-field>\n    <div class=\"button-row\">\n      <button mat-raised-button color=\"primary\" type=\"submit\" [disabled]=\"service.form.invalid\">Submit</button>\n      <button mat-raised-button color=\"warn\" (click)=\"onClear()\">Clear</button>\n    </div>\n  </div>\n</form>\n"
+
+/***/ }),
+
+/***/ "./src/app/dashboard/product-backlog-item/product-backlog-item-form/product-backlog-item-form.component.ts":
+/*!*****************************************************************************************************************!*\
+  !*** ./src/app/dashboard/product-backlog-item/product-backlog-item-form/product-backlog-item-form.component.ts ***!
+  \*****************************************************************************************************************/
+/*! exports provided: ProductBacklogItemFormComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductBacklogItemFormComponent", function() { return ProductBacklogItemFormComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _services_backlog_item_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/backlog-item.service */ "./src/app/services/backlog-item.service.ts");
+
+
+
+
+var ProductBacklogItemFormComponent = /** @class */ (function () {
+    function ProductBacklogItemFormComponent(service, dialogRef, data) {
+        this.service = service;
+        this.dialogRef = dialogRef;
+        this.data = data;
+        this.currentProjectId = data.currentProjectId;
+    }
+    ProductBacklogItemFormComponent.prototype.ngOnInit = function () {
+    };
+    ProductBacklogItemFormComponent.prototype.onClear = function () {
+        this.service.form.reset();
+        this.service.initializeFormGroup();
+    };
+    ProductBacklogItemFormComponent.prototype.onSubmit = function () {
+        if (this.service.form.valid) {
+            if (!this.service.form.get('id').value) {
+                var backlogItem = this.service.form.value;
+                backlogItem.creationDate = new Date(Date.now()).toLocaleString();
+                this.service.addProductBacklogItem(this.currentProjectId, backlogItem).subscribe();
+            }
+            else {
+                this.service.updateProductBacklogItem(this.service.form.value).subscribe();
+            }
+            this.onClose();
+        }
+    };
+    ProductBacklogItemFormComponent.prototype.onClose = function () {
+        this.service.form.reset();
+        this.service.initializeFormGroup();
+        this.dialogRef.close();
+    };
+    ProductBacklogItemFormComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'pms-product-backlog-item-form',
+            template: __webpack_require__(/*! ./product-backlog-item-form.component.html */ "./src/app/dashboard/product-backlog-item/product-backlog-item-form/product-backlog-item-form.component.html"),
+            styles: [__webpack_require__(/*! ./product-backlog-item-form.component.css */ "./src/app/dashboard/product-backlog-item/product-backlog-item-form/product-backlog-item-form.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"])),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_backlog_item_service__WEBPACK_IMPORTED_MODULE_3__["BacklogItemService"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"], Object])
+    ], ProductBacklogItemFormComponent);
+    return ProductBacklogItemFormComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component.css":
+/*!******************************************************************************************************************!*\
+  !*** ./src/app/dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component.css ***!
+  \******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n.fill-remaining-space {\n  flex: 1 1 auto;\n}\n\ndiv.container {\n  padding: 10px;\n  max-height: 100% !important;\n  max-width: 100% !important;\n}\n\n.search-div {\n  margin: 10px;\n}\n\n.search-form-field {\n  width: 60%;\n  margin-left: 10px;\n  padding: 5px 10px;\n  background-color: #f5f5f5;\n  border-radius: 5px;\n}\n\n.search-form-field div.mat-form-field-underline {\n  display: none;\n}\n\n.search-form-field div.mat-form-field-infix {\n  border-top: 0px;\n}\n\n.search-form-field div.mat-form-field-wrapper {\n  padding-bottom: 0px;\n}\n\n.search-form-field div.mat-form-field-suffix button {\n  height: 32px;\n  width: 20%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3Byb2R1Y3QtYmFja2xvZy1pdGVtL3Byb2R1Y3QtYmFja2xvZy1pdGVtLWxpc3QvcHJvZHVjdC1iYWNrbG9nLWl0ZW0tbGlzdC5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQTtFQUNFLGVBQWU7Q0FDaEI7O0FBRUQ7RUFDRSxjQUFjO0VBQ2QsNEJBQTRCO0VBQzVCLDJCQUEyQjtDQUM1Qjs7QUFFRDtFQUNFLGFBQWE7Q0FDZDs7QUFFRDtFQUNFLFdBQVc7RUFDWCxrQkFBa0I7RUFDbEIsa0JBQWtCO0VBQ2xCLDBCQUEwQjtFQUMxQixtQkFBbUI7Q0FDcEI7O0FBRUQ7RUFDRSxjQUFjO0NBQ2Y7O0FBRUQ7RUFDRSxnQkFBZ0I7Q0FDakI7O0FBRUQ7RUFDRSxvQkFBb0I7Q0FDckI7O0FBRUQ7RUFDRSxhQUFhO0VBQ2IsV0FBVztDQUNaIiwiZmlsZSI6InNyYy9hcHAvZGFzaGJvYXJkL3Byb2R1Y3QtYmFja2xvZy1pdGVtL3Byb2R1Y3QtYmFja2xvZy1pdGVtLWxpc3QvcHJvZHVjdC1iYWNrbG9nLWl0ZW0tbGlzdC5jb21wb25lbnQuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG4uZmlsbC1yZW1haW5pbmctc3BhY2Uge1xuICBmbGV4OiAxIDEgYXV0bztcbn1cblxuZGl2LmNvbnRhaW5lciB7XG4gIHBhZGRpbmc6IDEwcHg7XG4gIG1heC1oZWlnaHQ6IDEwMCUgIWltcG9ydGFudDtcbiAgbWF4LXdpZHRoOiAxMDAlICFpbXBvcnRhbnQ7XG59XG5cbi5zZWFyY2gtZGl2IHtcbiAgbWFyZ2luOiAxMHB4O1xufVxuXG4uc2VhcmNoLWZvcm0tZmllbGQge1xuICB3aWR0aDogNjAlO1xuICBtYXJnaW4tbGVmdDogMTBweDtcbiAgcGFkZGluZzogNXB4IDEwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmNWY1ZjU7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbn1cblxuLnNlYXJjaC1mb3JtLWZpZWxkIGRpdi5tYXQtZm9ybS1maWVsZC11bmRlcmxpbmUge1xuICBkaXNwbGF5OiBub25lO1xufVxuXG4uc2VhcmNoLWZvcm0tZmllbGQgZGl2Lm1hdC1mb3JtLWZpZWxkLWluZml4IHtcbiAgYm9yZGVyLXRvcDogMHB4O1xufVxuXG4uc2VhcmNoLWZvcm0tZmllbGQgZGl2Lm1hdC1mb3JtLWZpZWxkLXdyYXBwZXIge1xuICBwYWRkaW5nLWJvdHRvbTogMHB4O1xufVxuXG4uc2VhcmNoLWZvcm0tZmllbGQgZGl2Lm1hdC1mb3JtLWZpZWxkLXN1ZmZpeCBidXR0b24ge1xuICBoZWlnaHQ6IDMycHg7XG4gIHdpZHRoOiAyMCU7XG59XG4iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component.html":
+/*!*******************************************************************************************************************!*\
+  !*** ./src/app/dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component.html ***!
+  \*******************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"container\">\n  <mat-toolbar>\n    <span class=\"fill-remaining-space\"></span>\n    <span>{{project.logicName}}</span>\n    <span class=\"fill-remaining-space\"></span>\n  </mat-toolbar>\n\n  <div class=\"search-div\">\n    <button mat-raised-button (click)=\"onCreate()\">\n      <mat-icon>add</mat-icon>\n      Create\n    </button>\n  </div>\n  <div class=\"mat-elevation-z4\">\n    <mat-table [dataSource]=\"dataSource\" matSort>\n      <ng-container matColumnDef=\"priority\">\n        <mat-header-cell *matHeaderCellDef mat-sort-header>Priority</mat-header-cell>\n        <mat-cell *matCellDef=\"let element\">{{element.priority}}</mat-cell>\n      </ng-container>\n      <ng-container matColumnDef=\"description\">\n        <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>\n        <mat-cell *matCellDef=\"let element\">{{element.description}}</mat-cell>\n      </ng-container>\n      <ng-container matColumnDef=\"actions\">\n        <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>\n        <mat-cell *matCellDef=\"let row\">\n          <button mat-icon-button (click)=\"onEdit(row)\">\n            <mat-icon>edit</mat-icon>\n          </button>\n          <button mat-icon-button color=\"warn\" (click)=\"onDelete(row.id)\">\n            <mat-icon>delete_outline</mat-icon>\n          </button>\n        </mat-cell>\n      </ng-container>\n      <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n      <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n    </mat-table>\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 25, 100]\" [pageSize]=\"5\" showFirstLastButtons></mat-paginator>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component.ts":
+/*!*****************************************************************************************************************!*\
+  !*** ./src/app/dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component.ts ***!
+  \*****************************************************************************************************************/
+/*! exports provided: ProductBacklogItemListComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProductBacklogItemListComponent", function() { return ProductBacklogItemListComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm5/material.es5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_project_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../services/project.service */ "./src/app/services/project.service.ts");
+/* harmony import */ var _services_backlog_item_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../../services/backlog-item.service */ "./src/app/services/backlog-item.service.ts");
+/* harmony import */ var _product_backlog_item_form_product_backlog_item_form_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../product-backlog-item-form/product-backlog-item-form.component */ "./src/app/dashboard/product-backlog-item/product-backlog-item-form/product-backlog-item-form.component.ts");
+
+
+
+
+
+
+
+var ProductBacklogItemListComponent = /** @class */ (function () {
+    function ProductBacklogItemListComponent(route, dialog, projectService, itemService) {
+        var _this = this;
+        this.route = route;
+        this.dialog = dialog;
+        this.projectService = projectService;
+        this.itemService = itemService;
+        this.displayedColumns = ['priority', 'description', 'actions'];
+        this.project = JSON.parse(localStorage.getItem('project'));
+        route.parent.params.subscribe(function (params) {
+            _this.currentProjectId = params['id'];
+        });
+    }
+    ProductBacklogItemListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableDataSource"]();
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.filterPredicate = function (data, filter) {
+            return _this.displayedColumns.some(function (elem) {
+                return elem !== 'actions' && data[elem].toLowerCase().indexOf(filter) !== -1;
+            });
+        };
+        this.projectService.getProjectBacklogItems(this.currentProjectId).subscribe(function (items) {
+            _this.dataSource.data = items;
+        });
+    };
+    ProductBacklogItemListComponent.prototype.onCreate = function () {
+        var _this = this;
+        this.itemService.initializeFormGroup();
+        var dialogConfig = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogConfig"]();
+        dialogConfig.data = {
+            currentProjectId: this.currentProjectId
+        };
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        this.dialog.open(_product_backlog_item_form_product_backlog_item_form_component__WEBPACK_IMPORTED_MODULE_6__["ProductBacklogItemFormComponent"], dialogConfig).afterClosed().subscribe(function () {
+            _this.projectService.getProjectBacklogItems(_this.currentProjectId).subscribe(function (items) {
+                _this.dataSource.data = items;
+            });
+        });
+    };
+    ProductBacklogItemListComponent.prototype.onEdit = function (row) {
+        var _this = this;
+        this.itemService.populateForm(row);
+        var dialogConfig = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogConfig"]();
+        dialogConfig.data = {
+            currentProjectId: this.currentProjectId
+        };
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+        this.dialog.open(_product_backlog_item_form_product_backlog_item_form_component__WEBPACK_IMPORTED_MODULE_6__["ProductBacklogItemFormComponent"], dialogConfig).afterClosed().subscribe(function () {
+            _this.projectService.getProjectBacklogItems(_this.currentProjectId).subscribe(function (items) {
+                _this.dataSource.data = items;
+            });
+        });
+    };
+    ProductBacklogItemListComponent.prototype.onDelete = function (id) {
+        var _this = this;
+        if (confirm('Are you sure to delete this record ?')) {
+            this.itemService.deleteProductBacklogItem(id).subscribe(function (items) {
+                _this.dataSource.data = items;
+            });
+        }
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSort"]),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSort"])
+    ], ProductBacklogItemListComponent.prototype, "sort", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"]),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginator"])
+    ], ProductBacklogItemListComponent.prototype, "paginator", void 0);
+    ProductBacklogItemListComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'pms-product-backlog-item-list',
+            template: __webpack_require__(/*! ./product-backlog-item-list.component.html */ "./src/app/dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component.html"),
+            styles: [__webpack_require__(/*! ./product-backlog-item-list.component.css */ "./src/app/dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialog"],
+            _services_project_service__WEBPACK_IMPORTED_MODULE_4__["ProjectService"],
+            _services_backlog_item_service__WEBPACK_IMPORTED_MODULE_5__["BacklogItemService"]])
+    ], ProductBacklogItemListComponent);
+    return ProductBacklogItemListComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/dashboard/projects/project-form/project-form.component.css":
 /*!****************************************************************************!*\
   !*** ./src/app/dashboard/projects/project-form/project-form.component.css ***!
@@ -1292,14 +1664,13 @@ var ProjectFormComponent = /** @class */ (function () {
     };
     ProjectFormComponent.prototype.onSubmit = function () {
         if (this.service.form.valid) {
-            console.log(this.service.form.value);
             if (!this.service.form.get('id').value) {
                 var project = this.service.form.value;
                 project.creationDate = new Date(Date.now()).toLocaleString();
-                this.service.postProject(project);
+                this.service.postProject(project).subscribe();
             }
             else {
-                this.service.updateProject(this.service.form.value);
+                this.service.updateProject(this.service.form.value).subscribe();
             }
             this.onClose();
         }
@@ -1332,7 +1703,7 @@ var ProjectFormComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\ndiv.container {\n  padding: 10px;\n}\n\n.search-div {\n  margin: 10px;\n}\n\n.search-form-field {\n  width: 60%;\n  margin-left: 10px;\n  padding: 5px 10px;\n  background-color: #f5f5f5;\n  border-radius: 5px;\n}\n\n.search-form-field div.mat-form-field-underline {\n  display: none;\n}\n\n.search-form-field div.mat-form-field-infix {\n  border-top: 0px;\n}\n\n.search-form-field div.mat-form-field-wrapper {\n  padding-bottom: 0px;\n}\n\n.search-form-field div.mat-form-field-suffix button {\n  height: 32px;\n  width: 20%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3Byb2plY3RzL3Byb2plY3QtbGlzdC9wcm9qZWN0LWxpc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7RUFDRSxjQUFjO0NBQ2Y7O0FBRUQ7RUFDRSxhQUFhO0NBQ2Q7O0FBRUQ7RUFDRSxXQUFXO0VBQ1gsa0JBQWtCO0VBQ2xCLGtCQUFrQjtFQUNsQiwwQkFBMEI7RUFDMUIsbUJBQW1CO0NBQ3BCOztBQUVEO0VBQ0UsY0FBYztDQUNmOztBQUVEO0VBQ0UsZ0JBQWdCO0NBQ2pCOztBQUVEO0VBQ0Usb0JBQW9CO0NBQ3JCOztBQUVEO0VBQ0UsYUFBYTtFQUNiLFdBQVc7Q0FDWiIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC9wcm9qZWN0cy9wcm9qZWN0LWxpc3QvcHJvamVjdC1saXN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbmRpdi5jb250YWluZXIge1xuICBwYWRkaW5nOiAxMHB4O1xufVxuXG4uc2VhcmNoLWRpdiB7XG4gIG1hcmdpbjogMTBweDtcbn1cblxuLnNlYXJjaC1mb3JtLWZpZWxkIHtcbiAgd2lkdGg6IDYwJTtcbiAgbWFyZ2luLWxlZnQ6IDEwcHg7XG4gIHBhZGRpbmc6IDVweCAxMHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjVmNWY1O1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG59XG5cbi5zZWFyY2gtZm9ybS1maWVsZCBkaXYubWF0LWZvcm0tZmllbGQtdW5kZXJsaW5lIHtcbiAgZGlzcGxheTogbm9uZTtcbn1cblxuLnNlYXJjaC1mb3JtLWZpZWxkIGRpdi5tYXQtZm9ybS1maWVsZC1pbmZpeCB7XG4gIGJvcmRlci10b3A6IDBweDtcbn1cblxuLnNlYXJjaC1mb3JtLWZpZWxkIGRpdi5tYXQtZm9ybS1maWVsZC13cmFwcGVyIHtcbiAgcGFkZGluZy1ib3R0b206IDBweDtcbn1cblxuLnNlYXJjaC1mb3JtLWZpZWxkIGRpdi5tYXQtZm9ybS1maWVsZC1zdWZmaXggYnV0dG9uIHtcbiAgaGVpZ2h0OiAzMnB4O1xuICB3aWR0aDogMjAlO1xufVxuIl19 */"
+module.exports = "\n.fill-remaining-space {\n  flex: 1 1 auto;\n}\n\ndiv.container {\n  padding: 10px;\n  max-height: 100% !important;\n  max-width: 100% !important;\n}\n\n.search-div {\n  margin: 10px;\n}\n\n.search-form-field {\n  width: 60%;\n  margin-left: 10px;\n  padding: 5px 10px;\n  background-color: #f5f5f5;\n  border-radius: 5px;\n}\n\n.search-form-field div.mat-form-field-underline {\n  display: none;\n}\n\n.search-form-field div.mat-form-field-infix {\n  border-top: 0px;\n}\n\n.search-form-field div.mat-form-field-wrapper {\n  padding-bottom: 0px;\n}\n\n.search-form-field div.mat-form-field-suffix button {\n  height: 32px;\n  width: 20%;\n}\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaGJvYXJkL3Byb2plY3RzL3Byb2plY3QtbGlzdC9wcm9qZWN0LWxpc3QuY29tcG9uZW50LmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQ0E7RUFDRSxlQUFlO0NBQ2hCOztBQUVEO0VBQ0UsY0FBYztFQUNkLDRCQUE0QjtFQUM1QiwyQkFBMkI7Q0FDNUI7O0FBRUQ7RUFDRSxhQUFhO0NBQ2Q7O0FBRUQ7RUFDRSxXQUFXO0VBQ1gsa0JBQWtCO0VBQ2xCLGtCQUFrQjtFQUNsQiwwQkFBMEI7RUFDMUIsbUJBQW1CO0NBQ3BCOztBQUVEO0VBQ0UsY0FBYztDQUNmOztBQUVEO0VBQ0UsZ0JBQWdCO0NBQ2pCOztBQUVEO0VBQ0Usb0JBQW9CO0NBQ3JCOztBQUVEO0VBQ0UsYUFBYTtFQUNiLFdBQVc7Q0FDWiIsImZpbGUiOiJzcmMvYXBwL2Rhc2hib2FyZC9wcm9qZWN0cy9wcm9qZWN0LWxpc3QvcHJvamVjdC1saXN0LmNvbXBvbmVudC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyJcbi5maWxsLXJlbWFpbmluZy1zcGFjZSB7XG4gIGZsZXg6IDEgMSBhdXRvO1xufVxuXG5kaXYuY29udGFpbmVyIHtcbiAgcGFkZGluZzogMTBweDtcbiAgbWF4LWhlaWdodDogMTAwJSAhaW1wb3J0YW50O1xuICBtYXgtd2lkdGg6IDEwMCUgIWltcG9ydGFudDtcbn1cblxuLnNlYXJjaC1kaXYge1xuICBtYXJnaW46IDEwcHg7XG59XG5cbi5zZWFyY2gtZm9ybS1maWVsZCB7XG4gIHdpZHRoOiA2MCU7XG4gIG1hcmdpbi1sZWZ0OiAxMHB4O1xuICBwYWRkaW5nOiA1cHggMTBweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2Y1ZjVmNTtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xufVxuXG4uc2VhcmNoLWZvcm0tZmllbGQgZGl2Lm1hdC1mb3JtLWZpZWxkLXVuZGVybGluZSB7XG4gIGRpc3BsYXk6IG5vbmU7XG59XG5cbi5zZWFyY2gtZm9ybS1maWVsZCBkaXYubWF0LWZvcm0tZmllbGQtaW5maXgge1xuICBib3JkZXItdG9wOiAwcHg7XG59XG5cbi5zZWFyY2gtZm9ybS1maWVsZCBkaXYubWF0LWZvcm0tZmllbGQtd3JhcHBlciB7XG4gIHBhZGRpbmctYm90dG9tOiAwcHg7XG59XG5cbi5zZWFyY2gtZm9ybS1maWVsZCBkaXYubWF0LWZvcm0tZmllbGQtc3VmZml4IGJ1dHRvbiB7XG4gIGhlaWdodDogMzJweDtcbiAgd2lkdGg6IDIwJTtcbn1cbiJdfQ== */"
 
 /***/ }),
 
@@ -1343,7 +1714,7 @@ module.exports = "\ndiv.container {\n  padding: 10px;\n}\n\n.search-div {\n  mar
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n  <mat-toolbar>\n    <span class=\"fill-remaining-space\"></span>\n    <span>Projects List</span>\n    <span class=\"fill-remaining-space\"></span>\n  </mat-toolbar>\n\n  <div class=\"search-div\">\n    <button mat-raised-button (click)=\"onCreate()\">\n      <mat-icon>add</mat-icon>\n      Create\n    </button>\n    <mat-form-field class=\"search-form-field\" floatLabel=\"never\">\n      <input matInput [(ngModel)]=\"searchKey\" placeholder=\"Search\" autocomplete=\"off\" (keyup)=\"applyFilter()\">\n      <button mat-button matSuffix mat-icon-button aria-label=\"Clear\" *ngIf=\"searchKey\" (click)=\"onSearchClear()\">\n        <mat-icon>close</mat-icon>\n      </button>\n    </mat-form-field>\n  </div>\n  <div class=\"mat-elevation-z5\">\n    <mat-table [dataSource]=\"dataSource\" matSort>\n      <ng-container matColumnDef=\"name\">\n        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>\n        <mat-cell *matCellDef=\"let element\">{{element.name}}</mat-cell>\n      </ng-container>\n      <ng-container matColumnDef=\"logicName\">\n        <mat-header-cell *matHeaderCellDef mat-sort-header>Logic Name</mat-header-cell>\n        <mat-cell *matCellDef=\"let element\">{{element.logicName}}</mat-cell>\n      </ng-container>\n      <ng-container matColumnDef=\"description\">\n        <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>\n        <mat-cell *matCellDef=\"let element\">{{element.description}}</mat-cell>\n      </ng-container>\n      <ng-container matColumnDef=\"actions\">\n        <mat-header-cell *matHeaderCellDef></mat-header-cell>\n        <mat-cell *matCellDef=\"let row\">\n          <button mat-icon-button (click)=\"onView(row.id)\">\n            <mat-icon>launch</mat-icon>\n          </button>\n          <button mat-icon-button (click)=\"onEdit(row)\">\n            <mat-icon>edit</mat-icon>\n          </button>\n          <button mat-icon-button color=\"warn\" (click)=\"onDelete(row.$key)\">\n            <mat-icon>delete_outline</mat-icon>\n          </button>\n        </mat-cell>\n      </ng-container>\n      <ng-container matColumnDef=\"noData\">\n        <mat-footer-cell *matFooterCellDef colspan=\"6\">\n          No data.\n        </mat-footer-cell>\n      </ng-container>\n      <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n      <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n      <mat-footer-row *matFooterRowDef=\"['noData']\"\n                      [ngClass]=\"{'hide':!(dataSource !== null && dataSource.data.length === 0)}\"></mat-footer-row>\n    </mat-table>\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 25, 100]\" [pageSize]=\"5\" showFirstLastButtons></mat-paginator>\n  </div>\n</div>\n"
+module.exports = "<div class=\"container\">\n  <mat-toolbar>\n    <span class=\"fill-remaining-space\"></span>\n    <span>Projects List</span>\n    <span class=\"fill-remaining-space\"></span>\n  </mat-toolbar>\n\n  <div class=\"search-div\">\n    <button mat-raised-button (click)=\"onCreate()\">\n      <mat-icon>add</mat-icon>\n      Create\n    </button>\n  </div>\n  <div class=\"mat-elevation-z5\">\n    <mat-table [dataSource]=\"dataSource\" matSort>\n      <ng-container matColumnDef=\"name\">\n        <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>\n        <mat-cell *matCellDef=\"let element\">{{element.name}}</mat-cell>\n      </ng-container>\n      <ng-container matColumnDef=\"logicName\">\n        <mat-header-cell *matHeaderCellDef mat-sort-header>Logic Name</mat-header-cell>\n        <mat-cell *matCellDef=\"let element\">{{element.logicName}}</mat-cell>\n      </ng-container>\n      <ng-container matColumnDef=\"description\">\n        <mat-header-cell *matHeaderCellDef mat-sort-header>Description</mat-header-cell>\n        <mat-cell *matCellDef=\"let element\">{{element.description}}</mat-cell>\n      </ng-container>\n      <ng-container matColumnDef=\"actions\">\n        <mat-header-cell *matHeaderCellDef>Actions</mat-header-cell>\n        <mat-cell *matCellDef=\"let row\">\n          <button mat-icon-button (click)=\"onView(row)\">\n            <mat-icon>launch</mat-icon>\n          </button>\n          <button mat-icon-button (click)=\"onEdit(row)\">\n            <mat-icon>edit</mat-icon>\n          </button>\n          <button mat-icon-button color=\"warn\" (click)=\"onDelete(row.id)\">\n            <mat-icon>delete_outline</mat-icon>\n          </button>\n        </mat-cell>\n      </ng-container>\n      <mat-header-row *matHeaderRowDef=\"displayedColumns\"></mat-header-row>\n      <mat-row *matRowDef=\"let row; columns: displayedColumns;\"></mat-row>\n    </mat-table>\n    <mat-paginator [pageSizeOptions]=\"[5, 10, 25, 100]\" [pageSize]=\"5\" showFirstLastButtons></mat-paginator>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -1381,36 +1752,51 @@ var ProjectListComponent = /** @class */ (function () {
         this.dataSource = new _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatTableDataSource"]();
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        for (var i = 0; i < 10; i++) {
-            this.dataSource.data.push({ id: i, name: 'Hydrogen ' + i, logicName: 'Hyd ' + i, description: 'test ' + i });
-        }
         this.dataSource.filterPredicate = function (data, filter) {
             return _this.displayedColumns.some(function (elem) {
                 return elem !== 'actions' && data[elem].toLowerCase().indexOf(filter) !== -1;
             });
         };
+        this.service.getAllProjects().subscribe(function (projects) {
+            _this.dataSource.data = projects;
+        });
     };
     ProjectListComponent.prototype.onCreate = function () {
+        var _this = this;
         this.service.initializeFormGroup();
         var dialogConfig = new _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialogConfig"]();
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        this.dialog.open(_project_form_project_form_component__WEBPACK_IMPORTED_MODULE_3__["ProjectFormComponent"], dialogConfig);
+        this.dialog.open(_project_form_project_form_component__WEBPACK_IMPORTED_MODULE_3__["ProjectFormComponent"], dialogConfig).afterClosed().subscribe(function () {
+            _this.service.getAllProjects().subscribe(function (projects) {
+                _this.dataSource.data = projects;
+            });
+        });
     };
     ProjectListComponent.prototype.onEdit = function (row) {
+        var _this = this;
         this.service.populateForm(row);
         var dialogConfig = new _angular_material__WEBPACK_IMPORTED_MODULE_4__["MatDialogConfig"]();
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
-        this.dialog.open(_project_form_project_form_component__WEBPACK_IMPORTED_MODULE_3__["ProjectFormComponent"], dialogConfig);
+        this.dialog.open(_project_form_project_form_component__WEBPACK_IMPORTED_MODULE_3__["ProjectFormComponent"], dialogConfig).afterClosed().subscribe(function () {
+            _this.service.getAllProjects().subscribe(function (projects) {
+                _this.dataSource.data = projects;
+            });
+        });
     };
     ProjectListComponent.prototype.onDelete = function (id) {
+        var _this = this;
         if (confirm('Are you sure to delete this record ?')) {
-            this.service.deleteProject(id);
+            this.service.deleteProject(id).subscribe(function (projects) {
+                _this.dataSource.data = projects;
+            });
         }
     };
-    ProjectListComponent.prototype.onView = function (id) {
-        this.router.navigate(['/dashboard/project/', id]);
+    ProjectListComponent.prototype.onView = function (row) {
+        localStorage.setItem('id', row.id);
+        localStorage.setItem('project', JSON.stringify(row));
+        this.router.navigate(['/dashboard/project/', row.id]);
     };
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])(_angular_material__WEBPACK_IMPORTED_MODULE_4__["MatSort"]),
@@ -1455,7 +1841,7 @@ module.exports = "\n.fill-remaining-space {\n  flex: 1 1 auto;\n}\n\n\n/*# sourc
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n\n<mat-toolbar color=\"primary\" class=\"main-toolbar\">\n  <mat-toolbar-row>\n    <button mat-button [routerLink]=\"['/']\"><h1>PMS</h1></button>\n    <span class=\"fill-remaining-space\"></span>\n    <button mat-button [routerLink]=\"['/dashboard']\">Dashboard</button>\n    <button mat-button [routerLink]=\"['/dashboard/project/'+currentId+'/scrum']\">Scrum</button>\n    <button mat-button [routerLink]=\"['/dashboard/project/'+currentId+'/gantt']\">Gantt</button>\n    <button mat-button [routerLink]=\"['/dashboard/project/'+currentId+'/cost']\">Cost</button>\n  </mat-toolbar-row>\n</mat-toolbar>\n<router-outlet></router-outlet>\n<footer class=\"page-footer font-small \">\n\n  <div class=\"footer-copyright text-center py-3\">© 2018 Copyright:\n    <a href=\"http://eniso.info\"> NaN Team</a>\n  </div>\n\n</footer>\n"
+module.exports = "<link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n\n<mat-toolbar color=\"primary\" class=\"main-toolbar\">\n  <mat-toolbar-row>\n    <button mat-button [routerLink]=\"['/']\"><h1>PMS</h1></button>\n    <span class=\"fill-remaining-space\"></span>\n    <button mat-button [routerLink]=\"['/dashboard']\">Dashboard</button>\n    <button mat-button [routerLink]=\"['/dashboard/project/'+currentId+'/backlogs']\">Backlog</button>\n    <button mat-button [routerLink]=\"['/dashboard/project/'+currentId+'/scrum']\">Scrum</button>\n    <button mat-button [routerLink]=\"['/dashboard/project/'+currentId+'/gantt']\">Gantt</button>\n    <button mat-button [routerLink]=\"['/dashboard/project/'+currentId+'/cost']\">Cost</button>\n  </mat-toolbar-row>\n</mat-toolbar>\n<router-outlet></router-outlet>\n<footer class=\"page-footer font-small \">\n\n  <div class=\"footer-copyright text-center py-3\">© 2018 Copyright:\n    <a href=\"http://eniso.info\"> NaN Team</a>\n  </div>\n\n</footer>\n"
 
 /***/ }),
 
@@ -1560,6 +1946,26 @@ var MaterialModule = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/models/State.ts":
+/*!*********************************!*\
+  !*** ./src/app/models/State.ts ***!
+  \*********************************/
+/*! exports provided: State */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "State", function() { return State; });
+var State;
+(function (State) {
+    State["TODO"] = "TODO";
+    State["INPROGRESS"] = "INPROGRESS";
+    State["DONE"] = "DONE";
+})(State || (State = {}));
+
+
+/***/ }),
+
 /***/ "./src/app/models/project.ts":
 /*!***********************************!*\
   !*** ./src/app/models/project.ts ***!
@@ -1571,56 +1977,8 @@ var MaterialModule = /** @class */ (function () {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Project", function() { return Project; });
 var Project = /** @class */ (function () {
-    function Project(name, logicName, creationDate, description, productBacklogItems, resources) {
-        this.name = name;
-        this.logicName = logicName;
-        this.creationDate = creationDate;
-        this.description = description;
-        this.productBacklogItems = productBacklogItems;
-        this.resources = resources;
+    function Project() {
     }
-    Project.prototype.getId = function () {
-        return this.id;
-    };
-    Project.prototype.setId = function (value) {
-        this.id = value;
-    };
-    Project.prototype.getName = function () {
-        return this.name;
-    };
-    Project.prototype.setName = function (value) {
-        this.name = value;
-    };
-    Project.prototype.getLogicName = function () {
-        return this.logicName;
-    };
-    Project.prototype.setLogicName = function (value) {
-        this.logicName = value;
-    };
-    Project.prototype.getCreationDate = function () {
-        return this.creationDate;
-    };
-    Project.prototype.setCreationDate = function (value) {
-        this.creationDate = value;
-    };
-    Project.prototype.getDescription = function () {
-        return this.description;
-    };
-    Project.prototype.setDescription = function (value) {
-        this.description = value;
-    };
-    Project.prototype.getProductBacklogItems = function () {
-        return this.productBacklogItems;
-    };
-    Project.prototype.setProductBacklogItems = function (value) {
-        this.productBacklogItems = value;
-    };
-    Project.prototype.getResources = function () {
-        return this.resources;
-    };
-    Project.prototype.setResources = function (value) {
-        this.resources = value;
-    };
     return Project;
 }());
 
@@ -1684,6 +2042,85 @@ var PublicComponent = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/backlog-item.service.ts":
+/*!**************************************************!*\
+  !*** ./src/app/services/backlog-item.service.ts ***!
+  \**************************************************/
+/*! exports provided: BacklogItemService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BacklogItemService", function() { return BacklogItemService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+
+
+
+
+var BacklogItemService = /** @class */ (function () {
+    function BacklogItemService(http) {
+        this.http = http;
+        this.apiUrl = '/api/core-resources/backlogitem/';
+        this.reqHeader = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json, text/plain, */*'
+        });
+        this.form = new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormGroup"]({
+            id: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](null),
+            priority: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"](1, [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].pattern('[0-9]*')]),
+            description: new _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormControl"]('', [_angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required])
+        });
+    }
+    BacklogItemService.prototype.initializeFormGroup = function () {
+        this.form.setValue({
+            id: null,
+            priority: 1,
+            description: ''
+        });
+    };
+    BacklogItemService.prototype.populateForm = function (project) {
+        this.form.setValue(project);
+    };
+    BacklogItemService.prototype.getAllProductBacklogItems = function () {
+        return this.http.get(this.apiUrl, { headers: this.reqHeader });
+    };
+    BacklogItemService.prototype.getProductBacklogItemById = function (id) {
+        return this.http.get(this.apiUrl + id, { headers: this.reqHeader });
+    };
+    BacklogItemService.prototype.getProductBacklogItemStories = function (id) {
+        return this.http.get(this.apiUrl + id + '/stories', { headers: this.reqHeader });
+    };
+    BacklogItemService.prototype.getProductBacklogItemDependencies = function (id) {
+        return this.http.get(this.apiUrl + id + '/dependencies', { headers: this.reqHeader });
+    };
+    BacklogItemService.prototype.addProductBacklogItem = function (projectId, backlogItem) {
+        return this.http.post(this.apiUrl + projectId, backlogItem, { headers: this.reqHeader });
+    };
+    BacklogItemService.prototype.addProductBacklogItemDeppendency = function (data) {
+        return this.http.post(this.apiUrl + 'addDependency', data, { headers: this.reqHeader });
+    };
+    BacklogItemService.prototype.updateProductBacklogItem = function (backlogItem) {
+        return this.http.put(this.apiUrl, backlogItem, { headers: this.reqHeader });
+    };
+    BacklogItemService.prototype.deleteProductBacklogItem = function (id) {
+        return this.http.delete(this.apiUrl + id, { headers: this.reqHeader });
+    };
+    BacklogItemService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], BacklogItemService);
+    return BacklogItemService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/services/project.service.ts":
 /*!*********************************************!*\
   !*** ./src/app/services/project.service.ts ***!
@@ -1737,6 +2174,9 @@ var ProjectService = /** @class */ (function () {
     ProjectService.prototype.getProjectResources = function (id) {
         return this.http.get(this.apiUrl + id + '/resources', { headers: this.reqHeader });
     };
+    ProjectService.prototype.getProjectBudget = function (id) {
+        return this.http.get(this.apiUrl + id + '/budgets', { headers: this.reqHeader });
+    };
     ProjectService.prototype.getProjectBacklogItems = function (id) {
         return this.http.get(this.apiUrl + id + '/backlogItems', { headers: this.reqHeader });
     };
@@ -1756,6 +2196,131 @@ var ProjectService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], ProjectService);
     return ProjectService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/story.service.ts":
+/*!*******************************************!*\
+  !*** ./src/app/services/story.service.ts ***!
+  \*******************************************/
+/*! exports provided: StoryService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoryService", function() { return StoryService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var StoryService = /** @class */ (function () {
+    function StoryService(http) {
+        this.http = http;
+        this.apiUrl = '/api/core-resources/story/';
+        this.reqHeader = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json, text/plain, */*'
+        });
+    }
+    StoryService.prototype.getAllStories = function () {
+        return this.http.get(this.apiUrl, { headers: this.reqHeader });
+    };
+    StoryService.prototype.getStoryById = function (id) {
+        return this.http.get(this.apiUrl + id, { headers: this.reqHeader });
+    };
+    StoryService.prototype.getStoryTasks = function (id) {
+        return this.http.get(this.apiUrl + id + '/tasks', { headers: this.reqHeader });
+    };
+    StoryService.prototype.addStory = function (backlogItemId, story) {
+        return this.http.post(this.apiUrl + backlogItemId, story, { headers: this.reqHeader });
+    };
+    StoryService.prototype.updateStory = function (story) {
+        return this.http.put(this.apiUrl, story, { headers: this.reqHeader });
+    };
+    StoryService.prototype.deleteStory = function (id) {
+        return this.http.delete(this.apiUrl + id, { headers: this.reqHeader });
+    };
+    StoryService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], StoryService);
+    return StoryService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/task.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/services/task.service.ts ***!
+  \******************************************/
+/*! exports provided: TaskService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskService", function() { return TaskService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var TaskService = /** @class */ (function () {
+    function TaskService(http) {
+        this.http = http;
+        this.apiUrl = '/api/core-resources/task';
+        this.header = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json, text/plain, */*'
+        });
+    }
+    TaskService.prototype.getAllTask = function () {
+        return this.http.get(this.apiUrl, { headers: this.header });
+    };
+    TaskService.prototype.getTaskById = function (id) {
+        var url = this.apiUrl + "/" + id;
+        return this.http.get(url, { headers: this.header });
+    };
+    TaskService.prototype.getTaskConsumptions = function (id) {
+        var url = this.apiUrl + "/" + id + "/consumptions";
+        return this.http.get(url, { headers: this.header });
+    };
+    TaskService.prototype.getTaskDependencies = function (id) {
+        var url = this.apiUrl + "/" + id + "/dependencies";
+        return this.http.get(url, { headers: this.header });
+    };
+    TaskService.prototype.addTask = function (t, storyId) {
+        var url = this.apiUrl + "/" + storyId;
+        return this.http.post(this.apiUrl, t, { headers: this.header });
+    };
+    TaskService.prototype.addDependency = function (t) {
+        var url = this.apiUrl + "/addDependency";
+        return this.http.post(this.apiUrl, t, { headers: this.header });
+    };
+    TaskService.prototype.updateTask = function (t) {
+        return this.http.put(this.apiUrl, t, { headers: this.header });
+    };
+    TaskService.prototype.deleteTask = function (t) {
+        var id = typeof t === 'number' ? t : t.id;
+        var url = this.apiUrl + "/" + id;
+        return this.http.delete(url, { headers: this.header });
+    };
+    TaskService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+    ], TaskService);
+    return TaskService;
 }());
 
 
@@ -1823,7 +2388,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /mnt/documents/Work/pms/pms-client/src/main/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /mnt/doc/pms/pms-client/src/main/src/main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -49,8 +49,9 @@ export class ProjectService {
   }
 
   getProjectResources(id: number) {
-    return this.http.get<Resource>(this.apiUrl + id + '/resources', {headers: this.reqHeader});
+    return this.http.get<Resource[]>(this.apiUrl + id + '/resources', {headers: this.reqHeader});
   }
+
   getProjectBudget(id: number) {
     return this.http.get<Budget[]>(this.apiUrl + id + '/budgets', {headers: this.reqHeader});
   }
@@ -68,7 +69,7 @@ export class ProjectService {
   }
 
   deleteProject(id: number) {
-    return this.http.delete(this.apiUrl + id, {headers: this.reqHeader});
+    return this.http.delete<Project[]>(this.apiUrl + id, {headers: this.reqHeader});
   }
 
 }

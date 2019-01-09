@@ -20,6 +20,8 @@ import 'hammerjs';
 import {CommonModule} from '@angular/common';
 import {ProjectViewComponent} from './dashboard/projects/project-view/project-view.component';
 import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component';
+import { ProductBacklogItemFormComponent } from './dashboard/product-backlog-item/product-backlog-item-form/product-backlog-item-form.component';
+import { ProductBacklogItemListComponent } from './dashboard/product-backlog-item/product-backlog-item-list/product-backlog-item-list.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-s
     ProjectFormComponent,
     PmsScrumDashboardComponent,
     PmsCostDashboardComponent,
-    PmsGanttDashboardComponent
+    PmsGanttDashboardComponent,
+    ProductBacklogItemFormComponent,
+    ProductBacklogItemListComponent
   ],
   imports: [
     CommonModule,
@@ -52,7 +56,8 @@ import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-s
   providers: [],
   bootstrap: [AppComponent],
   entryComponents: [
-    ProjectFormComponent
+    ProjectFormComponent,
+    ProductBacklogItemFormComponent
   ]
 })
 export class AppModule {
