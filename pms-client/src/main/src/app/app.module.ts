@@ -32,7 +32,7 @@ import {ProjectService} from '../app/services/project.service';
     ProjectViewComponent,
     ProjectListComponent,
     ProjectFormComponent,
-    PmsScrumDashboardComponent, PmsScrumStateComponent,
+    PmsScrumDashboardComponent,
     PmsCostDashboardComponent,
     PmsGanttDashboardComponent
   ],
@@ -49,7 +49,8 @@ import {ProjectService} from '../app/services/project.service';
     NgbModalModule,
     FlexLayoutModule,
     HttpClientModule,
-    ResizableModule
+    ResizableModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent],

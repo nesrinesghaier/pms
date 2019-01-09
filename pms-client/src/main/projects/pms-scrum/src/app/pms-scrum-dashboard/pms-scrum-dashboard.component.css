@@ -1,0 +1,15 @@
+
+div.container {
+  padding: 10px;
+  max-height: 100% !important;
+  max-width: 100% !important;
+}
+
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+mat-card {
+  height: 97%;
+  width: 97%;
+}

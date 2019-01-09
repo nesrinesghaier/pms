@@ -2,14 +2,14 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Task} from '../models/task';
 import {Observable} from 'rxjs';
-import {TaskDependency} from "../models/task-dependency";
+import {TaskDependency} from '../models/task-dependency';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskService {
 
-  apiUrl = 'http://localhost:8080/pms-global-web/core-resources/task';
+  apiUrl = '/api/core-resources/task';
   header = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain, */*'
@@ -52,7 +52,7 @@ export class TaskService {
   }
 
   deleteTask(t: Task | number): Observable<Task> {
-    const id = typeof t === 'number' ? t : t.getId();
+    const id = typeof t === 'number' ? t : t.id;
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<Task>(url, {headers: this.header});
   }

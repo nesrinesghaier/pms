@@ -41,7 +41,7 @@ export class TaskConsumptionService {
   }
 
   deleteTaskConsumption(t: TaskConsumption | number): Observable<Task> {
-    const id = typeof t === 'number' ? t : t.getId();
+    const id = typeof t === 'number' ? t : t.id;
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<Task>(url, {headers: this.header});
   }}

@@ -9,13 +9,8 @@ export class Project {
   logicName: string;
   creationDate: string;
   description: string;
-  productBacklogItems: Array<ProductBacklogItem>;
-  resources: Array<Resource>;
-  budgets: Array<Budget>;
+  productBacklogItems: ProductBacklogItem[];
+  resources: Resource[];
+  budgets: Budget[];
 
-  constructor() {
-    this.productBacklogItems = new Array<ProductBacklogItem>();
-    this.resources = new Array<Resource>();
-    this.budgets = new Array<Budget>();
-  }
 }
