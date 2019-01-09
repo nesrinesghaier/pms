@@ -24,9 +24,6 @@ import {CommonModule} from '@angular/common';
 
 import {ProjectViewComponent} from './dashboard/projects/project-view/project-view.component';
 import {PmsScrumDashboardComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-dashboard.component';
-import {PmsScrumStateComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-state/pms-scrum-state.component';
-import {PmsScrumStoryComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-story/pms-scrum-story.component';
-import {PmsScrumTaskComponent} from '../../projects/pms-scrum/src/app/pms-scrum-dashboard/pms-scrum-task/pms-scrum-task.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
@@ -39,7 +36,7 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     ProjectViewComponent,
     ProjectListComponent,
     ProjectFormComponent,
-    PmsScrumDashboardComponent, PmsScrumStateComponent, PmsScrumStoryComponent, PmsScrumTaskComponent,
+    PmsScrumDashboardComponent,
     PmsCostDashboardComponent,
     PmsGanttDashboardComponent
   ],

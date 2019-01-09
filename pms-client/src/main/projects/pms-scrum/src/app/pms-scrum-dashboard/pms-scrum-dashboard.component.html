@@ -5,14 +5,37 @@
     <span class="fill-remaining-space"></span>
   </mat-toolbar>
   <mat-grid-list cols="3">
-    <mat-grid-tile>
-      <pms-scrum-state #TODO [title]="'TODO'"></pms-scrum-state>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <pms-scrum-state #INPROGRESS [title]="'IN PROGRESS'"></pms-scrum-state>
-    </mat-grid-tile>
-    <mat-grid-tile>
-      <pms-scrum-state #DONE [title]="'DONE'"></pms-scrum-state>
+    <mat-grid-tile *ngFor="let state of states">
+      <mat-card class="column" [style.background]="'#E3F2FD'">
+        <mat-card-header>
+          <mat-card-title>
+            {{state === 0 ? 'TODO' : state === 1 ? 'In Progress' : 'Done'}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-accordion>
+            <mat-expansion-panel *ngFor="let story of stories.get(state).values()" [style.background]="'#BBDEFB'">
+              <mat-expansion-panel-header [style.background]="'#90CAF9'">
+                <mat-panel-title>
+                  Story title
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-toolbar *ngFor="let task of story.getTasks()">
+                <span>{{task.getDescription()}}</span>
+                <span class="fill-remaining-space"></span>
+
+                <button *ngIf="task.getState()!=='TODO'" (click)="toLeft(task,story)" mat-button>
+                  <mat-icon>keyboard_arrow_left</mat-icon>
+                </button>
+
+                <button *ngIf="task.getState()!=='DONE'" (click)="toRight(task,story)" mat-button>
+                  <mat-icon>keyboard_arrow_right</mat-icon>
+                </button>
+              </mat-toolbar>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </mat-card-content>
+      </mat-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

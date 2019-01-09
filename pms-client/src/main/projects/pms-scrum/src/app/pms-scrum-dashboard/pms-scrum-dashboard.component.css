@@ -9,7 +9,7 @@ div.container {
   flex: 1 1 auto;
 }
 
-pms-scrum-state {
+mat-card {
   height: 97%;
   width: 97%;
 }

@@ -84,14 +84,4 @@ export class Story {
     this.startDate = value;
   }
 
-  /*constructor(actorUser: string, action: string, purpose: string, complexity: number, startDate: string, endDate: string, tasks: Array<Task>) {
-    this.actorUser = actorUser;
-    this.action = action;
-    this.purpose = purpose;
-    this.complexity = complexity;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.tasks = tasks;
-  }*/
-
 }

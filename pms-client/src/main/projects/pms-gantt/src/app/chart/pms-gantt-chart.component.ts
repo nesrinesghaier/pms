@@ -297,8 +297,8 @@ export class ChartComponent implements OnInit {
   }
 
   updateDateRange(node: StepFlatNode) {
-    node.dates.start = this.moment(node.dates.start).format('YYYY-MM-DD'); // convert moment to string
-    node.dates.end = this.moment(node.dates.end).format('YYYY-MM-DD'); // convert moment to string
+    node.dates.start = this.moment(node.dates.start).format('YYYY-MM-DD'); // convert Moment to string
+    node.dates.end = this.moment(node.dates.end).format('YYYY-MM-DD'); // convert Moment to string
     const nestedNode = this.flatNodeMap.get(node);
     /** rebuild calendar if the root is updated */
     if (node.level === 0) {
