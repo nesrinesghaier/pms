@@ -5,20 +5,22 @@
  */
 package tn.rnu.eniso.pms.gantt.web.jar;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
-import javax.ejb.EJB;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItemDependency;
 import tn.rnu.eniso.pms.core.ejb.entities.Story;
@@ -29,115 +31,90 @@ import tn.rnu.eniso.pms.core.ejb.utils.Utils;
  *
  * @author nesrine
  */
-@Path("backlogitem")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@RestController
+@RequestMapping("/ws/story")
 public class ProductBacklogItemWebService {
 
-    @EJB(name = "backlogItemService")
+    @Autowired
     private ProductBacklogItemService backlogItemService;
 
-    @GET
-    @Path("/{id}")
-    public Response getProductBacklogItemById(@PathParam("id") Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductBacklogItem> getProductBacklogItemById(@PathVariable("id") Long id) {
         ProductBacklogItem backlogItem = backlogItemService.get(id);
         if (backlogItem != null) {
-            return Response.ok(Utils.jsonify(backlogItem)).build();
+            return new ResponseEntity<>(backlogItem, HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND)
-                .entity(Utils.sendMessage("Product Backlog Item not found!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GET
-    public Response getAllProductBacklogItems() {
+    @GetMapping
+    public ResponseEntity<Collection<ProductBacklogItem>> getAllProductBacklogItems() {
         List<ProductBacklogItem> backlogItems = backlogItemService.getAll();
-        return Response.ok(Utils.jsonifyList(backlogItems)).build();
+        return new ResponseEntity<>(backlogItems, HttpStatus.OK);
     }
 
-    @GET
-    @Path("/{id}/stories")
-    public Response getAllStories(@PathParam("id") Long id) {
+    @GetMapping("/{id}/stories")
+    public ResponseEntity<Collection<Story>> getAllStories(@PathVariable("id") Long id) {
         List<Story> stories = backlogItemService.getAllStories(id);
         if (stories != null) {
-            return Response.ok(Utils.jsonifyList(stories)).build();
+            return new ResponseEntity<>(stories, HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND)
-                .entity(Utils.sendMessage("Product Backlog Item not found!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GET
-    @Path("/{id}/dependencies")
-    public Response getAllDependencies(@PathParam("id") Long id) {
+    @GetMapping("/{id}/dependencies")
+    public ResponseEntity<Collection<ProductBacklogItemDependency>> getAllDependencies(@PathVariable("id") Long id) {
         List<ProductBacklogItemDependency> dependencies = backlogItemService.getAllDependencies(id);
         if (dependencies != null) {
-            return Response.ok(Utils.jsonifyList(dependencies)).build();
+            return new ResponseEntity<>(dependencies, HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND)
-                .entity(Utils.sendMessage("Product Backlog Item not found!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @POST
-    @Path("/{projectId}")
-    public Response addProductBacklogItem(@PathParam("projectId") Long projectId, ProductBacklogItem backlogItem) {
+    @PostMapping("/{projectId}")
+    public ResponseEntity<ProductBacklogItem> addProductBacklogItem(@PathVariable("projectId") Long projectId, @RequestBody ProductBacklogItem backlogItem) {
         if (backlogItem != null) {
             backlogItem = backlogItemService.add(projectId, backlogItem);
             if (backlogItem != null) {
-                return Response.ok(Utils.jsonify(backlogItem)).build();
+                return new ResponseEntity<>(backlogItem, HttpStatus.OK);
             }
-            return Response.status(Status.NOT_FOUND)
-                    .entity(Utils.sendMessage("Project not found!!"))
-                    .build();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @POST
-    @Path("/addDependency")
-    public Response addDependency(Map<String, Object> data) {
+    @PostMapping("/addDependency")
+    public ResponseEntity<ProductBacklogItemDependency> addDependency(@RequestBody Map<String, Object> data) {
         if (data.containsKey("parentId") && data.containsKey("childId") && data.containsKey("type")) {
             Long parentId = Long.parseLong(data.get("parentId").toString());
             Long childId = Long.parseLong(data.get("childId").toString());
             String type = data.get("type").toString();
             ProductBacklogItemDependency dependency = backlogItemService.addDependency(parentId, childId, type);
             if (dependency != null) {
-                return Response.ok(Utils.jsonify(dependency)).build();
+                return new ResponseEntity<>(dependency, HttpStatus.OK);
             }
-            return Response.status(Status.CONFLICT)
-                    .entity(Utils.sendMessage("Dependency cycle found or Not Same Project!!"))
-                    .build();
+            return new ResponseEntity<>(HttpStatus.LOOP_DETECTED);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @PUT
-    public Response updateProductBacklogItem(ProductBacklogItem backlogItem) {
+    @PutMapping
+    public ResponseEntity<ProductBacklogItem> updateProductBacklogItem(@RequestBody ProductBacklogItem backlogItem) {
         if (backlogItem != null) {
             backlogItem = backlogItemService.update(backlogItem);
             if (backlogItem != null) {
-                return Response.ok(Utils.jsonify(backlogItem)).build();
+                return new ResponseEntity<>(backlogItem, HttpStatus.OK);
             }
-            return Response.status(Status.NOT_FOUND)
-                    .entity(Utils.sendMessage("Product Backlog Item not found!!"))
-                    .build();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @DELETE
-    @Path("/{id}")
-    public Response deleteProductBacklogItem(@PathParam("id") Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Collection<ProductBacklogItem>> deleteProductBacklogItem(@PathVariable("id") Long id) {
         backlogItemService.delete(id);
         List<ProductBacklogItem> backlogItems = backlogItemService.getAll();
-        return Response.ok(Utils.jsonifyList(backlogItems)).build();
+        return new ResponseEntity<>(backlogItems, HttpStatus.OK);
     }
 
 }
