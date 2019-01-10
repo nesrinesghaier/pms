@@ -5,7 +5,7 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
-import com.google.gson.annotations.Expose;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -27,32 +27,30 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TBL_PROJECT")
-@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Project implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Expose
     private Long id;
-    @Expose
     private String name;
-    @Expose
     private String logicName;
-    @Expose
     private String creationDate;
-    @Expose
     private String description;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ProductBacklogItem> productBacklogItems;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Resource> resources;
-    
+
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Budget> budgets;
-    
+
     public Long getId() {
         return id;
     }

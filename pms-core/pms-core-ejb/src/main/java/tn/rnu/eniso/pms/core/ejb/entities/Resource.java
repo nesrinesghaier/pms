@@ -5,7 +5,7 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
-import com.google.gson.annotations.Expose;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -27,14 +26,12 @@ public class Resource implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Expose
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Expose
     private ResourceRole resourceRole;
-    @Expose
     private String description;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL)
     private List<TaskConsumption> taskConsumptions;
 

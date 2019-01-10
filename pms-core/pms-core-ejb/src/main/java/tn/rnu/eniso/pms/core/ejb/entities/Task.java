@@ -5,7 +5,7 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
-import com.google.gson.annotations.Expose;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -27,28 +27,21 @@ public class Task implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Expose
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Expose
     private String description;
-    @Expose
     private State taskState;
-    @Expose
     private String startDate;
-    @Expose
     private String endDate;
-    @Expose
     private String realStartDate;
-    @Expose
     private String realEndDate;
-    
-    @Expose
     private int complexity;// une tache elementaire prend une complexity =1 
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TaskConsumption> taskConsumptions;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TaskDependency> taskDependencies;
 
@@ -106,7 +99,6 @@ public class Task implements Serializable {
     public void setRealEndDate(String realEndDate) {
         this.realEndDate = realEndDate;
     }
-    
 
     public List<TaskDependency> getTaskDependencies() {
         return taskDependencies;
@@ -135,7 +127,6 @@ public class Task implements Serializable {
     public void setTaskConsumptions(List<TaskConsumption> taskConsumptions) {
         this.taskConsumptions = taskConsumptions;
     }
-    
 
     @Override
     public int hashCode() {

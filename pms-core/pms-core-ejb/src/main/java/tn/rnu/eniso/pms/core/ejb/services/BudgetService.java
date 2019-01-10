@@ -9,6 +9,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.springframework.transaction.annotation.Transactional;
 import tn.rnu.eniso.pms.core.ejb.entities.Project;
 import tn.rnu.eniso.pms.core.ejb.entities.Budget;
 
@@ -22,6 +23,7 @@ public class BudgetService {
     @PersistenceContext(unitName = "pms-pu")
     private EntityManager em;
 
+    @Transactional
     public Budget add(Long projectId, Budget budget) {
         Project project = em.find(Project.class, projectId);
         if (project != null) {
@@ -45,6 +47,7 @@ public class BudgetService {
         return em.createQuery("SELECT r FROM Budget r").getResultList();
     }
 
+    @Transactional
     public Budget update(Budget budget) {
         Budget budgetFromDb = em.find(Budget.class, budget.getId());
         if (budgetFromDb != null) {
@@ -54,6 +57,7 @@ public class BudgetService {
         return null;
     }
 
+    @Transactional
     public void delete(Long id) {
         Budget budget = em.find(Budget.class, id);
 

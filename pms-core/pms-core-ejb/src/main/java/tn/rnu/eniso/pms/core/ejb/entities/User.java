@@ -5,7 +5,7 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
-import com.google.gson.annotations.Expose;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -28,18 +28,14 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Expose
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Expose
     private String firstName;
-    @Expose
     private String lastName;
-    @Expose
     private String adress;
-    @Expose
     private String email;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Resource> resources;
 

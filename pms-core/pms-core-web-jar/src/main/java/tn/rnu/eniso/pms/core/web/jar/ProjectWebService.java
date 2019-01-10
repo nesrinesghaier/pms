@@ -6,21 +6,21 @@
 package tn.rnu.eniso.pms.core.web.jar;
 
 import java.util.List;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.Budget;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.Project;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
-import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 import tn.rnu.eniso.pms.core.ejb.services.ProjectService;
 
 /**
@@ -35,89 +35,75 @@ public class ProjectWebService {
     private ProjectService projectService;
 
     @GetMapping("/{id}")
-    public Response getProjectById(@PathVariable("id") Long id) {
+    public ResponseEntity<Project> getProjectById(@PathVariable("id") Long id) {
         Project project = projectService.get(id);
         if (project != null) {
-            return Response.ok(Utils.jsonify(project)).build();
+            return new ResponseEntity<>(project, HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND).entity(Utils.sendMessage("Project not found!!")).build();
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping
-    public Response getAllProjects() {
+    public ResponseEntity<List<Project>> getAllProjects() {
         List<Project> projects = projectService.getAll();
-        return Response.ok(Utils.jsonifyList(projects)).build();
+        return new ResponseEntity<>(projects, HttpStatus.OK);
     }
 
     @GetMapping("/{id}/resources")
-    public Response getAllResources(@PathVariable("id") Long id) {
+    public ResponseEntity<List<Resource>> getAllResources(@PathVariable("id") Long id) {
         List<Resource> resources = projectService.getAllResources(id);
         if (resources != null) {
-            return Response.ok(Utils.jsonifyList(resources)).build();
+            return new ResponseEntity<>(resources, HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND)
-                .entity(Utils.sendMessage("Project not found!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/{id}/budgets")
-    public Response getAllBudgets(@PathVariable("id") Long id) {
+    public ResponseEntity<List<Budget>> getAllBudgets(@PathVariable("id") Long id) {
         List<Budget> budgets = projectService.getAllBudgets(id);
         if (budgets != null) {
-            return Response.ok(Utils.jsonifyList(budgets)).build();
+            return new ResponseEntity<>(budgets, HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND)
-                .entity(Utils.sendMessage("Budget not found!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping("/{id}/backlogItems")
-    public Response getAllBacklogItems(@PathVariable("id") Long id) {
+    public ResponseEntity<List<ProductBacklogItem>> getAllBacklogItems(@PathVariable("id") Long id) {
         List<ProductBacklogItem> backlogItems = projectService.getAllBacklogItems(id);
         if (backlogItems != null) {
-            return Response.ok(Utils.jsonifyList(backlogItems)).build();
+            return new ResponseEntity<>(backlogItems, HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND)
-                .entity(Utils.sendMessage("Project not found!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping
-    public Response addProject(Project project) {
+    public ResponseEntity<Project> addProject(@RequestBody Project project) {
         if (project != null) {
             project = projectService.add(project);
             if (project != null) {
-                return Response.ok(Utils.jsonify(project)).build();
+                return new ResponseEntity<>(project, HttpStatus.OK);
             }
-            return Response.status(Status.INTERNAL_SERVER_ERROR)
-                    .entity(Utils.sendMessage("Internal Error!!"))
-                    .build();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping
-    public Response updateProject(Project project) {
+    public ResponseEntity<Project> updateProject(Project project) {
         if (project != null) {
             project = projectService.update(project);
             if (project != null) {
-                return Response.ok(Utils.jsonify(project)).build();
+                return new ResponseEntity<>(project, HttpStatus.OK);
             }
-            return Response.status(Status.NOT_FOUND)
-                    .entity(Utils.sendMessage("Project not found!!"))
-                    .build();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")
-    public Response deleteProject(@PathVariable("id") Long id) {
+    public ResponseEntity<List<Project>> deleteProject(@PathVariable("id") Long id) {
         projectService.delete(id);
         List<Project> projects = projectService.getAll();
-        return Response.ok(Utils.jsonifyList(projects)).build();
+        return new ResponseEntity<>(projects, HttpStatus.OK);
     }
 }

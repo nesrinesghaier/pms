@@ -11,6 +11,7 @@ import java.util.Objects;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.springframework.transaction.annotation.Transactional;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
 import tn.rnu.eniso.pms.core.ejb.entities.Story;
@@ -27,6 +28,7 @@ public class TaskConsumptionService {
     @PersistenceContext(unitName = "pms-pu")
     private EntityManager em;
 
+    @Transactional
     public TaskConsumption add(Long taskId, Long resourceId, TaskConsumption consumption) {
         Task task = em.find(Task.class, taskId);
         if (task != null) {
@@ -55,6 +57,7 @@ public class TaskConsumptionService {
         return em.createQuery("SELECT t FROM TaskConsumption t").getResultList();
     }
 
+    @Transactional
     public TaskConsumption update(TaskConsumption consumption) {
         TaskConsumption consumptionToUpdate = em.find(TaskConsumption.class, consumption.getId());
         if (consumptionToUpdate != null) {
@@ -72,6 +75,7 @@ public class TaskConsumptionService {
         return result;
     }
 
+    @Transactional
     public void delete(Long id) {
         TaskConsumption consumption = em.find(TaskConsumption.class, id);
         if (consumption != null) {

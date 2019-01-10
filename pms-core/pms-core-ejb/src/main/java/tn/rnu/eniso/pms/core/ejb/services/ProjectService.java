@@ -13,6 +13,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.springframework.transaction.annotation.Transactional;
 import tn.rnu.eniso.pms.core.ejb.entities.Budget;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.Project;
@@ -34,6 +35,7 @@ public class ProjectService {
     @EJB
     private ProductBacklogItemService backlogItemService;
 
+    @Transactional
     public Project add(Project project) {
         em.persist(project);
         return project;
@@ -81,6 +83,7 @@ public class ProjectService {
         return null;
     }
 
+    @Transactional
     public Project update(Project project) {
         Project projectFromDB = em.find(Project.class, project.getId());
         if (projectFromDB != null) {
@@ -89,6 +92,8 @@ public class ProjectService {
         return project;
     }
 
+    
+    @Transactional
     public void delete(Long id) {
         Project project = em.find(Project.class, id);
         if (project != null) {

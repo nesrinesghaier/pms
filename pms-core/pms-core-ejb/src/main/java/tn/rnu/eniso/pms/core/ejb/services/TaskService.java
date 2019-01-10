@@ -12,6 +12,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.springframework.transaction.annotation.Transactional;
 import tn.rnu.eniso.pms.core.ejb.entities.DependencyType;
 import tn.rnu.eniso.pms.core.ejb.entities.Story;
 import tn.rnu.eniso.pms.core.ejb.entities.Task;
@@ -31,6 +32,7 @@ public class TaskService {
     @EJB
     private TaskConsumptionService consumptionService;
 
+    @Transactional
     public Task add(Long storyId, Task task) {
         Story story = em.find(Story.class, storyId);
         if (story != null) {
@@ -71,6 +73,7 @@ public class TaskService {
         return null;
     }
 
+    @Transactional
     public Task update(Task task) {
         Task t = em.find(Task.class, task.getId());
         if (t != null) {
@@ -80,6 +83,7 @@ public class TaskService {
         return null;
     }
 
+    @Transactional
     public void delete(Long id) {
         Task task = em.find(Task.class, id);
         if (task != null) {
@@ -97,6 +101,7 @@ public class TaskService {
         }
     }
 
+    @Transactional
     public TaskDependency addDependency(Long parentId, Long childId, String type) {
         Task parent = em.find(Task.class, parentId);
         Task child = em.find(Task.class, childId);

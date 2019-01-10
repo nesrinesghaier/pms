@@ -7,9 +7,9 @@ package tn.rnu.eniso.pms.core.web.jar;
 
 import java.util.List;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
 import tn.rnu.eniso.pms.core.ejb.entities.User;
-import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 import tn.rnu.eniso.pms.core.ejb.services.UserService;
 
 /**
@@ -33,69 +32,57 @@ public class UserWebService {
     private UserService userService;
 
     @GetMapping("/{id}")
-    public Response getUserById(@PathParam("id") Long id) {
+    public ResponseEntity<User> getUserById(@PathParam("id") Long id) {
         User user = userService.get(id);
         if (user != null) {
-            return Response.ok(Utils.jsonify(user)).build();
+            return new ResponseEntity<>(user, HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND)
-                .entity(Utils.sendMessage("User not found!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping
-    public Response getAllUsers() {
+    public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAll();
-        return Response.ok(Utils.jsonifyList(users)).build();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
     @GetMapping("/{id}/resources")
-    public Response getAllResources(@PathParam("id") Long id) {
+    public ResponseEntity<List<Resource>> getAllResources(@PathParam("id") Long id) {
         List<Resource> resources = userService.getAllResources(id);
         if (resources != null) {
-            return Response.ok(Utils.jsonifyList(resources)).build();
+            return new ResponseEntity<>(resources, HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND)
-                .entity(Utils.sendMessage("User not found!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @PostMapping
-    public Response addUser(User user) {
+    public ResponseEntity<User> addUser(User user) {
         if (user != null) {
             user = userService.add(user);
             if (user != null) {
-                return Response.ok(Utils.jsonify(user)).build();
+                return new ResponseEntity<>(user, HttpStatus.OK);
             }
-            return Response.status(Status.INTERNAL_SERVER_ERROR)
-                    .entity(Utils.sendMessage("Internal Error!!"))
-                    .build();
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping
-    public Response updateUser(User user) {
+    public ResponseEntity<User> updateUser(User user) {
         if (user != null) {
             user = userService.update(user);
             if (user != null) {
-                return Response.ok(Utils.jsonify(user)).build();
+                return new ResponseEntity<>(user, HttpStatus.OK);
             }
-            return Response.status(Status.NOT_FOUND)
-                    .entity(Utils.sendMessage("User not found!!"))
-                    .build();
+            return new ResponseEntity<>(user, HttpStatus.NOT_FOUND);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")
-    public Response deleteUser(@PathParam("id") Long id) {
+    public ResponseEntity<List<User>> deleteUser(@PathParam("id") Long id) {
         userService.delete(id);
         List<User> users = userService.getAll();
-        return Response.ok(Utils.jsonifyList(users)).build();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 }

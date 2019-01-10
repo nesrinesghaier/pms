@@ -11,9 +11,11 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.springframework.transaction.annotation.Transactional;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.Story;
 import tn.rnu.eniso.pms.core.ejb.entities.Task;
+
 /**
  *
  * @author nesrine
@@ -27,6 +29,7 @@ public class StoryService {
     @EJB
     private TaskService taskService;
 
+    @Transactional
     public Story add(Long backlogItemId, Story story) {
         ProductBacklogItem backlogItem = em.find(ProductBacklogItem.class, backlogItemId);
         if (backlogItem != null) {
@@ -58,6 +61,17 @@ public class StoryService {
         return null;
     }
 
+    @Transactional
+    public Story update(Story story) {
+        Story storyFromDb = em.find(Story.class, story.getId());
+        if (storyFromDb != null) {
+            em.merge(story);
+            return story;
+        }
+        return null;
+    }
+
+    @Transactional
     public void delete(Long id) {
         Story story = em.find(Story.class, id);
         if (story != null) {
@@ -74,15 +88,6 @@ public class StoryService {
             }
             em.remove(story);
         }
-    }
-
-    public Story update(Story story) {
-        Story storyFromDb = em.find(Story.class, story.getId());
-        if (storyFromDb != null) {
-            em.merge(story);
-            return story;
-        }
-        return null;
     }
 
 }
