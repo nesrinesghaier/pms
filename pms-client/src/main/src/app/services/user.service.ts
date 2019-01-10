@@ -8,7 +8,7 @@ import {catchError, tap} from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-  apiUrl = '/api/core-resources/user';
+  apiUrl = '/pms-global-web/ws/user';
   header = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain, */*'

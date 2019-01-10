@@ -6,7 +6,6 @@
 package tn.rnu.eniso.pms.core.ejb.services;
 
 import java.util.List;
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

@@ -7,7 +7,7 @@ import {Task} from '../models/task';
   providedIn: 'root'
 })
 export class StoryService {
-  apiUrl = '/api/core-resources/story/';
+  apiUrl = '/pms-global-web/ws/story/';
   reqHeader = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain, */*'

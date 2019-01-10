@@ -9,7 +9,7 @@ import {TaskDependency} from '../models/task-dependency';
 })
 export class TaskService {
 
-  apiUrl = '/api/core-resources/task';
+  apiUrl = '/pms-global-web/ws/task';
   header = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain, */*'

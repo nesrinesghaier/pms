@@ -9,7 +9,7 @@ import {TaskConsumption} from '../models/task-consumption';
 })
 export class TaskConsumptionService {
 
-  apiUrl = 'http://localhost:8080/pms-global-web/core-resources/taskconsumption';
+  apiUrl = '/pms-global-web/ws/taskconsumption';
   header = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain, */*'

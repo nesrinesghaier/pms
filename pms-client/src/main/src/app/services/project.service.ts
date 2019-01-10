@@ -11,7 +11,7 @@ import {Budget} from '../models/budget';
 })
 export class ProjectService {
 
-  apiUrl = '/api/core-resources/project/';
+  apiUrl = '/pms-global-web/ws/project/';
   reqHeader = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain, */*'

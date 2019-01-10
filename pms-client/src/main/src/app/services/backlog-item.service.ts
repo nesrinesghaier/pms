@@ -9,7 +9,7 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   providedIn: 'root'
 })
 export class BacklogItemService {
-  apiUrl = '/api/core-resources/backlogitem/';
+  apiUrl = '/pms-global-web/ws/backlogitem/';
   reqHeader = new HttpHeaders({
     'Content-Type': 'application/json',
     'Accept': 'application/json, text/plain, */*'
