@@ -8,6 +8,7 @@ package tn.rnu.eniso.pms.gantt.web.jar;
 import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
 import tn.rnu.eniso.pms.core.ejb.services.TaskConsumptionService;
 
@@ -24,10 +26,11 @@ import tn.rnu.eniso.pms.core.ejb.services.TaskConsumptionService;
  *
  * @author ameni
  */
+@RestController
 @RequestMapping("/ws/taskconsumption")
 public class TaskConsumptionWebService {
 
-    @EJB(name = "taskConsumptionService")
+    @Autowired
     private TaskConsumptionService taskConsumptionService;
 
     @GetMapping("/{id}")
