@@ -3,21 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.core.ejb.services.REST;
+package tn.rnu.eniso.pms.scrum.web.jar;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.Story;
 import tn.rnu.eniso.pms.core.ejb.entities.Task;
 import tn.rnu.eniso.pms.core.ejb.utils.Utils;
@@ -25,19 +23,17 @@ import tn.rnu.eniso.pms.core.ejb.services.StoryService;
 
 /**
  *
- * @author nesrine
+ * @author bacali
  */
-@Path("story")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@RestController
+@RequestMapping("/ws/story")
 public class StoryWebService {
 
-    @EJB(name = "storyService")
+    @Autowired
     private StoryService storyService;
 
-    @GET
-    @Path("/{id}")
-    public Response getStoryById(@PathParam("id") Long id) {
+    @GetMapping("/{id}")
+    public Response getStoryById(@PathVariable("id") Long id) {
         Story story = storyService.get(id);
         if (story != null) {
             return Response.ok(Utils.jsonify(story)).build();
@@ -47,15 +43,14 @@ public class StoryWebService {
                 .build();
     }
 
-    @GET
+    @GetMapping
     public Response getAllStories() {
         List<Story> stories = storyService.getAll();
         return Response.ok(Utils.jsonifyList(stories)).build();
     }
 
-    @GET
-    @Path("/{id}/tasks")
-    public Response getAllTasks(@PathParam("id") Long id) {
+    @GetMapping("/{id}/tasks")
+    public Response getAllTasks(@PathVariable("id") Long id) {
         List<Task> tasks = storyService.getAllTasks(id);
         if (tasks != null) {
             return Response.ok(Utils.jsonifyList(tasks)).build();
@@ -65,9 +60,8 @@ public class StoryWebService {
                 .build();
     }
 
-    @POST
-    @Path("/{backlogItemId}")
-    public Response addStory(@PathParam("backlogItemId") Long backlogItemId, Story story) {
+    @PostMapping("/{backlogItemId}")
+    public Response addStory(@PathVariable("backlogItemId") Long backlogItemId, Story story) {
         if (story != null) {
             story = storyService.add(backlogItemId, story);
             if (story != null) {
@@ -82,7 +76,7 @@ public class StoryWebService {
                 .build();
     }
 
-    @PUT
+    @PutMapping
     public Response updateStory(Story story) {
         if (story != null) {
             story = storyService.update(story);
@@ -98,9 +92,8 @@ public class StoryWebService {
                 .build();
     }
 
-    @DELETE
-    @Path("/{id}")
-    public Response deleteStory(@PathParam("id") Long id) {
+    @DeleteMapping("/{id}")
+    public Response deleteStory(@PathVariable("id") Long id) {
         storyService.delete(id);
         List<Story> stories = storyService.getAll();
         return Response.ok(Utils.jsonifyList(stories)).build();

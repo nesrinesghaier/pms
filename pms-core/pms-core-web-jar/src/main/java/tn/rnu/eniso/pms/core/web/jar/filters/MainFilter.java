@@ -37,7 +37,7 @@ public class MainFilter implements Filter {
         String requestUrl = request.getRequestURI().replace(request.getContextPath(), "").replaceFirst("/", "");
         if (requestUrl.isEmpty()) {
             response.sendRedirect(request.getContextPath() + "/index.html");
-        } else if (requestUrl.startsWith("ws") || requestUrl.matches(".*(\\..*){1,}")) {
+        } else if (requestUrl.startsWith("ws") || requestUrl.startsWith("api") || requestUrl.matches(".*(\\..*){1,}")) {
             chain.doFilter(request, response);
         } else {
             response.sendRedirect(request.getContextPath() + "/index.html?url=" + requestUrl);

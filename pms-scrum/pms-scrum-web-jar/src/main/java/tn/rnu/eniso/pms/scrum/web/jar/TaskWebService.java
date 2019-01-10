@@ -3,22 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.core.ejb.services.REST;
+package tn.rnu.eniso.pms.scrum.web.jar;
 
 import java.util.List;
 import java.util.Map;
-import javax.ejb.EJB;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.Task;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskDependency;
@@ -27,19 +25,17 @@ import tn.rnu.eniso.pms.core.ejb.services.TaskService;
 
 /**
  *
- * @author ameni
+ * @author bacali
  */
-@Path("task")
-@Produces("application/json")
-@Consumes(MediaType.APPLICATION_JSON)
+@RestController
+@RequestMapping("/ws/task")
 public class TaskWebService {
 
-    @EJB(name = "taskService")
+    @Autowired
     private TaskService taskService;
 
-    @GET
-    @Path("/{id}")
-    public Response getTaskById(@PathParam("id") Long id) {
+    @GetMapping("/{id}")
+    public Response getTaskById(@PathVariable("id") Long id) {
         Task task = taskService.get(id);
         if (task != null) {
             return Response.ok(Utils.jsonify(task)).build();
@@ -49,15 +45,14 @@ public class TaskWebService {
                 .build();
     }
 
-    @GET
+    @GetMapping
     public Response getAllTasks() {
         List<Task> tasks = taskService.getAll();
         return Response.ok(Utils.jsonifyList(tasks)).build();
     }
 
-    @GET
-    @Path("/{id}/consumptions")
-    public Response getAllConsumptions(@PathParam("id") Long id) {
+    @GetMapping("/{id}/consumptions")
+    public Response getAllConsumptions(@PathVariable("id") Long id) {
         List<TaskConsumption> consumptions = taskService.getAllConsumptions(id);
         if (consumptions != null) {
             return Response.ok(Utils.jsonifyList(consumptions)).build();
@@ -67,9 +62,8 @@ public class TaskWebService {
                 .build();
     }
 
-    @GET
-    @Path("/{id}/dependencies")
-    public Response getAllDependencies(@PathParam("id") Long id) {
+    @GetMapping("/{id}/dependencies")
+    public Response getAllDependencies(@PathVariable("id") Long id) {
         List<TaskDependency> dependencies = taskService.getAllDependencies(id);
         if (dependencies != null) {
             return Response.ok(Utils.jsonifyList(dependencies)).build();
@@ -79,9 +73,8 @@ public class TaskWebService {
                 .build();
     }
 
-    @POST
-    @Path("/{storyId}")
-    public Response addTask(@PathParam("storyId") Long storyId, Task task) {
+    @PostMapping("/{storyId}")
+    public Response addTask(@PathVariable("storyId") Long storyId, Task task) {
         if (task != null) {
             task = taskService.add(storyId, task);
             if (task != null) {
@@ -96,8 +89,7 @@ public class TaskWebService {
                 .build();
     }
 
-    @POST
-    @Path("/addDependency")
+    @PostMapping("/addDependency")
     public Response addDependency(Map<String, Object> data) {
         if (data.containsKey("parentId") && data.containsKey("childId") && data.containsKey("type")) {
             Long parentId = Long.parseLong(data.get("parentId").toString());
@@ -116,7 +108,7 @@ public class TaskWebService {
                 .build();
     }
 
-    @PUT
+    @PutMapping
     public Response updateTask(Task task) {
         if (task != null) {
             task = taskService.update(task);
@@ -132,9 +124,8 @@ public class TaskWebService {
                 .build();
     }
 
-    @DELETE
-    @Path("/{id}")
-    public Response deleteTask(@PathParam("id") Long id) {
+    @DeleteMapping("/{id}")
+    public Response deleteTask(@PathVariable("id") Long id) {
         taskService.delete(id);
         List<Task> tasks = taskService.getAll();
         return Response.ok(Utils.jsonifyList(tasks)).build();

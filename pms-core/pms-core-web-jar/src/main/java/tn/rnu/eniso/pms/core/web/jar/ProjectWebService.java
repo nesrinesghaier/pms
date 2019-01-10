@@ -3,26 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tn.rnu.eniso.pms.core.ejb.services.REST;
+package tn.rnu.eniso.pms.core.web.jar;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.Budget;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.Project;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
-import tn.rnu.eniso.pms.core.ejb.services.BudgetService;
 import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 import tn.rnu.eniso.pms.core.ejb.services.ProjectService;
 
@@ -30,18 +27,15 @@ import tn.rnu.eniso.pms.core.ejb.services.ProjectService;
  *
  * @author nesrine
  */
-@Path("project")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@RestController
+@RequestMapping("/ws/project")
 public class ProjectWebService {
 
-    @EJB(name = "projectService")
+    @Autowired
     private ProjectService projectService;
-    
 
-    @GET
-    @Path("/{id}")
-    public Response getProjectById(@PathParam("id") Long id) {
+    @GetMapping("/{id}")
+    public Response getProjectById(@PathVariable("id") Long id) {
         Project project = projectService.get(id);
         if (project != null) {
             return Response.ok(Utils.jsonify(project)).build();
@@ -49,15 +43,14 @@ public class ProjectWebService {
         return Response.status(Status.NOT_FOUND).entity(Utils.sendMessage("Project not found!!")).build();
     }
 
-    @GET
+    @GetMapping
     public Response getAllProjects() {
         List<Project> projects = projectService.getAll();
         return Response.ok(Utils.jsonifyList(projects)).build();
     }
 
-    @GET
-    @Path("/{id}/resources")
-    public Response getAllResources(@PathParam("id") Long id) {
+    @GetMapping("/{id}/resources")
+    public Response getAllResources(@PathVariable("id") Long id) {
         List<Resource> resources = projectService.getAllResources(id);
         if (resources != null) {
             return Response.ok(Utils.jsonifyList(resources)).build();
@@ -67,10 +60,9 @@ public class ProjectWebService {
                 .build();
     }
 
-    @GET
-    @Path("/{id}/budgets")
-    public Response getAllBudgets(@PathParam("id") Long id) {
-        List<Budget> budgets =  projectService.getAllBudgets(id);
+    @GetMapping("/{id}/budgets")
+    public Response getAllBudgets(@PathVariable("id") Long id) {
+        List<Budget> budgets = projectService.getAllBudgets(id);
         if (budgets != null) {
             return Response.ok(Utils.jsonifyList(budgets)).build();
         }
@@ -79,9 +71,8 @@ public class ProjectWebService {
                 .build();
     }
 
-    @GET
-    @Path("/{id}/backlogItems")
-    public Response getAllBacklogItems(@PathParam("id") Long id) {
+    @GetMapping("/{id}/backlogItems")
+    public Response getAllBacklogItems(@PathVariable("id") Long id) {
         List<ProductBacklogItem> backlogItems = projectService.getAllBacklogItems(id);
         if (backlogItems != null) {
             return Response.ok(Utils.jsonifyList(backlogItems)).build();
@@ -91,7 +82,7 @@ public class ProjectWebService {
                 .build();
     }
 
-    @POST
+    @PostMapping
     public Response addProject(Project project) {
         if (project != null) {
             project = projectService.add(project);
@@ -107,7 +98,7 @@ public class ProjectWebService {
                 .build();
     }
 
-    @PUT
+    @PutMapping
     public Response updateProject(Project project) {
         if (project != null) {
             project = projectService.update(project);
@@ -123,9 +114,8 @@ public class ProjectWebService {
                 .build();
     }
 
-    @DELETE
-    @Path("/{id}")
-    public Response deleteProject(@PathParam("id") Long id) {
+    @DeleteMapping("/{id}")
+    public Response deleteProject(@PathVariable("id") Long id) {
         projectService.delete(id);
         List<Project> projects = projectService.getAll();
         return Response.ok(Utils.jsonifyList(projects)).build();
