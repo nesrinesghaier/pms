@@ -6,18 +6,18 @@
 package tn.rnu.eniso.pms.cost.web.jar;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.Budget;
 import tn.rnu.eniso.pms.core.ejb.services.BudgetService;
 import tn.rnu.eniso.pms.core.ejb.utils.Utils;
@@ -26,35 +26,33 @@ import tn.rnu.eniso.pms.core.ejb.utils.Utils;
  *
  * @author ameni
  */
-@Path("budget")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@RestController
+@RequestMapping("/ws/budget")
 public class BudgetWebService {
 
-    @EJB(name = "budgetService")
+    @Autowired
     private BudgetService budgetService;
 
-    @GET
-    @Path("/{id}")
-    public Response getBudgetById(@PathParam("id") Long id) {
+    @GetMapping("/{id}")
+    public Response getBudgetById(@PathVariable("id") Long id) {
         Budget budget = budgetService.get(id);
         if (budget != null) {
-            return Response.ok(Utils.jsonify(budget)).build();
+            return Response.ok(budget).build();
         }
         return Response.status(Status.NOT_FOUND)
                 .entity(Utils.sendMessage("Budget not found!!"))
                 .build();
     }
 
-    @GET
+    @GetMapping
     public Response getAllBudgets() {
         List<Budget> resources = budgetService.getAll();
         return Response.ok(Utils.jsonifyList(resources)).build();
     }
 
-    @POST
-    @Path("{projectId}")
-    public Response addBudget(@PathParam("projectId") Long projectId, Budget budget) {
+    
+    @PostMapping("{projectId}")
+    public Response addBudget(@PathVariable("projectId") Long projectId, Budget budget) {
         if (budget != null) {
             budget = budgetService.add(projectId, budget);
             if (budget != null) {
@@ -69,7 +67,7 @@ public class BudgetWebService {
                 .build();
     }
 
-    @PUT
+    @PutMapping
     public Response updateBudget(Budget resource) {
         if (resource != null) {
             resource = budgetService.update(resource);
@@ -85,9 +83,8 @@ public class BudgetWebService {
                 .build();
     }
 
-    @DELETE
-    @Path("/{id}")
-    public Response deleteBudget(@PathParam("id") Long id) {
+    @DeleteMapping("/{id}")
+    public Response deleteBudget(@PathVariable("id") Long id) {
         budgetService.delete(id);
         List<Budget> resources = budgetService.getAll();
         return Response.ok(Utils.jsonifyList(resources)).build();

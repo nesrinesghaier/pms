@@ -6,18 +6,16 @@
 package tn.rnu.eniso.pms.cost.web.jar;
 
 import java.util.List;
-import javax.ejb.EJB;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
 import tn.rnu.eniso.pms.core.ejb.utils.Utils;
@@ -25,19 +23,18 @@ import tn.rnu.eniso.pms.core.ejb.services.ResourceService;
 
 /**
  *
- * @author nesrine
+ * @author ameni
  */
-@Path("resource")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@RestController
+@RequestMapping("/ws/resource")
 public class ResourceWebService {
 
-    @EJB(name = "resourceService")
+    @Autowired
     private ResourceService resourceService;
 
-    @GET
-    @Path("/{id}")
-    public Response getResourceById(@PathParam("id") Long id) {
+    
+    @GetMapping("/{id}")
+    public Response getResourceById(@PathVariable("id") Long id) {
         Resource resource = resourceService.get(id);
         if (resource != null) {
             return Response.ok(Utils.jsonify(resource)).build();
@@ -47,15 +44,15 @@ public class ResourceWebService {
                 .build();
     }
 
-    @GET
+    @GetMapping
     public Response getAllResources() {
         List<Resource> resources = resourceService.getAll();
         return Response.ok(Utils.jsonifyList(resources)).build();
     }
 
-    @GET
-    @Path("/{id}/consumptions")
-    public Response getAllTasks(@PathParam("id") Long id) {
+    
+    @GetMapping("/{id}/consumptions")
+    public Response getAllTasks(@PathVariable("id") Long id) {
         List<TaskConsumption> consumptions = resourceService.getAllConsumptions(id);
         if (consumptions != null) {
             return Response.ok(Utils.jsonifyList(consumptions)).build();
@@ -65,9 +62,9 @@ public class ResourceWebService {
                 .build();
     }
 
-    @POST
-    @Path("/{userId}/{projectId}")
-    public Response addResource(@PathParam("userId") Long userId, @PathParam("projectId") Long projectId, Resource resource) {
+    
+    @PostMapping("/{userId}/{projectId}")
+    public Response addResource(@PathVariable("userId") Long userId, @PathVariable("projectId") Long projectId, Resource resource) {
         if (resource != null) {
             resource = resourceService.add(userId, projectId, resource);
             if (resource != null) {
@@ -82,7 +79,7 @@ public class ResourceWebService {
                 .build();
     }
 
-    @PUT
+    @PutMapping
     public Response updateResource(Resource resource) {
         if (resource != null) {
             resource = resourceService.update(resource);
@@ -98,9 +95,9 @@ public class ResourceWebService {
                 .build();
     }
 
-    @DELETE
-    @Path("/{id}")
-    public Response deleteResource(@PathParam("id") Long id) {
+    
+    @DeleteMapping("/{id}")
+    public Response deleteResource(@PathVariable("id") Long id) {
         resourceService.delete(id);
         List<Resource> resources = resourceService.getAll();
         return Response.ok(Utils.jsonifyList(resources)).build();
