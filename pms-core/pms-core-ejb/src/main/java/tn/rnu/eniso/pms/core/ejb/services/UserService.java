@@ -11,8 +11,10 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.springframework.transaction.annotation.Transactional;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
 import tn.rnu.eniso.pms.core.ejb.entities.User;
+
 /**
  *
  * @author nesrine
@@ -26,6 +28,7 @@ public class UserService {
     @EJB
     private ResourceService resourceService;
 
+    @Transactional
     public User add(User user) {
         em.persist(user);
         return user;
@@ -51,6 +54,7 @@ public class UserService {
         return null;
     }
 
+    @Transactional
     public User update(User user) {
         User userFromDb = em.find(User.class, user.getId());
         if (userFromDb != null) {
@@ -60,6 +64,7 @@ public class UserService {
         return null;
     }
 
+    @Transactional
     public void delete(Long id) {
         User user = em.find(User.class, id);
         if (user != null) {

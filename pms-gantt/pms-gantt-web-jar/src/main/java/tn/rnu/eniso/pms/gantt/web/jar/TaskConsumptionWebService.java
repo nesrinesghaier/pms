@@ -5,94 +5,79 @@
  */
 package tn.rnu.eniso.pms.gantt.web.jar;
 
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.EJB;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
-import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 import tn.rnu.eniso.pms.core.ejb.services.TaskConsumptionService;
 
 /**
  *
  * @author ameni
  */
-@Path("taskconsumption")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@RestController
+@RequestMapping("/ws/taskconsumption")
 public class TaskConsumptionWebService {
 
-    @EJB(name = "taskConsumptionService")
+    @Autowired
     private TaskConsumptionService taskConsumptionService;
 
-    @GET
-    @Path("/{id}")
-    public Response getTaskConsumptionById(@PathParam("id") Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<TaskConsumption> getTaskConsumptionById(@PathVariable("id") Long id) {
         TaskConsumption consumption = taskConsumptionService.get(id);
         if (consumption != null) {
-            return Response.ok(Utils.jsonify(consumption)).build();
+            return new ResponseEntity<>(consumption, HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND)
-                .entity(Utils.sendMessage("Task Consumption not found!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GET
-    public Response getAllTaskConsumptions() {
+    @GetMapping
+    public ResponseEntity<Collection<TaskConsumption>> getAllTaskConsumptions() {
         List<TaskConsumption> consumptions = taskConsumptionService.getAll();
-        return Response.ok(Utils.jsonifyList(consumptions)).build();
+        return new ResponseEntity<>(consumptions, HttpStatus.OK);
     }
 
-    @POST
-    @Path("/{taskId}/{resourceId}")
-    public Response addTaskConsumption(@PathParam("taskId") Long taskId,
-            @PathParam("resourceId") Long resourceId, TaskConsumption consumption) {
+    @PostMapping("/{taskId}/{resourceId}")
+    public ResponseEntity<TaskConsumption> addTaskConsumption(@PathVariable("taskId") Long taskId,
+            @PathVariable("resourceId") Long resourceId, @RequestBody TaskConsumption consumption) {
         if (consumption != null) {
             consumption = taskConsumptionService.add(taskId, resourceId, consumption);
             if (consumption != null) {
-                return Response.ok(Utils.jsonify(consumption)).build();
+                return new ResponseEntity<>(consumption, HttpStatus.OK);
             }
-            return Response.status(Status.NOT_FOUND)
-                    .entity(Utils.sendMessage("Task or Resource not found!!"))
-                    .build();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
-
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @PUT
-    public Response updateTaskConsumption(TaskConsumption consumption) {
+    @PutMapping
+    public ResponseEntity<TaskConsumption> updateTaskConsumption(@RequestBody TaskConsumption consumption) {
         if (consumption != null) {
             consumption = taskConsumptionService.update(consumption);
             if (consumption != null) {
-                return Response.ok(Utils.jsonify(consumption)).build();
+                return new ResponseEntity<>(consumption, HttpStatus.OK);
             }
-            return Response.status(Status.NOT_FOUND)
-                    .entity(Utils.sendMessage("Task Consumption not found!!"))
-                    .build();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    @DELETE
-    @Path("/{id}")
-    public Response deleteTaskConsumptionById(@PathParam("id") Long id) {
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Collection<TaskConsumption>> deleteTaskConsumptionById(@PathVariable("id") Long id) {
         taskConsumptionService.delete(id);
         List<TaskConsumption> consumptions = taskConsumptionService.getAll();
-        return Response.ok(Utils.jsonifyList(consumptions)).build();
+        return new ResponseEntity<>(consumptions, HttpStatus.OK);
     }
 
 }

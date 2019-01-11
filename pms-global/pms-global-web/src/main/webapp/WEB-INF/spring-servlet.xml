@@ -11,6 +11,8 @@
     <context:component-scan
         base-package="tn.rnu.eniso" />
 
+    <tx:annotation-driven />
+    
     <mvc:annotation-driven/> 
     <mvc:default-servlet-handler/>
 

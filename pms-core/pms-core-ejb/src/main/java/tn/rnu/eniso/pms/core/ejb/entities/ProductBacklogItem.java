@@ -5,7 +5,7 @@
  */
 package tn.rnu.eniso.pms.core.ejb.entities;
 
-import com.google.gson.annotations.Expose;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -27,17 +27,16 @@ public class ProductBacklogItem implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Expose
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; // product backlog item id 
-    @Expose
     private int priority;
-    @Expose
     private String description;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ProductBacklogItemDependency> backlogItemDependencies;
 
+    @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Story> stories;
 

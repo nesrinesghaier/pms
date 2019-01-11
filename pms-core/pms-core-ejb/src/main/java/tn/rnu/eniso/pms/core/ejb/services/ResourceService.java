@@ -11,6 +11,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.springframework.transaction.annotation.Transactional;
 import tn.rnu.eniso.pms.core.ejb.entities.Project;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
@@ -29,6 +30,7 @@ public class ResourceService {
     @EJB
     private TaskConsumptionService consumptionService;
 
+    @Transactional
     public Resource add(Long userId, Long projectId, Resource resource) {
         User user = em.find(User.class, userId);
         if (user != null) {
@@ -65,6 +67,7 @@ public class ResourceService {
         return null;
     }
 
+    @Transactional
     public Resource update(Resource resource) {
         Resource resourceFromDb = em.find(Resource.class, resource.getId());
         if (resourceFromDb != null) {
@@ -74,6 +77,7 @@ public class ResourceService {
         return null;
     }
 
+    @Transactional
     public void delete(Long id) {
         Resource resource = em.find(Resource.class, id);
         if (resource != null) {

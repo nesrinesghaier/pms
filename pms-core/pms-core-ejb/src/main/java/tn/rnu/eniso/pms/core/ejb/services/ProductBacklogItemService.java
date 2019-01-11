@@ -12,6 +12,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import org.springframework.transaction.annotation.Transactional;
 import tn.rnu.eniso.pms.core.ejb.entities.DependencyType;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItem;
 import tn.rnu.eniso.pms.core.ejb.entities.ProductBacklogItemDependency;
@@ -31,6 +32,7 @@ public class ProductBacklogItemService {
     @EJB
     private StoryService storyService;
 
+    @Transactional
     public ProductBacklogItem add(Long projectId, ProductBacklogItem backlogItem) {
         Project project = em.find(Project.class, projectId);
         if (project != null) {
@@ -70,6 +72,7 @@ public class ProductBacklogItemService {
         return null;
     }
 
+    @Transactional
     public ProductBacklogItem update(ProductBacklogItem item) {
         ProductBacklogItem t = em.find(ProductBacklogItem.class, item.getId());
         if (t != null) {
@@ -79,6 +82,7 @@ public class ProductBacklogItemService {
         return null;
     }
 
+    @Transactional
     public void delete(Long id) {
         ProductBacklogItem backlogItem = em.find(ProductBacklogItem.class, id);
         if (backlogItem != null) {
@@ -96,6 +100,7 @@ public class ProductBacklogItemService {
         }
     }
 
+    @Transactional
     public ProductBacklogItemDependency addDependency(Long parentId, Long childId, String type) {
         ProductBacklogItem parent = em.find(ProductBacklogItem.class, parentId);
         ProductBacklogItem child = em.find(ProductBacklogItem.class, childId);
