@@ -6,21 +6,19 @@
 package tn.rnu.eniso.pms.cost.web.jar;
 
 import java.util.List;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.Budget;
 import tn.rnu.eniso.pms.core.ejb.services.BudgetService;
-import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 
 /**
  *
@@ -34,59 +32,49 @@ public class BudgetWebService {
     private BudgetService budgetService;
 
     @GetMapping("/{id}")
-    public Response getBudgetById(@PathVariable("id") Long id) {
+    public ResponseEntity<Budget> getBudgetById(@PathVariable("id") Long id) {
         Budget budget = budgetService.get(id);
         if (budget != null) {
-            return Response.ok(budget).build();
+           return  new ResponseEntity<>(budget,HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND)
-                .entity(Utils.sendMessage("Budget not found!!"))
-                .build();
+         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping
-    public Response getAllBudgets() {
-        List<Budget> resources = budgetService.getAll();
-        return Response.ok(Utils.jsonifyList(resources)).build();
+    public ResponseEntity<List<Budget>> getAllBudgets() {
+        List<Budget> budgets = budgetService.getAll();
+       return  new ResponseEntity<>(budgets,HttpStatus.OK);
     }
 
     
     @PostMapping("{projectId}")
-    public Response addBudget(@PathVariable("projectId") Long projectId, Budget budget) {
+    public ResponseEntity<Budget> addBudget(@PathVariable("projectId") Long projectId,@RequestBody Budget budget) {
         if (budget != null) {
             budget = budgetService.add(projectId, budget);
             if (budget != null) {
-                return Response.ok(Utils.jsonify(budget)).build();
+                return  new ResponseEntity<>(budget,HttpStatus.OK);
             }
-            return Response.status(Status.NOT_FOUND)
-                    .entity(Utils.sendMessage("Project or User not found!!"))
-                    .build();
+           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
+       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping
-    public Response updateBudget(Budget resource) {
-        if (resource != null) {
-            resource = budgetService.update(resource);
-            if (resource != null) {
-                return Response.ok(Utils.jsonify(resource)).build();
+    public ResponseEntity<Budget> updateBudget(@RequestBody Budget budget) {
+        if (budget != null) {
+            budget = budgetService.update(budget);
+            if (budget != null) {   
+            return  new ResponseEntity<>(budget,HttpStatus.OK);
             }
-            return Response.status(Status.NOT_FOUND)
-                    .entity(Utils.sendMessage("Budget not found!!"))
-                    .build();
+           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
+       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/{id}")
-    public Response deleteBudget(@PathVariable("id") Long id) {
+    public ResponseEntity<List<Budget>> deleteBudget(@PathVariable("id") Long id) {
         budgetService.delete(id);
-        List<Budget> resources = budgetService.getAll();
-        return Response.ok(Utils.jsonifyList(resources)).build();
+        List<Budget> budgets = budgetService.getAll();
+      return new ResponseEntity<>(budgets, HttpStatus.OK);
     }
 }

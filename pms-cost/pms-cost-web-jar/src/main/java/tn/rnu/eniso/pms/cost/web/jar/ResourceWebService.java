@@ -9,14 +9,18 @@ import java.util.List;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
+import tn.rnu.eniso.pms.core.ejb.entities.Story;
 import tn.rnu.eniso.pms.core.ejb.entities.TaskConsumption;
 import tn.rnu.eniso.pms.core.ejb.utils.Utils;
 import tn.rnu.eniso.pms.core.ejb.services.ResourceService;
@@ -34,72 +38,60 @@ public class ResourceWebService {
 
     
     @GetMapping("/{id}")
-    public Response getResourceById(@PathVariable("id") Long id) {
+    public ResponseEntity<Resource> getResourceById(@PathVariable("id") Long id) {
         Resource resource = resourceService.get(id);
         if (resource != null) {
-            return Response.ok(Utils.jsonify(resource)).build();
+             return new ResponseEntity<>(resource, HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND)
-                .entity(Utils.sendMessage("Resource not found!!"))
-                .build();
+       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping
-    public Response getAllResources() {
+    public ResponseEntity<List<Resource>> getAllResources() {
         List<Resource> resources = resourceService.getAll();
-        return Response.ok(Utils.jsonifyList(resources)).build();
+         return new ResponseEntity<>(resources, HttpStatus.OK);
     }
 
     
     @GetMapping("/{id}/consumptions")
-    public Response getAllTasks(@PathVariable("id") Long id) {
+    public ResponseEntity<List<TaskConsumption>> getAllTasks(@PathVariable("id") Long id) {
         List<TaskConsumption> consumptions = resourceService.getAllConsumptions(id);
         if (consumptions != null) {
-            return Response.ok(Utils.jsonifyList(consumptions)).build();
+             return new ResponseEntity<>(consumptions, HttpStatus.OK);
         }
-        return Response.status(Status.NOT_FOUND)
-                .entity(Utils.sendMessage("Resource not found!!"))
-                .build();
+       return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     
     @PostMapping("/{userId}/{projectId}")
-    public Response addResource(@PathVariable("userId") Long userId, @PathVariable("projectId") Long projectId, Resource resource) {
+    public ResponseEntity<Resource> addResource(@PathVariable("userId") Long userId, @PathVariable("projectId") Long projectId,@RequestBody Resource resource) {
         if (resource != null) {
             resource = resourceService.add(userId, projectId, resource);
             if (resource != null) {
-                return Response.ok(Utils.jsonify(resource)).build();
+                return new ResponseEntity<>(resource, HttpStatus.OK);
             }
-            return Response.status(Status.NOT_FOUND)
-                    .entity(Utils.sendMessage("Project or User not found!!"))
-                    .build();
+           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
+       return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     @PutMapping
-    public Response updateResource(Resource resource) {
+    public ResponseEntity<Resource> updateResource(@RequestBody Resource resource) {
         if (resource != null) {
             resource = resourceService.update(resource);
             if (resource != null) {
-                return Response.ok(Utils.jsonify(resource)).build();
+               return new ResponseEntity<>(resource, HttpStatus.OK);
             }
-            return Response.status(Status.NOT_FOUND)
-                    .entity(Utils.sendMessage("Resource not found!!"))
-                    .build();
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return Response.status(Status.BAD_REQUEST)
-                .entity(Utils.sendMessage("Bad formed data!!"))
-                .build();
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
     
     @DeleteMapping("/{id}")
-    public Response deleteResource(@PathVariable("id") Long id) {
+    public ResponseEntity<List<Resource>> deleteResource(@PathVariable("id") Long id) {
         resourceService.delete(id);
         List<Resource> resources = resourceService.getAll();
-        return Response.ok(Utils.jsonifyList(resources)).build();
+        return new ResponseEntity<>(resources, HttpStatus.OK);
     }
 }
