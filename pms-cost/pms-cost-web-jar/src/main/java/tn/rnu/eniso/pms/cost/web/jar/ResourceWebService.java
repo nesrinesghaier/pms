@@ -6,8 +6,6 @@
 package tn.rnu.eniso.pms.cost.web.jar;
 
 import java.util.List;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.Response.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
