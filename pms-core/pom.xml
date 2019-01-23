@@ -13,8 +13,8 @@
   <name>pms-core</name>
   <modules>
     <module>pms-core-ear</module>
-    <module>pms-core-web</module>
     <module>pms-core-ejb</module>
     <module>pms-core-web-jar</module>
+    <module>pms-core-web</module>
   </modules>
 </project>
