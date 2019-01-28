@@ -89,7 +89,7 @@ public class ProjectWebService {
     }
 
     @PutMapping
-    public ResponseEntity<Project> updateProject(Project project) {
+    public ResponseEntity<Project> updateProject(@RequestBody Project project) {
         if (project != null) {
             project = projectService.update(project);
             if (project != null) {

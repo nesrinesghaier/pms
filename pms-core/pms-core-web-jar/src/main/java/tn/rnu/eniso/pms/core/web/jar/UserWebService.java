@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import tn.rnu.eniso.pms.core.ejb.entities.Resource;
@@ -56,7 +57,7 @@ public class UserWebService {
     }
 
     @PostMapping
-    public ResponseEntity<User> addUser(User user) {
+    public ResponseEntity<User> addUser(@RequestBody User user) {
         if (user != null) {
             user = userService.add(user);
             if (user != null) {
@@ -68,7 +69,7 @@ public class UserWebService {
     }
 
     @PutMapping
-    public ResponseEntity<User> updateUser(User user) {
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
         if (user != null) {
             user = userService.update(user);
             if (user != null) {
